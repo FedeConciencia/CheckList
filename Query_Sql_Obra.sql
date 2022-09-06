@@ -4,7 +4,7 @@ use proyecto_check_list;
 
 SET SQL_SAFE_UPDATES = 0;
 
-alter table dinosaurio auto_increment = 1;
+alter table general auto_increment = 1;
 
 
                                                                                                                                                      

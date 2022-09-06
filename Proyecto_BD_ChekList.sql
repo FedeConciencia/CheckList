@@ -25,14 +25,14 @@ DROP TABLE IF EXISTS `abertura`;
 CREATE TABLE `abertura` (
   `idAbertura` int NOT NULL AUTO_INCREMENT,
   `fechaInicial` date NOT NULL,
-  `fechaFin` varchar(45) NOT NULL,
+  `fechaFinal` date NOT NULL,
   `cantidad` int NOT NULL,
   `m2` decimal(4,2) NOT NULL,
   `nroPersona` int NOT NULL,
+  `comentario` varchar(3000) NOT NULL,
   `fechaAlta` date NOT NULL,
   `fechaBaja` date NOT NULL,
   `estado` varchar(45) NOT NULL,
-  `comentario` varchar(3000) NOT NULL,
   `idVisita` int NOT NULL,
   PRIMARY KEY (`idAbertura`),
   KEY `idVisita_pk9_idx` (`idVisita`),
@@ -67,10 +67,10 @@ CREATE TABLE `conclusion` (
   `fechaAlta` date NOT NULL,
   `fechaBaja` date NOT NULL,
   `estado` varchar(45) NOT NULL,
-  `idVista` int NOT NULL,
+  `idGeneral` int NOT NULL,
   PRIMARY KEY (`idConclusion`),
-  KEY `idVista_pk10_idx` (`idVista`),
-  CONSTRAINT `idVista_pk10` FOREIGN KEY (`idVista`) REFERENCES `visita` (`idVisita`)
+  KEY `idGeneral_pk2_idx` (`idGeneral`),
+  CONSTRAINT `idGeneral_pk2` FOREIGN KEY (`idGeneral`) REFERENCES `general` (`idGeneral`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -137,7 +137,7 @@ CREATE TABLE `gremio` (
   `horarioHasta` time NOT NULL,
   `fechaDesde` date NOT NULL,
   `fechaHasta` date NOT NULL,
-  `NroArgentinos` int NOT NULL,
+  `nroArgentinos` int NOT NULL,
   `nombreContratista` varchar(45) NOT NULL,
   `apellidoContratista` varchar(45) NOT NULL,
   `fechaAlta` date NOT NULL,
@@ -214,10 +214,10 @@ CREATE TABLE `material` (
   `estadoAlmacen` varchar(45) NOT NULL,
   `movMateriales` varchar(45) NOT NULL,
   `almacenSeguro` varchar(45) NOT NULL,
-  `EnvasesVacio` varchar(45) NOT NULL,
+  `envasesVacio` varchar(45) NOT NULL,
   `materialSobran` varchar(45) NOT NULL,
   `estadoLimpieza` varchar(45) NOT NULL,
-  `DesechosOrgani` varchar(45) NOT NULL,
+  `desechosOrgani` varchar(45) NOT NULL,
   `comentario` varchar(3000) NOT NULL,
   `fechaAlta` date NOT NULL,
   `fechaBaja` date NOT NULL,
@@ -503,4 +503,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-06 11:45:12
+-- Dump completed on 2022-09-06 17:23:09
