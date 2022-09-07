@@ -2,23 +2,21 @@
 package Controlador;
 
 import Conexion.Conexion;
-import Modelo.Gremio;
+import Modelo.Material;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ControladorGremio {
+public class ControladorMaterial {
     
-    //METODO PARA INSERTAR REGISTRO GREMIO:
-    public void insertarGremio(Gremio gremio) {
+    //METODO PARA INSERTAR REGISTRO MATERIAL:
+    public void insertarMaterial(Material material) {
 
         Connection conexion = null;
         Conexion con = new Conexion();
@@ -29,24 +27,25 @@ public class ControladorGremio {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("INSERT INTO gremio (nombreGremio, nroPersonas, horarioDesde, horarioHasta, fechaDesde, fechaHasta, nroArgentinos, nombreContratista, apellidoContratista, fechaAlta, fechaBaja, estado, idPersona) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            ps = conexion.prepareStatement("INSERT INTO material (estadoAlmacen, movMateriales, almacenSeguro, envasesVacio, materialSobran, estadoLimpieza, desechosOrgani, comentario, fechaAlta, fechaBaja, estado, idVista) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             // Se establecen los parámetros y se ejecuta la sentencia.
-            ps.setString(1, gremio.getNombreGremio());
-            ps.setInt(2, gremio.getNroPersonas());
-            ps.setTime(3, Time.valueOf(gremio.getHorarioDesde()));  //Modifico por LocalTime que representa solo la hora y en BD con TIME
-            ps.setTime(4, Time.valueOf(gremio.getHorarioHasta()));  //Modifico por LocalTime que representa solo la hora y en BD con TIME
-            ps.setDate(5, Date.valueOf(gremio.getFechaDesde())); //Se trabaja en java con LocalDate
-            ps.setDate(6, Date.valueOf(gremio.getFechaHasta())); //Se trabaja en java con LocalDate
-            ps.setInt(7, gremio.getNroArgentinos());
-            ps.setString(8, gremio.getNombreContratista());
-            ps.setString(9, gremio.getApellidoContratista());
-            ps.setDate(10, Date.valueOf(gremio.getFechaAlta())); //Se trabaja en java con LocalDate
-            ps.setDate(11, Date.valueOf(gremio.getFechaBaja())); //Se trabaja en java con LocalDate
-            ps.setString(12, gremio.getEstado());
-            ps.setLong(13, gremio.getIdPersona());
+           
+            ps.setString(1, material.getEstadoAlmacen());
+            ps.setString(2, material.getMovMateriales());
+            ps.setString(3, material.getAlmacenSeguro());
+            ps.setString(4, material.getEnvasesVacio());
+            ps.setString(5, material.getMaterialSobran());
+            ps.setString(6, material.getEstadoLimpieza());
+            ps.setString(7, material.getDesechosOrgani());
+            ps.setString(8, material.getComentario());
+            ps.setDate(9, Date.valueOf(material.getFechaAlta())); //Se trabaja en java con LocalDate
+            ps.setDate(10, Date.valueOf(material.getFechaBaja())); //Se trabaja en java con LocalDate
+            ps.setString(11, material.getEstado());
+            ps.setLong(12, material.getIdVisita());
             
             
+           
             //Ejecutamos el comando y mandamos los datos al sistema:
             int resultado = ps.executeUpdate();
 
@@ -86,8 +85,8 @@ public class ControladorGremio {
     }
     
     
-    //METODO PARA ACTUALIZAR REGISTRO GREMIO:
-    public void actualizarGremio(Gremio gremio) {
+    //METODO PARA ACTUALIZAR REGISTRO MATERIAL:
+    public void actualizarMaterial(Material material) {
 
         Connection conexion = null;
         Conexion con = new Conexion();
@@ -98,24 +97,22 @@ public class ControladorGremio {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("UPDATE gremio SET nombreGremio = ?, nroPersonas = ?, horarioDesde = ?, horarioHasta = ?, fechaDesde = ?, fechaHasta = ?, nroArgentinos = ?, nombreContratista = ?, apellidoContratista = ?, fechaAlta = ?, fechaBaja = ?, estado = ?, idPersona = ? WHERE idGremio = ? ");
+            ps = conexion.prepareStatement("UPDATE material SET estadoAlmacen = ?, movMateriales = ?, almacenSeguro = ?, envasesVacio = ?, materialSobran = ?, estadoLimpieza = ?, desechosOrgani = ?, comentario = ?, fechaAlta = ?, fechaBaja = ?, estado = ?, idVista = ? WHERE idMaterial = ? ");
 
             
-            // Se establecen los parámetros y se ejecuta la sentencia.
-            ps.setString(1, gremio.getNombreGremio());
-            ps.setInt(2, gremio.getNroPersonas());
-            ps.setTime(3, Time.valueOf(gremio.getHorarioDesde()));  //Modifico por LocalTime que representa solo la hora y en BD con TIME
-            ps.setTime(4, Time.valueOf(gremio.getHorarioHasta()));  //Modifico por LocalTime que representa solo la hora y en BD con TIME
-            ps.setDate(5, Date.valueOf(gremio.getFechaDesde())); //Se trabaja en java con LocalDate
-            ps.setDate(6, Date.valueOf(gremio.getFechaHasta())); //Se trabaja en java con LocalDate
-            ps.setInt(7, gremio.getNroArgentinos());
-            ps.setString(8, gremio.getNombreContratista());
-            ps.setString(9, gremio.getApellidoContratista());
-            ps.setDate(10, Date.valueOf(gremio.getFechaAlta())); //Se trabaja en java con LocalDate
-            ps.setDate(11, Date.valueOf(gremio.getFechaBaja())); //Se trabaja en java con LocalDate
-            ps.setString(12, gremio.getEstado());
-            ps.setLong(13, gremio.getIdPersona());
-            ps.setLong(14, gremio.getIdGremio());
+            ps.setString(1, material.getEstadoAlmacen());
+            ps.setString(2, material.getMovMateriales());
+            ps.setString(3, material.getAlmacenSeguro());
+            ps.setString(4, material.getEnvasesVacio());
+            ps.setString(5, material.getMaterialSobran());
+            ps.setString(6, material.getEstadoLimpieza());
+            ps.setString(7, material.getDesechosOrgani());
+            ps.setString(8, material.getComentario());
+            ps.setDate(9, Date.valueOf(material.getFechaAlta())); //Se trabaja en java con LocalDate
+            ps.setDate(10, Date.valueOf(material.getFechaBaja())); //Se trabaja en java con LocalDate
+            ps.setString(11, material.getEstado());
+            ps.setLong(12, material.getIdVisita());
+            ps.setLong(13, material.getIdMaterial());
             
 
             //Ejecutamos el comando y mandamos los datos al sistema:
@@ -153,12 +150,12 @@ public class ControladorGremio {
     }
     
     
-    //METODO PARA BUSCAR ONE REGISTRO GREMIO:
-    public Gremio buscarOneGremio(Long id) {
+    //METODO PARA BUSCAR ONE REGISTRO MATERIAL:
+    public Material buscarOneMaterial(Long id) {
 
         Connection conexion = null;
         Conexion con = new Conexion();
-        Gremio gremio = null;
+        Material material = null;
         PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
         ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
 
@@ -166,7 +163,7 @@ public class ControladorGremio {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("SELECT * FROM gremio WHERE idGremio = ?");
+            ps = conexion.prepareStatement("SELECT * FROM material WHERE idMaterial = ?");
 
             ps.setLong(1, id); //pasamos el id parametro y se ingresa en el ? del query
 
@@ -174,22 +171,22 @@ public class ControladorGremio {
 
             if (rs.next()) {  //si nos devuelve un dato true
 
-                Long idGremio = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
-                String nombreGremio = rs.getString(2);
-                int nroPersonas = rs.getInt(3);
-                LocalTime horarioDesde = (rs.getTime(4)).toLocalTime(); //modifico a local time para obtener solo la hora
-                LocalTime horarioHasta = (rs.getTime(5)).toLocalTime();
-                LocalDate fechaDesde = (rs.getDate(6)).toLocalDate(); //En java trabajamos con LocalDate
-                LocalDate fechaHasta = (rs.getDate(7)).toLocalDate(); //En java trabajamos con LocalDate
-                int nroArgentinos = rs.getInt(8);
-                String nombreContratista = rs.getString(9);
-                String apellidoContratista = rs.getString(10);
-                LocalDate fechaAlta = (rs.getDate(11)).toLocalDate(); //En java trabajamos con LocalDate
-                LocalDate fechaBaja = (rs.getDate(12)).toLocalDate(); //En java trabajamos con LocalDate
-                String estado = rs.getString(13);
-                Long idPersona = rs.getLong(14);
+                Long idMaterial = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                String estadoAlmacen = rs.getString(2);
+                String movMateriales = rs.getString(3);
+                String almacenSeguro = rs.getString(4);
+                String envasesVacio = rs.getString(5);
+                String materialSobran = rs.getString(6);
+                String estadoLimpieza = rs.getString(7);
+                String desechosOrgani = rs.getString(8);
+                String comentario = rs.getString(9);
+                LocalDate fechaAlta = (rs.getDate(10)).toLocalDate(); //En java trabajamos con LocalDate
+                LocalDate fechaBaja = (rs.getDate(11)).toLocalDate(); //En java trabajamos con LocalDate
+                String estado = rs.getString(12);
+                Long idVisita = rs.getLong(13);
                 
-                gremio = new Gremio(idGremio, nombreGremio, nroPersonas, horarioDesde, horarioHasta, fechaDesde, fechaHasta, nroArgentinos, nombreContratista, apellidoContratista, fechaAlta, fechaBaja, estado, idPersona);
+              
+                material = new Material(idMaterial, estadoAlmacen, movMateriales, almacenSeguro, envasesVacio, materialSobran, estadoLimpieza, desechosOrgani, comentario, fechaAlta, fechaBaja, estado, idVisita);
 
                 System.out.println("El Registro fue encontrado con exito.");
                 //JOptionPane.showMessageDialog(null, "El Registro fue encontrado con exito.");
@@ -219,17 +216,17 @@ public class ControladorGremio {
 
         }
 
-        return gremio; //devolvemos el objeto conclusion
+        return material; //devolvemos el objeto conclusion
         
     }
     
-    //METODO PARA BUSCAR ALL REGISTROS GREMIO:
-    public List<Gremio> buscarAllGremio() {
+    //METODO PARA BUSCAR ALL REGISTROS MATERIAL:
+    public List<Material> buscarAllMaterial() {
 
         Connection conexion = null;
         Conexion con = new Conexion();
-        Gremio gremio = null;
-        List<Gremio> listaGremio = new ArrayList<Gremio>();
+        Material material = null;
+        List<Material> listaMaterial = new ArrayList<Material>();
         PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
         ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
 
@@ -237,33 +234,31 @@ public class ControladorGremio {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("SELECT * FROM gremio");
+            ps = conexion.prepareStatement("SELECT * FROM material");
 
             rs = ps.executeQuery();
 
             while (rs.next()) {
 
-                Long idGremio = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
-                String nombreGremio = rs.getString(2);
-                int nroPersonas = rs.getInt(3);
-                LocalTime horarioDesde = (rs.getTime(4)).toLocalTime(); //modifico a local time para obtener solo la hora
-                LocalTime horarioHasta = (rs.getTime(5)).toLocalTime();
-                LocalDate fechaDesde = (rs.getDate(6)).toLocalDate(); //En java trabajamos con LocalDate
-                LocalDate fechaHasta = (rs.getDate(7)).toLocalDate(); //En java trabajamos con LocalDate
-                int nroArgentinos = rs.getInt(8);
-                String nombreContratista = rs.getString(9);
-                String apellidoContratista = rs.getString(10);
-                LocalDate fechaAlta = (rs.getDate(11)).toLocalDate(); //En java trabajamos con LocalDate
-                LocalDate fechaBaja = (rs.getDate(12)).toLocalDate(); //En java trabajamos con LocalDate
-                String estado = rs.getString(13);
-                Long idPersona = rs.getLong(14);
+                Long idMaterial = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                String estadoAlmacen = rs.getString(2);
+                String movMateriales = rs.getString(3);
+                String almacenSeguro = rs.getString(4);
+                String envasesVacio = rs.getString(5);
+                String materialSobran = rs.getString(6);
+                String estadoLimpieza = rs.getString(7);
+                String desechosOrgani = rs.getString(8);
+                String comentario = rs.getString(9);
+                LocalDate fechaAlta = (rs.getDate(10)).toLocalDate(); //En java trabajamos con LocalDate
+                LocalDate fechaBaja = (rs.getDate(11)).toLocalDate(); //En java trabajamos con LocalDate
+                String estado = rs.getString(12);
+                Long idVisita = rs.getLong(13);
                 
-                
-                gremio = new Gremio(idGremio, nombreGremio, nroPersonas, horarioDesde, horarioHasta, fechaDesde, fechaHasta, nroArgentinos, nombreContratista, apellidoContratista, fechaAlta, fechaBaja, estado, idPersona);
+              
+                material = new Material(idMaterial, estadoAlmacen, movMateriales, almacenSeguro, envasesVacio, materialSobran, estadoLimpieza, desechosOrgani, comentario, fechaAlta, fechaBaja, estado, idVisita);
 
+                listaMaterial.add(material);
                 
-                listaGremio.add(gremio);
-
             }
 
             conexion.close();
@@ -285,12 +280,12 @@ public class ControladorGremio {
 
         }
 
-        return listaGremio; //devolvemos la lista de conclusion
+        return listaMaterial; //devolvemos la lista de humeda
 
     }
    
-    //METODO PARA DELETE LOGICO REGISTRO GREMIO A TRAVES DE UPDATE:
-    public void eliminarLogicoGremio(Long id, LocalDate fecha) {
+    //METODO PARA DELETE LOGICO REGISTRO MATERIAL A TRAVES DE UPDATE:
+    public void eliminarLogicoMaterial(Long id, LocalDate fecha) {
 
         Connection conexion = null;
         Conexion con = new Conexion();
@@ -301,7 +296,7 @@ public class ControladorGremio {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("UPDATE gremio SET fechaBaja = ?, estado = ?  WHERE idGremio = ? ");
+            ps = conexion.prepareStatement("UPDATE material SET fechaBaja = ?, estado = ?  WHERE idMaterial = ? ");
 
             ps.setDate(1, Date.valueOf(fecha)); //Trabajamos en java con LocalDate
             ps.setString(2, "inactivo");
@@ -342,8 +337,8 @@ public class ControladorGremio {
     }
     
     
-    //METODO PARA ELIMINAR REGISTRO GREMIO:
-    public void eliminarGremio(Long id) {
+    //METODO PARA ELIMINAR REGISTRO MATERIAL:
+    public void eliminarMaterial(Long id) {
 
         Connection conexion = null;
         Conexion con = new Conexion();
@@ -354,7 +349,7 @@ public class ControladorGremio {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("DELETE FROM gremio WHERE idGremio = ?");
+            ps = conexion.prepareStatement("DELETE FROM material WHERE idMaterial = ?");
 
             ps.setLong(1, id); //Se puede usar indicando el primer signo de pregunta del qwery y alojar la variable
 
