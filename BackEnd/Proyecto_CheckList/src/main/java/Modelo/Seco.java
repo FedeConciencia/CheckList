@@ -27,6 +27,9 @@ public class Seco {
     private LocalDate fechaBaja;
     private String estado;
     private Long idVisita;
+    
+    //Variable de relacion bidireccional Visita:Humeda (1:1) =>
+    private Visita visita;
 
     public Seco() {
     }
@@ -86,11 +89,11 @@ public class Seco {
         this.idSeco = idSeco;
     }
 
-    public LocalDate getFechaInicio() {
+    public LocalDate getFechaInicial() {
         return fechaInicial;
     }
 
-    public void setFechaInicio(LocalDate fechaInicial) {
+    public void setFechaInicial(LocalDate fechaInicial) {
         this.fechaInicial = fechaInicial;
     }
 
@@ -245,6 +248,14 @@ public class Seco {
     public void setIdVisita(Long idVisita) {
         this.idVisita = idVisita;
     }
+    
+    public Visita getVisita() {
+        return visita;
+    }
+
+    public void setVisita(Visita visita) {
+        this.visita = visita;
+    }
 
     @Override
     public String toString() {
@@ -254,7 +265,6 @@ public class Seco {
                 "\nmaterialMuros: " + materialMuros + "\nmaterialCubiertas: " + materialCubiertas + "\ncomentario: " + comentario + "\nfechaAlta: " + fechaAlta + 
                 "\nfechaBaja: " + fechaBaja + "\nestado: " + estado + "\nidVisita: " + idVisita;
     }
-    
-    
-    
+
+
 }

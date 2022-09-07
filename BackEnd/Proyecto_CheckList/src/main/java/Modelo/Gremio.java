@@ -21,6 +21,9 @@ public class Gremio {
     private LocalDate fechaBaja;
     private String estado;
     private Long idPersona;
+    
+    //Variable de relacion bidireccional Persona:Gremio (1:1) =>
+    private Persona persona;
 
     public Gremio() {
     }
@@ -169,6 +172,14 @@ public class Gremio {
     public void setIdPersona(Long idPersona) {
         this.idPersona = idPersona;
     }
+    
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
 
     @Override
     public String toString() {
@@ -177,7 +188,6 @@ public class Gremio {
                 "\nnombreContratista: " + nombreContratista + "\napellidoContratista: " + apellidoContratista + "\nfechaAlta: " + fechaAlta + 
                 "\nfechaBaja: " + fechaBaja + "\nestado: " + estado + "\nidPersona: " + idPersona + '}';
     }
-    
-    
-    
+
+ 
 }

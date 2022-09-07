@@ -16,6 +16,10 @@ public class RedAgua {
     private LocalDate fechaBaja;
     private String estado;
     private Long idVisita;
+    
+    //Variable de relacion bidireccional Visita:Panel (1:1) =>
+    private Visita visita;
+    
 
     public RedAgua() {
     }
@@ -123,6 +127,14 @@ public class RedAgua {
 
     public void setIdVisita(Long idVisita) {
         this.idVisita = idVisita;
+    }
+    
+    public Visita getVisita() {
+        return visita;
+    }
+
+    public void setVisita(Visita visita) {
+        this.visita = visita;
     }
 
     @Override

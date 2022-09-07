@@ -16,6 +16,9 @@ public class RedGas {
     private LocalDate fechaBaja;
     private String estado;
     private Long idVisita;
+    
+    //Variable de relacion bidireccional Visita:Panel (1:1) =>
+    private Visita visita;
 
     public RedGas() {
     }
@@ -123,6 +126,14 @@ public class RedGas {
 
     public void setIdVisita(Long idVisita) {
         this.idVisita = idVisita;
+    }
+    
+    public Visita getVisita() {
+        return visita;
+    }
+
+    public void setVisita(Visita visita) {
+        this.visita = visita;
     }
 
     @Override

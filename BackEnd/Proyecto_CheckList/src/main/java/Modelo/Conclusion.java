@@ -17,6 +17,9 @@ public class Conclusion {
     private LocalDate fechaBaja;
     private String estado;
     private Long idGeneral;
+    
+    //Variable de relacion bidireccional Conclusion:General (1:1) =>
+    private General general;
 
     public Conclusion() {
     }
@@ -135,6 +138,14 @@ public class Conclusion {
     public void setIdGeneral(Long idGeneral) {
         this.idGeneral = idGeneral;
     }
+    
+    public General getGeneral() {
+        return general;
+    }
+
+    public void setGeneral(General general) {
+        this.general = general;
+    }
 
     @Override
     public String toString() {
@@ -142,7 +153,7 @@ public class Conclusion {
                 "\nfechaFinalizacion: " + fechaFinalizacion + "\ngradoSatisfaccion: " + gradoSatisfaccion + "\ncomentario: " + comentario + 
                 "\nfechaAlta: " + fechaAlta + "\nfechaBaja: " + fechaBaja + "\nestado: " + estado + "\nidGeneral: " + idGeneral;
     }
+
     
-    
-    
+
 }

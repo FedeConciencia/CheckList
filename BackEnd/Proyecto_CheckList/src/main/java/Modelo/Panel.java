@@ -21,6 +21,9 @@ public class Panel {
     private LocalDate fechaBaja;
     private String estado;
     private Long idVisita;
+    
+    //Variable de relacion bidireccional Visita:Panel (1:1) =>
+    private Visita visita;
 
     public Panel() {
     }
@@ -169,6 +172,14 @@ public class Panel {
     public void setIdVisita(Long idVisita) {
         this.idVisita = idVisita;
     }
+    
+    public Visita getVisita() {
+        return visita;
+    }
+
+    public void setVisita(Visita visita) {
+        this.visita = visita;
+    }
 
     @Override
     public String toString() {
@@ -176,6 +187,6 @@ public class Panel {
                 "\npanelesFrio: " + panelesFrio + "\nperfileriaFrio: " + perfileriaFrio + "\nespesor: " + espesor + "\nresultado: " + resultado + 
                 "\ncomentario: " + comentario + "\nfechaAlta: " + fechaAlta + "\nfechaBaja: " + fechaBaja + "\nestado: " + estado + "\nidVisita: " + idVisita;
     }
-    
-    
+
+
 }

@@ -2,6 +2,7 @@
 package Modelo;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class General {
@@ -24,6 +25,12 @@ public class General {
     private LocalDate fechaBaja;
     private String estado;
     
+    
+    //Variable de relacion bidireccional General:Vista (1:N) =>
+    private List<Visita> listaVisita;
+    
+    //Variable de relacion bidireccional General:Conclusion (1:1) =>
+    private Conclusion conclusion;
 
 
     public General() {
@@ -92,11 +99,11 @@ public class General {
         this.nombreCliente = nombreCliente;
     }
 
-    public String getApellido() {
+    public String getApellidoCliente() {
         return apellidoCliente;
     }
 
-    public void setApellido(String apellidoCliente) {
+    public void setApellidoCliente(String apellidoCliente) {
         this.apellidoCliente = apellidoCliente;
     }
 
@@ -196,6 +203,23 @@ public class General {
         this.estado = estado;
     }
     
+    
+    public List<Visita> getListaVisita() {
+        return listaVisita;
+    }
+
+    public void setListaVisita(List<Visita> listaVisita) {
+        this.listaVisita = listaVisita;
+    }
+
+    public Conclusion getConclusion() {
+        return conclusion;
+    }
+
+    public void setConclusion(Conclusion conclusion) {
+        this.conclusion = conclusion;
+    }
+    
 
     @Override
     public String toString() {
@@ -203,7 +227,7 @@ public class General {
                 domicilio + "\nusoEdificio: " + usoEdificio + "\nalturaEdificio: " + alturaEdificio + "\nm2Cubierta: " + m2Cubierta + "\nm2Muro: " + m2Muro + "\nalcance: " + 
                 alcance + "\nduracionObra: " + duracionObra + "\ncomentario: " + comentario + "\nfechaAlta: " + fechaAlta + "\nfechaBaja: " + fechaBaja + "\nestado: " + estado;
     }
-    
+
     
     
 }

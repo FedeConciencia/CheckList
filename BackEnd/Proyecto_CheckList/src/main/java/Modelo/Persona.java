@@ -3,6 +3,7 @@ package Modelo;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class Persona {
@@ -28,6 +29,12 @@ public class Persona {
     private LocalDate fechaBaja;
     private String estado;
     private Long idVisita;
+    
+    //Variable de relacion bidireccional Visita:Persona (1:1) =>
+    private Visita visita;
+    
+    //Variable de relacion bidireccional Persona:Gremio (1:N) =>
+    private List<Gremio> listaGremio;
 
     public Persona() {
     }
@@ -246,8 +253,23 @@ public class Persona {
     public void setIdVisita(Long idVisita) {
         this.idVisita = idVisita;
     }
-
     
+    public Visita getVisita() {
+        return visita;
+    }
+
+    public void setVisita(Visita visita) {
+        this.visita = visita;
+    }
+
+    public List<Gremio> getListaGremio() {
+        return listaGremio;
+    }
+
+    public void setListaGremio(List<Gremio> listaGremio) {
+        this.listaGremio = listaGremio;
+    }
+
 
     @Override
     public String toString() {
@@ -257,8 +279,6 @@ public class Persona {
                 "\nedadViejo: " + edadViejo + "\nrangoMin: " + rangoMin + "\nrangoMax: " + rangoMax + "\ncomentario: " + comentario + "\nfechaAlta: " + fechaAlta + 
                 "\nfechaBaja: " + fechaBaja + "\nestado: " + estado + "\nidVisita: " + idVisita;
     }
-    
-    
-    
+
     
 }

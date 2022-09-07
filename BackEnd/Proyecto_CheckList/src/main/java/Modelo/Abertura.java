@@ -17,6 +17,9 @@ public class Abertura {
     private LocalDate fechaBaja;
     private String estado;
     private Long idVisita;
+    
+    //Variable de relacion bidireccional Visita:Panel (1:1) =>
+    private Visita visita;
 
     public Abertura() {
     }
@@ -56,11 +59,11 @@ public class Abertura {
         this.idAbertura = idAbertura;
     }
 
-    public LocalDate getFechaInicio() {
+    public LocalDate getFechaInicial() {
         return fechaInicial;
     }
 
-    public void setFechaInicio(LocalDate fechaInicial) {
+    public void setFechaInicial(LocalDate fechaInicial) {
         this.fechaInicial = fechaInicial;
     }
 
@@ -134,6 +137,14 @@ public class Abertura {
 
     public void setIdVisita(Long idVisita) {
         this.idVisita = idVisita;
+    }
+    
+    public Visita getVisita() {
+        return visita;
+    }
+
+    public void setVisita(Visita visita) {
+        this.visita = visita;
     }
 
     @Override

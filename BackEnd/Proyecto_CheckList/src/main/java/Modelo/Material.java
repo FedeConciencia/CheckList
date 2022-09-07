@@ -19,6 +19,9 @@ public class Material {
     private LocalDate fechaBaja;
     private String estado;
     private Long idVisita;
+    
+    //Variable de relacion bidireccional Visita:Material (1:1) =>
+    private Visita visita;
 
     public Material() {
     }
@@ -157,6 +160,14 @@ public class Material {
     public void setIdVisita(Long idVisita) {
         this.idVisita = idVisita;
     }
+    
+    public Visita getVisita() {
+        return visita;
+    }
+
+    public void setVisita(Visita visita) {
+        this.visita = visita;
+    }
 
     @Override
     public String toString() {
@@ -165,7 +176,6 @@ public class Material {
                 "\ncomentario: " + comentario + "\nfechaAlta: " + fechaAlta + "\nfechaBaja: " + fechaBaja + "\nestado: " + estado + "\nidVisita: " + idVisita + '}';
     }
     
-    
+   
  
-    
 }
