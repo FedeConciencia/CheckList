@@ -146,7 +146,7 @@ public class ControladorVisita {
     
     
     //METODO PARA BUSCAR ONE REGISTRO VISITA:
-    public Visita buscarOneRedGas(Long id) {
+    public Visita buscarOneVisita(Long id) {
 
         Connection conexion = null;
         Conexion con = new Conexion();
