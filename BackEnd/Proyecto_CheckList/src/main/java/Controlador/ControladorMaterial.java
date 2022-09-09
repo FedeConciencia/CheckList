@@ -27,7 +27,7 @@ public class ControladorMaterial {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("INSERT INTO material (estadoAlmacen, movMateriales, almacenSeguro, envasesVacio, materialSobran, estadoLimpieza, desechosOrgani, comentario, fechaAlta, fechaBaja, estado, idVista) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            ps = conexion.prepareStatement("INSERT INTO material (estadoAlmacen, movMateriales, almacenSeguro, envasesVacio, materialSobran, estadoLimpieza, desechosOrgani, comentario, fechaAlta, fechaBaja, estado, idVisita) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             // Se establecen los parámetros y se ejecuta la sentencia.
            
@@ -97,7 +97,7 @@ public class ControladorMaterial {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("UPDATE material SET estadoAlmacen = ?, movMateriales = ?, almacenSeguro = ?, envasesVacio = ?, materialSobran = ?, estadoLimpieza = ?, desechosOrgani = ?, comentario = ?, fechaAlta = ?, fechaBaja = ?, estado = ?, idVista = ? WHERE idMaterial = ? ");
+            ps = conexion.prepareStatement("UPDATE material SET estadoAlmacen = ?, movMateriales = ?, almacenSeguro = ?, envasesVacio = ?, materialSobran = ?, estadoLimpieza = ?, desechosOrgani = ?, comentario = ?, fechaAlta = ?, fechaBaja = ?, estado = ?, idVisita = ? WHERE idMaterial = ? ");
 
             
             ps.setString(1, material.getEstadoAlmacen());

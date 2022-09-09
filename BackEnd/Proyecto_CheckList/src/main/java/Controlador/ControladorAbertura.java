@@ -92,7 +92,7 @@ public class ControladorAbertura {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("UPDATE abertura SET fechaInicial = ?, fechaFinal = ?, cantidad = ?, m2 = ?, , nroPersona = ?, , comentario = ?, fechaAlta = ?, fechaBaja = ?, estado = ?, idVisita = ?  WHERE idAbertura = ? ");
+            ps = conexion.prepareStatement("UPDATE abertura SET fechaInicial = ?, fechaFinal = ?, cantidad = ?, m2 = ?, nroPersona = ?, comentario = ?, fechaAlta = ?, fechaBaja = ?, estado = ?, idVisita = ? WHERE idAbertura = ? ");
 
             // Se establecen los parámetros y se ejecuta la sentencia.
             ps.setDate(1, Date.valueOf(abertura.getFechaInicial()));

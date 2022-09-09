@@ -186,7 +186,7 @@ public class Gremio {
         return "idGremio: " + idGremio + "\nnombreGremio: " + nombreGremio + "\nnroPersonas: " + nroPersonas + "\nhorarioDesde: " + horarioDesde + 
                 "\nhorarioHasta: " + horarioHasta + "\nfechaDesde: " + fechaDesde + "\nfechaHasta: " + fechaHasta + "\nnroArgentinos: " + nroArgentinos + 
                 "\nnombreContratista: " + nombreContratista + "\napellidoContratista: " + apellidoContratista + "\nfechaAlta: " + fechaAlta + 
-                "\nfechaBaja: " + fechaBaja + "\nestado: " + estado + "\nidPersona: " + idPersona + '}';
+                "\nfechaBaja: " + fechaBaja + "\nestado: " + estado + "\nidPersona: " + idPersona;
     }
 
  

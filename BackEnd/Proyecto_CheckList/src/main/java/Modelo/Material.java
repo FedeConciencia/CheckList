@@ -173,7 +173,7 @@ public class Material {
     public String toString() {
         return "idMaterial: " + idMaterial + "\nestadoAlmacen: " + estadoAlmacen + "\nmovMateriales: " + movMateriales + "\nalmacenSeguro: " + almacenSeguro + 
                 "\nenvasesVacio: " + envasesVacio + "\nmaterialSobran: " + materialSobran + "\nestadoLimpieza: " + estadoLimpieza + "\ndesechosOrgani: " + desechosOrgani + 
-                "\ncomentario: " + comentario + "\nfechaAlta: " + fechaAlta + "\nfechaBaja: " + fechaBaja + "\nestado: " + estado + "\nidVisita: " + idVisita + '}';
+                "\ncomentario: " + comentario + "\nfechaAlta: " + fechaAlta + "\nfechaBaja: " + fechaBaja + "\nestado: " + estado + "\nidVisita: " + idVisita;
     }
     
    

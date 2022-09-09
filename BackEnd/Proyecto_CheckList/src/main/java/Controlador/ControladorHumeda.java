@@ -29,7 +29,7 @@ public class ControladorHumeda {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("INSERT INTO humeda (fechaInicio, fechaFinal, m2Piso, pisoPerson, metros, metrosPerson, m2Muro, muroPerson, m2Cubierta, cubiertaPerson, metrosLineales, linealesPerson, diasCaidos, motivo, comentario, fechaAlta, fechaBaja, estado, idVista) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            ps = conexion.prepareStatement("INSERT INTO humeda (fechaInicio, fechaFinal, m2Piso, pisoPerson, metros, metrosPerson, m2Muro, muroPerson, m2Cubierta, cubiertaPerson, metrosLineales, linealesPerson, diasCaidos, motivo, comentario, fechaAlta, fechaBaja, estado, idVisita) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             // Se establecen los parámetros y se ejecuta la sentencia.
             ps.setDate(1, Date.valueOf(humeda.getFechaInicial()));
@@ -104,7 +104,7 @@ public class ControladorHumeda {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("UPDATE humeda SET fechaInicio = ?, fechaFinal = ?, m2Piso = ?, pisoPerson = ?, metros = ?, metrosPerson = ?, m2Muro = ?, muroPerson = ?, m2Cubierta = ?, cubiertaPerson = ?, metrosLineales = ?, linealesPerson = ?, diasCaidos = ?, motivo = ?, comentario = ?, fechaAlta = ?, fechaBaja = ?, estado = ?, idVista = ?   WHERE idHumeda = ? ");
+            ps = conexion.prepareStatement("UPDATE humeda SET fechaInicio = ?, fechaFinal = ?, m2Piso = ?, pisoPerson = ?, metros = ?, metrosPerson = ?, m2Muro = ?, muroPerson = ?, m2Cubierta = ?, cubiertaPerson = ?, metrosLineales = ?, linealesPerson = ?, diasCaidos = ?, motivo = ?, comentario = ?, fechaAlta = ?, fechaBaja = ?, estado = ?, idVisita = ?   WHERE idHumeda = ? ");
 
             
             // Se establecen los parámetros y se ejecuta la sentencia.

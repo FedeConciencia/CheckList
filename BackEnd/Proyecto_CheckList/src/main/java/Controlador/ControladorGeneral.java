@@ -97,7 +97,7 @@ public class ControladorGeneral {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("UPDATE general SET codigo = ?, nombreCliente = ?, apellidoCliente = ?, dni = ?, , domicilio = ?, , usoEdificio = ?, alturaEdificio = ?, m2Cubierta = ?, m2Muro = ?, alcance = ?, duracionObra = ?, comentario = ?, fechaAlta = ?, fechaBaja = ?, estado = ? WHERE idGeneral = ? ");
+            ps = conexion.prepareStatement("UPDATE general SET codigo = ?, nombreCliente = ?, apellidoCliente = ?, dni = ?, domicilio = ?, usoEdificio = ?, alturaEdificio = ?, m2Cubierta = ?, m2Muro = ?, alcance = ?, duracionObra = ?, comentario = ?, fechaAlta = ?, fechaBaja = ?, estado = ? WHERE idGeneral = ? ");
 
             // Se establecen los parámetros y se ejecuta la sentencia.
             ps.setString(1, general.getCodigo());

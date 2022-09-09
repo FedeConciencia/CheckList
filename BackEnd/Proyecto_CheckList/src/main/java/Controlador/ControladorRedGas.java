@@ -107,7 +107,7 @@ public class ControladorRedGas {
             ps.setDate(7, Date.valueOf(redGas.getFechaBaja())); //Se trabaja en java con LocalDate
             ps.setString(8, redGas.getEstado());
             ps.setLong(9, redGas.getIdVisita());
-            ps.setLong(9, redGas.getIdGas());
+            ps.setLong(10, redGas.getIdGas());
             
 
             //Ejecutamos el comando y mandamos los datos al sistema:

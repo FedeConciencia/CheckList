@@ -93,7 +93,7 @@ public class ControladorConclusion {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("UPDATE conclusion SET obraTerminada = ?, avanceActual = ?, avanceEsperado = ?, fechaFinalizacion = ?, , gradoSatisfaccion = ?, , comentario = ?, fechaAlta = ?, fechaBaja = ?, estado = ?, idGeneral = ?  WHERE idConclusion = ? ");
+            ps = conexion.prepareStatement("UPDATE conclusion SET obraTerminada = ?, avanceActual = ?, avanceEsperado = ?, fechaFinalizacion = ?, gradoSatisfaccion = ?, comentario = ?, fechaAlta = ?, fechaBaja = ?, estado = ?, idGeneral = ? WHERE idConclusion = ? ");
 
             // Se establecen los parámetros y se ejecuta la sentencia.
             ps.setString(1, conclusion.getObraTerminada());

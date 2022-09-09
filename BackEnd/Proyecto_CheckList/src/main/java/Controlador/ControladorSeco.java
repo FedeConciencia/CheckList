@@ -29,7 +29,7 @@ public class ControladorSeco {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("INSERT INTO seco (fechaInicio, fechaFinal, mLineales, mPerson, m2Muro, muroPerson, m2Cubierta, cubiertaPerson, metrosLineales, linealesPerson, diasCaidos, motivo, materialVigas, materialMuros, materialCubiertas, comentario, fechaAlta, fechaBaja, estado, idVista) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            ps = conexion.prepareStatement("INSERT INTO seco (fechaInicio, fechaFinal, mLineales, mPerson, m2Muro, muroPerson, m2Cubierta, cubiertaPerson, metrosLineales, linealesPerson, diasCaidos, motivo, materialVigas, materialMuros, materialCubiertas, comentario, fechaAlta, fechaBaja, estado, idVisita) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             // Se establecen los parámetros y se ejecuta la sentencia.
             ps.setDate(1, Date.valueOf(seco.getFechaInicial()));
@@ -105,7 +105,7 @@ public class ControladorSeco {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("UPDATE seco SET fechaInicio = ?, fechaFinal = ?, mLineales = ?, mPerson = ?, m2Muro = ?, muroPerson = ?, m2Cubierta = ?, cubiertaPerson = ?, metrosLineales = ?, linealesPerson = ?, diasCaidos = ?, motivo = ?, materialVigas = ?, materialMuros, materialCubiertas = ?, comentario = ?, fechaAlta = ?, fechaBaja = ?, estado = ?, idVista = ? WHERE idSeco = ? ");
+            ps = conexion.prepareStatement("UPDATE seco SET fechaInicio = ?, fechaFinal = ?, mLineales = ?, mPerson = ?, m2Muro = ?, muroPerson = ?, m2Cubierta = ?, cubiertaPerson = ?, metrosLineales = ?, linealesPerson = ?, diasCaidos = ?, motivo = ?, materialVigas = ?, materialMuros = ?, materialCubiertas = ?, comentario = ?, fechaAlta = ?, fechaBaja = ?, estado = ?, idVisita = ? WHERE idSeco = ? ");
 
             
              // Se establecen los parámetros y se ejecuta la sentencia.
