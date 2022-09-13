@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,10 +22,9 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.output.*;
-import java.time.LocalDate;
 
 
-//Se especifica el nombre y ruta de la clase: 'http://localhost:8080/CheckList/GeneralServlet?
+//Se especifica el nombre y ruta de la clase: 'http://localhost:8080/Proyecto_CheckList/GeneralServlet?
 @WebServlet(name = "GeneralServlet", urlPatterns = {"/GeneralServlet"})
 public class ServletGeneral extends HttpServlet {
     

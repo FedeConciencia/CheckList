@@ -142,11 +142,12 @@ public class Principal {
         
         ControladorVisita c1 = new ControladorVisita();
         
-        Visita v1 = c1.buscarOneRedGas(1L);
+        Visita v1 = c1.buscarOneVisita(1L);
        
         System.out.println(v1.toString());
 
         */
+        
         
         /*
         
