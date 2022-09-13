@@ -110,9 +110,8 @@ CREATE TABLE `general` (
   `fechaBaja` date NOT NULL,
   `estado` varchar(45) NOT NULL,
   PRIMARY KEY (`idGeneral`),
-  UNIQUE KEY `codigo_UNIQUE` (`codigo`),
-  UNIQUE KEY `dni_UNIQUE` (`dni`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `codigo_UNIQUE` (`codigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,7 +120,7 @@ CREATE TABLE `general` (
 
 LOCK TABLES `general` WRITE;
 /*!40000 ALTER TABLE `general` DISABLE KEYS */;
-INSERT INTO `general` VALUES (1,'P0564','Daniela','Juarez','4533222','Bandera de los Andes Guaymallen Mendoza','C',23.22,24.33,89.33,'EE',44,'ver obra','2022-09-07','1900-01-01','inactivo'),(2,'P0234','Oscar','Rodriguez','34232123','Colon 232 Ciudad Mendoza','NI',23.22,23.21,25.34,'IDC',150,'obra en proceso','2022-09-08','1900-01-01','inactivo');
+INSERT INTO `general` VALUES (1,'P0564','Daniela','Juarez','4533222','Bandera de los Andes Guaymallen Mendoza','C',23.22,24.33,89.33,'EE',44,'ver obra','2022-09-07','1900-01-01','inactivo'),(2,'P0234','Oscar','Rodriguez','34232123','Colon 232 Ciudad Mendoza','NI',23.22,23.21,25.34,'IDC',150,'obra en proceso','2022-09-08','1900-01-01','inactivo'),(3,'PO562','Francisco','Gutierrez','31025852','Alem 2785','Residencial',25.25,38.23,25.25,'Estructura Existente',89,'Hola Mundo','2022-09-12','1900-01-01','activo'),(4,'PO564','Francisco','Gutierrez','31025852','Alem 2785','Residencial',25.25,38.23,25.25,'Estructura Existente',89,'Hola Mundo','2022-09-12','1900-01-01','activo'),(5,'PO320','Martin','Gimenez','310256954','jorge calle 254','Residencial',20.54,36.56,56.24,'Inicia desde Cero',56,'comentario','2022-09-12','1900-01-01','activo');
 /*!40000 ALTER TABLE `general` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -516,4 +515,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-08 17:55:06
+-- Dump completed on 2022-09-13  8:44:53
