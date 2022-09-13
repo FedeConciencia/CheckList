@@ -18,6 +18,12 @@ DELETE FROM general WHERE idGeneral = 1;
 
 alter table general auto_increment = 1;
 
+#Query para obtener el ultimo n° de idGeneral  =>
+SELECT MAX(idGeneral) FROM general;
+
+#Query para obtener el idGeneral por N° de Obra  =>
+Select idGeneral from general where codigo = "PO577";
+
 #---------------------------------------
 
 #ENTIDAD VISITA =>
@@ -29,6 +35,9 @@ SELECT * FROM visita WHERE idVisita = 1;
 DELETE FROM visita WHERE idVisita = 1;
 
 alter table visita auto_increment = 1;
+
+#Query para obtener por N° de Obra/codigo el mayor numero de Visita =>
+Select max(v.nVisita) as UltimaVisita from general as g inner join visita as v on g.idGeneral = v.idGeneral where g.codigo = "P0234";
 
 #---------------------------------------
 

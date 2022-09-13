@@ -395,6 +395,101 @@ public class ControladorGeneral {
 
     }
     
+    //METODO PARA OBTENER EL ULTIMO ID_GENERAL =>
+     public Long ultimoIdGeneral() {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        Long idGeneral = 0L;
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("SELECT MAX(idGeneral) FROM general");
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                idGeneral = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                
+            }
+
+            conexion.close();
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+
+                ps.close();
+                rs.close();
+
+            } catch (SQLException ex) {
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+        return idGeneral; //devolvemos el ultimo id
+
+    }
+     
+     
+     //METODO PARA OBTENER EL IDGENERAL POR EL N° DE OBRA =>
+     public Long numeroId(String codigo) {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        Long idGeneral = 0L;
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("Select idGeneral from general where codigo = ?");
+
+            ps.setString(1, codigo); //pasamos el id parametro y se ingresa en el ? del query
+
+            rs = ps.executeQuery();  //Ejecutamos el Resulset y executeQuery cuando obtenemos algo de la base de datos.
+
+            while (rs.next()) {
+
+                idGeneral = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                
+            }
+
+            conexion.close();
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+
+                ps.close();
+                rs.close();
+
+            } catch (SQLException ex) {
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+        return idGeneral; //devolvemos el n° de idGeneral
+
+    }
+    
     
     
 }

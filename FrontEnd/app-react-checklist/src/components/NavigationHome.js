@@ -26,12 +26,12 @@ const NavigationHome = (props) => {
 
         <Fragment>
 
-        <Navbar bg="primary" variant="dark">
+        <Navbar bg="primary" variant="dark" responsive="sm">
 
             <Navbar.Brand href="/">HOME</Navbar.Brand>
             <Nav className="me-auto">
             <Nav.Link href="/prevCarga">CARGAR DATOS</Nav.Link>
-            <Nav.Link href="/vista">VER DATOS</Nav.Link>
+            <Nav.Link href="/visita">VER DATOS</Nav.Link>
             </Nav>
 
         </Navbar>

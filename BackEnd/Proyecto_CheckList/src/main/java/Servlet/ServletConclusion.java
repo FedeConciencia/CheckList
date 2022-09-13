@@ -24,7 +24,7 @@ import org.apache.commons.io.output.*;
 import java.time.LocalDate;
 
 
-//Se especifica el nombre y ruta de la clase: 'http://localhost:8080/CheckList/ConclusionServlet?
+//Se especifica el nombre y ruta de la clase: 'http://localhost:8080/Proyecto_CheckList/ConclusionServlet?
 @WebServlet(name = "ConclusionServlet", urlPatterns = {"/ConclusionServlet"})
 public class ServletConclusion extends HttpServlet {
     

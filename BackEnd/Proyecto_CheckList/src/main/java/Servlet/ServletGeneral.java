@@ -139,17 +139,24 @@ public class ServletGeneral extends HttpServlet {
                     String generalJson = gsonBuilder.toJson(listaGeneral);
                     respuestaServer = generalJson;
                     
-                }else if(request.getParameter("action").equals("eliminarLogico")){
+                }else if(request.getParameter("action").equals("ultimoId")){
                     
-                    Long idGeneral = Long.parseLong(request.getParameter("idGeneral"));
-                    LocalDate fechaBaja = LocalDate.parse(request.getParameter("fechaBaja"));
+                    ControladorGeneral c1 = new ControladorGeneral();  
+                    Long ultimoId = c1.ultimoIdGeneral();
+                    Gson gsonBuilder = new GsonBuilder().create();
+                    String ultimoJson = gsonBuilder.toJson(ultimoId);
+                    respuestaServer = ultimoJson;
+                    
+                }else if(request.getParameter("action").equals("idGeneralxCodigo")){
+                    
+                    String codigo = request.getParameter("codigo");
+                    
                     
                     ControladorGeneral c1 = new ControladorGeneral();    
-                    c1.eliminarLogicoGeneral(idGeneral, fechaBaja);
-                    List<General> listaGeneral = c1.buscarAllGeneral();
+                    Long idGeneral = c1.numeroId(codigo);
                     Gson gsonBuilder = new GsonBuilder().create();
-                    String generalJson = gsonBuilder.toJson(listaGeneral);
-                    respuestaServer = generalJson;
+                    String idGeneralJson = gsonBuilder.toJson(idGeneral);
+                    respuestaServer = idGeneralJson;
                     
                 }
                 

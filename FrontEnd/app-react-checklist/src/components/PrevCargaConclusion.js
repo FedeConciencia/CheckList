@@ -8,7 +8,7 @@ import Alert from "react-bootstrap/Alert";
 import Table from 'react-bootstrap/Table'
 import NavigationHome from "./NavigationHome";
 
-const PrevCarga = (props) => {
+const PrevCargaConclusion = (props) => {
 
     const[dato,setDato] = useState(null)
 
@@ -31,7 +31,7 @@ const PrevCarga = (props) => {
 
             <br></br>    
 
-            <Alert.Heading className="alertTitle">¿ES LA PRIMERA VISITA A LA OBRA?</Alert.Heading>
+            <Alert.Heading className="alertTitle">¿TIENES QUE CARGAR LA CONCLUSION FINAL DE OBRA?</Alert.Heading>
 
             <br></br>
             <br></br>  
@@ -40,8 +40,8 @@ const PrevCarga = (props) => {
 
                 <Col>
                 
-                    <Button variant='primary' size="lg" href="/formGeneral" className='botonGrande'>SI</Button>&nbsp;&nbsp;
-                    <Button variant='primary' size="lg" href="/pedidoObra" className='botonGrande'>NO</Button>
+                    <Button variant='primary' size="lg" href="/formConclusion" className='botonGrande'>SI</Button>&nbsp;&nbsp;
+                    <Button variant='primary' size="lg" href="/formPrincipal" className='botonGrande'>NO</Button>
                 
                 </Col>
 
@@ -61,4 +61,4 @@ const PrevCarga = (props) => {
 
 }
 
-export default PrevCarga
+export default PrevCargaConclusion

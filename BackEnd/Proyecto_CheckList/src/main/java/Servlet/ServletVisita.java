@@ -26,7 +26,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 
-//Se especifica el nombre y ruta de la clase: 'http://localhost:8080/CheckList/VisitaServlet?
+//Se especifica el nombre y ruta de la clase: 'http://localhost:8080/Proyecto_CheckList/VisitaServlet?
 @WebServlet(name = "VisitaServlet", urlPatterns = {"/VisitaServlet"})
 public class ServletVisita extends HttpServlet {
     
@@ -84,7 +84,7 @@ public class ServletVisita extends HttpServlet {
                     LocalDate fecha = LocalDate.parse(request.getParameter("fecha"));
                     String nombreTecnico = request.getParameter("nombreTecnico");
                     String apellidoTecnico = request.getParameter("apellidoTecnico");
-                    int nVisita = Integer.parseInt(request.getParameter("nVista"));
+                    int nVisita = Integer.parseInt(request.getParameter("nVisita"));
                     LocalDate fechaAlta = LocalDate.parse(request.getParameter("fechaAlta"));
                     LocalDate fechaBaja = LocalDate.parse(request.getParameter("fechaBaja"));
                     String estado = request.getParameter("estado");
@@ -108,7 +108,7 @@ public class ServletVisita extends HttpServlet {
                     LocalDate fecha = LocalDate.parse(request.getParameter("fecha"));
                     String nombreTecnico = request.getParameter("nombreTecnico");
                     String apellidoTecnico = request.getParameter("apellidoTecnico");
-                    int nVisita = Integer.parseInt(request.getParameter("nVista"));
+                    int nVisita = Integer.parseInt(request.getParameter("nVisita"));
                     LocalDate fechaAlta = LocalDate.parse(request.getParameter("fechaAlta"));
                     LocalDate fechaBaja = LocalDate.parse(request.getParameter("fechaBaja"));
                     String estado = request.getParameter("estado");
@@ -142,6 +142,17 @@ public class ServletVisita extends HttpServlet {
                     List<Visita> listaVisita = c1.buscarAllVisita();
                     Gson gsonBuilder = new GsonBuilder().create();
                     String visitaJson = gsonBuilder.toJson(listaVisita);
+                    respuestaServer = visitaJson;
+                    
+                }else if(request.getParameter("action").equals("visitaIncremental")){
+                    
+                    String nVisitaIncrem = request.getParameter("codigo");
+                    
+                    
+                    ControladorVisita c1 = new ControladorVisita();   
+                    int nVisita = c1.incrementarVisita(nVisitaIncrem);
+                    Gson gsonBuilder = new GsonBuilder().create();
+                    String visitaJson = gsonBuilder.toJson(nVisita);
                     respuestaServer = visitaJson;
                     
                 }

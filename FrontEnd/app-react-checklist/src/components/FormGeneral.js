@@ -11,8 +11,12 @@ import Form from "react-bootstrap/Form";
 import {useForm} from 'react-hook-form';
 import moment from 'moment';
 import "../assets/css/formGeneral.css"
+import {useNavigate} from 'react-router-dom';
 
 const FormGeneral = (props) => {
+
+    //Redireccionamiento =>
+    let navigate = useNavigate()
 
     //react-hook-form (validacion) =>
     const {register, formState: { errors }, handleSubmit} = useForm()
@@ -67,11 +71,13 @@ const FormGeneral = (props) => {
 
         event.preventDefault();
 
+        //Limpiar los campos del Form =>
         event.target.reset();
 
+        //Vaciar todas las variables =>
         setGeneral({
 
-            //Valor vacio variables =>
+            
             codigo:'',
             nombreCliente:'',
             apellidoCliente:'',
@@ -89,6 +95,9 @@ const FormGeneral = (props) => {
             estado:'',
 
         });
+
+        //Redirecciono =>
+        navigate(`/formVisita`)
 
     
       
@@ -133,14 +142,17 @@ const FormGeneral = (props) => {
 
             console.log("DATOS API => ", resJson)
 
-            alert("Datos Insertados con Exito en la Base de Datos.")
+            //Guardamos el codigo o n° de obra en el localStorage =>
+            localStorage.setItem("codigo", general.codigo);
+
+            alert("DATOS GUARDADOS CON EXITO.")
 
 
         }catch(error){
 
             console.log("Error =>", error)
 
-            alert("Error, no fue posible insertar los datos en la Base de Datos.")
+            alert("ERROR, NO FUE POSIBLE GUARDAR LOS DATOS, VUELVA A INTENTARLO.")
 
         }
 
@@ -199,13 +211,13 @@ const FormGeneral = (props) => {
 
             <Container>
 
-            <Alert variant="success">
+            <Alert variant="success" responsive="sm">
 
             <br></br>    
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO REGISTRO DE DATOS GENERALES</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO DE REGISTRO DE DATOS GENERALES</Alert.Heading>
 
             <br></br>
 
@@ -233,13 +245,13 @@ const FormGeneral = (props) => {
                         type="text"
                         name="codigo"
                         onChange={handleInputChange}
-                        placeholder="* Ingrese el n° de codigo"
+                        placeholder="* Campo Obligatorio"
                         className="form-control my-2"
                         {...register("codigo", { 
 
                             required:{
                                 value: true,
-                                message: 'Campo Obligatorio', 
+                                message: '*', 
                             },
 
                             validate:{
@@ -291,13 +303,13 @@ const FormGeneral = (props) => {
                         type="text"
                         name="nombreCliente"
                         onChange={handleInputChange}
-                        placeholder="* Ingrese el nombre del cliente"
+                        placeholder="* Campo Obligatorio"
                         className="form-control my-2"
                         {...register("nombreCliente", { 
 
                             required:{
                                 value: true,
-                                message: 'Campo Obligatorio', 
+                                message: '*', 
                             },
 
                             validate:{
@@ -341,13 +353,13 @@ const FormGeneral = (props) => {
                         type="text"
                         name="apellidoCliente"
                         onChange={handleInputChange}
-                        placeholder="* Ingrese el apellido del cliente"
+                        placeholder="* Campo Obligatorio"
                         className="form-control my-2"
                         {...register("apellidoCliente", { 
 
                             required:{
                                 value: true,
-                                message: 'Campo Obligatorio', 
+                                message: '*', 
                             },
 
                             validate:{
@@ -381,7 +393,7 @@ const FormGeneral = (props) => {
 
                 <Col className="col-md-3">
                     
-                    <label className="my-2">Dni: </label>
+                    <label className="my-2">Dni/Cuil: </label>
 
                 </Col>
 
@@ -391,13 +403,13 @@ const FormGeneral = (props) => {
                         type="text"
                         name="dni"
                         onChange={handleInputChange}
-                        placeholder="* Ingrese el dni del cliente"
+                        placeholder="* Campo Obligatorio / Formato sin . o -"
                         className="form-control my-2"
                         {...register("dni", { 
 
                             required:{
                                 value: true,
-                                message: 'Campo Obligatorio', 
+                                message: '*', 
                             },
 
                             validate:{
@@ -441,13 +453,13 @@ const FormGeneral = (props) => {
                         type="text"
                         name="domicilio"
                         onChange={handleInputChange}
-                        placeholder="* Ingrese el domicilio"
+                        placeholder="* Campo Obligatorio"
                         className="form-control my-2"
                         {...register("domicilio", { 
 
                             required:{
                                 value: true,
-                                message: 'Campo Obligatorio', 
+                                message: '*', 
                             },
 
 
@@ -490,7 +502,7 @@ const FormGeneral = (props) => {
 
                             required:{
                                 value: true,
-                                message: 'Campo Obligatorio', 
+                                message: '*', 
                             },
 
                             validate:{
@@ -539,7 +551,7 @@ const FormGeneral = (props) => {
                         type="number"
                         name="alturaEdificio"
                         onChange={handleInputChange}
-                        placeholder="* Ingrese la altura del Edificio"
+                        placeholder="* Campo Obligatorio"
                         className="form-control my-2"
                         min="0"
                         step="0.01"
@@ -547,7 +559,7 @@ const FormGeneral = (props) => {
 
                             required:{
                                 value: true,
-                                message: 'Campo Obligatorio', 
+                                message: '*', 
                             },
 
                             validate:{
@@ -591,7 +603,7 @@ const FormGeneral = (props) => {
                         type="number"
                         name="m2Cubierta"
                         onChange={handleInputChange}
-                        placeholder="* Ingrese la m2Cubierta"
+                        placeholder="* Campo Obligatorio / Formato con 10,00"
                         className="form-control my-2"
                         min="0"
                         step="0.01"
@@ -599,7 +611,7 @@ const FormGeneral = (props) => {
 
                             required:{
                                 value: true,
-                                message: 'Campo Obligatorio', 
+                                message: '*', 
                             },
 
                             validate:{
@@ -643,7 +655,7 @@ const FormGeneral = (props) => {
                         type="number"
                         name="m2Muro"
                         onChange={handleInputChange}
-                        placeholder="* Ingrese la m2Muro"
+                        placeholder="* Campo Obligatorio / Formato con 10,00"
                         className="form-control my-2"
                         min="0"
                         step="0.01"
@@ -651,7 +663,7 @@ const FormGeneral = (props) => {
 
                             required:{
                                 value: true,
-                                message: 'Campo Obligatorio', 
+                                message: '*', 
                             },
 
                             validate:{
@@ -699,7 +711,7 @@ const FormGeneral = (props) => {
 
                             required:{
                                 value: true,
-                                message: 'Campo Obligatorio', 
+                                message: '*', 
                             },
 
                             validate:{
@@ -749,14 +761,14 @@ const FormGeneral = (props) => {
                         type="number"
                         name="duracionObra"
                         onChange={handleInputChange}
-                        placeholder="* Ingrese la duracion de obra en dias"
+                        placeholder="* Campo Obligatorio / Formato  1"
                         className="form-control my-2"
                         min="1"
                         {...register("duracionObra", { 
 
                             required:{
                                 value: true,
-                                message: 'Campo Obligatorio', 
+                                message: '*', 
                             },
 
                             validate:{
@@ -800,13 +812,13 @@ const FormGeneral = (props) => {
                         type="text"
                         name="comentario"
                         onChange={handleInputChange}
-                        placeholder="* Ingrese el comentario"
+                        placeholder="* Campo Obligatorio / Hasta 3000 caracteres"
                         className="form-control my-2"
                         {...register("comentario", { 
 
                             required:{
                                 value: true,
-                                message: 'Campo Obligatorio', 
+                                message: '*', 
                             },
 
                             validate:{

@@ -29,7 +29,7 @@ const Home = (props) => {
 
             <Container className="body">
 
-            <Alert variant="success">
+            <Alert variant="success" responsive="sm">
 
             <br></br>    
 

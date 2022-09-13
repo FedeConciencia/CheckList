@@ -374,5 +374,56 @@ public class ControladorVisita {
     }
     
     
+    //METODO PARA OBTENER EL VALOR MAXIMO DEL N° DE VISITA A TRAVES DEL N° DE OBRA E INCREMENTAR EN UNO EL VALOR =>
+     public int incrementarVisita(String codigo) {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        int incrementoVisita = 0;
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("Select max(v.nVisita) as UltimaVisita from general as g inner join visita as v on g.idGeneral = v.idGeneral where g.codigo = ?");
+
+            ps.setString(1, codigo); //pasamos el id parametro y se ingresa en el ? del query
+
+            rs = ps.executeQuery();  //Ejecutamos el Resulset y executeQuery cuando obtenemos algo de la base de datos.
+
+            while (rs.next()) {
+
+                incrementoVisita = rs.getInt(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                
+            }
+            
+            incrementoVisita++; //se incrementa el valor en 1
+
+            conexion.close();
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+
+                ps.close();
+                rs.close();
+
+            } catch (SQLException ex) {
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+        return incrementoVisita; //devolvemos el n° de visita incrementado
+
+    }
+    
+    
     
 }

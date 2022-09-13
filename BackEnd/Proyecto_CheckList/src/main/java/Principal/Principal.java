@@ -106,6 +106,16 @@ public class Principal {
 
         */
         
+        /*
+        
+        //ULTIMO IDGENERAL (OK) =>
+        
+        ControladorGeneral c1 = new ControladorGeneral();
+        
+        System.out.println("ULTIMO IDGENERAL => " + c1.ultimoIdGeneral());
+        
+        */
+        
         //----------------------------------------------------------
         
         //TESTEO DE CONTROLADOR Y MODELO VISTA (2) =>
@@ -177,6 +187,19 @@ public class Principal {
         
 
         */
+
+        /*
+        
+        //INCREMENTAR EL VALOR DEL N° DE OBRA A TRAVES  (OK) =>
+        
+        ControladorVisita c1 = new ControladorVisita();
+        int nVisita = c1.incrementarVisita("P0234");
+        
+        System.out.println("N° de Visita Incrementado => " + nVisita);
+        
+        */
+        
+      
         
         //----------------------------------------------------------
         
