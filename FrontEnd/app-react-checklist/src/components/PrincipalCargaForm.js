@@ -25,8 +25,38 @@ const PrincipalCargaForm = (props) => {
 
     useEffect(() => {
 
+        ultimoIdVisita()
 
     },[])
+
+    //Metodo para solicitar el ultimo idVisita =>
+    const ultimoIdVisita = async() => {
+
+        let ultimoId = 0;
+
+        try{
+
+            const response = await fetch("http://localhost:8080/Proyecto_CheckList/VisitaServlet?action=ultimoId", {
+
+                method:"GET",
+                
+            })
+
+            const resJson = await response.json()
+
+            ultimoId = resJson
+
+            console.log("ULTIMO ID_VISITA => ", ultimoId)
+
+            localStorage.setItem("idVisita", ultimoId)
+
+        }catch(error){
+
+            console.log("Error => ", error)
+
+        }
+
+    }
 
     return(
 
@@ -45,6 +75,12 @@ const PrincipalCargaForm = (props) => {
 
             <Alert.Heading className="alertTitle">SELECCION DE FORMULARIOS PARA GARGA</Alert.Heading>
 
+            <br></br>
+            <br></br>
+
+            <h5 className='orden'>* Seguir orden de Formularios numerados.</h5>
+
+            <br></br>
             <br></br>
 
             <Row>

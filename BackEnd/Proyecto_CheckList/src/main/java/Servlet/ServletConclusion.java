@@ -142,6 +142,17 @@ public class ServletConclusion extends HttpServlet {
                     String conclusionJson = gsonBuilder.toJson(listaConclusion);
                     respuestaServer = conclusionJson;
                     
+                }else if(request.getParameter("action").equals("contadorConclusion")){
+                    
+                    Long idGeneral = Long.parseLong(request.getParameter("idGeneral"));
+                    
+                    
+                    ControladorConclusion c1 = new ControladorConclusion();     
+                    int contador = c1.registroConclusionXid(idGeneral);
+                    Gson gsonBuilder = new GsonBuilder().create();
+                    String contadorJson = gsonBuilder.toJson(contador);
+                    respuestaServer = contadorJson;
+                    
                 }
                 
                 

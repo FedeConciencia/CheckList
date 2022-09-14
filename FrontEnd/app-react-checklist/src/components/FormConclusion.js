@@ -59,10 +59,11 @@ const FormConclusion = (props) => {
 
 
     //Metodo para gestionar el envio de datos al Servlet y BD =>
-    const enviarDatos = (obra, event) => {
+    const enviarDatos = async (obra, event) => {
 
-            
-        insertar(obra);
+        let id = await idGeneral()    
+
+        await insertar(obra, id);
 
         event.preventDefault();
 
@@ -86,16 +87,14 @@ const FormConclusion = (props) => {
         });
 
         //Redirecciono y paso los datos a traves de un search =>
-        //navigate(`/`)
+        navigate(`/`)
 
-    
-      
     }
 
     //Metodo para solicitar el idGeneral x N° de obra =>
     const idGeneral = async() => {
 
-        let idGeneral = 0;
+        let idGeneral;
 
         let codigo = localStorage.getItem("codigo")
 
@@ -119,13 +118,14 @@ const FormConclusion = (props) => {
 
             idGeneral = resJson
 
-            console.log("ID => ", resJson)
 
         }catch(error){
 
             console.log("Error => ", error)
 
         }
+
+        console.log("VALOR ID_GENERAL => ", idGeneral)
 
         return idGeneral
 
@@ -135,16 +135,13 @@ const FormConclusion = (props) => {
     
 
     //Metodo para insertar los datos a la BD =>
-    const insertar = async(obra) => {
+    const insertar = async(obra, id) => {
 
-        let idGeneral = 0
+    
+        console.log("ID_GENERAL DESDE METODO INSERTAR  => ", id)
 
         try{
 
-            //Solicitamos el ultimo idGeneral =>
-            idGeneral = await idGeneral()
-
-            console.log("ID_GENERAL  => ", idGeneral)
 
             const response = await axios("http://localhost:8080/Proyecto_CheckList/ConclusionServlet", {
 
@@ -162,7 +159,7 @@ const FormConclusion = (props) => {
                     fechaAlta:moment().format('YYYY-MM-DD'), 
                     fechaBaja:moment("1900-01-01").format('YYYY-MM-DD'), 
                     estado:"activo",
-                    idGeneral:idGeneral,
+                    idGeneral:id,
 
                 }
 

@@ -373,4 +373,52 @@ public class ControladorConclusion {
 
     }
     
+    //METODO PARA OBTENER REGISTRO CONCLUSION PASANDO ID_GENERAL =>
+     public int registroConclusionXid(Long idGeneral) {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        int registroGeneral = 0;
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("SELECT count(idGeneral) FROM conclusion where idGeneral = ?");
+
+            ps.setLong(1, idGeneral); //pasamos el id parametro y se ingresa en el ? del query
+
+            rs = ps.executeQuery();  //Ejecutamos el Resulset y executeQuery cuando obtenemos algo de la base de datos.
+
+            while (rs.next()) {
+
+                registroGeneral = rs.getInt(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                
+            }
+
+            conexion.close();
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+
+                ps.close();
+                rs.close();
+
+            } catch (SQLException ex) {
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+        return registroGeneral; //devolvemos el contador de registros idGeneral
+
+    }
+    
 }

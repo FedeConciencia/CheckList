@@ -182,5 +182,8 @@ SELECT * FROM conclusion WHERE idConclusion = 1;
 DELETE FROM conclusion WHERE idConclusion = 1;
 
 alter table conclusion auto_increment = 1;
+
+#Verificar si la entidad Conclusion tiene un registro relacionado al idGeneral =>
+SELECT count(idGeneral) FROM conclusion where idGeneral = 6;
                                                                                                                                                      
                                                                                                                                                      

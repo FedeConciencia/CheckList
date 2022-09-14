@@ -12,16 +12,23 @@ import {useForm} from 'react-hook-form';
 import moment from 'moment';
 import "../assets/css/formGeneral.css"
 import {useNavigate} from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 const FormVisita = (props) => {
 
     //Redireccionamiento =>
     let navigate = useNavigate()
 
+    //Obtengo los datos pasados por search URL =>
+    let {search} = useLocation();
+    let query = new URLSearchParams(search)
+
     //react-hook-form (validacion) =>
     const {register, formState: { errors }, handleSubmit} = useForm()
 
     const[dato,setDato] = useState(null)
+
+    const[urlVisita,setUrlVisita] = useState(query.get("nroVisita"))
 
     const [visita, setVisita] = useState({
 
@@ -38,8 +45,9 @@ const FormVisita = (props) => {
 
     useEffect(() => {
 
+        setUrlVisita(query.get("nroVisita"))
         
-    },[])
+    },[query.get("nroVisita")])
 
 
     //Metodo para obtener los datos ingresados en el form =>
@@ -56,10 +64,10 @@ const FormVisita = (props) => {
 
 
     //Metodo para gestionar el envio de datos al Servlet y BD =>
-    const enviarDatos = (visita, event) => {
+    const enviarDatos = async (visita, event) => {
 
             
-        insertar(visita);
+        await insertar(visita);
 
         event.preventDefault();
 
@@ -87,6 +95,51 @@ const FormVisita = (props) => {
       
     }
 
+    //Metodo para solicitar el idGeneral x N° de obra =>
+    const idGeneral = async() => {
+
+        let idGeneral;
+
+        //Se obtiene el n° de obra =>
+        let codigo = localStorage.getItem("codigo")
+
+        console.log("OBTENER CODIGO => ", codigo)
+
+        try{
+
+            const response = await axios("http://localhost:8080/Proyecto_CheckList/GeneralServlet", {
+
+                method:"GET",
+                params:{
+
+                    action:"idGeneralxCodigo",
+                    codigo: codigo,
+
+                }
+                
+            })
+
+            const resJson = await response.data
+
+            idGeneral = resJson
+
+
+        }catch(error){
+
+            console.log("Error => ", error)
+
+        }
+
+        console.log("VALOR ID_GENERAL => ", idGeneral)
+
+        //Guardamos el idGeneral en el storage =>
+        await localStorage.setItem("idGeneral", idGeneral)
+
+        return idGeneral
+
+
+    }
+
     //Metodo para solicitar el ultimo idGeneral =>
     const ultimoIdGeneral = async() => {
 
@@ -112,6 +165,9 @@ const FormVisita = (props) => {
 
         }
 
+        //Guardamos el idGeneral en el storage =>
+        await localStorage.setItem("idGeneral", ultimoId)
+
         return ultimoId
 
 
@@ -122,50 +178,104 @@ const FormVisita = (props) => {
     //Metodo para insertar los datos a la BD =>
     const insertar = async(visita) => {
 
-        try{
+        const nroVisita = query.get("nroVisita")
 
-            //Solicitamos el ultimo idGeneral =>
-            let ultimoId = await ultimoIdGeneral()
+        if(nroVisita === null || nroVisita === undefined){
 
-            console.log("ULTIMO ID DESDE VISTA => ", ultimoId)
+            try{
 
-            const response = await axios("http://localhost:8080/Proyecto_CheckList/VisitaServlet", {
+                //Solicitamos el ultimo idGeneral ya que ingresa x primera visita =>
+                let ultimoId = await ultimoIdGeneral()
 
-                method:"GET",
-                params:{
+                console.log("ULTIMO ID DESDE VISTA => ", ultimoId)
 
-                    action:"insertar",
-                    fecha:moment().format('YYYY-MM-DD'), 
-                    nombreTecnico:visita.nombreTecnico,
-                    apellidoTecnico:visita.apellidoTecnico,
-                    nVisita:1,
-                    //Se autocompletan =>
-                    fechaAlta:moment().format('YYYY-MM-DD'), 
-                    fechaBaja:moment("1900-01-01").format('YYYY-MM-DD'), 
-                    estado:"activo",
-                    idGeneral:ultimoId,
+                const response = await axios("http://localhost:8080/Proyecto_CheckList/VisitaServlet", {
 
-                }
+                    method:"GET",
+                    params:{
 
-            })
+                        action:"insertar",
+                        fecha:moment().format('YYYY-MM-DD'), 
+                        nombreTecnico:visita.nombreTecnico,
+                        apellidoTecnico:visita.apellidoTecnico,
+                        nVisita:1,
+                        //Se autocompletan =>
+                        fechaAlta:moment().format('YYYY-MM-DD'), 
+                        fechaBaja:moment("1900-01-01").format('YYYY-MM-DD'), 
+                        estado:"activo",
+                        idGeneral:ultimoId,
 
-            const resJson = await response.data
+                    }
 
-            console.log("DATOS API => ", resJson)
+                })
 
-            //Guardamos el n° de visita en el localStorage =>
-            localStorage.setItem("nVisita", 1);
+                const resJson = await response.data
 
-            alert("DATOS GUARDADOS CON EXITO.")
+                console.log("DATOS API => ", resJson)
+
+                //Guardamos el n° de visita en el localStorage =>
+                localStorage.setItem("nVisita", 1);
+
+                alert("DATOS GUARDADOS CON EXITO.")
 
 
-        }catch(error){
+            }catch(error){
 
-            console.log("Error =>", error)
+                console.log("Error =>", error)
 
-            alert("ERROR, NO FUE POSIBLE GUARDAR LOS DATOS, VUELVA A INTENTARLO.")
+                alert("ERROR, NO FUE POSIBLE GUARDAR LOS DATOS, VUELVA A INTENTARLO.")
 
-        }
+            }
+
+        }else{
+
+            try{
+
+                //Solicitamos el idGeneral x codigo ya que es x n° de obra ingresado =>
+                let id = await idGeneral()
+
+                console.log("ID_GENERAL X N° OBRA => ", id)
+
+                const response = await axios("http://localhost:8080/Proyecto_CheckList/VisitaServlet", {
+
+                    method:"GET",
+                    params:{
+
+                        action:"insertar",
+                        fecha:moment().format('YYYY-MM-DD'), 
+                        nombreTecnico:visita.nombreTecnico,
+                        apellidoTecnico:visita.apellidoTecnico,
+                        nVisita:nroVisita,
+                        //Se autocompletan =>
+                        fechaAlta:moment().format('YYYY-MM-DD'), 
+                        fechaBaja:moment("1900-01-01").format('YYYY-MM-DD'), 
+                        estado:"activo",
+                        idGeneral:id,
+
+                    }
+
+                })
+
+                const resJson = await response.data
+
+                console.log("DATOS API => ", resJson)
+
+                //Guardamos el n° de visita en el localStorage =>
+                localStorage.setItem("nVisita", nroVisita);
+
+                alert("DATOS GUARDADOS CON EXITO.")
+
+
+            }catch(error){
+
+                console.log("Error =>", error)
+
+                alert("ERROR, NO FUE POSIBLE GUARDAR LOS DATOS, VUELVA A INTENTARLO.")
+
+            }
+
+
+        }    
 
     }
 
@@ -189,7 +299,7 @@ const FormVisita = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO DE REGISTRO DE PRIMER VISITA</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO DE REGISTRO DE VISITA</Alert.Heading>
 
             <br></br>
 

@@ -72,7 +72,7 @@ CREATE TABLE `conclusion` (
   PRIMARY KEY (`idConclusion`),
   KEY `idGeneral_pk2_idx` (`idGeneral`),
   CONSTRAINT `idGeneral_pk2` FOREIGN KEY (`idGeneral`) REFERENCES `general` (`idGeneral`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,7 +81,7 @@ CREATE TABLE `conclusion` (
 
 LOCK TABLES `conclusion` WRITE;
 /*!40000 ALTER TABLE `conclusion` DISABLE KEYS */;
-INSERT INTO `conclusion` VALUES (1,'NO',40.00,80.00,'2022-03-04',7,'Muy satisfecho','2022-09-08','2022-07-07','inactivo',1);
+INSERT INTO `conclusion` VALUES (1,'NO',40.00,80.00,'2022-03-04',7,'Muy satisfecho','2022-09-08','2022-07-07','inactivo',1),(2,'Si',58.00,36.00,'2022-02-02',4,'comentario','2022-09-14','1900-01-01','activo',6),(3,'Si',69.00,78.00,'2022-03-25',5,'Hola Mundo','2022-09-14','1900-01-01','activo',5),(4,'Si',58.00,52.00,'2022-09-14',8,'comentario prueba','2022-09-14','1900-01-01','activo',13);
 /*!40000 ALTER TABLE `conclusion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +111,7 @@ CREATE TABLE `general` (
   `estado` varchar(45) NOT NULL,
   PRIMARY KEY (`idGeneral`),
   UNIQUE KEY `codigo_UNIQUE` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `general` (
 
 LOCK TABLES `general` WRITE;
 /*!40000 ALTER TABLE `general` DISABLE KEYS */;
-INSERT INTO `general` VALUES (1,'P0564','Daniela','Juarez','4533222','Bandera de los Andes Guaymallen Mendoza','C',23.22,24.33,89.33,'EE',44,'ver obra','2022-09-07','1900-01-01','inactivo'),(2,'P0234','Oscar','Rodriguez','34232123','Colon 232 Ciudad Mendoza','NI',23.22,23.21,25.34,'IDC',150,'obra en proceso','2022-09-08','1900-01-01','inactivo'),(3,'PO562','Francisco','Gutierrez','31025852','Alem 2785','Residencial',25.25,38.23,25.25,'Estructura Existente',89,'Hola Mundo','2022-09-12','1900-01-01','activo'),(4,'PO564','Francisco','Gutierrez','31025852','Alem 2785','Residencial',25.25,38.23,25.25,'Estructura Existente',89,'Hola Mundo','2022-09-12','1900-01-01','activo'),(5,'PO320','Martin','Gimenez','310256954','jorge calle 254','Residencial',20.54,36.56,56.24,'Inicia desde Cero',56,'comentario','2022-09-12','1900-01-01','activo'),(6,'PO577','Maria','Martinez','25898214','Juan B Justo','Nave Industrial',58.36,98.33,56.25,'Otro',78,'Otro: Obra en altura','2022-09-13','1900-01-01','activo'),(7,'PO366','Daniel','Jimenez','25332124','Alem 5874','Institucional',58.52,25.87,45.25,'Estructura Existente',78,'Todo correcto ','2022-09-13','1900-01-01','activo'),(8,'PO599','Jose','Paso','58987525','Juan B Justo','Nave Industrial',58.25,36.58,58.96,'Estructura Existente',89,'Comentario','2022-09-13','1900-01-01','activo'),(9,'PO5788','Maria','Martinez','25898214','Juan B Justo','Nave Industrial',25.56,36.25,26.32,'Otro',78,'Otro kkkkk','2022-09-13','1900-01-01','activo');
+INSERT INTO `general` VALUES (1,'P0564','Daniela','Juarez','4533222','Bandera de los Andes Guaymallen Mendoza','C',23.22,24.33,89.33,'EE',44,'ver obra','2022-09-07','1900-01-01','inactivo'),(2,'P0234','Oscar','Rodriguez','34232123','Colon 232 Ciudad Mendoza','NI',23.22,23.21,25.34,'IDC',150,'obra en proceso','2022-09-08','1900-01-01','inactivo'),(3,'PO562','Francisco','Gutierrez','31025852','Alem 2785','Residencial',25.25,38.23,25.25,'Estructura Existente',89,'Hola Mundo','2022-09-12','1900-01-01','activo'),(4,'PO564','Francisco','Gutierrez','31025852','Alem 2785','Residencial',25.25,38.23,25.25,'Estructura Existente',89,'Hola Mundo','2022-09-12','1900-01-01','activo'),(5,'PO320','Martin','Gimenez','310256954','jorge calle 254','Residencial',20.54,36.56,56.24,'Inicia desde Cero',56,'comentario','2022-09-12','1900-01-01','activo'),(6,'PO577','Maria','Martinez','25898214','Juan B Justo','Nave Industrial',58.36,98.33,56.25,'Otro',78,'Otro: Obra en altura','2022-09-13','1900-01-01','activo'),(7,'PO366','Daniel','Jimenez','25332124','Alem 5874','Institucional',58.52,25.87,45.25,'Estructura Existente',78,'Todo correcto ','2022-09-13','1900-01-01','activo'),(8,'PO599','Jose','Paso','58987525','Juan B Justo','Nave Industrial',58.25,36.58,58.96,'Estructura Existente',89,'Comentario','2022-09-13','1900-01-01','activo'),(9,'PO5788','Maria','Martinez','25898214','Juan B Justo','Nave Industrial',25.56,36.25,26.32,'Otro',78,'Otro kkkkk','2022-09-13','1900-01-01','activo'),(10,'PO3254','Federico','Lopez','36985234','Martinez 2531','Nave Industrial',58.00,56.00,14.00,'Estructura Existente',58,'Se completa ok','2022-09-14','1900-01-01','activo'),(11,'PO369','Fabian','show','69542123','Juan B Justo','Nave Industrial',58.00,39.00,89.00,'Estructura Existente',89,'Hola Mundo','2022-09-14','1900-01-01','activo'),(12,'PO697','Penelope','Cruz','36584582','25 de Mayo 542','Nave Industrial',25.00,36.00,78.00,'Estructura Existente',98,'Hola Mundo','2022-09-14','1900-01-01','activo'),(13,'PO621','Juan','Poyesa','25231452','Fuerza Noble 21','Residencial',25.00,33.00,87.00,'Estructura Existente',56,'Lopez y Casas','2022-09-14','1900-01-01','activo'),(14,'PO897','Emilio','Figal','20353212314','Colon 256','Nave Industrial',56.00,54.00,25.00,'Estructura Existente',77,'Se agrega comentario prueba','2022-09-14','1900-01-01','activo');
 /*!40000 ALTER TABLE `general` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -493,7 +493,7 @@ CREATE TABLE `visita` (
   PRIMARY KEY (`idVisita`),
   KEY `idGeneral_fk_idx` (`idGeneral`),
   CONSTRAINT `idGeneral_fk` FOREIGN KEY (`idGeneral`) REFERENCES `general` (`idGeneral`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -502,7 +502,7 @@ CREATE TABLE `visita` (
 
 LOCK TABLES `visita` WRITE;
 /*!40000 ALTER TABLE `visita` DISABLE KEYS */;
-INSERT INTO `visita` VALUES (1,'2022-09-13','Jorge','Diaz',2,'2022-09-22','1900-01-01','inactivo',2),(2,'2022-09-22','Enrique','Gutierrez',1,'1900-01-01','1900-01-01','activo',2),(3,'2022-09-13','Juan','Lopez',1,'2022-09-13','1900-01-01','activo',8),(4,'2022-09-13','Juan','Lopez',1,'2022-09-13','1900-01-01','activo',9);
+INSERT INTO `visita` VALUES (1,'2022-09-13','Jorge','Diaz',2,'2022-09-22','1900-01-01','inactivo',2),(2,'2022-09-22','Enrique','Gutierrez',1,'1900-01-01','1900-01-01','activo',2),(3,'2022-09-13','Juan','Lopez',1,'2022-09-13','1900-01-01','activo',8),(4,'2022-09-13','Juan','Lopez',1,'2022-09-13','1900-01-01','activo',9),(5,'2022-09-14','Daniel','Gimenez',1,'2022-09-14','1900-01-01','activo',10),(6,'2022-09-14','Carlos','Suarez',2,'2022-09-14','1900-01-01','activo',10),(7,'2022-09-14','Maria','Martinez',2,'2022-09-14','1900-01-01','activo',10),(8,'2022-09-14','Penelope','Cruz',1,'2022-09-14','1900-01-01','activo',5),(9,'2022-09-14','Penelope','Cruz',1,'2022-09-14','1900-01-01','activo',8),(10,'2022-09-14','Penelope','Cruz',2,'2022-09-14','1900-01-01','activo',9),(11,'2022-09-14','Carlos','Suarez',1,'2022-09-14','1900-01-01','activo',11),(12,'2022-09-14','Carlos','Suarez',2,'2022-09-14','1900-01-01','activo',11),(13,'2022-09-14','Maria','Martinez',2,'2022-09-14','1900-01-01','activo',11),(14,'2022-09-14','Daniel','Gimenez',3,'2022-09-14','1900-01-01','activo',11),(15,'2022-09-14','Maria','Martinez',4,'2022-09-14','1900-01-01','activo',11),(16,'2022-09-14','Fabian','show',5,'2022-09-14','1900-01-01','activo',11),(17,'2022-09-14','Penelope','Cruz',6,'2022-09-14','1900-01-01','activo',11),(18,'2022-09-14','Juan','Lopez',7,'2022-09-14','1900-01-01','activo',11),(19,'2022-09-14','Fabian','show',1,'2022-09-14','1900-01-01','activo',12),(20,'2022-09-14','Juan','Lopez',2,'2022-09-14','1900-01-01','activo',5),(21,'2022-09-14','Maria','Martinez',1,'2022-09-14','1900-01-01','activo',13),(22,'2022-09-14','Gabriela','Martinez',1,'2022-09-14','1900-01-01','activo',14);
 /*!40000 ALTER TABLE `visita` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -515,4 +515,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-13 17:49:40
+-- Dump completed on 2022-09-14 12:55:08

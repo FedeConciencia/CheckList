@@ -50,9 +50,9 @@ const PedidoObra = (props) => {
 
 
     //Metodo para gestionar el envio de datos al Servlet y BD =>
-    const enviarDatos = (obra, event) => {
+    const enviarDatos = async (obra, event) => {
 
-        incrementarVisita(obra.codigo)
+        await incrementarVisita(obra.codigo)
 
         //Guardamos el codigo o n° de obra en el localStorage =>
         localStorage.setItem("codigo", obra.codigo);
@@ -136,7 +136,7 @@ const PedidoObra = (props) => {
             console.log("DATO NVISITA INCREMENTO => ", resJson);
 
             //Guardamos el codigo o n° de obra en el localStorage =>
-            localStorage.setItem("nVisitaIncremental", JSON.stringify(resJson));
+            await localStorage.setItem("nVisitaIncremental", JSON.stringify(resJson));
 
 
         }catch(error){

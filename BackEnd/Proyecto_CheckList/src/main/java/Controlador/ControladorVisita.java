@@ -423,6 +423,52 @@ public class ControladorVisita {
         return incrementoVisita; //devolvemos el n° de visita incrementado
 
     }
+     
+     //METODO PARA OBTENER EL ULTIMO ID_VISITA =>
+     public Long ultimoIdVisita() {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        Long idVisita = 0L;
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("SELECT MAX(idVisita) FROM visita");
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                idVisita = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                
+            }
+
+            conexion.close();
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+
+                ps.close();
+                rs.close();
+
+            } catch (SQLException ex) {
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+        return idVisita; //devolvemos el ultimo id
+
+    }
     
     
     
