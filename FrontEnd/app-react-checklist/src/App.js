@@ -10,6 +10,8 @@ import PrincipalCargaForm from "../src/components/PrincipalCargaForm"
 import PedidoObra from "../src/components/PedidoObra"
 import PrevCargaConclusion from "../src/components/PrevCargaConclusion"
 import FormConclusion from "../src/components/FormConclusion"
+import FormMateriales from "../src/components/FormMateriales"
+import FormHumeda from "../src/components/FormHumeda"
 
 
 const App = () => {
@@ -29,6 +31,8 @@ const App = () => {
           <Route path="/pedidoObra" element={<PedidoObra />} />
           <Route path="/prevCargaConclusion" element={<PrevCargaConclusion />} />
           <Route path="/formConclusion" element={<FormConclusion />} />
+          <Route path="/formMateriales" element={<FormMateriales />} />
+          <Route path="/formHumeda" element={<FormHumeda />} />
 
 
         </Routes>

@@ -124,7 +124,7 @@ const PrincipalCargaForm = (props) => {
 
                 <Col>
 
-                    <Button href="/formObraHumeda" className="botonForm" variant="primary">4- FORMULARIO OBRA HUMEDA</Button>
+                    <Button href="/formHumeda" className="botonForm" variant="primary">4- FORMULARIO OBRA HUMEDA</Button>
                     
                 </Col>
 
@@ -137,7 +137,7 @@ const PrincipalCargaForm = (props) => {
 
                 <Col>
 
-                    <Button href="/formObraSeco" className="botonForm" variant="primary">5- FORMULARIO OBRA SECO</Button>
+                    <Button href="/formSeco" className="botonForm" variant="primary">5- FORMULARIO OBRA SECO</Button>
                     
                 </Col>
 
