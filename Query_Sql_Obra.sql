@@ -39,6 +39,10 @@ alter table visita auto_increment = 1;
 #Query para obtener por N° de Obra/codigo el mayor numero de Visita =>
 Select max(v.nVisita) as UltimaVisita from general as g inner join visita as v on g.idGeneral = v.idGeneral where g.codigo = "P0234";
 
+#Query para obtener el ultimo idVisita asociado al n° de obra =>
+SELECT MAX(v.idVisita) FROM visita as v inner join general as g on v.idGeneral = g.idGeneral where g.codigo = "PO577"; 
+
+
 #---------------------------------------
 
 #ENTIDAD MATERIAL =>
@@ -62,6 +66,9 @@ SELECT * FROM persona WHERE idPersona = 1;
 DELETE FROM persona WHERE idPersona = 1;
 
 alter table persona auto_increment = 1;
+
+#Query para obtener el ultimo idPersona asociado al n° de obra =>
+SELECT MAX(p.idPersona) FROM persona as p inner join visita as v on p.idVisita = v.idVisita inner join general as g on v.idGeneral = g.idGeneral where g.codigo = "PO621"; 
 
 #---------------------------------------
 

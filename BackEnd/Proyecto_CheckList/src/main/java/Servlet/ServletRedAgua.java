@@ -25,7 +25,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 
-//Se especifica el nombre y ruta de la clase: 'http://localhost:8080/CheckList/RedAguaServlet?
+//Se especifica el nombre y ruta de la clase: 'http://localhost:8080/Proyecto_CheckList/RedAguaServlet?
 @WebServlet(name = "RedAguaServlet", urlPatterns = {"/RedAguaServlet"})
 public class ServletRedAgua extends HttpServlet {
     

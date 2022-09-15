@@ -12,8 +12,10 @@ import {useForm} from 'react-hook-form';
 import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
 
-const FormHumeda = (props) => {
 
+const FormPersonas = (props) => {
+
+    
     //Redireccionamiento de Pagina =>
     let navigate = useNavigate()
 
@@ -22,22 +24,23 @@ const FormHumeda = (props) => {
 
     const[dato,setDato] = useState(null)
 
-    const [humeda, setHumeda] = useState({
+    const [persona, setPersona] = useState({
 
-        fechaInicio:'',
-        fechaFinal:'',
-        m2Piso:'',
-        pisoPerson:'',
-        metros:'',
-        metrosPerson:'',
-        m2Muro:'',
-        muroPerson:'',
-        m2Cubierta:'',
-        cubiertaPerson:'',
-        metrosLineales:'',
-        linealesPerson:'',
-        diasCaidos:'',
-        motivo:'',
+        personasTotal:'',
+        nGremios:'',
+        gremioEnfoque:'',
+        vestimentaOk:'',
+        calzadoOk:'',
+        utilizanEpp:'',
+        herramientasOk:'',
+        seguridadOk:'',
+        trabajoAltura:'',
+        banosOk:'',
+        comerOk:'',
+        edadJoven:'',
+        edadViejo:'',
+        rangoMin:'',
+        rangoMax:'',
         comentario:'',
         fechaAlta:'',
         fechaBaja:'',
@@ -53,12 +56,12 @@ const FormHumeda = (props) => {
 
     },[])
 
-    //Metodo para obtener los datos ingresados en el form =>
-    const handleInputChange = (event) => {
+     //Metodo para obtener los datos ingresados en el form =>
+     const handleInputChange = (event) => {
 
-        setHumeda({
+        setPersona({
 
-            ...humeda,
+            ...persona,
             [event.target.name] : event.target.value
 
         })
@@ -66,10 +69,10 @@ const FormHumeda = (props) => {
     }
 
     //Metodo para gestionar el envio de datos al Servlet y BD =>
-    const enviarDatos = (humeda, event) => {
+    const enviarDatos = (persona, event) => {
 
             
-        insertar(humeda);
+        insertar(persona);
 
         event.preventDefault();
 
@@ -77,27 +80,30 @@ const FormHumeda = (props) => {
         event.target.reset();
 
         //Vaciar todas las variables =>
-        setHumeda({
+        setPersona({
 
-            fechaInicio:'',
-            fechaFinal:'',
-            m2Piso:'',
-            pisoPerson:'',
-            metros:'',
-            metrosPerson:'',
-            m2Muro:'',
-            muroPerson:'',
-            m2Cubierta:'',
-            cubiertaPerson:'',
-            metrosLineales:'',
-            linealesPerson:'',
-            diasCaidos:'',
-            motivo:'',
+
+            personasTotal:'',
+            nGremios:'',
+            gremioEnfoque:'',
+            vestimentaOk:'',
+            calzadoOk:'',
+            utilizanEpp:'',
+            herramientasOk:'',
+            seguridadOk:'',
+            trabajoAltura:'',
+            banosOk:'',
+            comerOk:'',
+            edadJoven:'',
+            edadViejo:'',
+            rangoMin:'',
+            rangoMax:'',
             comentario:'',
             fechaAlta:'',
             fechaBaja:'',
             estado:'',
             idVisita:'',
+      
 
         });
 
@@ -106,33 +112,35 @@ const FormHumeda = (props) => {
  
     }
 
-    const insertar = async(humeda) => {   
+
+    const insertar = async(persona) => {   
 
         try{
 
             let id = localStorage.getItem("idVisita")
 
-            const response = await axios("http://localhost:8080/Proyecto_CheckList/HumedaServlet",{
+            const response = await axios("http://localhost:8080/Proyecto_CheckList/PersonaServlet",{
 
                 method:"GET",
                 params:{
 
                     action:"insertar",
-                    fechaInicio:humeda.fechaInicio,
-                    fechaFinal:humeda.fechaFinal,
-                    m2Piso:humeda.m2Piso,
-                    pisoPerson:humeda.pisoPerson,
-                    metros:humeda.metros,
-                    metrosPerson:humeda.metrosPerson,
-                    m2Muro:humeda.m2Muro,
-                    muroPerson:humeda.muroPerson,
-                    m2Cubierta:humeda.m2Cubierta,
-                    cubiertaPerson:humeda.cubiertaPerson,
-                    metrosLineales:humeda.metrosLineales,
-                    linealesPerson:humeda.linealesPerson,
-                    diasCaidos:humeda.diasCaidos,
-                    motivo:humeda.motivo,
-                    comentario:humeda.comentario,
+                    personasTotal:persona.personasTotal,
+                    nGremios:persona.nGremios,
+                    gremioEnfoque:persona.gremioEnfoque,
+                    vestimentaOk:persona.vestimentaOk,
+                    calzadoOk:persona.calzadoOk,
+                    utilizanEpp:persona.utilizanEpp,
+                    herramientasOk:persona.herramientasOk,
+                    seguridadOk:persona.seguridadOk,
+                    trabajoAltura:persona.trabajoAltura,
+                    banosOk:persona.banosOk,
+                    comerOk:persona.comerOk,
+                    edadJoven:persona.edadJoven,
+                    edadViejo:persona.edadViejo,
+                    rangoMin:persona.rangoMin,
+                    rangoMax:persona.rangoMax,
+                    comentario:persona.comentario,
 
                     //Se autocompletan =>
                     fechaAlta:moment().format('YYYY-MM-DD'),
@@ -176,7 +184,7 @@ const FormHumeda = (props) => {
 
             console.log("ID_VISITA => ", id)
 
-            const response = await axios("http://localhost:8080/Proyecto_CheckList/HumedaServlet",{
+            const response = await axios("http://localhost:8080/Proyecto_CheckList/PersonaServlet",{
 
                 method:"GET",
                 params:{
@@ -208,7 +216,7 @@ const FormHumeda = (props) => {
 
                 console.log("VALIDAR => ", validar)
 
-                document.querySelector("#mensaje").innerHTML = "YA FUE GESTIONADA LA CARGA DEL FORMULARIO OBRA HUMEDA PARA ESTA VISITA"
+                document.querySelector("#mensaje").innerHTML = "YA FUE GESTIONADA LA CARGA DEL FORMULARIO PERSONAS PARA ESTA VISITA"
 
                 return validar
 
@@ -248,23 +256,11 @@ const FormHumeda = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO DE REGISTRO DE OBRA HUMEDA</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO DE REGISTRO DE PERSONAS</Alert.Heading>
 
             <br></br>
 
             <h5 className='red'>* Campos Obligatorios</h5>
-
-            <br></br>
-
-            <h5 className='red'>La cantidad de M2 o metros lineales serán las totales (no la diferencia entre una visita y la anterior).</h5>
-
-            <br></br>
-
-            <h5 className='red'>Si algun item no esta dentro del alcance, colocar NA (No Aplicable).</h5>
-
-            <br></br>
-
-            <h5 className='red'>Si al momento de la primer visita hay algun item terminado YC (Ya Construido).</h5>
 
             </div>
 
@@ -277,121 +273,33 @@ const FormHumeda = (props) => {
 
             <Row>
 
-
                 <Col sm={3}>
                     
-                    <label>Fecha de inicio Actividades: </label>
-
-                
-                </Col>
-
-                <Col sm={2}>
-                    
-                    <input 
-                        type="date"
-                        name="fechaInicio"
-                        onChange={handleInputChange}
-                        placeholder=""
-                        className="form-control"
-                        {...register("fechaInicio", { 
-
-                            required:{
-                                value: true,
-                                message: '*' 
-                            },
-
-                        })}      
-                    >
-                    </input>
-                
-                
-                </Col>
-
-                <Col sm={1}>
-
-                      
-                    <span className="text-danger text-small d-block mb-2">
-                    {errors.fechaInicio && errors.fechaInicio.message}
-                    </span>
-
-                </Col>
-
-
-
-            </Row>
-
-            <br></br>
-
-            <Row>
-
-
-                <Col sm={3}>
-                    
-                    <label>Fecha final de Actividades: </label>
-
-                
-                </Col>
-
-                <Col sm={2}>
-                    
-                    <input 
-                        type="date"
-                        name="fechaFinal"
-                        onChange={handleInputChange}
-                        placeholder=""
-                        className="form-control"
-                        {...register("fechaFinal", { 
-
-                            required:{
-                                value: true,
-                                message: '*' 
-                            },
-
-                        })}      
-                    >
-                    </input>
-                
-                
-                </Col>
-
-                <Col sm={1}>
-
-                    
-                    <span className="text-danger text-small d-block mb-2">
-                    {errors.fechaFinal && errors.fechaFinal.message}
-                    </span>
-
-                </Col>
-
-
-
-            </Row>
-
-            <br></br>
-
-            <Row>
-
-                <Col sm={3}>
-                    
-                    <label className="my-2">M2 de Piso: </label>
+                    <label className="my-2">Numero de Personas en total Trabajando: </label>
 
                 </Col>
 
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
-                        name="m2Piso"
+                        type="number"
+                        name="personasTotal"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 2.00 (Decimal con punto)"
+                        placeholder="* Campo Obligatorio"
                         className="form-control my-2"
-                        {...register("m2Piso", { 
+                        min="1"
+                        {...register("personasTotal", { 
 
                             required:{
                                 value: true,
                                 message: '*', 
                             },
 
+                            validate:{
+
+                               
+
+                            }
 
                         })}   
 
@@ -404,10 +312,10 @@ const FormHumeda = (props) => {
 
                         
                     <span className="text-danger text-small d-block mb-2">
-                    {errors.m2Piso && errors.m2Piso.message}
+                    {errors.personasTotal && errors.personasTotal.message}
                     </span>
 
-                   
+
                 </Col>
 
             </Row>
@@ -418,25 +326,31 @@ const FormHumeda = (props) => {
 
                 <Col sm={3}>
                     
-                    <label className="my-2">Piso N° de Personas: </label>
+                    <label className="my-2">Numero de Gremios trabajando en simultaneo: </label>
 
                 </Col>
 
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
-                        name="pisoPerson"
+                        type="number"
+                        name="nGremios"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 1 (entero)"
+                        placeholder="* Campo Obligatorio"
                         className="form-control my-2"
-                        {...register("pisoPerson", { 
+                        min="1"
+                        {...register("nGremios", { 
 
                             required:{
                                 value: true,
                                 message: '*', 
                             },
 
+                            validate:{
+
+                               
+
+                            }
 
                         })}   
 
@@ -449,10 +363,10 @@ const FormHumeda = (props) => {
 
                         
                     <span className="text-danger text-small d-block mb-2">
-                    {errors.pisoPerson && errors.pisoPerson.message}
+                    {errors.nGremios && errors.nGremios.message}
                     </span>
 
-                   
+
                 </Col>
 
             </Row>
@@ -463,7 +377,7 @@ const FormHumeda = (props) => {
 
                 <Col sm={3}>
                     
-                    <label className="my-2">Metros lineales Vigas y Columnas: </label>
+                    <label className="my-2">Gremio de Enfoque: </label>
 
                 </Col>
 
@@ -471,17 +385,22 @@ const FormHumeda = (props) => {
                     
                     <input 
                         type="text"
-                        name="metros"
+                        name="gremioEnfoque"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 2.00 (Decimal con punto)"
+                        placeholder="* Campo Obligatorio"
                         className="form-control my-2"
-                        {...register("metros", { 
+                        {...register("gremioEnfoque", { 
 
                             required:{
                                 value: true,
                                 message: '*', 
                             },
 
+                            validate:{
+
+                               
+
+                            }
 
                         })}   
 
@@ -494,58 +413,13 @@ const FormHumeda = (props) => {
 
                         
                     <span className="text-danger text-small d-block mb-2">
-                    {errors.metros && errors.metros.message}
+                    {errors.gremioEnfoque && errors.gremioEnfoque.message}
                     </span>
 
-                   
-                </Col>
-
-            </Row>
-
-            <br></br>
-
-             <Row>
-
-                <Col sm={3}>
-                    
-                    <label className="my-2">Vigas N° de Personas: </label>
 
                 </Col>
 
-                <Col sm={6}>
-                    
-                    <input 
-                        type="text"
-                        name="metrosPerson"
-                        onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 1 (entero)"
-                        className="form-control my-2"
-                        {...register("metrosPerson", { 
-
-                            required:{
-                                value: true,
-                                message: '*', 
-                            },
-
-
-                        })}   
-
-                    >
-                    </input>
-
-                </Col>
-
-                <Col sm={1}>
-
-                        
-                    <span className="text-danger text-small d-block mb-2">
-                    {errors.metrosPerson && errors.metrosPerson.message}
-                    </span>
-
-                   
-                </Col>
-
-            </Row>
+            </Row>            
 
             <br></br>
 
@@ -553,322 +427,7 @@ const FormHumeda = (props) => {
 
                 <Col sm={3}>
                     
-                    <label className="my-2">M2 Muro: </label>
-
-                </Col>
-
-                <Col sm={6}>
-                    
-                    <input 
-                        type="text"
-                        name="m2Muro"
-                        onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 2.00 (Decimal con punto)"
-                        className="form-control my-2"
-                        {...register("m2Muro", { 
-
-                            required:{
-                                value: true,
-                                message: '*', 
-                            },
-
-
-                        })}   
-
-                    >
-                    </input>
-
-                </Col>
-
-                <Col sm={1}>
-
-                        
-                    <span className="text-danger text-small d-block mb-2">
-                    {errors.m2Muro && errors.m2Muro.message}
-                    </span>
-
-                   
-                </Col>
-
-            </Row>
-            
-            <br></br>
-
-            <Row>
-
-                <Col sm={3}>
-                    
-                    <label className="my-2">Muro N° de Personas: </label>
-
-                </Col>
-
-                <Col sm={6}>
-                    
-                    <input 
-                        type="text"
-                        name="muroPerson"
-                        onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 1 (entero)"
-                        className="form-control my-2"
-                        {...register("muroPerson", { 
-
-                            required:{
-                                value: true,
-                                message: '*', 
-                            },
-
-
-                        })}   
-
-                    >
-                    </input>
-
-                </Col>
-
-                <Col sm={1}>
-
-                        
-                    <span className="text-danger text-small d-block mb-2">
-                    {errors.muroPerson && errors.muroPerson.message}
-                    </span>
-
-                   
-                </Col>
-
-            </Row>
-
-            <br></br>
-
-            <Row>
-
-                <Col sm={3}>
-                    
-                    <label className="my-2">M2 Cubierta: </label>
-
-                </Col>
-
-                <Col sm={6}>
-                    
-                    <input 
-                        type="text"
-                        name="m2Cubierta"
-                        onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 2.00 (Decimal con punto)"
-                        className="form-control my-2"
-                        {...register("m2Cubierta", { 
-
-                            required:{
-                                value: true,
-                                message: '*', 
-                            },
-
-
-                        })}   
-
-                    >
-                    </input>
-
-                </Col>
-
-                <Col sm={1}>
-
-                        
-                    <span className="text-danger text-small d-block mb-2">
-                    {errors.m2Cubierta && errors.m2Cubierta.message}
-                    </span>
-
-                   
-                </Col>
-
-            </Row>
-            
-            <br></br>
-
-            <Row>
-
-                <Col sm={3}>
-                    
-                    <label className="my-2">Cubierta N° de Personas: </label>
-
-                </Col>
-
-                <Col sm={6}>
-                    
-                    <input 
-                        type="text"
-                        name="cubiertaPerson"
-                        onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 1 (entero)"
-                        className="form-control my-2"
-                        {...register("cubiertaPerson", { 
-
-                            required:{
-                                value: true,
-                                message: '*', 
-                            },
-
-
-                        })}   
-
-                    >
-                    </input>
-
-                </Col>
-
-                <Col sm={1}>
-
-                        
-                    <span className="text-danger text-small d-block mb-2">
-                    {errors.cubiertaPerson && errors.cubiertaPerson.message}
-                    </span>
-
-                   
-                </Col>
-
-            </Row>
-
-            <br></br>
-
-            <Row>
-
-                <Col sm={3}>
-                    
-                    <label className="my-2">Metros lineales de terminaciones: </label>
-
-                </Col>
-
-                <Col sm={6}>
-                    
-                    <input 
-                        type="text"
-                        name="metrosLineales"
-                        onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 2.00 (Decimal con punto)"
-                        className="form-control my-2"
-                        {...register("metrosLineales", { 
-
-                            required:{
-                                value: true,
-                                message: '*', 
-                            },
-
-
-                        })}   
-
-                    >
-                    </input>
-
-                </Col>
-
-                <Col sm={1}>
-
-                        
-                    <span className="text-danger text-small d-block mb-2">
-                    {errors.metrosLineales && errors.linealesPerson.message}
-                    </span>
-
-                   
-                </Col>
-
-            </Row>
-
-            <br></br>
-
-            <Row>
-
-                <Col sm={3}>
-                    
-                    <label className="my-2">Lineales N° de Personas: </label>
-
-                </Col>
-
-                <Col sm={6}>
-                    
-                    <input 
-                        type="text"
-                        name="linealesPerson"
-                        onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 1 (entero)"
-                        className="form-control my-2"
-                        {...register("linealesPerson", { 
-
-                            required:{
-                                value: true,
-                                message: '*', 
-                            },
-
-
-                        })}   
-
-                    >
-                    </input>
-
-                </Col>
-
-                <Col sm={1}>
-
-                        
-                    <span className="text-danger text-small d-block mb-2">
-                    {errors.linealesPerson && errors.linealesPerson.message}
-                    </span>
-
-                   
-                </Col>
-
-            </Row>
-
-            <br></br>
-
-            <Row>
-
-                <Col sm={3}>
-                    
-                    <label className="my-2">Nro de dias Caidos: </label>
-
-                </Col>
-
-                <Col sm={6}>
-                    
-                    <input 
-                        type="text"
-                        name="diasCaidos"
-                        onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 1 (entero)"
-                        className="form-control my-2"
-                        {...register("diasCaidos", { 
-
-                            required:{
-                                value: true,
-                                message: '*', 
-                            },
-
-
-                        })}   
-
-                    >
-                    </input>
-
-                </Col>
-
-                <Col sm={1}>
-
-                        
-                    <span className="text-danger text-small d-block mb-2">
-                    {errors.diasCaidos && errors.diasCaidos.message}
-                    </span>
-
-                   
-                </Col>
-
-            </Row>
-
-            <br></br>
-
-            <Row>
-
-                <Col sm={3}>
-                    
-                    <label className="my-2">Motivo: </label>
+                    <label className="my-2">Vestimenta de trabajo adecuada: </label>
 
                 </Col>
 
@@ -876,9 +435,9 @@ const FormHumeda = (props) => {
                     
                     <select 
 
-                        name="motivo" 
+                        name="vestimentaOk" 
                         onChange={handleInputChange}
-                        {...register("motivo", { 
+                        {...register("vestimentaOk", { 
 
                             required:{
                                 value: true,
@@ -894,8 +453,8 @@ const FormHumeda = (props) => {
                     >
 
                         <option value="">Seleccione una Opcion</option>
-                        <option value="Mal Tiempo">Mal Tiempo</option>
-                        <option value="Otro">Otro (aclarar en comentario)</option>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
                         
 
                     </select>
@@ -906,7 +465,163 @@ const FormHumeda = (props) => {
 
                         
                     <span className="text-danger text-small d-block mb-2">
-                    {errors.motivo && errors.motivo.message}
+                    {errors.vestimentaOk && errors.vestimentaOk.message}
+                    </span>
+
+                
+                </Col>
+
+            </Row>      
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label className="my-2">Calzado Adecuado: </label>
+
+                </Col>
+
+                <Col sm={3}>
+                    
+                    <select 
+
+                        name="calzadoOk" 
+                        onChange={handleInputChange}
+                        {...register("calzadoOk", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+                            validate:{
+
+                            }
+
+                        })}   
+                        
+                    >
+
+                        <option value="">Seleccione una Opcion</option>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                        
+
+                    </select>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.calzadoOk && errors.calzadoOk.message}
+                    </span>
+
+                
+                </Col>
+
+            </Row>     
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label className="my-2">Utilizan EPP: </label>
+
+                </Col>
+
+                <Col sm={3}>
+                    
+                    <select 
+
+                        name="utilizanEpp" 
+                        onChange={handleInputChange}
+                        {...register("utilizanEpp", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+                            validate:{
+
+                            }
+
+                        })}   
+                        
+                    >
+
+                        <option value="">Seleccione una Opcion</option>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                        
+
+                    </select>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.utilizanEpp && errors.utilizanEpp.message}
+                    </span>
+
+                
+                </Col>
+
+            </Row>        
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label className="my-2">Usan las herramientas adecuadas: </label>
+
+                </Col>
+
+                <Col sm={3}>
+                    
+                    <select 
+
+                        name="herramientasOk" 
+                        onChange={handleInputChange}
+                        {...register("herramientasOk", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+                            validate:{
+
+                            }
+
+                        })}   
+                        
+                    >
+
+                        <option value="">Seleccione una Opcion</option>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                        
+
+                    </select>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.herramientasOk && errors.herramientasOk.message}
                     </span>
 
                 
@@ -914,6 +629,418 @@ const FormHumeda = (props) => {
 
             </Row>
 
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label className="my-2">Son cuidadosos de la seguirdad e higiene: </label>
+
+                </Col>
+
+                <Col sm={3}>
+                    
+                    <select 
+
+                        name="seguridadOk" 
+                        onChange={handleInputChange}
+                        {...register("seguridadOk", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+                            validate:{
+
+                            }
+
+                        })}   
+                        
+                    >
+
+                        <option value="">Seleccione una Opcion</option>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                        
+
+                    </select>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.seguridadOk && errors.seguridadOk.message}
+                    </span>
+
+                
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label className="my-2">En los trabajos de altura utilizan amarres: </label>
+
+                </Col>
+
+                <Col sm={3}>
+                    
+                    <select 
+
+                        name="trabajoAltura" 
+                        onChange={handleInputChange}
+                        {...register("trabajoAltura", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+                            validate:{
+
+                            }
+
+                        })}   
+                        
+                    >
+
+                        <option value="">Seleccione una Opcion</option>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                        
+
+                    </select>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.trabajoAltura && errors.trabajoAltura.message}
+                    </span>
+
+                
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label className="my-2">Tienen baños adecuados: </label>
+
+                </Col>
+
+                <Col sm={3}>
+                    
+                    <select 
+
+                        name="banosOk" 
+                        onChange={handleInputChange}
+                        {...register("banosOk", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+                            validate:{
+
+                            }
+
+                        })}   
+                        
+                    >
+
+                        <option value="">Seleccione una Opcion</option>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                        
+
+                    </select>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.banosOk && errors.banosOk.message}
+                    </span>
+
+                
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label className="my-2">Tienen lugar para comer adecuado: </label>
+
+                </Col>
+
+                <Col sm={3}>
+                    
+                    <select 
+
+                        name="comerOk" 
+                        onChange={handleInputChange}
+                        {...register("comerOk", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+                            validate:{
+
+                            }
+
+                        })}   
+                        
+                    >
+
+                        <option value="">Seleccione una Opcion</option>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                        
+
+                    </select>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.comerOk && errors.comerOk.message}
+                    </span>
+
+                
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label className="my-2">Edad aparente del mas joven: </label>
+
+                </Col>
+
+                <Col sm={6}>
+                    
+                    <input 
+                        type="number"
+                        name="edadJoven"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio"
+                        className="form-control my-2"
+                        min="1"
+                        {...register("edadJoven", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+                            validate:{
+
+                               
+
+                            }
+
+                        })}   
+
+                    >
+                    </input>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.edadJoven && errors.edadJoven.message}
+                    </span>
+
+
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label className="my-2">Edad aparente del mas viejo: </label>
+
+                </Col>
+
+                <Col sm={6}>
+                    
+                    <input 
+                        type="number"
+                        name="edadViejo"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio"
+                        className="form-control my-2"
+                        min="1"
+                        {...register("edadViejo", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+                            validate:{
+
+                               
+
+                            }
+
+                        })}   
+
+                    >
+                    </input>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.edadViejo && errors.edadViejo.message}
+                    </span>
+
+
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label className="my-2">Rango de edad (Edad Menor): </label>
+
+                </Col>
+
+                <Col sm={6}>
+                    
+                    <input 
+                        type="number"
+                        name="rangoMin"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio"
+                        className="form-control my-2"
+                        min="1"
+                        {...register("rangoMin", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+                            validate:{
+
+                               
+
+                            }
+
+                        })}   
+
+                    >
+                    </input>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.rangoMin && errors.rangoMin.message}
+                    </span>
+
+
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label className="my-2">Rango de edad (Edad Menor): </label>
+
+                </Col>
+
+                <Col sm={6}>
+                    
+                    <input 
+                        type="number"
+                        name="rangoMax"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio"
+                        className="form-control my-2"
+                        min="1"
+                        {...register("rangoMax", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+                            validate:{
+
+                               
+
+                            }
+
+                        })}   
+
+                    >
+                    </input>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.rangoMax && errors.rangoMax.message}
+                    </span>
+
+
+                </Col>
+
+            </Row>
+           
             <br></br>
 
             <Row>
@@ -1018,4 +1145,4 @@ const FormHumeda = (props) => {
 
 }
 
-export default FormHumeda
+export default FormPersonas

@@ -26,7 +26,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 
-//Se especifica el nombre y ruta de la clase: 'http://localhost:8080/CheckList/PanelServlet?
+//Se especifica el nombre y ruta de la clase: 'http://localhost:8080/Proyecto_CheckList/PanelServlet?
 @WebServlet(name = "PanelServlet", urlPatterns = {"/PanelServlet"})
 public class ServletPanel extends HttpServlet {
     
@@ -80,15 +80,15 @@ public class ServletPanel extends HttpServlet {
                     
                     //Se completa con los datos del ControladorAbertura
                     
-                    String selladores = request.getParameter("movMateriales");
-                    String izaje = request.getParameter("movMateriales");
-                    String tornillos = request.getParameter("movMateriales");
-                    String perfileria = request.getParameter("movMateriales");
-                    String panelesFrio = request.getParameter("movMateriales");
-                    String perfileriaFrio = request.getParameter("movMateriales");
+                    String selladores = request.getParameter("selladores");
+                    String izaje = request.getParameter("izaje");
+                    String tornillos = request.getParameter("tornillos");
+                    String perfileria = request.getParameter("perfileria");
+                    String panelesFrio = request.getParameter("panelesFrio");
+                    String perfileriaFrio = request.getParameter("perfileriaFrio");
                     double espesor = Double.parseDouble(request.getParameter("espesor"));
-                    String resultado = request.getParameter("movMateriales");
-                    String comentario = request.getParameter("movMateriales");
+                    String resultado = request.getParameter("resultado");
+                    String comentario = request.getParameter("comentario");
                     LocalDate fechaAlta = LocalDate.parse(request.getParameter("fechaAlta"));
                     LocalDate fechaBaja = LocalDate.parse(request.getParameter("fechaAlta"));
                     String estado = request.getParameter("estado");
@@ -109,15 +109,15 @@ public class ServletPanel extends HttpServlet {
                      //Se completa con los datos del ControladorAbertura
                     
                     Long idPanel = Long.parseLong(request.getParameter("idPanel")); 
-                    String selladores = request.getParameter("movMateriales");
-                    String izaje = request.getParameter("movMateriales");
-                    String tornillos = request.getParameter("movMateriales");
-                    String perfileria = request.getParameter("movMateriales");
-                    String panelesFrio = request.getParameter("movMateriales");
-                    String perfileriaFrio = request.getParameter("movMateriales");
+                    String selladores = request.getParameter("selladores");
+                    String izaje = request.getParameter("izaje");
+                    String tornillos = request.getParameter("tornillos");
+                    String perfileria = request.getParameter("perfileria");
+                    String panelesFrio = request.getParameter("panelesFrio");
+                    String perfileriaFrio = request.getParameter("perfileriaFrio");
                     double espesor = Double.parseDouble(request.getParameter("espesor"));
-                    String resultado = request.getParameter("movMateriales");
-                    String comentario = request.getParameter("movMateriales");
+                    String resultado = request.getParameter("resultado");
+                    String comentario = request.getParameter("comentario");
                     LocalDate fechaAlta = LocalDate.parse(request.getParameter("fechaAlta"));
                     LocalDate fechaBaja = LocalDate.parse(request.getParameter("fechaAlta"));
                     String estado = request.getParameter("estado");

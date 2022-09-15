@@ -163,7 +163,7 @@ const PrincipalCargaForm = (props) => {
 
                 <Col>
 
-                    <Button href="/formAgua" className="botonForm" variant="primary">7- FORMULARIO RED DE AGUA</Button>
+                    <Button href="/formRedAgua" className="botonForm" variant="primary">7- FORMULARIO RED DE AGUA</Button>
                     
                 </Col>
 
@@ -176,7 +176,7 @@ const PrincipalCargaForm = (props) => {
 
                 <Col>
 
-                    <Button href="/formGas" className="botonForm" variant="primary">8- FORMULARIO RED DE GAS</Button>
+                    <Button href="/formRedGas" className="botonForm" variant="primary">8- FORMULARIO RED DE GAS</Button>
                     
                 </Col>
 
@@ -188,7 +188,7 @@ const PrincipalCargaForm = (props) => {
 
                 <Col>
 
-                    <Button href="/formElectricidad" className="botonForm" variant="primary">9- FORMULARIO RED DE ELECTRICIDAD</Button>
+                    <Button href="/formRedElectricidad" className="botonForm" variant="primary">9- FORMULARIO RED DE ELECTRICIDAD</Button>
                     
                 </Col>
 

@@ -26,7 +26,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 
-//Se especifica el nombre y ruta de la clase: 'http://localhost:8080/CheckList/HumedaServlet?
+//Se especifica el nombre y ruta de la clase: 'http://localhost:8080/Proyecto_CheckList/HumedaServlet?
 @WebServlet(name = "HumedaServlet", urlPatterns = {"/HumedaServlet"})
 public class ServletHumeda extends HttpServlet {
     

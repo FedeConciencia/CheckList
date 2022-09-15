@@ -25,7 +25,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 
-//Se especifica el nombre y ruta de la clase: 'http://localhost:8080/CheckList/SecoServlet?
+//Se especifica el nombre y ruta de la clase: 'http://localhost:8080/Proyecto_CheckList/SecoServlet?
 @WebServlet(name = "SecoServlet", urlPatterns = {"/SecoServlet"})
 public class ServletSeco extends HttpServlet {
     
@@ -91,7 +91,7 @@ public class ServletSeco extends HttpServlet {
                     String linealesPerson = request.getParameter("linealesPerson");
                     String diasCaidos = request.getParameter("diasCaidos");
                     String motivo = request.getParameter("motivo");
-                    String materialVigas = request.getParameter("materialViga");
+                    String materialVigas = request.getParameter("materialVigas");
                     String materialMuros = request.getParameter("materialMuros");
                     String materialCubiertas = request.getParameter("materialCubiertas");
                     String comentario = request.getParameter("comentario");
@@ -127,7 +127,7 @@ public class ServletSeco extends HttpServlet {
                     String linealesPerson = request.getParameter("linealesPerson");
                     String diasCaidos = request.getParameter("diasCaidos");
                     String motivo = request.getParameter("motivo");
-                    String materialVigas = request.getParameter("materialViga");
+                    String materialVigas = request.getParameter("materialVigas");
                     String materialMuros = request.getParameter("materialMuros");
                     String materialCubiertas = request.getParameter("materialCubiertas");
                     String comentario = request.getParameter("comentario");

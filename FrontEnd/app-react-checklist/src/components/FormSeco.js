@@ -12,7 +12,7 @@ import {useForm} from 'react-hook-form';
 import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
 
-const FormHumeda = (props) => {
+const FormSeco = (props) => {
 
     //Redireccionamiento de Pagina =>
     let navigate = useNavigate()
@@ -22,14 +22,12 @@ const FormHumeda = (props) => {
 
     const[dato,setDato] = useState(null)
 
-    const [humeda, setHumeda] = useState({
+    const [seco, setSeco] = useState({
 
         fechaInicio:'',
         fechaFinal:'',
-        m2Piso:'',
-        pisoPerson:'',
-        metros:'',
-        metrosPerson:'',
+        mLineales:'',
+        mPerson:'',
         m2Muro:'',
         muroPerson:'',
         m2Cubierta:'',
@@ -38,6 +36,9 @@ const FormHumeda = (props) => {
         linealesPerson:'',
         diasCaidos:'',
         motivo:'',
+        materialVigas:'',
+        materialMuros:'',
+        materialCubiertas:'',
         comentario:'',
         fechaAlta:'',
         fechaBaja:'',
@@ -56,9 +57,9 @@ const FormHumeda = (props) => {
     //Metodo para obtener los datos ingresados en el form =>
     const handleInputChange = (event) => {
 
-        setHumeda({
+        setSeco({
 
-            ...humeda,
+            ...seco,
             [event.target.name] : event.target.value
 
         })
@@ -66,10 +67,10 @@ const FormHumeda = (props) => {
     }
 
     //Metodo para gestionar el envio de datos al Servlet y BD =>
-    const enviarDatos = (humeda, event) => {
+    const enviarDatos = (seco, event) => {
 
             
-        insertar(humeda);
+        insertar(seco);
 
         event.preventDefault();
 
@@ -77,14 +78,12 @@ const FormHumeda = (props) => {
         event.target.reset();
 
         //Vaciar todas las variables =>
-        setHumeda({
+        setSeco({
 
             fechaInicio:'',
             fechaFinal:'',
-            m2Piso:'',
-            pisoPerson:'',
-            metros:'',
-            metrosPerson:'',
+            mLineales:'',
+            mPerson:'',
             m2Muro:'',
             muroPerson:'',
             m2Cubierta:'',
@@ -93,6 +92,9 @@ const FormHumeda = (props) => {
             linealesPerson:'',
             diasCaidos:'',
             motivo:'',
+            materialVigas:'',
+            materialMuros:'',
+            materialCubiertas:'',
             comentario:'',
             fechaAlta:'',
             fechaBaja:'',
@@ -106,33 +108,34 @@ const FormHumeda = (props) => {
  
     }
 
-    const insertar = async(humeda) => {   
+    const insertar = async(seco) => {   
 
         try{
 
             let id = localStorage.getItem("idVisita")
 
-            const response = await axios("http://localhost:8080/Proyecto_CheckList/HumedaServlet",{
+            const response = await axios("http://localhost:8080/Proyecto_CheckList/SecoServlet",{
 
                 method:"GET",
                 params:{
 
                     action:"insertar",
-                    fechaInicio:humeda.fechaInicio,
-                    fechaFinal:humeda.fechaFinal,
-                    m2Piso:humeda.m2Piso,
-                    pisoPerson:humeda.pisoPerson,
-                    metros:humeda.metros,
-                    metrosPerson:humeda.metrosPerson,
-                    m2Muro:humeda.m2Muro,
-                    muroPerson:humeda.muroPerson,
-                    m2Cubierta:humeda.m2Cubierta,
-                    cubiertaPerson:humeda.cubiertaPerson,
-                    metrosLineales:humeda.metrosLineales,
-                    linealesPerson:humeda.linealesPerson,
-                    diasCaidos:humeda.diasCaidos,
-                    motivo:humeda.motivo,
-                    comentario:humeda.comentario,
+                    fechaInicio:seco.fechaInicio,
+                    fechaFinal:seco.fechaFinal,
+                    mLineales:seco.mLineales,
+                    mPerson:seco.mPerson,
+                    m2Muro:seco.m2Muro,
+                    muroPerson:seco.muroPerson,
+                    m2Cubierta:seco.m2Cubierta,
+                    cubiertaPerson:seco.cubiertaPerson,
+                    metrosLineales:seco.metrosLineales,
+                    linealesPerson:seco.linealesPerson,
+                    diasCaidos:seco.diasCaidos,
+                    motivo:seco.motivo,
+                    materialVigas:seco.materialVigas,
+                    materialMuros:seco.materialMuros,
+                    materialCubiertas:seco.materialCubiertas,
+                    comentario:seco.comentario,
 
                     //Se autocompletan =>
                     fechaAlta:moment().format('YYYY-MM-DD'),
@@ -176,7 +179,7 @@ const FormHumeda = (props) => {
 
             console.log("ID_VISITA => ", id)
 
-            const response = await axios("http://localhost:8080/Proyecto_CheckList/HumedaServlet",{
+            const response = await axios("http://localhost:8080/Proyecto_CheckList/SecoServlet",{
 
                 method:"GET",
                 params:{
@@ -208,7 +211,7 @@ const FormHumeda = (props) => {
 
                 console.log("VALIDAR => ", validar)
 
-                document.querySelector("#mensaje").innerHTML = "YA FUE GESTIONADA LA CARGA DEL FORMULARIO OBRA HUMEDA PARA ESTA VISITA"
+                document.querySelector("#mensaje").innerHTML = "YA FUE GESTIONADA LA CARGA DEL FORMULARIO CONSTRUCCION EN SECO PARA ESTA VISITA"
 
                 return validar
 
@@ -248,7 +251,7 @@ const FormHumeda = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO DE REGISTRO DE OBRA HUMEDA</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO DE REGISTRO DE CONSTRUCCION EN SECO</Alert.Heading>
 
             <br></br>
 
@@ -373,96 +376,6 @@ const FormHumeda = (props) => {
 
                 <Col sm={3}>
                     
-                    <label className="my-2">M2 de Piso: </label>
-
-                </Col>
-
-                <Col sm={6}>
-                    
-                    <input 
-                        type="text"
-                        name="m2Piso"
-                        onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 2.00 (Decimal con punto)"
-                        className="form-control my-2"
-                        {...register("m2Piso", { 
-
-                            required:{
-                                value: true,
-                                message: '*', 
-                            },
-
-
-                        })}   
-
-                    >
-                    </input>
-
-                </Col>
-
-                <Col sm={1}>
-
-                        
-                    <span className="text-danger text-small d-block mb-2">
-                    {errors.m2Piso && errors.m2Piso.message}
-                    </span>
-
-                   
-                </Col>
-
-            </Row>
-
-            <br></br>
-
-            <Row>
-
-                <Col sm={3}>
-                    
-                    <label className="my-2">Piso N° de Personas: </label>
-
-                </Col>
-
-                <Col sm={6}>
-                    
-                    <input 
-                        type="text"
-                        name="pisoPerson"
-                        onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 1 (entero)"
-                        className="form-control my-2"
-                        {...register("pisoPerson", { 
-
-                            required:{
-                                value: true,
-                                message: '*', 
-                            },
-
-
-                        })}   
-
-                    >
-                    </input>
-
-                </Col>
-
-                <Col sm={1}>
-
-                        
-                    <span className="text-danger text-small d-block mb-2">
-                    {errors.pisoPerson && errors.pisoPerson.message}
-                    </span>
-
-                   
-                </Col>
-
-            </Row>
-
-            <br></br>
-
-            <Row>
-
-                <Col sm={3}>
-                    
                     <label className="my-2">Metros lineales Vigas y Columnas: </label>
 
                 </Col>
@@ -471,11 +384,11 @@ const FormHumeda = (props) => {
                     
                     <input 
                         type="text"
-                        name="metros"
+                        name="mLineales"
                         onChange={handleInputChange}
                         placeholder="* Campo Obligatorio / Formato 2.00 (Decimal con punto)"
                         className="form-control my-2"
-                        {...register("metros", { 
+                        {...register("mLineales", { 
 
                             required:{
                                 value: true,
@@ -494,7 +407,7 @@ const FormHumeda = (props) => {
 
                         
                     <span className="text-danger text-small d-block mb-2">
-                    {errors.metros && errors.metros.message}
+                    {errors.mLineales && errors.mLineales.message}
                     </span>
 
                    
@@ -516,11 +429,11 @@ const FormHumeda = (props) => {
                     
                     <input 
                         type="text"
-                        name="metrosPerson"
+                        name="mPerson"
                         onChange={handleInputChange}
                         placeholder="* Campo Obligatorio / Formato 1 (entero)"
                         className="form-control my-2"
-                        {...register("metrosPerson", { 
+                        {...register("mPerson", { 
 
                             required:{
                                 value: true,
@@ -539,7 +452,7 @@ const FormHumeda = (props) => {
 
                         
                     <span className="text-danger text-small d-block mb-2">
-                    {errors.metrosPerson && errors.metrosPerson.message}
+                    {errors.mPerson && errors.mPerson.message}
                     </span>
 
                    
@@ -733,7 +646,7 @@ const FormHumeda = (props) => {
 
                 <Col sm={3}>
                     
-                    <label className="my-2">Metros lineales de terminaciones: </label>
+                    <label className="my-2">Metros lineales de Perfileria: </label>
 
                 </Col>
 
@@ -920,6 +833,141 @@ const FormHumeda = (props) => {
 
                 <Col sm={3}>
                     
+                    <label className="my-2">Material utilizado en Vigas y Columnas: </label>
+
+                </Col>
+
+                <Col sm={6}>
+                    
+                    <input 
+                        type="text"
+                        name="materialVigas"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio / Formato 1 (entero)"
+                        className="form-control my-2"
+                        {...register("materialVigas", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+
+                        })}   
+
+                    >
+                    </input>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.materialVigas && errors.materialVigas.message}
+                    </span>
+
+                   
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label className="my-2">Material utilizado en Muros: </label>
+
+                </Col>
+
+                <Col sm={6}>
+                    
+                    <input 
+                        type="text"
+                        name="materialMuros"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio / Formato 1 (entero)"
+                        className="form-control my-2"
+                        {...register("materialMuros", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+
+                        })}   
+
+                    >
+                    </input>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.materialMuros && errors.materialMuros.message}
+                    </span>
+
+                   
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label className="my-2">Material en Cubiertas: </label>
+
+                </Col>
+
+                <Col sm={6}>
+                    
+                    <input 
+                        type="text"
+                        name="materialCubiertas"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio / Formato 1 (entero)"
+                        className="form-control my-2"
+                        {...register("materialCubiertas", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+
+                        })}   
+
+                    >
+                    </input>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.materialCubiertas && errors.materialCubiertas.message}
+                    </span>
+
+                   
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
                     <label className="my-2">Comentario: </label>
 
                 </Col>
@@ -1018,4 +1066,4 @@ const FormHumeda = (props) => {
 
 }
 
-export default FormHumeda
+export default FormSeco

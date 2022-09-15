@@ -23,7 +23,7 @@ import org.apache.commons.io.output.*;
 import java.time.LocalDate;
 
 
-//Se especifica el nombre y ruta de la clase: 'http://localhost:8080/CheckList/AberturaServlet?
+//Se especifica el nombre y ruta de la clase: 'http://localhost:8080/Proyecto_CheckList/AberturaServlet?
 @WebServlet(name = "AberturaServlet", urlPatterns = {"/AberturaServlet"})
 public class ServletAbertura extends HttpServlet {
     

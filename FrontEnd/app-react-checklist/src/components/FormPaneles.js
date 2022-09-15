@@ -11,10 +11,11 @@ import Form from "react-bootstrap/Form";
 import {useForm} from 'react-hook-form';
 import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
-import "../assets/css/formMateriales.css";
 
-const FormMateriales = (props) => {
 
+const FormPaneles = (props) => {
+
+    
     //Redireccionamiento de Pagina =>
     let navigate = useNavigate()
 
@@ -23,50 +24,48 @@ const FormMateriales = (props) => {
 
     const[dato,setDato] = useState(null)
 
-    const [material, setMaterial] = useState({
+    const [panel, setPanel] = useState({
 
-
-        estadoAlmacen:'',
-        movMateriales:'',
-        almacenSeguro:'',
-        envasesVacio:'',
-        materialSobran:'',
-        estadoLimpieza:'',
-        desechosOrgani:'',
+        selladores:'',
+        izaje:'',
+        tornillos:'',
+        perfileria:'',
+        panelesFrio:'',
+        perfileriaFrio:'',
+        espesor:'',
+        resultado:'',
         comentario:'',
         fechaAlta:'',
         fechaBaja:'',
         estado:'',
         idVisita:'',
-
-        
+  
     })
-
 
     useEffect(() => {
 
         validarCargaForm()
 
+
     },[])
 
-    //Metodo para obtener los datos ingresados en el form =>
-    const handleInputChange = (event) => {
+     //Metodo para obtener los datos ingresados en el form =>
+     const handleInputChange = (event) => {
 
-        setMaterial({
+        setPanel({
 
-            ...material,
+            ...panel,
             [event.target.name] : event.target.value
 
         })
 
     }
 
-
     //Metodo para gestionar el envio de datos al Servlet y BD =>
-    const enviarDatos = (material, event) => {
+    const enviarDatos = (panel, event) => {
 
             
-        insertar(material);
+        insertar(panel);
 
         event.preventDefault();
 
@@ -74,20 +73,22 @@ const FormMateriales = (props) => {
         event.target.reset();
 
         //Vaciar todas las variables =>
-        setMaterial({
+        setPanel({
 
-            estadoAlmacen:'',
-            movMateriales:'',
-            almacenSeguro:'',
-            envasesVacio:'',
-            materialSobran:'',
-            estadoLimpieza:'',
-            desechosOrgani:'',
+            selladores:'',
+            izaje:'',
+            tornillos:'',
+            perfileria:'',
+            panelesFrio:'',
+            perfileriaFrio:'',
+            espesor:'',
+            resultado:'',
             comentario:'',
             fechaAlta:'',
             fechaBaja:'',
             estado:'',
             idVisita:'',
+      
 
         });
 
@@ -96,26 +97,28 @@ const FormMateriales = (props) => {
  
     }
 
-    const insertar = async(material) => {   
+
+    const insertar = async(panel) => {   
 
         try{
 
             let id = localStorage.getItem("idVisita")
 
-            const response = await axios("http://localhost:8080/Proyecto_CheckList/MaterialServlet",{
+            const response = await axios("http://localhost:8080/Proyecto_CheckList/PanelServlet",{
 
                 method:"GET",
                 params:{
 
                     action:"insertar",
-                    estadoAlmacen:material.estadoAlmacen,
-                    movMateriales:material.movMateriales,
-                    almacenSeguro:material.almacenSeguro,
-                    envasesVacio:material.envasesVacio,
-                    materialSobran:material.materialSobran,
-                    estadoLimpieza:material.estadoLimpieza,
-                    desechosOrgani:material.desechosOrgani,
-                    comentario:material.comentario,
+                    selladores:panel.selladores,
+                    izaje:panel.izaje,
+                    tornillos:panel.tornillos,
+                    perfileria:panel.perfileria,
+                    panelesFrio:panel.panelesFrio,
+                    perfileriaFrio:panel.perfileriaFrio,
+                    espesor:panel.espesor,
+                    resultado:panel.resultado,
+                    comentario:panel.comentario,
 
                     //Se autocompletan =>
                     fechaAlta:moment().format('YYYY-MM-DD'),
@@ -134,6 +137,8 @@ const FormMateriales = (props) => {
 
             alert("DATOS GUARDADOS CON EXITO.")
 
+
+
         }catch(error){
 
             console.log(error)
@@ -144,6 +149,7 @@ const FormMateriales = (props) => {
 
 
     }
+
 
     //Metodo para validar si el idVisita en la entidad Material existe =>
     const validarCargaForm = async() => {
@@ -156,7 +162,7 @@ const FormMateriales = (props) => {
 
             console.log("ID_VISITA => ", id)
 
-            const response = await axios("http://localhost:8080/Proyecto_CheckList/MaterialServlet",{
+            const response = await axios("http://localhost:8080/Proyecto_CheckList/PanelServlet",{
 
                 method:"GET",
                 params:{
@@ -183,13 +189,14 @@ const FormMateriales = (props) => {
 
             }
 
+
             if(validar === false){
 
                 console.log("VALIDAR => ", validar)
 
-                document.querySelector("#mensaje").innerHTML = "YA FUE GESTIONADA LA CARGA DEL FORMULARIO MATERIALES PARA ESTA VISITA"
+                document.querySelector("#mensaje").innerHTML = "YA FUE GESTIONADA LA CARGA DEL FORMULARIO PANELES PARA ESTA VISITA"
 
-                return validar;
+                return validar
 
             }else{
 
@@ -197,7 +204,7 @@ const FormMateriales = (props) => {
 
             }
 
-            
+           
 
         }catch(error){
 
@@ -210,9 +217,7 @@ const FormMateriales = (props) => {
     }
 
 
-
     return(
-
 
 
         <Fragment>
@@ -229,7 +234,7 @@ const FormMateriales = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO DE REGISTRO DE MATERIALES</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO DE REGISTRO DE CONSTRUCCION EN SECO</Alert.Heading>
 
             <br></br>
 
@@ -246,19 +251,199 @@ const FormMateriales = (props) => {
 
             <Row>
 
-                <Col sm={6}>
+                <Col sm={4}>
                     
-                    <label>Estado y orden del almacenamiento o estiba: </label>
+                    <label className="my-2">Utilizan selladores en el montaje de techo: </label>
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={6}>
+                    
+                    <input 
+                        type="text"
+                        name="selladores"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio"
+                        className="form-control my-2"
+                        {...register("selladores", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+
+                        })}   
+
+                    >
+                    </input>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.selladores && errors.selladores.message}
+                    </span>
+
+                   
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+             <Row>
+
+                <Col sm={4}>
+                    
+                    <label className="my-2">Que medios de izaje usan para elevar los paneles: </label>
+
+                </Col>
+
+                <Col sm={6}>
+                    
+                    <input 
+                        type="text"
+                        name="izaje"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio"
+                        className="form-control my-2"
+                        {...register("izaje", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+
+                        })}   
+
+                    >
+                    </input>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.izaje && errors.izaje.message}
+                    </span>
+
+                   
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={4}>
+                    
+                    <label className="my-2">Que tornillos usan para fijar paneles a la estructura: </label>
+
+                </Col>
+
+                <Col sm={6}>
+                    
+                    <input 
+                        type="text"
+                        name="tornillos"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio"
+                        className="form-control my-2"
+                        {...register("tornillos", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+
+                        })}   
+
+                    >
+                    </input>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.tornillos && errors.tornillos.message}
+                    </span>
+
+                   
+                </Col>
+
+            </Row>
+            
+            <br></br>
+
+            <Row>
+
+                <Col sm={4}>
+                    
+                    <label className="my-2">Que elementos usan para fijar la perfileria al panel: </label>
+
+                </Col>
+
+                <Col sm={6}>
+                    
+                    <input 
+                        type="text"
+                        name="perfileria"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio"
+                        className="form-control my-2"
+                        {...register("perfileria", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+
+                        })}   
+
+                    >
+                    </input>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.perfileria && errors.perfileria.message}
+                    </span>
+
+                   
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={4}>
+                    
+                    <label className="my-2">Provision de Paneles de Friolatina: </label>
+
+                </Col>
+
+                <Col sm={3}>
                     
                     <select 
 
-                        name="estadoAlmacen" 
+                        name="panelesFrio" 
                         onChange={handleInputChange}
-                        {...register("estadoAlmacen", { 
+                        {...register("panelesFrio", { 
 
                             required:{
                                 value: true,
@@ -274,22 +459,19 @@ const FormMateriales = (props) => {
                     >
 
                         <option value="">Seleccione una Opcion</option>
-                        <option value="Malo">Malo</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Bueno">Bueno</option>
-                        <option value="Muy Bueno">Muy Bueno</option>
-                        <option value="Excelente">Excelente</option>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                        
 
                     </select>
 
                 </Col>
 
-                
-                <Col sm={2}>
+                <Col sm={1}>
 
                         
                     <span className="text-danger text-small d-block mb-2">
-                    {errors.estadoAlmacen && errors.estadoAlmacen.message}
+                    {errors.panelesFrio && errors.panelesFrio.message}
                     </span>
 
                 
@@ -301,19 +483,19 @@ const FormMateriales = (props) => {
 
             <Row>
 
-                <Col sm={6}>
+                <Col sm={4}>
                     
-                    <label>Movimiento y traslado de materiales ordenado y sistematizado: </label>
+                    <label className="my-2">Provision de Perfileria de Friolatina: </label>
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={3}>
                     
                     <select 
 
-                        name="movMateriales" 
+                        name="perfileriaFrio" 
                         onChange={handleInputChange}
-                        {...register("movMateriales", { 
+                        {...register("perfileriaFrio", { 
 
                             required:{
                                 value: true,
@@ -329,24 +511,22 @@ const FormMateriales = (props) => {
                     >
 
                         <option value="">Seleccione una Opcion</option>
-                        <option value="Malo">Malo</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Bueno">Bueno</option>
-                        <option value="Muy Bueno">Muy Bueno</option>
-                        <option value="Excelente">Excelente</option>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                        
 
                     </select>
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={1}>
 
                         
                     <span className="text-danger text-small d-block mb-2">
-                    {errors.movMateriales && errors.movMateriales.message}
+                    {errors.perfileriaFrio && errors.perfileriaFrio.message}
                     </span>
 
-
+                
                 </Col>
 
             </Row>
@@ -355,19 +535,23 @@ const FormMateriales = (props) => {
 
             <Row>
 
-                <Col sm={6}>
+                <Col sm={4}>
                     
-                    <label>Almacenamiento seguro, bajo llave y encargado: </label>
+                    <label className="my-2">Que espesor de mm de perfileria usan: </label>
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={6}>
                     
-                    <select 
-
-                        name="almacenSeguro" 
+                    <input 
+                        type="number"
+                        name="espesor"
                         onChange={handleInputChange}
-                        {...register("almacenSeguro", { 
+                        placeholder="* Campo Obligatorio"
+                        className="form-control my-2"
+                        min="0"
+                        step="0.01"
+                        {...register("espesor", { 
 
                             required:{
                                 value: true,
@@ -376,28 +560,22 @@ const FormMateriales = (props) => {
 
                             validate:{
 
+                               
+
                             }
 
                         })}   
-                        
+
                     >
-
-                        <option value="">Seleccione una Opcion</option>
-                        <option value="Malo">Malo</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Bueno">Bueno</option>
-                        <option value="Muy Bueno">Muy Bueno</option>
-                        <option value="Excelente">Excelente</option>
-
-                    </select>
+                    </input>
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={1}>
 
                         
                     <span className="text-danger text-small d-block mb-2">
-                    {errors.almacenSeguro && errors.almacenSeguro.message}
+                    {errors.espesor && errors.espesor.message}
                     </span>
 
 
@@ -409,229 +587,58 @@ const FormMateriales = (props) => {
 
             <Row>
 
-                <Col sm={6}>
+                <Col sm={4}>
                     
-                    <label>Envases vacios de consumibles ubicados en lugar seguro y ordenado: </label>
+                    <label className="my-2">Resultado estetico de la perfileria montada: </label>
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={6}>
                     
-                    <select 
-
-                        name="envasesVacio" 
+                    <input 
+                        type="text"
+                        name="resultado"
                         onChange={handleInputChange}
-                        {...register("envasesVacio", { 
+                        placeholder="* Campo Obligatorio"
+                        className="form-control my-2"
+                        {...register("resultado", { 
 
                             required:{
                                 value: true,
                                 message: '*', 
                             },
 
-                            validate:{
-
-                            }
 
                         })}   
-                        
+
                     >
-
-                        <option value="">Seleccione una Opcion</option>
-                        <option value="Malo">Malo</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Bueno">Bueno</option>
-                        <option value="Muy Bueno">Muy Bueno</option>
-                        <option value="Excelente">Excelente</option>
-
-                    </select>
+                    </input>
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={1}>
 
                         
                     <span className="text-danger text-small d-block mb-2">
-                    {errors.envasesVacio && errors.envasesVacio.message}
+                    {errors.resultado && errors.resultado.message}
                     </span>
 
-
+                   
                 </Col>
 
             </Row>
 
             <br></br>
-
+            
             <Row>
 
-                <Col sm={6}>
-                    
-                    <label>Material Sobrante de recortes y/o escombros en lugar definido y seguro: </label>
-
-                </Col>
-
-                <Col sm={2}>
-                    
-                    <select 
-
-                        name="materialSobran" 
-                        onChange={handleInputChange}
-                        {...register("materialSobran", { 
-
-                            required:{
-                                value: true,
-                                message: '*', 
-                            },
-
-                            validate:{
-
-                            }
-
-                        })}   
-                        
-                    >
-
-                        <option value="">Seleccione una Opcion</option>
-                        <option value="Malo">Malo</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Bueno">Bueno</option>
-                        <option value="Muy Bueno">Muy Bueno</option>
-                        <option value="Excelente">Excelente</option>
-
-                    </select>
-
-                </Col>
-
-                <Col sm={2}>
-
-                        
-                    <span className="text-danger text-small d-block mb-2">
-                    {errors.materialSobran && errors.materialSobran.message}
-                    </span>
-
-
-                </Col>
-
-            </Row>
-
-            <br></br>
-
-            <Row>
-
-                <Col sm={6}>
-                    
-                    <label>Estado de limpieza en lugares de transito de personas y equipos: </label>
-
-                </Col>
-
-                <Col sm={2}>
-                    
-                    <select 
-
-                        name="estadoLimpieza" 
-                        onChange={handleInputChange}
-                        {...register("estadoLimpieza", { 
-
-                            required:{
-                                value: true,
-                                message: '*', 
-                            },
-
-                            validate:{
-
-                            }
-
-                        })}   
-                        
-                    >
-
-                        <option value="">Seleccione una Opcion</option>
-                        <option value="Malo">Malo</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Bueno">Bueno</option>
-                        <option value="Muy Bueno">Muy Bueno</option>
-                        <option value="Excelente">Excelente</option>
-
-                    </select>
-
-                </Col>
-
-                <Col sm={2}>
-
-                        
-                    <span className="text-danger text-small d-block mb-2">
-                    {errors.estadoLimpieza && errors.estadoLimpieza.message}
-                    </span>
-
-
-                </Col>
-
-            </Row>
-
-            <br></br>
-
-            <Row>
-
-                <Col sm={6}>
-                    
-                    <label>Desechos organicos (Restos de comida, etc) removidos con frecuencia: </label>
-
-                </Col>
-
-                <Col sm={2}>
-                    
-                    <select 
-
-                        name="desechosOrgani" 
-                        onChange={handleInputChange}
-                        {...register("desechosOrgani", { 
-
-                            required:{
-                                value: true,
-                                message: '*', 
-                            },
-
-                            validate:{
-
-                            }
-
-                        })}   
-                        
-                    >
-
-                        <option value="">Seleccione una Opcion</option>
-                        <option value="Malo">Malo</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Bueno">Bueno</option>
-                        <option value="Muy Bueno">Muy Bueno</option>
-                        <option value="Excelente">Excelente</option>
-
-                    </select>
-
-                </Col>
-
-                <Col sm={2}>
-
-                        
-                    <span className="text-danger text-small d-block mb-2">
-                    {errors.desechosOrgani && errors.desechosOrgani.message}
-                    </span>
-
-
-                </Col>
-
-            </Row>
-
-            <br></br>
-
-            <Row>
-
-                <Col sm={6}>
+                <Col sm={4}>
                     
                     <label className="my-2">Comentario: </label>
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={6}>
                     
                     <textarea 
                         type="text"
@@ -659,7 +666,7 @@ const FormMateriales = (props) => {
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={1}>
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -678,7 +685,7 @@ const FormMateriales = (props) => {
                 </Col>
 
             </Row>
-
+            
             <br></br>
             <br></br>
 
@@ -716,9 +723,7 @@ const FormMateriales = (props) => {
 
             </Container>
 
-
         </Fragment>
-
 
 
 
@@ -726,6 +731,7 @@ const FormMateriales = (props) => {
 
 
 
+
 }
 
-export default FormMateriales
+export default FormPaneles

@@ -283,6 +283,7 @@ const FormConclusion = (props) => {
                         placeholder="* Campo Obligatorio / Formato con 10,00"
                         className="form-control my-2"
                         min="0"
+                        max="100"
                         step="0.01"
                         {...register("avanceActual", { 
 
@@ -335,6 +336,7 @@ const FormConclusion = (props) => {
                         placeholder="* Campo Obligatorio / Formato con 10,00"
                         className="form-control my-2"
                         min="0"
+                        max="100"
                         step="0.01"
                         {...register("avanceEsperado", { 
 
