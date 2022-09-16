@@ -26,17 +26,21 @@ const PrincipalCargaForm = (props) => {
     useEffect(() => {
 
         ultimoIdVisita()
+        ultimoIdPersona()
 
     },[])
 
-    //Metodo para solicitar el ultimo idVisita =>
+    //Metodo para solicitar el ultimo idVisita x n° de obra =>
     const ultimoIdVisita = async() => {
 
         let ultimoId = 0;
 
+        //Obtener el n° de obra desde el localstorage =>
+        let codigo = localStorage.getItem("codigo")
+
         try{
 
-            const response = await fetch("http://localhost:8080/Proyecto_CheckList/VisitaServlet?action=ultimoId", {
+            const response = await fetch(`http://localhost:8080/Proyecto_CheckList/VisitaServlet?action=ultimoId&codigo=${codigo}`, {
 
                 method:"GET",
                 
@@ -46,9 +50,41 @@ const PrincipalCargaForm = (props) => {
 
             ultimoId = resJson
 
-            console.log("ULTIMO ID_VISITA => ", ultimoId)
+            console.log("ULTIMO ID_VISITA X N° DE OBRA => ", ultimoId)
 
             localStorage.setItem("idVisita", ultimoId)
+
+        }catch(error){
+
+            console.log("Error => ", error)
+
+        }
+
+    }
+
+    //Metodo para solicitar el ultimo idPersona x n° de obra =>
+    const ultimoIdPersona = async() => {
+
+        let ultimoId = 0;
+
+        //Obtener el n° de obra desde el localstorage =>
+        let codigo = localStorage.getItem("codigo")
+
+        try{
+
+            const response = await fetch(`http://localhost:8080/Proyecto_CheckList/PersonaServlet?action=ultimoId&codigo=${codigo}`, {
+
+                method:"GET",
+                
+            })
+
+            const resJson = await response.json()
+
+            ultimoId = resJson
+
+            console.log("ULTIMO ID_PERSONA X N° DE OBRA => ", ultimoId)
+
+            localStorage.setItem("idPersona", ultimoId)
 
         }catch(error){
 

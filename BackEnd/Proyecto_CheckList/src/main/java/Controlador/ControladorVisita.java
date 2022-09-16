@@ -424,8 +424,8 @@ public class ControladorVisita {
 
     }
      
-     //METODO PARA OBTENER EL ULTIMO ID_VISITA =>
-     public Long ultimoIdVisita() {
+     //METODO PARA OBTENER EL ULTIMO ID_VISITA X N° DE OBRA =>
+     public Long ultimoIdVisita(String codigo) {
 
         Connection conexion = null;
         Conexion con = new Conexion();
@@ -437,8 +437,10 @@ public class ControladorVisita {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("SELECT MAX(idVisita) FROM visita");
+            ps = conexion.prepareStatement("SELECT MAX(v.idVisita) FROM visita as v inner join general as g on v.idGeneral = g.idGeneral where g.codigo = ?");
 
+            ps.setString(1,codigo); //Se puede usar indicando el primer signo de pregunta del qwery y alojar la variable
+            
             rs = ps.executeQuery();
 
             while (rs.next()) {

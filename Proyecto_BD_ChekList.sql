@@ -37,7 +37,7 @@ CREATE TABLE `abertura` (
   PRIMARY KEY (`idAbertura`),
   KEY `idVisita_pk9_idx` (`idVisita`),
   CONSTRAINT `idVisita_pk9` FOREIGN KEY (`idVisita`) REFERENCES `visita` (`idVisita`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,6 @@ CREATE TABLE `abertura` (
 
 LOCK TABLES `abertura` WRITE;
 /*!40000 ALTER TABLE `abertura` DISABLE KEYS */;
-INSERT INTO `abertura` VALUES (1,'2022-08-05','2022-04-03',7,23.67,9,'Hola Mundo','2022-09-08','2022-07-07','inactivo',1),(2,'2022-05-02','2022-05-03',3,25.33,3,'prueba comentario','2022-09-15','1900-01-01','activo',24);
 /*!40000 ALTER TABLE `abertura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +71,7 @@ CREATE TABLE `conclusion` (
   PRIMARY KEY (`idConclusion`),
   KEY `idGeneral_pk2_idx` (`idGeneral`),
   CONSTRAINT `idGeneral_pk2` FOREIGN KEY (`idGeneral`) REFERENCES `general` (`idGeneral`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,7 +80,6 @@ CREATE TABLE `conclusion` (
 
 LOCK TABLES `conclusion` WRITE;
 /*!40000 ALTER TABLE `conclusion` DISABLE KEYS */;
-INSERT INTO `conclusion` VALUES (1,'NO',40.00,80.00,'2022-03-04',7,'Muy satisfecho','2022-09-08','2022-07-07','inactivo',1),(2,'Si',58.00,36.00,'2022-02-02',4,'comentario','2022-09-14','1900-01-01','activo',6),(3,'Si',69.00,78.00,'2022-03-25',5,'Hola Mundo','2022-09-14','1900-01-01','activo',5),(4,'Si',58.00,52.00,'2022-09-14',8,'comentario prueba','2022-09-14','1900-01-01','activo',13);
 /*!40000 ALTER TABLE `conclusion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +109,7 @@ CREATE TABLE `general` (
   `estado` varchar(45) NOT NULL,
   PRIMARY KEY (`idGeneral`),
   UNIQUE KEY `codigo_UNIQUE` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +118,6 @@ CREATE TABLE `general` (
 
 LOCK TABLES `general` WRITE;
 /*!40000 ALTER TABLE `general` DISABLE KEYS */;
-INSERT INTO `general` VALUES (1,'P0564','Daniela','Juarez','4533222','Bandera de los Andes Guaymallen Mendoza','C',23.22,24.33,89.33,'EE',44,'ver obra','2022-09-07','1900-01-01','inactivo'),(2,'P0234','Oscar','Rodriguez','34232123','Colon 232 Ciudad Mendoza','NI',23.22,23.21,25.34,'IDC',150,'obra en proceso','2022-09-08','1900-01-01','inactivo'),(3,'PO562','Francisco','Gutierrez','31025852','Alem 2785','Residencial',25.25,38.23,25.25,'Estructura Existente',89,'Hola Mundo','2022-09-12','1900-01-01','activo'),(4,'PO564','Francisco','Gutierrez','31025852','Alem 2785','Residencial',25.25,38.23,25.25,'Estructura Existente',89,'Hola Mundo','2022-09-12','1900-01-01','activo'),(5,'PO320','Martin','Gimenez','310256954','jorge calle 254','Residencial',20.54,36.56,56.24,'Inicia desde Cero',56,'comentario','2022-09-12','1900-01-01','activo'),(6,'PO577','Maria','Martinez','25898214','Juan B Justo','Nave Industrial',58.36,98.33,56.25,'Otro',78,'Otro: Obra en altura','2022-09-13','1900-01-01','activo'),(7,'PO366','Daniel','Jimenez','25332124','Alem 5874','Institucional',58.52,25.87,45.25,'Estructura Existente',78,'Todo correcto ','2022-09-13','1900-01-01','activo'),(8,'PO599','Jose','Paso','58987525','Juan B Justo','Nave Industrial',58.25,36.58,58.96,'Estructura Existente',89,'Comentario','2022-09-13','1900-01-01','activo'),(9,'PO5788','Maria','Martinez','25898214','Juan B Justo','Nave Industrial',25.56,36.25,26.32,'Otro',78,'Otro kkkkk','2022-09-13','1900-01-01','activo'),(10,'PO3254','Federico','Lopez','36985234','Martinez 2531','Nave Industrial',58.00,56.00,14.00,'Estructura Existente',58,'Se completa ok','2022-09-14','1900-01-01','activo'),(11,'PO369','Fabian','show','69542123','Juan B Justo','Nave Industrial',58.00,39.00,89.00,'Estructura Existente',89,'Hola Mundo','2022-09-14','1900-01-01','activo'),(12,'PO697','Penelope','Cruz','36584582','25 de Mayo 542','Nave Industrial',25.00,36.00,78.00,'Estructura Existente',98,'Hola Mundo','2022-09-14','1900-01-01','activo'),(13,'PO621','Juan','Poyesa','25231452','Fuerza Noble 21','Residencial',25.00,33.00,87.00,'Estructura Existente',56,'Lopez y Casas','2022-09-14','1900-01-01','activo'),(14,'PO897','Emilio','Figal','20353212314','Colon 256','Nave Industrial',56.00,54.00,25.00,'Estructura Existente',77,'Se agrega comentario prueba','2022-09-14','1900-01-01','activo');
 /*!40000 ALTER TABLE `general` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +146,7 @@ CREATE TABLE `gremio` (
   PRIMARY KEY (`idGremio`),
   KEY `idPersona_pk_idx` (`idPersona`),
   CONSTRAINT `idPersona_pk` FOREIGN KEY (`idPersona`) REFERENCES `persona` (`idPersona`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,7 +155,6 @@ CREATE TABLE `gremio` (
 
 LOCK TABLES `gremio` WRITE;
 /*!40000 ALTER TABLE `gremio` DISABLE KEYS */;
-INSERT INTO `gremio` VALUES (1,'Gremio Persona',2,'12:34:23','15:30:00','2022-01-02','2022-03-08',3,'Daniel','Juarez','2022-09-08','2022-09-08','inactivo',1);
 /*!40000 ALTER TABLE `gremio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,7 +189,7 @@ CREATE TABLE `humeda` (
   PRIMARY KEY (`idHumeda`),
   KEY `idVisita_pk2_idx` (`idVisita`),
   CONSTRAINT `idVisita_pk3` FOREIGN KEY (`idVisita`) REFERENCES `visita` (`idVisita`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -202,7 +198,6 @@ CREATE TABLE `humeda` (
 
 LOCK TABLES `humeda` WRITE;
 /*!40000 ALTER TABLE `humeda` DISABLE KEYS */;
-INSERT INTO `humeda` VALUES (1,'2022-02-11','2022-04-11','21','34','43','23','12','34','34','5','11','7','2','meteorito','Esperando que pase','2022-04-02','2022-09-08','inactivo',1),(2,'2022-09-05','2022-09-06','25.25','3','26.25','5','25.63','5','36.32','5','45.36','5','8','Otro','otro: problemas varios','2022-09-15','1900-01-01','activo',22);
 /*!40000 ALTER TABLE `humeda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,7 +225,7 @@ CREATE TABLE `material` (
   PRIMARY KEY (`idMaterial`),
   KEY `idVisita_pk1_idx` (`idVisita`),
   CONSTRAINT `idVisita_pk1` FOREIGN KEY (`idVisita`) REFERENCES `visita` (`idVisita`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +234,6 @@ CREATE TABLE `material` (
 
 LOCK TABLES `material` WRITE;
 /*!40000 ALTER TABLE `material` DISABLE KEYS */;
-INSERT INTO `material` VALUES (1,'E','E','E','E','B','B','E','elementos y materiales','2022-08-10','1900-01-01','inactivo',1),(2,'E','E','R','MB','R','R','MB','Se detalla el material','1900-01-01','1900-01-01','inactivo',2),(3,'Bueno','Bueno','Muy Bueno','Malo','Regular','Muy Bueno','Muy Bueno','comentario de prueba','2022-09-14','1900-01-01','activo',22);
 /*!40000 ALTER TABLE `material` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,7 +262,7 @@ CREATE TABLE `panel` (
   PRIMARY KEY (`idPanel`),
   KEY `idVisita_pk5_idx` (`idVisita`),
   CONSTRAINT `idVisita_pk5` FOREIGN KEY (`idVisita`) REFERENCES `visita` (`idVisita`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -277,7 +271,6 @@ CREATE TABLE `panel` (
 
 LOCK TABLES `panel` WRITE;
 /*!40000 ALTER TABLE `panel` DISABLE KEYS */;
-INSERT INTO `panel` VALUES (1,'NO','Baja','Doble','tornillos','No','Si',25.60,'Excelente','Maravilla','2022-09-12','2022-07-07','inactivo',1),(2,'si','varios','rosca','tornillos','Si','No',20.36,'bueno','comentario de prueba','2022-09-15','2022-09-15','activo',22);
 /*!40000 ALTER TABLE `panel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,7 +306,7 @@ CREATE TABLE `persona` (
   PRIMARY KEY (`idPersona`),
   KEY `idVisita_pk2_idx` (`idVisita`),
   CONSTRAINT `idVisita_pk2` FOREIGN KEY (`idVisita`) REFERENCES `visita` (`idVisita`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -322,7 +315,6 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` VALUES (1,4,1,'Maritimo SA','NO','NO','SI','NO','SI','NO','SI','NO',19,23,23,12,'Se presentan','2022-09-08','2022-09-08','inactivo',1),(2,6,1,'Puerto SA','NO','NO','NO','SI','SI','SI','SI','SI',24,34,36,39,'Se presenta 1 gremio','2022-09-08','1900-01-01','activo',2),(3,5,2,'Obreros','Si','Si','No','Si','No','Si','Si','No',18,45,18,45,'comentario prueba','2022-09-15','1900-01-01','activo',25);
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -347,7 +339,7 @@ CREATE TABLE `redagua` (
   PRIMARY KEY (`idAgua`),
   KEY `idVisita_pk6_idx` (`idVisita`),
   CONSTRAINT `idVisita_pk6` FOREIGN KEY (`idVisita`) REFERENCES `visita` (`idVisita`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -356,7 +348,6 @@ CREATE TABLE `redagua` (
 
 LOCK TABLES `redagua` WRITE;
 /*!40000 ALTER TABLE `redagua` DISABLE KEYS */;
-INSERT INTO `redagua` VALUES (1,'2022-01-02','2022-02-02',33.22,4,'Hola','2022-03-03','2022-07-07','inactivo',1),(2,'2022-02-05','2022-05-30',45.36,1,'comentario prueba','2022-09-15','1900-01-01','activo',24);
 /*!40000 ALTER TABLE `redagua` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -381,7 +372,7 @@ CREATE TABLE `redelectricidad` (
   PRIMARY KEY (`idElectricidad`),
   KEY `idVisita_pk8_idx` (`idVisita`),
   CONSTRAINT `idVisita_pk8` FOREIGN KEY (`idVisita`) REFERENCES `visita` (`idVisita`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -390,7 +381,6 @@ CREATE TABLE `redelectricidad` (
 
 LOCK TABLES `redelectricidad` WRITE;
 /*!40000 ALTER TABLE `redelectricidad` DISABLE KEYS */;
-INSERT INTO `redelectricidad` VALUES (1,'2022-05-03','2022-03-03',45.22,4,'Hola','2022-09-08','2022-07-07','inactivo',1),(2,'2022-05-02','2022-02-03',45.36,4,'prueba campo','2022-09-15','1900-01-01','activo',24);
 /*!40000 ALTER TABLE `redelectricidad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -415,7 +405,7 @@ CREATE TABLE `redgas` (
   PRIMARY KEY (`idGas`),
   KEY `idVisita_pk7_idx` (`idVisita`),
   CONSTRAINT `idVisita_pk7` FOREIGN KEY (`idVisita`) REFERENCES `visita` (`idVisita`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -424,7 +414,6 @@ CREATE TABLE `redgas` (
 
 LOCK TABLES `redgas` WRITE;
 /*!40000 ALTER TABLE `redgas` DISABLE KEYS */;
-INSERT INTO `redgas` VALUES (1,'2022-10-02','2022-02-04',54.22,5,'Hola','2022-09-08','2022-07-07','inactivo',1),(2,'2022-05-02','2022-04-03',45.69,5,'prueba campo','2022-09-15','1900-01-01','activo',24);
 /*!40000 ALTER TABLE `redgas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -460,7 +449,7 @@ CREATE TABLE `seco` (
   PRIMARY KEY (`idSeco`),
   KEY `idVisita_pk4_idx` (`idVisita`),
   CONSTRAINT `idVisita_pk4` FOREIGN KEY (`idVisita`) REFERENCES `visita` (`idVisita`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -469,7 +458,6 @@ CREATE TABLE `seco` (
 
 LOCK TABLES `seco` WRITE;
 /*!40000 ALTER TABLE `seco` DISABLE KEYS */;
-INSERT INTO `seco` VALUES (1,'2022-02-11','2022-04-23','12','4','5','1','14','21','12','56','22','Fuego','Materiales Vigas','Materiales Muros','Materiales Cubiertas','Esperando que pase la lluvia','2022-09-08','2022-09-08','inactivo',1),(2,'2022-06-05','2022-07-06','22.58','8','23.58','5','25.24','6','56.25','8','8','Mal Tiempo','carpas','martillo','manzanas','comentario de prueba','2022-09-15','1900-01-01','activo',22);
 /*!40000 ALTER TABLE `seco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -493,7 +481,7 @@ CREATE TABLE `visita` (
   PRIMARY KEY (`idVisita`),
   KEY `idGeneral_fk_idx` (`idGeneral`),
   CONSTRAINT `idGeneral_fk` FOREIGN KEY (`idGeneral`) REFERENCES `general` (`idGeneral`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -502,7 +490,6 @@ CREATE TABLE `visita` (
 
 LOCK TABLES `visita` WRITE;
 /*!40000 ALTER TABLE `visita` DISABLE KEYS */;
-INSERT INTO `visita` VALUES (1,'2022-09-13','Jorge','Diaz',2,'2022-09-22','1900-01-01','inactivo',2),(2,'2022-09-22','Enrique','Gutierrez',1,'1900-01-01','1900-01-01','activo',2),(3,'2022-09-13','Juan','Lopez',1,'2022-09-13','1900-01-01','activo',8),(4,'2022-09-13','Juan','Lopez',1,'2022-09-13','1900-01-01','activo',9),(5,'2022-09-14','Daniel','Gimenez',1,'2022-09-14','1900-01-01','activo',10),(6,'2022-09-14','Carlos','Suarez',2,'2022-09-14','1900-01-01','activo',10),(7,'2022-09-14','Maria','Martinez',2,'2022-09-14','1900-01-01','activo',10),(8,'2022-09-14','Penelope','Cruz',1,'2022-09-14','1900-01-01','activo',5),(9,'2022-09-14','Penelope','Cruz',1,'2022-09-14','1900-01-01','activo',8),(10,'2022-09-14','Penelope','Cruz',2,'2022-09-14','1900-01-01','activo',9),(11,'2022-09-14','Carlos','Suarez',1,'2022-09-14','1900-01-01','activo',11),(12,'2022-09-14','Carlos','Suarez',2,'2022-09-14','1900-01-01','activo',11),(13,'2022-09-14','Maria','Martinez',2,'2022-09-14','1900-01-01','activo',11),(14,'2022-09-14','Daniel','Gimenez',3,'2022-09-14','1900-01-01','activo',11),(15,'2022-09-14','Maria','Martinez',4,'2022-09-14','1900-01-01','activo',11),(16,'2022-09-14','Fabian','show',5,'2022-09-14','1900-01-01','activo',11),(17,'2022-09-14','Penelope','Cruz',6,'2022-09-14','1900-01-01','activo',11),(18,'2022-09-14','Juan','Lopez',7,'2022-09-14','1900-01-01','activo',11),(19,'2022-09-14','Fabian','show',1,'2022-09-14','1900-01-01','activo',12),(20,'2022-09-14','Juan','Lopez',2,'2022-09-14','1900-01-01','activo',5),(21,'2022-09-14','Maria','Martinez',1,'2022-09-14','1900-01-01','activo',13),(22,'2022-09-14','Gabriela','Martinez',1,'2022-09-14','1900-01-01','activo',14),(23,'2022-09-15','Juan','Lopez',1,'2022-09-15','1900-01-01','activo',6),(24,'2022-09-15','Penelope','Cruz',2,'2022-09-15','1900-01-01','activo',6),(25,'2022-09-15','Maria','Martinez',2,'2022-09-15','1900-01-01','activo',13);
 /*!40000 ALTER TABLE `visita` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -515,4 +502,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-15 17:24:45
+-- Dump completed on 2022-09-16 10:57:53

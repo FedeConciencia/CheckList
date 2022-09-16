@@ -157,8 +157,10 @@ public class ServletVisita extends HttpServlet {
                     
                 }else if(request.getParameter("action").equals("ultimoId")){
                     
-                    ControladorVisita c1 = new ControladorVisita();   
-                    Long ultimoId = c1.ultimoIdVisita();
+                    String codigo = request.getParameter("codigo");
+                    
+                    ControladorVisita c1 = new ControladorVisita();    
+                    Long ultimoId = c1.ultimoIdVisita(codigo);
                     Gson gsonBuilder = new GsonBuilder().create();
                     String ultimoJson = gsonBuilder.toJson(ultimoId);
                     respuestaServer = ultimoJson;

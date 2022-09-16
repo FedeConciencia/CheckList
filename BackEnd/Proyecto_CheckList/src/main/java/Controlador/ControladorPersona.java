@@ -419,4 +419,53 @@ public class ControladorPersona {
 
     }
     
+    
+    //METODO PARA OBTENER EL ULTIMO ID_PERSONA X N° DE OBRA =>
+     public Long ultimoIdPersona(String codigo) {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        Long idPersona = 0L;
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("SELECT MAX(p.idPersona) FROM persona as p inner join visita as v on p.idVisita = v.idVisita inner join general as g on v.idGeneral = g.idGeneral where g.codigo = ?");
+
+            ps.setString(1,codigo); //Se puede usar indicando el primer signo de pregunta del qwery y alojar la variable
+            
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                idPersona = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                
+            }
+
+            conexion.close();
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+
+                ps.close();
+                rs.close();
+
+            } catch (SQLException ex) {
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+        return idPersona; //devolvemos el ultimo id
+
+    }
+    
 }

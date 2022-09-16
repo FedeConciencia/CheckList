@@ -115,6 +115,7 @@ const PrevCargaConclusion = (props) => {
 
         let id = await idGeneral()
 
+        //Verificamos si la entidad Conclusion ya tiene gargado un Form =>
         let contador = await contadorConclusion(id)
 
         let codigo = localStorage.getItem("codigo")

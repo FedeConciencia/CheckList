@@ -179,7 +179,7 @@ public class Principal {
         
         /*
         
-        //DELETE LOGIC OBJETO GENERAL (OK) =>
+        //DELETE LOGIC OBJETO VISITA (OK) =>
         
         ControladorVisita c1 = new ControladorVisita();
         
@@ -190,7 +190,7 @@ public class Principal {
 
         /*
         
-        //INCREMENTAR EL VALOR DEL N° DE OBRA A TRAVES  (OK) =>
+        //INCREMENTAR EL VALOR DE N_VISITA A TRAVES N° DE OBRA (OK) =>
         
         ControladorVisita c1 = new ControladorVisita();
         int nVisita = c1.incrementarVisita("P0234");
@@ -199,6 +199,18 @@ public class Principal {
         
         */
         
+        /*
+        
+        //OBTENER ULTIMO ID_VISITA X N° DE OBRA (OK) =>
+        
+        ControladorVisita c1 = new ControladorVisita();
+        
+        Long idVisita = c1.ultimoIdVisita("PO621");
+        
+        System.out.println("El ultimo idVisita ingresado es : " + idVisita);
+        
+        
+        */
       
         
         //----------------------------------------------------------
@@ -344,6 +356,18 @@ public class Principal {
         
         c1.eliminarLogicoPersona(1L, LocalDate.parse("2022-09-08"));
         
+        
+        */
+        
+        /*
+        
+        //OBTENER ULTIMO ID_PERSONA X N° DE OBRA (OK) =>
+        
+        ControladorPersona c1 = new ControladorPersona();
+        
+        Long idPersona = c1.ultimoIdPersona("PO621");
+        
+        System.out.println("El ultimo idPersona ingresado es : " + idPersona);
         
         */
         

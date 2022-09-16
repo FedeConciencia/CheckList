@@ -19,6 +19,7 @@ import FormRedGas from "../src/components/FormRedGas"
 import FormRedElectricidad from "../src/components/FormRedElectricidad"
 import FormAberturas from "../src/components/FormAberturas"
 import FormPersonas from "../src/components/FormPersonas"
+import FormGremios from "../src/components/FormGremios"
 
 
 const App = () => {
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/formRedAgua" element={<FormRedAgua />} />
           <Route path="/formRedGas" element={<FormRedGas />} />
           <Route path="/formAberturas" element={<FormAberturas />} />
+          <Route path="/formGremios" element={<FormGremios />} />
 
 
         </Routes>
