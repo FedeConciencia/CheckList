@@ -67,7 +67,7 @@ const Home = (props) => {
                 <Col>
                 
                     <Button variant='primary' size="lg" href="/prevCarga" className='botonGrande'>CARGAR DATOS</Button>&nbsp;&nbsp;
-                    <Button variant='primary' size="lg" href="/vista" className='botonGrande'>VER DATOS</Button>
+                    <Button variant='primary' size="lg" href="/visita" className='botonGrande'>VER DATOS</Button>
                 
                 </Col>
 

@@ -46,6 +46,7 @@ const App = () => {
           <Route path="/formPaneles" element={<FormPaneles />} />
           <Route path="/formRedAgua" element={<FormRedAgua />} />
           <Route path="/formRedGas" element={<FormRedGas />} />
+          <Route path="/formRedElectricidad" element={<FormRedElectricidad />} />
           <Route path="/formAberturas" element={<FormAberturas />} />
           <Route path="/formGremios" element={<FormGremios />} />
 

@@ -843,7 +843,7 @@ const FormSeco = (props) => {
                         type="text"
                         name="materialVigas"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 1 (entero)"
+                        placeholder="* Campo Obligatorio"
                         className="form-control my-2"
                         {...register("materialVigas", { 
 
@@ -888,7 +888,7 @@ const FormSeco = (props) => {
                         type="text"
                         name="materialMuros"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 1 (entero)"
+                        placeholder="* Campo Obligatorio"
                         className="form-control my-2"
                         {...register("materialMuros", { 
 
@@ -933,7 +933,7 @@ const FormSeco = (props) => {
                         type="text"
                         name="materialCubiertas"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 1 (entero)"
+                        placeholder="* Campo Obligatorio"
                         className="form-control my-2"
                         {...register("materialCubiertas", { 
 

@@ -41,7 +41,7 @@ DELETE FROM visita;
 alter table visita auto_increment = 1;
 
 #Query para obtener por N° de Obra/codigo el mayor numero de Visita =>
-Select max(v.nVisita) as UltimaVisita from general as g inner join visita as v on g.idGeneral = v.idGeneral where g.codigo = "P0234";
+Select max(v.nVisita) as UltimaVisita from general as g inner join visita as v on g.idGeneral = v.idGeneral where g.codigo = "PO7892";
 
 #Query para obtener el ultimo idVisita asociado al n° de obra =>
 SELECT MAX(v.idVisita) FROM visita as v inner join general as g on v.idGeneral = g.idGeneral where g.codigo = "PO621"; 

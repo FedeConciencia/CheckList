@@ -996,7 +996,7 @@ const FormPersonas = (props) => {
 
                 <Col sm={3}>
                     
-                    <label className="my-2">Rango de edad (Edad Menor): </label>
+                    <label className="my-2">Rango de edad (Edad Mayor): </label>
 
                 </Col>
 

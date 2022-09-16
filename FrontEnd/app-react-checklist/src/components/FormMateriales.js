@@ -625,13 +625,13 @@ const FormMateriales = (props) => {
 
             <Row>
 
-                <Col sm={6}>
+                <Col sm={3}>
                     
                     <label className="my-2">Comentario: </label>
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={6}>
                     
                     <textarea 
                         type="text"
@@ -659,7 +659,7 @@ const FormMateriales = (props) => {
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={1}>
 
                         
                     <span className="text-danger text-small d-block mb-2">

@@ -185,7 +185,7 @@ const FormAberturas = (props) => {
 
                 console.log("VALIDAR => ", validar)
 
-                document.querySelector("#mensaje").innerHTML = "YA FUE GESTIONADA LA CARGA DEL FORMULARIO RED DE ELECTRICIDAD PARA ESTA VISITA"
+                document.querySelector("#mensaje").innerHTML = "YA FUE GESTIONADA LA CARGA DEL FORMULARIO ABERTURAS PARA ESTA VISITA"
 
                 return validar
 

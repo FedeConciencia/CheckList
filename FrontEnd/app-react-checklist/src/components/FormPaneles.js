@@ -234,7 +234,7 @@ const FormPaneles = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO DE REGISTRO DE CONSTRUCCION EN SECO</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO DE REGISTRO DE PANELES</Alert.Heading>
 
             <br></br>
 

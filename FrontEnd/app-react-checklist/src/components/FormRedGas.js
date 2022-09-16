@@ -182,7 +182,7 @@ const FormRedGas = (props) => {
 
                 console.log("VALIDAR => ", validar)
 
-                document.querySelector("#mensaje").innerHTML = "YA FUE GESTIONADA LA CARGA DEL FORMULARIO RED DE AGUA PARA ESTA VISITA"
+                document.querySelector("#mensaje").innerHTML = "YA FUE GESTIONADA LA CARGA DEL FORMULARIO RED DE GAS PARA ESTA VISITA"
 
                 return validar
 
