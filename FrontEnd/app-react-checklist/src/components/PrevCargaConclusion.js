@@ -19,12 +19,20 @@ const PrevCargaConclusion = (props) => {
 
     const[nVisitaIncremt, setNVisitaIncrement] = useState()
 
+    const[validar,setValidar] = useState({
+
+        validarConclusion:false,
+
+    })
+
     useEffect(() => {
 
         let n =  localStorage.getItem("nVisitaIncremental")
 
         //Actualizo el numero visita para pasar por incremento =>
         setNVisitaIncrement(n)
+
+        evento()
 
     },[])
 
@@ -124,10 +132,21 @@ const PrevCargaConclusion = (props) => {
 
             document.querySelector("#mensaje").innerHTML = "El n° de obra ingresado " + codigo + " ya tiene cargada la conclusion final de obra."
 
+            //Se cambia el valor de hooks validar, para bloquear el boton de formularios =>
+            setValidar({
+
+                validarConclusion:true,
+
+            })
+
         }else{
 
-            //Redirecciono y paso los datos a traves de un search =>
-            navigate(`/formConclusion`)
+             //Se cambia el valor de hooks validar, para bloquear el boton de formularios =>
+             setValidar({
+
+                validarConclusion:false,
+
+            })
 
         }
 
@@ -157,8 +176,8 @@ const PrevCargaConclusion = (props) => {
 
                 <Col>
                 
-                    <Button type="button" variant='primary' size="lg" href={`/formVisita?nroVisita=${nVisitaIncremt}`} className='botonGrande'>OTROS FORMULARIOS</Button>&nbsp;&nbsp;
-                    <Button type="button" onClick={(e) => evento()} variant='primary' size="lg" className='botonGrande'>CONCLUSION FINAL</Button>
+                    <Button type="button" variant='primary' size="lg" href={`/formVisita?nroVisita=${nVisitaIncremt}`} disabled={validar.validarConclusion === true} className='botonGrande'>OTROS FORMULARIOS</Button>&nbsp;&nbsp;
+                    <Button type="button" variant='primary' size="lg" href={`/formConclusion`}  disabled={validar.validarConclusion === true} className='botonGrande'>CONCLUSION FINAL</Button>
                 
                 </Col>
 

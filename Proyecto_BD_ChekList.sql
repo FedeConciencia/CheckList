@@ -27,7 +27,7 @@ CREATE TABLE `abertura` (
   `fechaInicial` date NOT NULL,
   `fechaFinal` date NOT NULL,
   `cantidad` int NOT NULL,
-  `m2` decimal(4,2) NOT NULL,
+  `m2` decimal(8,2) NOT NULL,
   `nroPersona` int NOT NULL,
   `comentario` varchar(3000) NOT NULL,
   `fechaAlta` date NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE `abertura` (
 
 LOCK TABLES `abertura` WRITE;
 /*!40000 ALTER TABLE `abertura` DISABLE KEYS */;
-INSERT INTO `abertura` VALUES (1,'2022-05-05','2022-05-06',4,45.26,6,'prueba comentario','2022-09-16','1900-01-01','activo',1),(2,'2022-05-03','2022-05-04',3,25.25,5,'campo 3','2022-09-16','1900-01-01','activo',2);
+INSERT INTO `abertura` VALUES (1,'2022-09-08','2022-09-10',8,25698.33,8,'campo 1','2022-09-19','1900-01-01','activo',1),(2,'2022-09-08','2022-09-15',8,2535.22,9,'prueba campo','2022-09-19','1900-01-01','activo',4);
 /*!40000 ALTER TABLE `abertura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,8 +60,8 @@ DROP TABLE IF EXISTS `conclusion`;
 CREATE TABLE `conclusion` (
   `idConclusion` int NOT NULL AUTO_INCREMENT,
   `obraTerminada` varchar(45) NOT NULL,
-  `avanceActual` decimal(4,2) NOT NULL,
-  `avanceEsperado` decimal(4,2) NOT NULL,
+  `avanceActual` decimal(8,2) NOT NULL,
+  `avanceEsperado` decimal(8,2) NOT NULL,
   `fechaFinalizacion` date NOT NULL,
   `gradoSatisfaccion` int NOT NULL,
   `comentario` varchar(3000) NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE `conclusion` (
   PRIMARY KEY (`idConclusion`),
   KEY `idGeneral_pk2_idx` (`idGeneral`),
   CONSTRAINT `idGeneral_pk2` FOREIGN KEY (`idGeneral`) REFERENCES `general` (`idGeneral`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,7 +81,7 @@ CREATE TABLE `conclusion` (
 
 LOCK TABLES `conclusion` WRITE;
 /*!40000 ALTER TABLE `conclusion` DISABLE KEYS */;
-INSERT INTO `conclusion` VALUES (1,'Si',80.00,80.00,'2022-03-05',8,'campo 4','2022-09-16','1900-01-01','activo',1);
+INSERT INTO `conclusion` VALUES (1,'Si',80.00,90.00,'2022-08-10',8,'campo 1','2022-09-19','1900-01-01','activo',1),(2,'Si',58.00,100.00,'2022-09-06',10,'prueba campo','2022-09-19','1900-01-01','activo',3);
 /*!40000 ALTER TABLE `conclusion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,9 +100,9 @@ CREATE TABLE `general` (
   `dni` varchar(45) NOT NULL,
   `domicilio` varchar(45) NOT NULL,
   `usoEdificio` varchar(45) NOT NULL,
-  `alturaEdificio` decimal(4,2) NOT NULL,
-  `m2Cubierta` decimal(4,2) NOT NULL,
-  `m2Muro` decimal(4,2) NOT NULL,
+  `alturaEdificio` decimal(8,2) NOT NULL,
+  `m2Cubierta` decimal(8,2) NOT NULL,
+  `m2Muro` decimal(8,2) NOT NULL,
   `alcance` varchar(45) NOT NULL,
   `duracionObra` int NOT NULL,
   `comentario` varchar(3000) NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE `general` (
   `estado` varchar(45) NOT NULL,
   PRIMARY KEY (`idGeneral`),
   UNIQUE KEY `codigo_UNIQUE` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `general` (
 
 LOCK TABLES `general` WRITE;
 /*!40000 ALTER TABLE `general` DISABLE KEYS */;
-INSERT INTO `general` VALUES (1,'PO7892','Maria','Martinez','25898214','Juan B Justo','Residencial',25.36,36.32,25.63,'Inicia desde Cero',28,'prueba comentario','2022-09-16','1900-01-01','activo');
+INSERT INTO `general` VALUES (1,'PO7892','Maria','Martinez','25898214','Juan B Justo','Nave Industrial',6895.22,69587.25,789652.52,'Inicia desde Cero',89,'comentario 1','2022-09-19','1900-01-01','activo'),(2,'PO7893','Daniel','Gimenez','25898214','25 de Mayo 542','Nave Industrial',5854.23,5689.23,5879.25,'Ampliacion',89,'prueba campo 1','2022-09-19','1900-01-01','activo'),(3,'PO2365','Diana','Solana','36954785','manantiales 234','Residencial',5654.25,2545.36,1254.25,'Inicia desde Cero',58,'prueba campo','2022-09-19','1900-01-01','activo');
 /*!40000 ALTER TABLE `general` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +149,7 @@ CREATE TABLE `gremio` (
   PRIMARY KEY (`idGremio`),
   KEY `idPersona_pk_idx` (`idPersona`),
   CONSTRAINT `idPersona_pk` FOREIGN KEY (`idPersona`) REFERENCES `persona` (`idPersona`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,7 +158,7 @@ CREATE TABLE `gremio` (
 
 LOCK TABLES `gremio` WRITE;
 /*!40000 ALTER TABLE `gremio` DISABLE KEYS */;
-INSERT INTO `gremio` VALUES (1,'Ganadero SA',2,'10:20:00','13:45:00','2022-02-03','2022-02-04',1,'Juan','Lopez','2022-09-16','1900-01-01','activo',1),(2,'Obreros SA',3,'20:15:00','21:10:00','2022-05-02','2022-05-03',2,'Carlos','Suarez','2022-09-16','1900-01-01','activo',1),(3,'Prueba Gremio 1',3,'15:20:00','15:36:00','2022-05-02','2022-06-03',2,'Maria','Kilos','2022-09-16','1900-01-01','activo',2),(4,'Prueba Gremio 2',5,'10:20:00','13:45:00','2022-02-05','2022-03-06',5,'Juan','Carvello','2022-09-16','1900-01-01','activo',2);
+INSERT INTO `gremio` VALUES (1,'Ganadero SA',3,'10:20:00','13:45:00','2022-09-19','2022-09-02',4,'Juan','Vildoza','2022-09-19','1900-01-01','activo',1),(2,'Sanidad SA',3,'10:20:00','13:20:00','2022-09-19','2022-09-20',2,'Emilio','Diaz','2022-09-19','1900-01-01','activo',2);
 /*!40000 ALTER TABLE `gremio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -202,7 +202,7 @@ CREATE TABLE `humeda` (
 
 LOCK TABLES `humeda` WRITE;
 /*!40000 ALTER TABLE `humeda` DISABLE KEYS */;
-INSERT INTO `humeda` VALUES (1,'2022-02-05','2022-03-03','NA','3','26.25','5','25.63','YC','36.32','5','45.36','5','8','Mal Tiempo','prueba comentario','2022-09-16','1900-01-01','activo',1),(2,'2022-05-03','2022-05-03','28.23','3','29.36','3','35.63','5','48.33','9','89.26','9','45','Mal Tiempo','comentario 2','2022-09-16','1900-01-01','activo',2);
+INSERT INTO `humeda` VALUES (1,'2022-09-19','2022-09-25','68952.22','3','58985,33','5','58974,36','5','58954,33','9','259874,33','9','9','Mal Tiempo','comentario 1','2022-09-19','1900-01-01','activo',1),(2,'2022-09-05','2022-09-10','25689.22','5','2587.33','5','5874.26','8','2354.22','5','36','8','5','Otro','Otro: mal tiempo','2022-09-19','1900-01-01','activo',4);
 /*!40000 ALTER TABLE `humeda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,7 +239,7 @@ CREATE TABLE `material` (
 
 LOCK TABLES `material` WRITE;
 /*!40000 ALTER TABLE `material` DISABLE KEYS */;
-INSERT INTO `material` VALUES (1,'Malo','Regular','Regular','Malo','Bueno','Muy Bueno','Bueno','compro prueba','2022-09-16','1900-01-01','activo',1),(2,'Regular','Regular','Bueno','Muy Bueno','Muy Bueno','Excelente','Bueno','comentario prueba 2','2022-09-16','1900-01-01','activo',2);
+INSERT INTO `material` VALUES (1,'Regular','Bueno','Regular','Muy Bueno','Muy Bueno','Excelente','Excelente','comentario 1','2022-09-19','1900-01-01','activo',1),(2,'Regular','Regular','Regular','Bueno','Bueno','Bueno','Regular','campo prueba','2022-09-19','1900-01-01','activo',4);
 /*!40000 ALTER TABLE `material` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,7 +258,7 @@ CREATE TABLE `panel` (
   `perfileria` varchar(300) NOT NULL,
   `panelesFrio` varchar(45) NOT NULL,
   `perfileriaFrio` varchar(45) NOT NULL,
-  `espesor` decimal(4,2) NOT NULL,
+  `espesor` decimal(8,2) NOT NULL,
   `resultado` varchar(300) NOT NULL,
   `comentario` varchar(3000) NOT NULL,
   `fechaAlta` date NOT NULL,
@@ -277,7 +277,7 @@ CREATE TABLE `panel` (
 
 LOCK TABLES `panel` WRITE;
 /*!40000 ALTER TABLE `panel` DISABLE KEYS */;
-INSERT INTO `panel` VALUES (1,'si','izajes aumentados','tornillos rosca','pegamento','Si','No',25.25,'excelente','comentario prueba','2022-09-16','2022-09-16','activo',1),(2,'no','izajes paralelos','tornillos rosca','pegamento','No','No',2.00,'bueno','campo prueba','2022-09-16','2022-09-16','activo',2);
+INSERT INTO `panel` VALUES (1,'no','izajes aumentados','tornillos rosca','pegamento','Si','No',5888.20,'muy bueno','comentario 1','2022-09-19','2022-09-19','activo',1),(2,'si','izajes paralelos','afilados','clavos','Si','No',45.00,'bueno','prueba campo','2022-09-19','2022-09-19','activo',4);
 /*!40000 ALTER TABLE `panel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -322,7 +322,7 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` VALUES (1,3,2,'Obreros','Si','No','Si','No','No','Si','Si','No',18,45,18,45,'prueba comentario','2022-09-16','1900-01-01','activo',1),(2,8,2,'Materialistas','No','Si','Si','No','Si','Si','No','Si',22,56,18,58,'campo 2','2022-09-16','1900-01-01','activo',2);
+INSERT INTO `persona` VALUES (1,5,2,'Obreros','Si','No','Si','Si','No','Si','No','No',18,45,17,47,'comentario 1','2022-09-19','1900-01-01','activo',1),(2,5,1,'Obreros','Si','Si','Si','No','No','No','No','No',22,45,18,49,'comentario 1\n','2022-09-19','1900-01-01','activo',4);
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -337,7 +337,7 @@ CREATE TABLE `redagua` (
   `idAgua` int NOT NULL AUTO_INCREMENT,
   `fechaInicio` date NOT NULL,
   `fechaFinal` date NOT NULL,
-  `metrosLineales` decimal(4,2) NOT NULL,
+  `metrosLineales` decimal(8,2) NOT NULL,
   `nroPersonas` int NOT NULL,
   `comentario` varchar(3000) NOT NULL,
   `fechaAlta` date NOT NULL,
@@ -356,7 +356,7 @@ CREATE TABLE `redagua` (
 
 LOCK TABLES `redagua` WRITE;
 /*!40000 ALTER TABLE `redagua` DISABLE KEYS */;
-INSERT INTO `redagua` VALUES (1,'2022-05-03','2022-05-02',45.36,4,'prueba comentario','2022-09-16','1900-01-01','activo',1),(2,'2022-05-03','2022-05-05',45.36,5,'campo 2','2022-09-16','1900-01-01','activo',2);
+INSERT INTO `redagua` VALUES (1,'2022-09-05','2022-09-08',56898.22,9,'comentario 1','2022-09-19','1900-01-01','activo',1),(2,'2022-09-05','2022-09-08',2543.88,8,'prueba campo','2022-09-19','1900-01-01','activo',4);
 /*!40000 ALTER TABLE `redagua` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -371,7 +371,7 @@ CREATE TABLE `redelectricidad` (
   `idElectricidad` int NOT NULL AUTO_INCREMENT,
   `fechaInicio` date NOT NULL,
   `fechaFinal` date NOT NULL,
-  `metrosLineales` decimal(4,2) NOT NULL,
+  `metrosLineales` decimal(8,2) NOT NULL,
   `nroPersonas` int NOT NULL,
   `comentario` varchar(3000) NOT NULL,
   `fechaAlta` date NOT NULL,
@@ -390,7 +390,7 @@ CREATE TABLE `redelectricidad` (
 
 LOCK TABLES `redelectricidad` WRITE;
 /*!40000 ALTER TABLE `redelectricidad` DISABLE KEYS */;
-INSERT INTO `redelectricidad` VALUES (1,'2022-06-05','2022-07-25',45.36,9,'campo obligatorio','2022-09-16','1900-01-01','activo',1),(2,'2022-02-03','2022-02-04',69.32,6,'campo 2','2022-09-16','1900-01-01','activo',2);
+INSERT INTO `redelectricidad` VALUES (1,'2022-09-05','2022-09-09',52122.88,3,'campo 1','2022-09-19','1900-01-01','activo',1),(2,'2022-09-07','2022-02-05',6556.25,9,'prueba campo','2022-09-19','1900-01-01','activo',4);
 /*!40000 ALTER TABLE `redelectricidad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -405,7 +405,7 @@ CREATE TABLE `redgas` (
   `idGas` int NOT NULL AUTO_INCREMENT,
   `fechaInicio` date NOT NULL,
   `fechaFinal` date NOT NULL,
-  `metrosLineales` decimal(4,2) NOT NULL,
+  `metrosLineales` decimal(8,2) NOT NULL,
   `nroPersonas` int NOT NULL,
   `comentario` varchar(3000) NOT NULL,
   `fechaAlta` date NOT NULL,
@@ -424,7 +424,7 @@ CREATE TABLE `redgas` (
 
 LOCK TABLES `redgas` WRITE;
 /*!40000 ALTER TABLE `redgas` DISABLE KEYS */;
-INSERT INTO `redgas` VALUES (1,'2022-06-05','2022-07-06',45.36,7,'prueba comentario','2022-09-16','1900-01-01','activo',1),(2,'2022-02-03','2022-02-04',89.26,3,'campo 2','2022-09-16','1900-01-01','activo',2);
+INSERT INTO `redgas` VALUES (1,'2022-09-05','2022-12-07',289874.33,8,'campo 1','2022-09-19','1900-01-01','activo',1),(2,'2022-09-05','2022-09-07',254.26,7,'prueba campo','2022-09-19','1900-01-01','activo',4);
 /*!40000 ALTER TABLE `redgas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -469,7 +469,7 @@ CREATE TABLE `seco` (
 
 LOCK TABLES `seco` WRITE;
 /*!40000 ALTER TABLE `seco` DISABLE KEYS */;
-INSERT INTO `seco` VALUES (1,'2022-05-03','2022-05-08','YC','NA','25.63','5','36.32','5','45.36','5','8','Otro','acero','tornillos','polietileno','otro caida de arboles','2022-09-16','1900-01-01','activo',1),(2,'2022-05-06','2022-05-06','25.55','5','36.25','8','36.35','8','69.32','8','9','Otro','tornillos','clavos','pegamento','otro caida de ramas','2022-09-16','1900-01-01','activo',2);
+INSERT INTO `seco` VALUES (1,'2022-09-02','2022-02-15','56585.25','5','5689.25','8','25369.25','8','56987.25','9987.25','10','Mal Tiempo','tornillos','pegamento','clavos','comentario 2','2022-09-19','1900-01-01','activo',1),(2,'2022-09-02','2022-09-05','5648.22','5','5689.36','8','4578.22','9','2543.88','6','15','Mal Tiempo','tornillos','pegamento','clavos','campo 1','2022-09-19','1900-01-01','activo',4);
 /*!40000 ALTER TABLE `seco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -493,7 +493,7 @@ CREATE TABLE `visita` (
   PRIMARY KEY (`idVisita`),
   KEY `idGeneral_fk_idx` (`idGeneral`),
   CONSTRAINT `idGeneral_fk` FOREIGN KEY (`idGeneral`) REFERENCES `general` (`idGeneral`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -502,7 +502,7 @@ CREATE TABLE `visita` (
 
 LOCK TABLES `visita` WRITE;
 /*!40000 ALTER TABLE `visita` DISABLE KEYS */;
-INSERT INTO `visita` VALUES (1,'2022-09-16','Juan','Poyesa',1,'2022-09-16','1900-01-01','activo',1),(2,'2022-09-16','Emilio','Figal',2,'2022-09-16','1900-01-01','activo',1);
+INSERT INTO `visita` VALUES (1,'2022-09-19','Emilio','Figal',1,'2022-09-19','1900-01-01','activo',1),(2,'2022-09-19','Penelope','Cruz',1,'2022-09-19','1900-01-01','activo',2),(3,'2022-09-19','Juan','Lopez',2,'2022-09-19','1900-01-01','activo',2),(4,'2022-09-19','Juan','Valdez',1,'2022-09-19','1900-01-01','activo',3);
 /*!40000 ALTER TABLE `visita` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -515,4 +515,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-16 14:25:14
+-- Dump completed on 2022-09-19 14:54:53
