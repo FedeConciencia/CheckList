@@ -46,6 +46,11 @@ Select max(v.nVisita) as UltimaVisita from general as g inner join visita as v o
 #Query para obtener el ultimo idVisita asociado al n° de obra =>
 SELECT MAX(v.idVisita) FROM visita as v inner join general as g on v.idGeneral = g.idGeneral where g.codigo = "PO621"; 
 
+#Query para obtener all visitas por n° idGeneral =>
+Select * from visita where idGeneral = 2;
+
+#Query para obtener all visitas por n° de obra =>
+Select v.fecha, v.nombreTecnico, v.apellidoTecnico, v.nVisita, g.nombreCliente, g.apellidoCliente, g.dni, g.domicilio, v.idVisita, v.idGeneral, g.codigo from visita as v inner join general as g on v.idGeneral = g.idGeneral where g.codigo = "PO7893";
 
 #---------------------------------------
 

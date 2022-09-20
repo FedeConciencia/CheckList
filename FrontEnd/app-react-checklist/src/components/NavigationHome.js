@@ -31,7 +31,7 @@ const NavigationHome = (props) => {
             <Navbar.Brand href="/">HOME</Navbar.Brand>
             <Nav className="me-auto">
             <Nav.Link href="/prevCarga">CARGAR DATOS</Nav.Link>
-            <Nav.Link href="/visita">VER DATOS</Nav.Link>
+            <Nav.Link href="/verificarObra">VER DATOS</Nav.Link>
             </Nav>
 
         </Navbar>

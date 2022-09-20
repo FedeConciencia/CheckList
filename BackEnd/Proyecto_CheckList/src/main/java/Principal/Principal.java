@@ -2,6 +2,7 @@
 package Principal;
 
 import Controlador.ControladorAbertura;
+import Controlador.ControladorAuxVisitaGeneral;
 import Controlador.ControladorConclusion;
 import Controlador.ControladorGeneral;
 import Controlador.ControladorGremio;
@@ -15,6 +16,7 @@ import Controlador.ControladorRedGas;
 import Controlador.ControladorSeco;
 import Controlador.ControladorVisita;
 import Modelo.Abertura;
+import Modelo.AuxVisitaGeneral;
 import Modelo.Conclusion;
 import Modelo.General;
 import Modelo.Gremio;
@@ -1045,8 +1047,27 @@ public class Principal {
         
         
         */
-
         
-    }
-    
+        /*
+        
+        //----------------------------------------------------------
+        
+        //TESTEO DE CONTROLADOR AUX_VISITA_GENERAL BUSCAR ALL X N° DE OBRA =>
+        
+        ControladorAuxVisitaGeneral c1 = new ControladorAuxVisitaGeneral();
+        List<AuxVisitaGeneral> listaAux = c1.buscarAllAuxVisitaGeneral("PO7893");
+        
+        for(AuxVisitaGeneral item:listaAux){
+            
+            
+            System.out.println(item.toString());
+            System.out.println("");
+            
+            
+        }
+
+        */
+        
+    }    
+        
 }

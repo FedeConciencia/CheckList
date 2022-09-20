@@ -20,6 +20,9 @@ import FormRedElectricidad from "../src/components/FormRedElectricidad"
 import FormAberturas from "../src/components/FormAberturas"
 import FormPersonas from "../src/components/FormPersonas"
 import FormGremios from "../src/components/FormGremios"
+import VerificarObra from "../src/components/VerificarObra"
+import PrincipalVista from "../src/components/PrincipalVista"
+import FormPrincipalVista from "../src/components/FormPrincipalVista"
 
 
 const App = () => {
@@ -49,6 +52,9 @@ const App = () => {
           <Route path="/formRedElectricidad" element={<FormRedElectricidad />} />
           <Route path="/formAberturas" element={<FormAberturas />} />
           <Route path="/formGremios" element={<FormGremios />} />
+          <Route path="/verificarObra" element={<VerificarObra />} />
+          <Route path="/principalVista" element={<PrincipalVista />} />
+          <Route path="/formPrincipalVista" element={<FormPrincipalVista />} />
 
 
         </Routes>
