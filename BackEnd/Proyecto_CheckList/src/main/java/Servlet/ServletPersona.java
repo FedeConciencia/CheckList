@@ -176,6 +176,14 @@ public class ServletPersona extends HttpServlet {
                     String ultimoJson = gsonBuilder.toJson(ultimoId);
                     respuestaServer = ultimoJson;
                     
+                }else if(request.getParameter("action").equals("buscarIdVisita")){
+                    
+                    ControladorPersona c1 = new ControladorPersona();
+                    Persona persona = c1.buscarOnePersonaIdVisita(Long.parseLong(request.getParameter("idVisita"))); 
+                    Gson gsonBuilder = new GsonBuilder().create();
+                    String personaJson = gsonBuilder.toJson(persona);
+                    respuestaServer = personaJson;
+                    
                 }
                 
                 

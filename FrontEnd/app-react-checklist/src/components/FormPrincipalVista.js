@@ -204,6 +204,18 @@ const FormPrincipalVista = (props) => {
             </Row>
 
             <br></br>
+
+            <Row>
+
+                <Col>
+
+                    <Button href="/formConclusionVista" className="botonForm" variant="primary">11- FORMULARIO CONCLUSION</Button>
+                    
+                </Col>
+
+            </Row>
+
+            <br></br>
             <br></br>
 
             <Row>

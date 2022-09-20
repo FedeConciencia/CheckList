@@ -23,6 +23,8 @@ import FormGremios from "../src/components/FormGremios"
 import VerificarObra from "../src/components/VerificarObra"
 import PrincipalVista from "../src/components/PrincipalVista"
 import FormPrincipalVista from "../src/components/FormPrincipalVista"
+import FormMaterialesVista from "../src/components/FormMaterialesVista"
+import FormPersonasVista from "../src/components/FormPersonasVista"
 
 
 const App = () => {
@@ -55,6 +57,8 @@ const App = () => {
           <Route path="/verificarObra" element={<VerificarObra />} />
           <Route path="/principalVista" element={<PrincipalVista />} />
           <Route path="/formPrincipalVista" element={<FormPrincipalVista />} />
+          <Route path="/formMaterialesVista" element={<FormMaterialesVista />} />
+          <Route path="/formPersonasVista" element={<FormPersonasVista />} />
 
 
         </Routes>

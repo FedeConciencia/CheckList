@@ -278,12 +278,25 @@ public class Principal {
 
         /*
         
-        //DELETE LOGIC OBJETO GENERAL (OK) =>
+        //DELETE LOGIC OBJETO MATERIAL (OK) =>
         
         ControladorMaterial c1 = new ControladorMaterial();
         
         c1.eliminarLogicoMaterial(2L, LocalDate.parse("1900-01-01"));
         
+        
+        */
+        
+        /*
+        
+        
+        //READ_ONE OBJETO MATERIAL X N° DE ID_VISITA (OK) =>
+        
+        ControladorMaterial c1 = new ControladorMaterial();
+        
+        Material m1 = c1.buscarOneMaterialIdVisita(1L);
+       
+        System.out.println(m1.toString());
         
         */
         
@@ -370,6 +383,18 @@ public class Principal {
         Long idPersona = c1.ultimoIdPersona("PO621");
         
         System.out.println("El ultimo idPersona ingresado es : " + idPersona);
+        
+        */
+        
+        /*
+        
+        //READ_ONE OBJETO MATERIAL X N° DE ID_VISITA (OK) =>
+        
+        ControladorPersona c1 = new ControladorPersona();
+        
+        Persona p1 = c1.buscarOnePersonaIdVisita(1L);
+       
+        System.out.println(p1.toString());
         
         */
         

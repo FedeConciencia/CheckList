@@ -150,8 +150,15 @@ public class ServletMaterial extends HttpServlet {
                     String materialJson = gsonBuilder.toJson(listaMaterial);
                     respuestaServer = materialJson;
                     
+                }else if(request.getParameter("action").equals("buscarIdVisita")){
+                    
+                    ControladorMaterial c1 = new ControladorMaterial();
+                    Material material = c1.buscarOneMaterialIdVisita(Long.parseLong(request.getParameter("idVisita"))); 
+                    Gson gsonBuilder = new GsonBuilder().create();
+                    String materialJson = gsonBuilder.toJson(material);
+                    respuestaServer = materialJson;
+                    
                 }
-                
                 
             }
             out.write(respuestaServer);

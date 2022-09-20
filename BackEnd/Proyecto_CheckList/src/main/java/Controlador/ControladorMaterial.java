@@ -386,4 +386,75 @@ public class ControladorMaterial {
 
     }
     
+    
+    //METODO PARA BUSCAR ONE REGISTRO MATERIAL X ID_VISITA:
+    public Material buscarOneMaterialIdVisita(Long id) {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        Material material = null;
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("SELECT * FROM material WHERE idVisita = ?");
+
+            ps.setLong(1, id); //pasamos el id parametro y se ingresa en el ? del query
+
+            rs = ps.executeQuery();  //Ejecutamos el Resulset y executeQuery cuando obtenemos algo de la base de datos.
+
+            if (rs.next()) {  //si nos devuelve un dato true
+
+                Long idMaterial = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                String estadoAlmacen = rs.getString(2);
+                String movMateriales = rs.getString(3);
+                String almacenSeguro = rs.getString(4);
+                String envasesVacio = rs.getString(5);
+                String materialSobran = rs.getString(6);
+                String estadoLimpieza = rs.getString(7);
+                String desechosOrgani = rs.getString(8);
+                String comentario = rs.getString(9);
+                LocalDate fechaAlta = (rs.getDate(10)).toLocalDate(); //En java trabajamos con LocalDate
+                LocalDate fechaBaja = (rs.getDate(11)).toLocalDate(); //En java trabajamos con LocalDate
+                String estado = rs.getString(12);
+                Long idVisita = rs.getLong(13);
+                
+              
+                material = new Material(idMaterial, estadoAlmacen, movMateriales, almacenSeguro, envasesVacio, materialSobran, estadoLimpieza, desechosOrgani, comentario, fechaAlta, fechaBaja, estado, idVisita);
+
+                System.out.println("El Registro fue encontrado con exito.");
+                //JOptionPane.showMessageDialog(null, "El Registro fue encontrado con exito.");
+
+            } else {
+
+                System.out.println("El Registro no fue encontrado en la Base de Datos.");
+                //JOptionPane.showMessageDialog(null, "El Registro no fue encontrado en la Base de Datos.");
+            }
+
+            conexion.close();
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+
+                ps.close();
+                rs.close();
+
+            } catch (SQLException ex) {
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+        return material; //devolvemos el objeto conclusion
+        
+    }
+    
 }

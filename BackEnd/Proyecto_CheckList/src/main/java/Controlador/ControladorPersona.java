@@ -467,5 +467,83 @@ public class ControladorPersona {
         return idPersona; //devolvemos el ultimo id
 
     }
+     
+    //METODO PARA BUSCAR ONE REGISTRO PERSONA X ID_VISITA:
+    public Persona buscarOnePersonaIdVisita(Long id) {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        Persona persona = null;
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("SELECT * FROM persona WHERE idVisita = ?");
+
+            ps.setLong(1, id); //pasamos el id parametro y se ingresa en el ? del query
+
+            rs = ps.executeQuery();  //Ejecutamos el Resulset y executeQuery cuando obtenemos algo de la base de datos.
+
+            if (rs.next()) {  //si nos devuelve un dato true
+
+                Long idPersona = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                int personasTotal = rs.getInt(2);
+                int nGremios = rs.getInt(3);
+                String gremioEnfoque = rs.getString(4);
+                String vestimentaOk = rs.getString(5);
+                String calzadoOk = rs.getString(6);
+                String utilizanEpp = rs.getString(7);
+                String herramientasOk = rs.getString(8);
+                String seguridadOk = rs.getString(9);
+                String trabajoAltura = rs.getString(10);
+                String banosOk = rs.getString(11);
+                String comerOk = rs.getString(12);
+                int edadJoven = rs.getInt(13);
+                int edadViejo = rs.getInt(14);
+                int rangoMin = rs.getInt(15);
+                int rangoMax = rs.getInt(16);
+                String comentario = rs.getString(17);
+                LocalDate fechaAlta = (rs.getDate(18)).toLocalDate(); //En java trabajamos con LocalDate
+                LocalDate fechaBaja = (rs.getDate(19)).toLocalDate(); //En java trabajamos con LocalDate
+                String estado = rs.getString(20);
+                Long idVisita = rs.getLong(21);
+                
+              
+                persona = new Persona(idPersona, personasTotal, nGremios, gremioEnfoque, vestimentaOk, calzadoOk, utilizanEpp, herramientasOk, seguridadOk, trabajoAltura, banosOk, comerOk, edadJoven, edadViejo, rangoMin, rangoMax, comentario, fechaAlta, fechaBaja, estado, idVisita);
+
+                System.out.println("El Registro fue encontrado con exito.");
+                //JOptionPane.showMessageDialog(null, "El Registro fue encontrado con exito.");
+
+            } else {
+
+                System.out.println("El Registro no fue encontrado en la Base de Datos.");
+                //JOptionPane.showMessageDialog(null, "El Registro no fue encontrado en la Base de Datos.");
+            }
+
+            conexion.close();
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+
+                ps.close();
+                rs.close();
+
+            } catch (SQLException ex) {
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+        return persona; //devolvemos el objeto conclusion
+        
+    }
     
 }
