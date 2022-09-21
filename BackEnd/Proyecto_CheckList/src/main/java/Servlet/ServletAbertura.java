@@ -139,6 +139,14 @@ public class ServletAbertura extends HttpServlet {
                     String aberturaJson = gsonBuilder.toJson(listaAbertura);
                     respuestaServer = aberturaJson;
                     
+                }else if(request.getParameter("action").equals("buscarIdVisita")){
+                    
+                    ControladorAbertura c1 = new ControladorAbertura();     
+                    Abertura abertura = c1.buscarOneAberturaIdVisita(Long.parseLong(request.getParameter("idVisita"))); 
+                    Gson gsonBuilder = new GsonBuilder().create();
+                    String aberturaJson = gsonBuilder.toJson(abertura);
+                    respuestaServer = aberturaJson;
+                    
                 }
                 
                 

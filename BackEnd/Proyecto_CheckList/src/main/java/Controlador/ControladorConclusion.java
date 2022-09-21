@@ -420,5 +420,73 @@ public class ControladorConclusion {
         return registroGeneral; //devolvemos el contador de registros idGeneral
 
     }
+     
+    
+    //METODO PARA BUSCAR ONE REGISTRO CONCLUSION X ID_GENERAL:
+    public Conclusion buscarOneConclusionIdGeneral(Long id) {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        Conclusion conclusion = null;
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("SELECT * FROM conclusion WHERE idGeneral = ?");
+
+            ps.setLong(1, id); //pasamos el id parametro y se ingresa en el ? del query
+
+            rs = ps.executeQuery();  //Ejecutamos el Resulset y executeQuery cuando obtenemos algo de la base de datos.
+
+            if (rs.next()) {  //si nos devuelve un dato true
+
+                Long idConclusion = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                String obraTerminada = rs.getString(2);
+                double avanceActual = rs.getDouble(3);
+                double avanceEsperado = rs.getDouble(4);
+                LocalDate fechaFinalizacion = (rs.getDate(5)).toLocalDate();
+                int gradoSatisfaccion = rs.getInt(6);
+                String comentario = rs.getString(7);
+                LocalDate fechaAlta = (rs.getDate(8)).toLocalDate(); //En java trabajamos con LocalDate
+                LocalDate fechaBaja = (rs.getDate(9)).toLocalDate(); //En java trabajamos con LocalDate
+                String estado = rs.getString(10);
+                Long idGeneral = rs.getLong(11);
+
+                conclusion = new Conclusion(idConclusion, obraTerminada, avanceActual, avanceEsperado, fechaFinalizacion, gradoSatisfaccion, comentario, fechaAlta, fechaBaja, estado, idGeneral);
+
+                System.out.println("El Registro fue encontrado con exito.");
+                //JOptionPane.showMessageDialog(null, "El Registro fue encontrado con exito.");
+
+            } else {
+
+                System.out.println("El Registro no fue encontrado en la Base de Datos.");
+                //JOptionPane.showMessageDialog(null, "El Registro no fue encontrado en la Base de Datos.");
+            }
+
+            conexion.close();
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+
+                ps.close();
+                rs.close();
+
+            } catch (SQLException ex) {
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+        return conclusion; //devolvemos el objeto conclusion
+        
+    } 
     
 }

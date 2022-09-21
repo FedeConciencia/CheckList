@@ -148,6 +148,16 @@ public class ServletGremio extends HttpServlet {
                     String gremioJson = gsonBuilder.toJson(listaGremio);
                     respuestaServer = gremioJson;
                     
+                }else if(request.getParameter("action").equals("listarXidPersona")){
+                    
+                    Long idPersona = Long.parseLong(request.getParameter("idPersona"));
+                    
+                    ControladorGremio c1 = new ControladorGremio();
+                    List<Gremio> listaGremio = c1.buscarAllGremioIdPersona(idPersona);
+                    Gson gsonBuilder = new GsonBuilder().create();
+                    String listaJson = gsonBuilder.toJson(listaGremio);
+                    respuestaServer = listaJson;
+                    
                 }
                 
                 

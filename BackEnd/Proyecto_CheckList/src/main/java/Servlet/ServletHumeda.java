@@ -165,6 +165,14 @@ public class ServletHumeda extends HttpServlet {
                     String humedaJson = gsonBuilder.toJson(listaHumeda);
                     respuestaServer = humedaJson;
                     
+                }else if(request.getParameter("action").equals("buscarIdVisita")){
+                    
+                    ControladorHumeda c1 = new ControladorHumeda();
+                    Humeda humeda = c1.buscarOneHumedaIdVisita(Long.parseLong(request.getParameter("idVisita"))); 
+                    Gson gsonBuilder = new GsonBuilder().create();
+                    String humedaJson = gsonBuilder.toJson(humeda);
+                    respuestaServer = humedaJson;
+                    
                 }
                 
                 

@@ -143,6 +143,14 @@ public class ServletRedElectricidad extends HttpServlet {
                     String electricidadJson = gsonBuilder.toJson(listaRedElectricidad);
                     respuestaServer = electricidadJson;
                     
+                }else if(request.getParameter("action").equals("buscarIdVisita")){
+                    
+                    ControladorRedElectricidad c1 = new ControladorRedElectricidad();    
+                    RedElectricidad redElectricidad = c1.buscarOneRedElectricidadIdVisita(Long.parseLong(request.getParameter("idVisita"))); 
+                    Gson gsonBuilder = new GsonBuilder().create();
+                    String electricidadJson = gsonBuilder.toJson(redElectricidad);
+                    respuestaServer = electricidadJson;
+                    
                 }
                 
                 

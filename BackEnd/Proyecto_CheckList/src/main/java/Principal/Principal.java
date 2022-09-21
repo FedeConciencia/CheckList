@@ -540,6 +540,16 @@ public class Principal {
         
         */
         
+        /*
+        
+        ControladorHumeda c1 = new ControladorHumeda();
+
+        Humeda h1 = c1.buscarOneHumedaIdVisita(1L);
+       
+        System.out.println(h1.toString());
+        
+        */
+        
         //----------------------------------------------------------
         
         //TESTEO DE CONTROLADOR Y MODELO SECO (7) =>
@@ -613,6 +623,19 @@ public class Principal {
         c1.eliminarLogicoSeco(1L, LocalDate.parse("2022-09-08"));
         
         */
+        
+        //BSUCAR ONE_SECO X ID_VISITA (OK) =>
+        
+        /*
+        
+        ControladorSeco c1 = new ControladorSeco();
+
+        Seco s1 = c1.buscarOneSecoIdVisita(1L);
+       
+        System.out.println(s1.toString());
+        
+        */
+        
         
         
         //----------------------------------------------------------
@@ -1064,7 +1087,7 @@ public class Principal {
        
         /*
         
-        //DELETE LOGIC OBJETO ABERTURA (OK) =>
+        //DELETE LOGIC OBJETO CONCLUSION (OK) =>
         
         ControladorConclusion c1 = new ControladorConclusion();
         
@@ -1072,6 +1095,20 @@ public class Principal {
         
         
         */
+        
+        
+        /*
+        
+        ControladorConclusion c1 = new ControladorConclusion();
+
+        Conclusion d1 = c1.buscarOneConclusionIdGeneral(1L);
+       
+        System.out.println(d1.toString());
+        
+        
+        */
+        
+       
         
         /*
         

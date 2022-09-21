@@ -391,6 +391,77 @@ public class ControladorPanel {
 
     }
     
+    //METODO PARA BUSCAR ONE REGISTRO PANEL:
+    public Panel buscarOnePanelIdVisita(Long id) {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        Panel panel = null;
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("SELECT * FROM panel WHERE idVisita = ?");
+
+            ps.setLong(1, id); //pasamos el id parametro y se ingresa en el ? del query
+
+            rs = ps.executeQuery();  //Ejecutamos el Resulset y executeQuery cuando obtenemos algo de la base de datos.
+
+            if (rs.next()) {  //si nos devuelve un dato true
+
+                Long idPanel = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                String selladores = rs.getString(2);
+                String izaje = rs.getString(3);
+                String tornillos = rs.getString(4);
+                String perfileria = rs.getString(5);
+                String panelesFrio = rs.getString(6);
+                String perfileriaFrio = rs.getString(7);
+                double espesor = rs.getDouble(8);
+                String resultado = rs.getString(9);
+                String comentario = rs.getString(10);
+                LocalDate fechaAlta = (rs.getDate(11)).toLocalDate(); //En java trabajamos con LocalDate
+                LocalDate fechaBaja = (rs.getDate(12)).toLocalDate(); //En java trabajamos con LocalDate
+                String estado = rs.getString(13);
+                Long idVisita = rs.getLong(14);
+                
+              
+                panel = new Panel(idPanel, selladores, izaje, tornillos, perfileria, panelesFrio, perfileriaFrio, espesor, resultado, comentario, fechaAlta, fechaBaja, estado, idVisita);
+
+                System.out.println("El Registro fue encontrado con exito.");
+                //JOptionPane.showMessageDialog(null, "El Registro fue encontrado con exito.");
+
+            } else {
+
+                System.out.println("El Registro no fue encontrado en la Base de Datos.");
+                //JOptionPane.showMessageDialog(null, "El Registro no fue encontrado en la Base de Datos.");
+            }
+
+            conexion.close();
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+
+                ps.close();
+                rs.close();
+
+            } catch (SQLException ex) {
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+        return panel; //devolvemos el objeto conclusion
+        
+    }
+    
     
     
 }

@@ -144,6 +144,14 @@ public class ServletRedGas extends HttpServlet {
                     String gasJson = gsonBuilder.toJson(listaRedGas);
                     respuestaServer = gasJson;
                     
+                }else if(request.getParameter("action").equals("buscarIdVisita")){
+                    
+                    ControladorRedGas c1 = new ControladorRedGas(); 
+                    RedGas redGas = c1.buscarOneRedGasIdVisita(Long.parseLong(request.getParameter("idVisita"))); 
+                    Gson gsonBuilder = new GsonBuilder().create();
+                    String gasJson = gsonBuilder.toJson(redGas);
+                    respuestaServer = gasJson;
+                    
                 }
                 
                 

@@ -25,6 +25,16 @@ import PrincipalVista from "../src/components/PrincipalVista"
 import FormPrincipalVista from "../src/components/FormPrincipalVista"
 import FormMaterialesVista from "../src/components/FormMaterialesVista"
 import FormPersonasVista from "../src/components/FormPersonasVista"
+import FormHumedaVista from "../src/components/FormHumedaVista"
+import FormSecoVista from "../src/components/FormSecoVista"
+import FormPanelesVista from "../src/components/FormPanelesVista"
+import FormRedAguaVista from "../src/components/FormRedAguaVista"
+import FormRedGasVista from "../src/components/FormRedGasVista"
+import FormRedElectricidadVista from "../src/components/FormRedElectricidadVista"
+import FormAberturasVista from "../src/components/FormAberturasVista"
+import FormConclusionVista from "../src/components/FormConclusionVista"
+import PrincipalGremioVista from "../src/components/PrincipalGremioVista"
+import FormGremioVista from "../src/components/FormGremioVista"
 
 
 const App = () => {
@@ -59,6 +69,17 @@ const App = () => {
           <Route path="/formPrincipalVista" element={<FormPrincipalVista />} />
           <Route path="/formMaterialesVista" element={<FormMaterialesVista />} />
           <Route path="/formPersonasVista" element={<FormPersonasVista />} />
+          <Route path="/formHumedaVista" element={<FormHumedaVista />} />
+          <Route path="/formSecoVista" element={<FormSecoVista />} />
+          <Route path="/formPanelesVista" element={<FormPanelesVista />} />
+          <Route path="/formRedAguaVista" element={<FormRedAguaVista />} />
+          <Route path="/formRedGasVista" element={<FormRedGasVista />} />
+          <Route path="/formRedElectricidadVista" element={<FormRedElectricidadVista />} />
+          <Route path="/formAberturasVista" element={<FormAberturasVista />} />
+          <Route path="/formConclusionVista" element={<FormConclusionVista />} />
+          <Route path="/principalGremioVista" element={<PrincipalGremioVista />} />
+          <Route path="/formGremioVista" element={<FormGremioVista />} />
+         
 
 
         </Routes>

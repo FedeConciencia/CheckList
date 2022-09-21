@@ -108,7 +108,7 @@ const FormPrincipalVista = (props) => {
 
                 <Col>
 
-                    <Button href="/formGremiosVista" className="botonForm" variant="primary">3- FORMULARIO GREMIOS</Button>
+                    <Button href="/principalGremioVista" className="botonForm" variant="primary">3- FORMULARIO GREMIOS</Button>
                     
                 </Col>
 
@@ -209,7 +209,7 @@ const FormPrincipalVista = (props) => {
 
                 <Col>
 
-                    <Button href="/formConclusionVista" className="botonForm" variant="primary">11- FORMULARIO CONCLUSION</Button>
+                    <Button href="/formConclusionVista" className="botonForm" variant="primary">11- FORMULARIO CONCLUSION FINAL</Button>
                     
                 </Col>
 

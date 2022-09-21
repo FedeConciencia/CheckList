@@ -166,6 +166,14 @@ public class ServletSeco extends HttpServlet {
                     String secoJson = gsonBuilder.toJson(listaSeco);
                     respuestaServer = secoJson;
                     
+                }else if(request.getParameter("action").equals("buscarIdVisita")){
+                    
+                    ControladorSeco c1 = new ControladorSeco(); 
+                    Seco seco = c1.buscarOneSecoIdVisita(Long.parseLong(request.getParameter("idVisita"))); 
+                    Gson gsonBuilder = new GsonBuilder().create();
+                    String secoJson = gsonBuilder.toJson(seco);
+                    respuestaServer = secoJson;
+                    
                 }
                 
                 

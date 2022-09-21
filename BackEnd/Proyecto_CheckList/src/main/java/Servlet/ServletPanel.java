@@ -153,6 +153,14 @@ public class ServletPanel extends HttpServlet {
                     String panelJson = gsonBuilder.toJson(listaPanel);
                     respuestaServer = panelJson;
                     
+                }else if(request.getParameter("action").equals("buscarIdVisita")){
+                    
+                    ControladorPanel c1 = new ControladorPanel();
+                    Panel panel = c1.buscarOnePanelIdVisita(Long.parseLong(request.getParameter("idVisita"))); 
+                    Gson gsonBuilder = new GsonBuilder().create();
+                    String panelJson = gsonBuilder.toJson(panel);
+                    respuestaServer = panelJson;
+                    
                 }
                 
                 

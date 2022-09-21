@@ -143,6 +143,14 @@ public class ServletRedAgua extends HttpServlet {
                     String aguaJson = gsonBuilder.toJson(listaRedAgua);
                     respuestaServer = aguaJson;
                     
+                }else if(request.getParameter("action").equals("buscarIdVisita")){
+                    
+                    ControladorRedAgua c1 = new ControladorRedAgua();  
+                    RedAgua redAgua = c1.buscarOneRedAguaIdVisita(Long.parseLong(request.getParameter("idVisita"))); 
+                    Gson gsonBuilder = new GsonBuilder().create();
+                    String aguaJson = gsonBuilder.toJson(redAgua);
+                    respuestaServer = aguaJson;
+                    
                 }
                 
                 

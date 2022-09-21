@@ -435,7 +435,7 @@ const FormConclusion = (props) => {
                         onChange={handleInputChange}
                         placeholder="* Campo Obligatorio"
                         min={1}
-                        max={10}
+                        max={5}
                         className="form-control my-2"
                         {...register("gradoSatisfaccion", { 
 

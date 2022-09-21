@@ -391,4 +391,73 @@ public class ControladorGremio {
 
     }
     
+    
+    //METODO PARA BUSCAR ALL REGISTROS GREMIO X ID_PERSONA:
+    public List<Gremio> buscarAllGremioIdPersona(Long id) {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        Gremio gremio = null;
+        List<Gremio> listaGremio = new ArrayList<Gremio>();
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("SELECT * FROM gremio WHERE idPersona = ?");
+            
+            ps.setLong(1, id); //pasamos el id parametro y se ingresa en el ? del query
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Long idGremio = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                String nombreGremio = rs.getString(2);
+                int nroPersonas = rs.getInt(3);
+                LocalTime horarioDesde = (rs.getTime(4)).toLocalTime(); //modifico a local time para obtener solo la hora
+                LocalTime horarioHasta = (rs.getTime(5)).toLocalTime();
+                LocalDate fechaDesde = (rs.getDate(6)).toLocalDate(); //En java trabajamos con LocalDate
+                LocalDate fechaHasta = (rs.getDate(7)).toLocalDate(); //En java trabajamos con LocalDate
+                int nroArgentinos = rs.getInt(8);
+                String nombreContratista = rs.getString(9);
+                String apellidoContratista = rs.getString(10);
+                LocalDate fechaAlta = (rs.getDate(11)).toLocalDate(); //En java trabajamos con LocalDate
+                LocalDate fechaBaja = (rs.getDate(12)).toLocalDate(); //En java trabajamos con LocalDate
+                String estado = rs.getString(13);
+                Long idPersona = rs.getLong(14);
+                
+                
+                gremio = new Gremio(idGremio, nombreGremio, nroPersonas, horarioDesde, horarioHasta, fechaDesde, fechaHasta, nroArgentinos, nombreContratista, apellidoContratista, fechaAlta, fechaBaja, estado, idPersona);
+
+                
+                listaGremio.add(gremio);
+
+            }
+
+            conexion.close();
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+
+                ps.close();
+                rs.close();
+
+            } catch (SQLException ex) {
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+        return listaGremio; //devolvemos la lista de conclusion
+
+    }
+    
 }
