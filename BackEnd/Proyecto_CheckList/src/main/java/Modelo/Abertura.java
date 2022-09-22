@@ -9,6 +9,7 @@ public class Abertura {
     private Long idAbertura;
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
+    private String tipoAbertura;
     private int cantidad;
     private double m2;
     private int nroPersona;
@@ -24,10 +25,11 @@ public class Abertura {
     public Abertura() {
     }
 
-    public Abertura(Long idAbertura, LocalDate fechaInicial, LocalDate fechaFinal, int cantidad, double m2, int nroPersona, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado, Long idVisita) {
+    public Abertura(Long idAbertura, LocalDate fechaInicial, LocalDate fechaFinal, String tipoAbertura, int cantidad, double m2, int nroPersona, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado, Long idVisita) {
         this.idAbertura = idAbertura;
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
+        this.tipoAbertura = tipoAbertura;
         this.cantidad = cantidad;
         this.m2 = m2;
         this.nroPersona = nroPersona;
@@ -38,9 +40,10 @@ public class Abertura {
         this.idVisita = idVisita;
     }
 
-    public Abertura(LocalDate fechaInicial, LocalDate fechaFinal, int cantidad, double m2, int nroPersona, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado, Long idVisita) {
+    public Abertura(LocalDate fechaInicial, LocalDate fechaFinal, String tipoAbertura, int cantidad, double m2, int nroPersona, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado, Long idVisita) {
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
+        this.tipoAbertura = tipoAbertura;
         this.cantidad = cantidad;
         this.m2 = m2;
         this.nroPersona = nroPersona;
@@ -146,13 +149,23 @@ public class Abertura {
     public void setVisita(Visita visita) {
         this.visita = visita;
     }
+    
+    public String getTipoAbertura() {
+        return tipoAbertura;
+    }
+
+    public void setTipoAbertura(String tipoAbertura) {
+        this.tipoAbertura = tipoAbertura;
+    }
 
     @Override
     public String toString() {
-        return "idAbertura: " + idAbertura + "\nfechaInicial: " + fechaInicial + "\nfechaFinal: " + fechaFinal + "\ncantidad: " + cantidad + "\nm2: " + m2 + 
+        return "idAbertura: " + idAbertura + "\nfechaInicial: " + fechaInicial + "\nfechaFinal: " + fechaFinal + "\ntipoAbertura: " + tipoAbertura + "\ncantidad: " + cantidad + "\nm2: " + m2 + 
                 "\nnroPersona: " + nroPersona + "\ncomentario: " + comentario + "\nfechaAlta: " + fechaAlta + "\nfechaBaja: " + fechaBaja + 
                 "\nestado: " + estado + "\nidVisita: " + idVisita;
     }
+
+    
     
     
     

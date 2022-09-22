@@ -11,6 +11,7 @@ import Image from 'react-bootstrap/Image'
 import ImgLogo from "../assets/img/logoLtn.png"
 import "../assets/css/home.css"
 
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const Home = (props) => {
 
     const[dato,setDato] = useState(null)

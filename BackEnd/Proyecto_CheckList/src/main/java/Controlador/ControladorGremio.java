@@ -29,7 +29,7 @@ public class ControladorGremio {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("INSERT INTO gremio (nombreGremio, nroPersonas, horarioDesde, horarioHasta, fechaDesde, fechaHasta, nroArgentinos, nombreContratista, apellidoContratista, fechaAlta, fechaBaja, estado, idPersona) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            ps = conexion.prepareStatement("INSERT INTO gremio (nombreGremio, nroPersonas, horarioDesde, horarioHasta, fechaDesde, fechaHasta, nroArgentinos, nombreContratista, apellidoContratista, comentario, fechaAlta, fechaBaja, estado, idPersona) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             // Se establecen los parámetros y se ejecuta la sentencia.
             ps.setString(1, gremio.getNombreGremio());
@@ -41,10 +41,11 @@ public class ControladorGremio {
             ps.setInt(7, gremio.getNroArgentinos());
             ps.setString(8, gremio.getNombreContratista());
             ps.setString(9, gremio.getApellidoContratista());
-            ps.setDate(10, Date.valueOf(gremio.getFechaAlta())); //Se trabaja en java con LocalDate
-            ps.setDate(11, Date.valueOf(gremio.getFechaBaja())); //Se trabaja en java con LocalDate
-            ps.setString(12, gremio.getEstado());
-            ps.setLong(13, gremio.getIdPersona());
+            ps.setString(10, gremio.getComentario());
+            ps.setDate(11, Date.valueOf(gremio.getFechaAlta())); //Se trabaja en java con LocalDate
+            ps.setDate(12, Date.valueOf(gremio.getFechaBaja())); //Se trabaja en java con LocalDate
+            ps.setString(13, gremio.getEstado());
+            ps.setLong(14, gremio.getIdPersona());
             
             
             //Ejecutamos el comando y mandamos los datos al sistema:
@@ -98,7 +99,7 @@ public class ControladorGremio {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("UPDATE gremio SET nombreGremio = ?, nroPersonas = ?, horarioDesde = ?, horarioHasta = ?, fechaDesde = ?, fechaHasta = ?, nroArgentinos = ?, nombreContratista = ?, apellidoContratista = ?, fechaAlta = ?, fechaBaja = ?, estado = ?, idPersona = ? WHERE idGremio = ? ");
+            ps = conexion.prepareStatement("UPDATE gremio SET nombreGremio = ?, nroPersonas = ?, horarioDesde = ?, horarioHasta = ?, fechaDesde = ?, fechaHasta = ?, nroArgentinos = ?, nombreContratista = ?, apellidoContratista = ?, comentario = ?, fechaAlta = ?, fechaBaja = ?, estado = ?, idPersona = ? WHERE idGremio = ? ");
 
             
             // Se establecen los parámetros y se ejecuta la sentencia.
@@ -111,11 +112,12 @@ public class ControladorGremio {
             ps.setInt(7, gremio.getNroArgentinos());
             ps.setString(8, gremio.getNombreContratista());
             ps.setString(9, gremio.getApellidoContratista());
-            ps.setDate(10, Date.valueOf(gremio.getFechaAlta())); //Se trabaja en java con LocalDate
-            ps.setDate(11, Date.valueOf(gremio.getFechaBaja())); //Se trabaja en java con LocalDate
-            ps.setString(12, gremio.getEstado());
-            ps.setLong(13, gremio.getIdPersona());
-            ps.setLong(14, gremio.getIdGremio());
+            ps.setString(10, gremio.getComentario());
+            ps.setDate(11, Date.valueOf(gremio.getFechaAlta())); //Se trabaja en java con LocalDate
+            ps.setDate(12, Date.valueOf(gremio.getFechaBaja())); //Se trabaja en java con LocalDate
+            ps.setString(13, gremio.getEstado());
+            ps.setLong(14, gremio.getIdPersona());
+            ps.setLong(15, gremio.getIdGremio());
             
 
             //Ejecutamos el comando y mandamos los datos al sistema:
@@ -184,12 +186,13 @@ public class ControladorGremio {
                 int nroArgentinos = rs.getInt(8);
                 String nombreContratista = rs.getString(9);
                 String apellidoContratista = rs.getString(10);
-                LocalDate fechaAlta = (rs.getDate(11)).toLocalDate(); //En java trabajamos con LocalDate
-                LocalDate fechaBaja = (rs.getDate(12)).toLocalDate(); //En java trabajamos con LocalDate
-                String estado = rs.getString(13);
-                Long idPersona = rs.getLong(14);
+                String comentario = rs.getString(11);
+                LocalDate fechaAlta = (rs.getDate(12)).toLocalDate(); //En java trabajamos con LocalDate
+                LocalDate fechaBaja = (rs.getDate(13)).toLocalDate(); //En java trabajamos con LocalDate
+                String estado = rs.getString(14);
+                Long idPersona = rs.getLong(15);
                 
-                gremio = new Gremio(idGremio, nombreGremio, nroPersonas, horarioDesde, horarioHasta, fechaDesde, fechaHasta, nroArgentinos, nombreContratista, apellidoContratista, fechaAlta, fechaBaja, estado, idPersona);
+                gremio = new Gremio(idGremio, nombreGremio, nroPersonas, horarioDesde, horarioHasta, fechaDesde, fechaHasta, nroArgentinos, nombreContratista, apellidoContratista, comentario, fechaAlta, fechaBaja, estado, idPersona);
 
                 System.out.println("El Registro fue encontrado con exito.");
                 //JOptionPane.showMessageDialog(null, "El Registro fue encontrado con exito.");
@@ -253,13 +256,13 @@ public class ControladorGremio {
                 int nroArgentinos = rs.getInt(8);
                 String nombreContratista = rs.getString(9);
                 String apellidoContratista = rs.getString(10);
-                LocalDate fechaAlta = (rs.getDate(11)).toLocalDate(); //En java trabajamos con LocalDate
-                LocalDate fechaBaja = (rs.getDate(12)).toLocalDate(); //En java trabajamos con LocalDate
-                String estado = rs.getString(13);
-                Long idPersona = rs.getLong(14);
+                String comentario = rs.getString(11);
+                LocalDate fechaAlta = (rs.getDate(12)).toLocalDate(); //En java trabajamos con LocalDate
+                LocalDate fechaBaja = (rs.getDate(13)).toLocalDate(); //En java trabajamos con LocalDate
+                String estado = rs.getString(14);
+                Long idPersona = rs.getLong(15);
                 
-                
-                gremio = new Gremio(idGremio, nombreGremio, nroPersonas, horarioDesde, horarioHasta, fechaDesde, fechaHasta, nroArgentinos, nombreContratista, apellidoContratista, fechaAlta, fechaBaja, estado, idPersona);
+                gremio = new Gremio(idGremio, nombreGremio, nroPersonas, horarioDesde, horarioHasta, fechaDesde, fechaHasta, nroArgentinos, nombreContratista, apellidoContratista, comentario, fechaAlta, fechaBaja, estado, idPersona);
 
                 
                 listaGremio.add(gremio);
@@ -424,13 +427,13 @@ public class ControladorGremio {
                 int nroArgentinos = rs.getInt(8);
                 String nombreContratista = rs.getString(9);
                 String apellidoContratista = rs.getString(10);
-                LocalDate fechaAlta = (rs.getDate(11)).toLocalDate(); //En java trabajamos con LocalDate
-                LocalDate fechaBaja = (rs.getDate(12)).toLocalDate(); //En java trabajamos con LocalDate
-                String estado = rs.getString(13);
-                Long idPersona = rs.getLong(14);
+                String comentario = rs.getString(11);
+                LocalDate fechaAlta = (rs.getDate(12)).toLocalDate(); //En java trabajamos con LocalDate
+                LocalDate fechaBaja = (rs.getDate(13)).toLocalDate(); //En java trabajamos con LocalDate
+                String estado = rs.getString(14);
+                Long idPersona = rs.getLong(15);
                 
-                
-                gremio = new Gremio(idGremio, nombreGremio, nroPersonas, horarioDesde, horarioHasta, fechaDesde, fechaHasta, nroArgentinos, nombreContratista, apellidoContratista, fechaAlta, fechaBaja, estado, idPersona);
+                gremio = new Gremio(idGremio, nombreGremio, nroPersonas, horarioDesde, horarioHasta, fechaDesde, fechaHasta, nroArgentinos, nombreContratista, apellidoContratista, comentario, fechaAlta, fechaBaja, estado, idPersona);
 
                 
                 listaGremio.add(gremio);

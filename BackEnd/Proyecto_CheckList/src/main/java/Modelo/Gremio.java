@@ -17,6 +17,7 @@ public class Gremio {
     private int nroArgentinos;
     private String nombreContratista;
     private String apellidoContratista;
+    private String comentario;
     private LocalDate fechaAlta;
     private LocalDate fechaBaja;
     private String estado;
@@ -28,7 +29,7 @@ public class Gremio {
     public Gremio() {
     }
 
-    public Gremio(Long idGremio, String nombreGremio, int nroPersonas, LocalTime horarioDesde, LocalTime horarioHasta, LocalDate fechaDesde, LocalDate fechaHasta, int nroArgentinos, String nombreContratista, String apellidoContratista, LocalDate fechaAlta, LocalDate fechaBaja, String estado, Long idPersona) {
+    public Gremio(Long idGremio, String nombreGremio, int nroPersonas, LocalTime horarioDesde, LocalTime horarioHasta, LocalDate fechaDesde, LocalDate fechaHasta, int nroArgentinos, String nombreContratista, String apellidoContratista, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado, Long idPersona) {
         this.idGremio = idGremio;
         this.nombreGremio = nombreGremio;
         this.nroPersonas = nroPersonas;
@@ -39,13 +40,14 @@ public class Gremio {
         this.nroArgentinos = nroArgentinos;
         this.nombreContratista = nombreContratista;
         this.apellidoContratista = apellidoContratista;
+        this.comentario = comentario;
         this.fechaAlta = fechaAlta;
         this.fechaBaja = fechaBaja;
         this.estado = estado;
         this.idPersona = idPersona;
     }
 
-    public Gremio(String nombreGremio, int nroPersonas, LocalTime horarioDesde, LocalTime horarioHasta, LocalDate fechaDesde, LocalDate fechaHasta, int nroArgentinos, String nombreContratista, String apellidoContratista, LocalDate fechaAlta, LocalDate fechaBaja, String estado, Long idPersona) {
+    public Gremio(String nombreGremio, int nroPersonas, LocalTime horarioDesde, LocalTime horarioHasta, LocalDate fechaDesde, LocalDate fechaHasta, int nroArgentinos, String nombreContratista, String apellidoContratista, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado, Long idPersona) {
         this.nombreGremio = nombreGremio;
         this.nroPersonas = nroPersonas;
         this.horarioDesde = horarioDesde;
@@ -55,6 +57,7 @@ public class Gremio {
         this.nroArgentinos = nroArgentinos;
         this.nombreContratista = nombreContratista;
         this.apellidoContratista = apellidoContratista;
+        this.comentario = comentario;
         this.fechaAlta = fechaAlta;
         this.fechaBaja = fechaBaja;
         this.estado = estado;
@@ -181,11 +184,21 @@ public class Gremio {
         this.persona = persona;
     }
 
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "idGremio: " + idGremio + "\nnombreGremio: " + nombreGremio + "\nnroPersonas: " + nroPersonas + "\nhorarioDesde: " + horarioDesde + 
                 "\nhorarioHasta: " + horarioHasta + "\nfechaDesde: " + fechaDesde + "\nfechaHasta: " + fechaHasta + "\nnroArgentinos: " + nroArgentinos + 
-                "\nnombreContratista: " + nombreContratista + "\napellidoContratista: " + apellidoContratista + "\nfechaAlta: " + fechaAlta + 
+                "\nnombreContratista: " + nombreContratista + "\napellidoContratista: " + apellidoContratista + "\ncomentario: " + comentario +  "\nfechaAlta: " + fechaAlta + 
                 "\nfechaBaja: " + fechaBaja + "\nestado: " + estado + "\nidPersona: " + idPersona;
     }
 

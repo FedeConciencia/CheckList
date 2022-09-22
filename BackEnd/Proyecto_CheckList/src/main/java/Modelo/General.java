@@ -11,7 +11,6 @@ public class General {
     private Long idGeneral;
     private String codigo;
     private String nombreCliente;
-    private String apellidoCliente;
     private String dni;
     private String domicilio;
     private String usoEdificio;
@@ -36,10 +35,9 @@ public class General {
     public General() {
     }
 
-    public General(String codigo, String nombreCliente, String apellidoCliente, String dni, String domicilio, String usoEdificio, double alturaEdificio, double m2Cubierta, double m2Muro, String alcance, int duracionObra, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado) {
+    public General(String codigo, String nombreCliente, String dni, String domicilio, String usoEdificio, double alturaEdificio, double m2Cubierta, double m2Muro, String alcance, int duracionObra, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado) {
         this.codigo = codigo;
         this.nombreCliente = nombreCliente;
-        this.apellidoCliente = apellidoCliente;
         this.dni = dni;
         this.domicilio = domicilio;
         this.usoEdificio = usoEdificio;
@@ -54,11 +52,10 @@ public class General {
         this.estado = estado;
     }
 
-    public General(Long idGeneral, String codigo, String nombreCliente, String apellidoCliente, String dni, String domicilio, String usoEdificio, double alturaEdificio, double m2Cubierta, double m2Muro, String alcance, int duracionObra, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado) {
+    public General(Long idGeneral, String codigo, String nombreCliente, String dni, String domicilio, String usoEdificio, double alturaEdificio, double m2Cubierta, double m2Muro, String alcance, int duracionObra, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado) {
         this.idGeneral = idGeneral;
         this.codigo = codigo;
         this.nombreCliente = nombreCliente;
-        this.apellidoCliente = apellidoCliente;
         this.dni = dni;
         this.domicilio = domicilio;
         this.usoEdificio = usoEdificio;
@@ -99,13 +96,6 @@ public class General {
         this.nombreCliente = nombreCliente;
     }
 
-    public String getApellidoCliente() {
-        return apellidoCliente;
-    }
-
-    public void setApellidoCliente(String apellidoCliente) {
-        this.apellidoCliente = apellidoCliente;
-    }
 
     public String getDni() {
         return dni;
@@ -223,7 +213,7 @@ public class General {
 
     @Override
     public String toString() {
-        return "idGeneral: " + idGeneral + "\ncodigo: " + codigo + "\nnombreCliente: " + nombreCliente + "\napellidoCliente: " + apellidoCliente + "\ndni: " + dni + "\ndomicilio: " + 
+        return "idGeneral: " + idGeneral + "\ncodigo: " + codigo + "\nnombreCliente: " + nombreCliente + "\ndni: " + dni + "\ndomicilio: " + 
                 domicilio + "\nusoEdificio: " + usoEdificio + "\nalturaEdificio: " + alturaEdificio + "\nm2Cubierta: " + m2Cubierta + "\nm2Muro: " + m2Muro + "\nalcance: " + 
                 alcance + "\nduracionObra: " + duracionObra + "\ncomentario: " + comentario + "\nfechaAlta: " + fechaAlta + "\nfechaBaja: " + fechaBaja + "\nestado: " + estado;
     }

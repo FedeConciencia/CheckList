@@ -12,6 +12,7 @@ import {useForm} from 'react-hook-form';
 import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
 
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const FormHumeda = (props) => {
 
     //Redireccionamiento de Pagina =>
@@ -260,11 +261,11 @@ const FormHumeda = (props) => {
 
             <br></br>
 
-            <h5 className='red'>Si algun item no esta dentro del alcance, colocar NA (No Aplicable).</h5>
+            <h5 className='red'>Si algun item no esta dentro del alcance, colocar valor -1 (No Aplicable).</h5>
 
             <br></br>
 
-            <h5 className='red'>Si al momento de la primer visita hay algun item terminado YC (Ya Construido).</h5>
+            <h5 className='red'>Si al momento de la primer visita hay algun item terminado, colocar -2 (Ya Construido).</h5>
 
             </div>
 
@@ -380,11 +381,13 @@ const FormHumeda = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="m2Piso"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 2.00 (Decimal con punto)"
+                        placeholder="* Campo Obligatorio / Formato 2,00 (Decimal)"
                         className="form-control my-2"
+                        min="-2"
+                        step="0.01"
                         {...register("m2Piso", { 
 
                             required:{
@@ -425,10 +428,11 @@ const FormHumeda = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="pisoPerson"
                         onChange={handleInputChange}
                         placeholder="* Campo Obligatorio / Formato 1 (entero)"
+                        min="-2"
                         className="form-control my-2"
                         {...register("pisoPerson", { 
 
@@ -470,11 +474,13 @@ const FormHumeda = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="metros"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 2.00 (Decimal con punto)"
+                        placeholder="* Campo Obligatorio / Formato 2,00 (Decimal)"
                         className="form-control my-2"
+                        min="-2"
+                        step="0.01"
                         {...register("metros", { 
 
                             required:{
@@ -515,11 +521,12 @@ const FormHumeda = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="metrosPerson"
                         onChange={handleInputChange}
                         placeholder="* Campo Obligatorio / Formato 1 (entero)"
                         className="form-control my-2"
+                        min="-2"
                         {...register("metrosPerson", { 
 
                             required:{
@@ -560,11 +567,13 @@ const FormHumeda = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="m2Muro"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 2.00 (Decimal con punto)"
+                        placeholder="* Campo Obligatorio / Formato 2.00 (Decimal)"
                         className="form-control my-2"
+                        min="-2"
+                        step="0.01"
                         {...register("m2Muro", { 
 
                             required:{
@@ -605,11 +614,12 @@ const FormHumeda = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="muroPerson"
                         onChange={handleInputChange}
                         placeholder="* Campo Obligatorio / Formato 1 (entero)"
                         className="form-control my-2"
+                        min="-2"
                         {...register("muroPerson", { 
 
                             required:{
@@ -650,11 +660,13 @@ const FormHumeda = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="m2Cubierta"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 2.00 (Decimal con punto)"
+                        placeholder="* Campo Obligatorio / Formato 2,00 (Decimal)"
                         className="form-control my-2"
+                        min="-2"
+                        step="0.01"
                         {...register("m2Cubierta", { 
 
                             required:{
@@ -695,11 +707,12 @@ const FormHumeda = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="cubiertaPerson"
                         onChange={handleInputChange}
                         placeholder="* Campo Obligatorio / Formato 1 (entero)"
                         className="form-control my-2"
+                        min="-2"
                         {...register("cubiertaPerson", { 
 
                             required:{
@@ -740,11 +753,13 @@ const FormHumeda = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="metrosLineales"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 2.00 (Decimal con punto)"
+                        placeholder="* Campo Obligatorio / Formato 2,00 (Decimal)"
                         className="form-control my-2"
+                        min="-2"
+                        step="0.01"
                         {...register("metrosLineales", { 
 
                             required:{
@@ -785,11 +800,12 @@ const FormHumeda = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="linealesPerson"
                         onChange={handleInputChange}
                         placeholder="* Campo Obligatorio / Formato 1 (entero)"
                         className="form-control my-2"
+                        min="-2"
                         {...register("linealesPerson", { 
 
                             required:{
@@ -823,18 +839,19 @@ const FormHumeda = (props) => {
 
                 <Col sm={3}>
                     
-                    <label className="my-2">Nro de dias Caidos: </label>
+                    <label className="my-2">Nro de dias Caidos (entre la visita actual y anterior): </label>
 
                 </Col>
 
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="diasCaidos"
                         onChange={handleInputChange}
                         placeholder="* Campo Obligatorio / Formato 1 (entero)"
                         className="form-control my-2"
+                        min="-2"
                         {...register("diasCaidos", { 
 
                             required:{

@@ -13,6 +13,7 @@ import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
 import "../assets/css/formMateriales.css";
 
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const FormMateriales = (props) => {
 
     //Redireccionamiento de Pagina =>
@@ -234,6 +235,10 @@ const FormMateriales = (props) => {
             <br></br>
 
             <h5 className='red'>* Campos Obligatorios</h5>
+            
+            <br></br>
+
+            <h5 className='red'>En caso se seleccionar opcion "Otro" se debe especificar en comentario.</h5>
 
             </div>
 
@@ -279,13 +284,14 @@ const FormMateriales = (props) => {
                         <option value="Bueno">Bueno</option>
                         <option value="Muy Bueno">Muy Bueno</option>
                         <option value="Excelente">Excelente</option>
+                        <option value="Otro">Otro (Aclarar en Comentario)</option>
 
                     </select>
 
                 </Col>
 
                 
-                <Col sm={2}>
+                <Col sm={1}>
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -334,12 +340,13 @@ const FormMateriales = (props) => {
                         <option value="Bueno">Bueno</option>
                         <option value="Muy Bueno">Muy Bueno</option>
                         <option value="Excelente">Excelente</option>
+                        <option value="Otro">Otro (Aclarar en Comentario)</option>
 
                     </select>
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={1}>
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -388,12 +395,13 @@ const FormMateriales = (props) => {
                         <option value="Bueno">Bueno</option>
                         <option value="Muy Bueno">Muy Bueno</option>
                         <option value="Excelente">Excelente</option>
+                        <option value="Otro">Otro (Aclarar en Comentario)</option>
 
                     </select>
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={1}>
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -442,12 +450,13 @@ const FormMateriales = (props) => {
                         <option value="Bueno">Bueno</option>
                         <option value="Muy Bueno">Muy Bueno</option>
                         <option value="Excelente">Excelente</option>
+                        <option value="Otro">Otro (Aclarar en Comentario)</option>
 
                     </select>
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={1}>
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -496,12 +505,13 @@ const FormMateriales = (props) => {
                         <option value="Bueno">Bueno</option>
                         <option value="Muy Bueno">Muy Bueno</option>
                         <option value="Excelente">Excelente</option>
+                        <option value="Otro">Otro (Aclarar en Comentario)</option>
 
                     </select>
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={1}>
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -550,12 +560,13 @@ const FormMateriales = (props) => {
                         <option value="Bueno">Bueno</option>
                         <option value="Muy Bueno">Muy Bueno</option>
                         <option value="Excelente">Excelente</option>
+                        <option value="Otro">Otro (Aclarar en Comentario)</option>
 
                     </select>
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={1}>
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -604,12 +615,13 @@ const FormMateriales = (props) => {
                         <option value="Bueno">Bueno</option>
                         <option value="Muy Bueno">Muy Bueno</option>
                         <option value="Excelente">Excelente</option>
+                        <option value="Otro">Otro (Aclarar en Comentario)</option>
 
                     </select>
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={1}>
 
                         
                     <span className="text-danger text-small d-block mb-2">

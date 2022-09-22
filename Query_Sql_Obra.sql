@@ -16,6 +16,8 @@ SELECT * FROM general WHERE idGeneral = 1;
 
 DELETE FROM general WHERE idGeneral = 1;
 
+UPDATE general set codigo = "0001" where idGeneral = 1;
+
 DELETE FROM general;
 
 alter table general auto_increment = 1;

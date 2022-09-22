@@ -79,6 +79,7 @@ public class ServletAbertura extends HttpServlet {
             
                     LocalDate fechaInicial = LocalDate.parse(request.getParameter("fechaInicio"));
                     LocalDate fechaFinal = LocalDate.parse(request.getParameter("fechaFinal"));
+                    String tipoAbertura = request.getParameter("tipoAbertura");
                     int cantidad = Integer.parseInt(request.getParameter("cantidad"));
                     double m2 = Double.parseDouble(request.getParameter("m2"));
                     int nroPersona = Integer.parseInt(request.getParameter("nroPersona"));
@@ -91,7 +92,7 @@ public class ServletAbertura extends HttpServlet {
                     
                     
                     ControladorAbertura c1 = new ControladorAbertura(); 
-                    Abertura abertura = new Abertura(fechaInicial, fechaFinal, cantidad, m2, nroPersona, comentario, fechaAlta, fechaBaja, estado, idVisita);
+                    Abertura abertura = new Abertura(fechaInicial, fechaFinal, tipoAbertura, cantidad, m2, nroPersona, comentario, fechaAlta, fechaBaja, estado, idVisita);
                     c1.insertarAbertura(abertura);
                     Gson gsonBuilder = new GsonBuilder().create();
                     String aberturaJson = gsonBuilder.toJson(abertura);
@@ -102,6 +103,7 @@ public class ServletAbertura extends HttpServlet {
                     Long idAbertura = Long.parseLong(request.getParameter("idAbertura"));
                     LocalDate fechaInicial = LocalDate.parse(request.getParameter("fechaInicio"));
                     LocalDate fechaFinal = LocalDate.parse(request.getParameter("fechaFinal"));
+                    String tipoAbertura = request.getParameter("tipoAbertura");
                     int cantidad = Integer.parseInt(request.getParameter("cantidad"));
                     double m2 = Double.parseDouble(request.getParameter("m2"));
                     int nroPersona = Integer.parseInt(request.getParameter("nroPersona"));
@@ -112,7 +114,7 @@ public class ServletAbertura extends HttpServlet {
                     Long idVisita = Long.parseLong(request.getParameter("idVisita"));
                     
                     ControladorAbertura c1 = new ControladorAbertura(); 
-                    Abertura abertura = new Abertura(idAbertura, fechaInicial, fechaFinal, cantidad, m2, nroPersona, comentario, fechaAlta, fechaBaja, estado, idVisita);
+                    Abertura abertura = new Abertura(idAbertura, fechaInicial, fechaFinal, tipoAbertura, cantidad, m2, nroPersona, comentario, fechaAlta, fechaBaja, estado, idVisita);
                     c1.actualizarAbertura(abertura);
                     Gson gsonBuilder = new GsonBuilder().create();
                     String aberturaJson = gsonBuilder.toJson(abertura);

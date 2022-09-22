@@ -88,6 +88,7 @@ public class ServletGremio extends HttpServlet {
                     int nroArgentinos = Integer.parseInt(request.getParameter("nroArgentinos"));
                     String nombreContratista = request.getParameter("nombreContratista");
                     String apellidoContratista = request.getParameter("apellidoContratista");
+                    String comentario = request.getParameter("comentario");
                     LocalDate fechaAlta = LocalDate.parse(request.getParameter("fechaAlta"));
                     LocalDate fechaBaja = LocalDate.parse(request.getParameter("fechaBaja"));
                     String estado = request.getParameter("estado");
@@ -95,7 +96,7 @@ public class ServletGremio extends HttpServlet {
                     
 
                     ControladorGremio c1 = new ControladorGremio();   
-                    Gremio gremio = new Gremio(nombreGremio, nroPersonas, horarioDesde, horarioHasta, fechaDesde, fechaHasta, nroArgentinos, nombreContratista, apellidoContratista, fechaAlta, fechaBaja, estado, idPersona);
+                    Gremio gremio = new Gremio(nombreGremio, nroPersonas, horarioDesde, horarioHasta, fechaDesde, fechaHasta, nroArgentinos, nombreContratista, apellidoContratista, comentario, fechaAlta, fechaBaja, estado, idPersona);
                     c1.insertarGremio(gremio);
                     Gson gsonBuilder = new GsonBuilder().create();
                     String generalJson = gsonBuilder.toJson(gremio);
@@ -114,6 +115,7 @@ public class ServletGremio extends HttpServlet {
                     int nroArgentinos = Integer.parseInt(request.getParameter("nroArgentinos"));
                     String nombreContratista = request.getParameter("nombreContratista");
                     String apellidoContratista = request.getParameter("apellidoContratista");
+                    String comentario = request.getParameter("comentario");
                     LocalDate fechaAlta = LocalDate.parse(request.getParameter("fechaAlta"));
                     LocalDate fechaBaja = LocalDate.parse(request.getParameter("fechaBaja"));
                     String estado = request.getParameter("estado");
@@ -121,7 +123,7 @@ public class ServletGremio extends HttpServlet {
                     
 
                     ControladorGremio c1 = new ControladorGremio();  
-                    Gremio gremio = new Gremio(idGremio, nombreGremio, nroPersonas, horarioDesde, horarioHasta, fechaDesde, fechaHasta, nroArgentinos, nombreContratista, apellidoContratista, fechaAlta, fechaBaja, estado, idPersona);
+                    Gremio gremio = new Gremio(idGremio, nombreGremio, nroPersonas, horarioDesde, horarioHasta, fechaDesde, fechaHasta, nroArgentinos, nombreContratista, apellidoContratista, comentario, fechaAlta, fechaBaja, estado, idPersona);
                     c1.actualizarGremio(gremio);
                     Gson gsonBuilder = new GsonBuilder().create();
                     String gremioJson = gsonBuilder.toJson(gremio);

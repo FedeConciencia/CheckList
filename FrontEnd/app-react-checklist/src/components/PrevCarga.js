@@ -8,6 +8,7 @@ import Alert from "react-bootstrap/Alert";
 import Table from 'react-bootstrap/Table'
 import NavigationHome from "./NavigationHome";
 
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const PrevCarga = (props) => {
 
     const[dato,setDato] = useState(null)

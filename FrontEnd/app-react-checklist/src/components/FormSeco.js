@@ -12,6 +12,8 @@ import {useForm} from 'react-hook-form';
 import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
 
+
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const FormSeco = (props) => {
 
     //Redireccionamiento de Pagina =>
@@ -263,11 +265,11 @@ const FormSeco = (props) => {
 
             <br></br>
 
-            <h5 className='red'>Si algun item no esta dentro del alcance, colocar NA (No Aplicable).</h5>
+            <h5 className='red'>Si algun item no esta dentro del alcance, colocar valor -1 (No Aplicable).</h5>
 
             <br></br>
 
-            <h5 className='red'>Si al momento de la primer visita hay algun item terminado YC (Ya Construido).</h5>
+            <h5 className='red'>Si al momento de la primer visita hay algun item terminado, colocar -2 (Ya Construido).</h5>
 
             </div>
 
@@ -383,11 +385,13 @@ const FormSeco = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="mLineales"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 2.00 (Decimal con punto)"
+                        placeholder="* Campo Obligatorio / Formato 2,00 (Decimal)"
                         className="form-control my-2"
+                        min="-2"
+                        step="0.01"
                         {...register("mLineales", { 
 
                             required:{
@@ -428,11 +432,12 @@ const FormSeco = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="mPerson"
                         onChange={handleInputChange}
                         placeholder="* Campo Obligatorio / Formato 1 (entero)"
                         className="form-control my-2"
+                        min="-2"
                         {...register("mPerson", { 
 
                             required:{
@@ -473,11 +478,13 @@ const FormSeco = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="m2Muro"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 2.00 (Decimal con punto)"
+                        placeholder="* Campo Obligatorio / Formato 2,00 (Decimal)"
                         className="form-control my-2"
+                        min="-2"
+                        step="0.01"
                         {...register("m2Muro", { 
 
                             required:{
@@ -518,11 +525,12 @@ const FormSeco = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="muroPerson"
                         onChange={handleInputChange}
                         placeholder="* Campo Obligatorio / Formato 1 (entero)"
                         className="form-control my-2"
+                        min="-2"
                         {...register("muroPerson", { 
 
                             required:{
@@ -563,11 +571,13 @@ const FormSeco = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="m2Cubierta"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 2.00 (Decimal con punto)"
+                        placeholder="* Campo Obligatorio / Formato 2,00 (Decimal)"
                         className="form-control my-2"
+                        min="-2"
+                        step="0.01"
                         {...register("m2Cubierta", { 
 
                             required:{
@@ -608,11 +618,12 @@ const FormSeco = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="cubiertaPerson"
                         onChange={handleInputChange}
                         placeholder="* Campo Obligatorio / Formato 1 (entero)"
                         className="form-control my-2"
+                        min="-2"
                         {...register("cubiertaPerson", { 
 
                             required:{
@@ -653,11 +664,13 @@ const FormSeco = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="metrosLineales"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato 2.00 (Decimal con punto)"
+                        placeholder="* Campo Obligatorio / Formato 2,00 (Decimal)"
                         className="form-control my-2"
+                        min="-2"
+                        step="0.01"
                         {...register("metrosLineales", { 
 
                             required:{
@@ -698,11 +711,12 @@ const FormSeco = (props) => {
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="linealesPerson"
                         onChange={handleInputChange}
                         placeholder="* Campo Obligatorio / Formato 1 (entero)"
                         className="form-control my-2"
+                        min="-2"
                         {...register("linealesPerson", { 
 
                             required:{
@@ -736,18 +750,19 @@ const FormSeco = (props) => {
 
                 <Col sm={3}>
                     
-                    <label className="my-2">Nro de dias Caidos: </label>
+                    <label className="my-2">Nro de dias Caidos (entre la visita actual y anterior): </label>
 
                 </Col>
 
                 <Col sm={6}>
                     
                     <input 
-                        type="text"
+                        type="number"
                         name="diasCaidos"
                         onChange={handleInputChange}
                         placeholder="* Campo Obligatorio / Formato 1 (entero)"
                         className="form-control my-2"
+                        min="-2"
                         {...register("diasCaidos", { 
 
                             required:{

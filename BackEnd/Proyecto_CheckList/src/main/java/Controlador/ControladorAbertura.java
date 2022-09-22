@@ -27,19 +27,20 @@ public class ControladorAbertura {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("INSERT INTO abertura (fechaInicial, fechaFinal, cantidad, m2, nroPersona, comentario, fechaAlta, fechaBaja, estado, idVisita) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            ps = conexion.prepareStatement("INSERT INTO abertura (fechaInicial, fechaFinal, tipoAbertura, cantidad, m2, nroPersona, comentario, fechaAlta, fechaBaja, estado, idVisita) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
             // Se establecen los parámetros y se ejecuta la sentencia.
             ps.setDate(1, Date.valueOf(abertura.getFechaInicial()));
             ps.setDate(2, Date.valueOf(abertura.getFechaFinal()));
-            ps.setInt(3, abertura.getCantidad());
-            ps.setDouble(4, abertura.getM2());
-            ps.setInt(5, abertura.getNroPersona());
-            ps.setString(6, abertura.getComentario());
-            ps.setDate(7, Date.valueOf(abertura.getFechaAlta())); //Se trabaja en java con LocalDate
-            ps.setDate(8, Date.valueOf(abertura.getFechaBaja())); //Se trabaja en java con LocalDate
-            ps.setString(9, abertura.getEstado());
-            ps.setLong(10, abertura.getIdVisita());
+            ps.setString(3, abertura.getTipoAbertura());
+            ps.setInt(4, abertura.getCantidad());
+            ps.setDouble(5, abertura.getM2());
+            ps.setInt(6, abertura.getNroPersona());
+            ps.setString(7, abertura.getComentario());
+            ps.setDate(8, Date.valueOf(abertura.getFechaAlta())); //Se trabaja en java con LocalDate
+            ps.setDate(9, Date.valueOf(abertura.getFechaBaja())); //Se trabaja en java con LocalDate
+            ps.setString(10, abertura.getEstado());
+            ps.setLong(11, abertura.getIdVisita());
 
             //Ejecutamos el comando y mandamos los datos al sistema:
             int resultado = ps.executeUpdate();
@@ -92,20 +93,21 @@ public class ControladorAbertura {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("UPDATE abertura SET fechaInicial = ?, fechaFinal = ?, cantidad = ?, m2 = ?, nroPersona = ?, comentario = ?, fechaAlta = ?, fechaBaja = ?, estado = ?, idVisita = ? WHERE idAbertura = ? ");
+            ps = conexion.prepareStatement("UPDATE abertura SET fechaInicial = ?, fechaFinal = ?, tipoAbertura = ?, cantidad = ?, m2 = ?, nroPersona = ?, comentario = ?, fechaAlta = ?, fechaBaja = ?, estado = ?, idVisita = ? WHERE idAbertura = ? ");
 
             // Se establecen los parámetros y se ejecuta la sentencia.
             ps.setDate(1, Date.valueOf(abertura.getFechaInicial()));
             ps.setDate(2, Date.valueOf(abertura.getFechaFinal()));
-            ps.setInt(3, abertura.getCantidad());
-            ps.setDouble(4, abertura.getM2());
-            ps.setInt(5, abertura.getNroPersona());
-            ps.setString(6, abertura.getComentario());
-            ps.setDate(7, Date.valueOf(abertura.getFechaAlta())); //Se trabaja en java con LocalDate
-            ps.setDate(8, Date.valueOf(abertura.getFechaBaja())); //Se trabaja en java con LocalDate
-            ps.setString(9, abertura.getEstado());
-            ps.setLong(10, abertura.getIdVisita());
-            ps.setLong(11, abertura.getIdAbertura());
+            ps.setString(3, abertura.getTipoAbertura());
+            ps.setInt(4, abertura.getCantidad());
+            ps.setDouble(5, abertura.getM2());
+            ps.setInt(6, abertura.getNroPersona());
+            ps.setString(7, abertura.getComentario());
+            ps.setDate(8, Date.valueOf(abertura.getFechaAlta())); //Se trabaja en java con LocalDate
+            ps.setDate(9, Date.valueOf(abertura.getFechaBaja())); //Se trabaja en java con LocalDate
+            ps.setString(10, abertura.getEstado());
+            ps.setLong(11, abertura.getIdVisita());
+            ps.setLong(12, abertura.getIdAbertura());
 
             //Ejecutamos el comando y mandamos los datos al sistema:
             int resultado = ps.executeUpdate();
@@ -166,16 +168,17 @@ public class ControladorAbertura {
                 Long idAbertura = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
                 LocalDate fechaInicial = (rs.getDate(2)).toLocalDate();
                 LocalDate fechaFinal = (rs.getDate(3)).toLocalDate();
-                int cantidad = rs.getInt(4);
-                double m2 = rs.getDouble(5);
-                int nroPersona = rs.getInt(6);
-                String comentario = rs.getString(7);
-                LocalDate fechaAlta = (rs.getDate(8)).toLocalDate(); //En java trabajamos con LocalDate
-                LocalDate fechaBaja = (rs.getDate(9)).toLocalDate(); //En java trabajamos con LocalDate
-                String estado = rs.getString(10);
-                Long idVisita = rs.getLong(11);
+                String tipoAbertura = rs.getString(4);
+                int cantidad = rs.getInt(5);
+                double m2 = rs.getDouble(6);
+                int nroPersona = rs.getInt(7);
+                String comentario = rs.getString(8);
+                LocalDate fechaAlta = (rs.getDate(9)).toLocalDate(); //En java trabajamos con LocalDate
+                LocalDate fechaBaja = (rs.getDate(10)).toLocalDate(); //En java trabajamos con LocalDate
+                String estado = rs.getString(11);
+                Long idVisita = rs.getLong(12);
 
-                abertura = new Abertura(idAbertura, fechaInicial, fechaFinal, cantidad, m2, nroPersona, comentario, fechaAlta, fechaBaja, estado, idVisita);
+                abertura = new Abertura(idAbertura, fechaInicial, fechaFinal, tipoAbertura, cantidad, m2, nroPersona, comentario, fechaAlta, fechaBaja, estado, idVisita);
 
                 System.out.println("El Registro fue encontrado con exito.");
                 //JOptionPane.showMessageDialog(null, "El Registro fue encontrado con exito.");
@@ -232,16 +235,17 @@ public class ControladorAbertura {
                 Long idAbertura = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
                 LocalDate fechaInicial = (rs.getDate(2)).toLocalDate();
                 LocalDate fechaFinal = (rs.getDate(3)).toLocalDate();
-                int cantidad = rs.getInt(4);
-                double m2 = rs.getDouble(5);
-                int nroPersona = rs.getInt(6);
-                String comentario = rs.getString(7);
-                LocalDate fechaAlta = (rs.getDate(8)).toLocalDate(); //En java trabajamos con LocalDate
-                LocalDate fechaBaja = (rs.getDate(9)).toLocalDate(); //En java trabajamos con LocalDate
-                String estado = rs.getString(10);
-                Long idVisita = rs.getLong(11);
+                String tipoAbertura = rs.getString(4);
+                int cantidad = rs.getInt(5);
+                double m2 = rs.getDouble(6);
+                int nroPersona = rs.getInt(7);
+                String comentario = rs.getString(8);
+                LocalDate fechaAlta = (rs.getDate(9)).toLocalDate(); //En java trabajamos con LocalDate
+                LocalDate fechaBaja = (rs.getDate(10)).toLocalDate(); //En java trabajamos con LocalDate
+                String estado = rs.getString(11);
+                Long idVisita = rs.getLong(12);
 
-                abertura = new Abertura(idAbertura, fechaInicial, fechaFinal, cantidad, m2, nroPersona, comentario, fechaAlta, fechaBaja, estado, idVisita);
+                abertura = new Abertura(idAbertura, fechaInicial, fechaFinal, tipoAbertura, cantidad, m2, nroPersona, comentario, fechaAlta, fechaBaja, estado, idVisita);
 
                 listaAbertura.add(abertura);
 
@@ -396,16 +400,17 @@ public class ControladorAbertura {
                 Long idAbertura = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
                 LocalDate fechaInicial = (rs.getDate(2)).toLocalDate();
                 LocalDate fechaFinal = (rs.getDate(3)).toLocalDate();
-                int cantidad = rs.getInt(4);
-                double m2 = rs.getDouble(5);
-                int nroPersona = rs.getInt(6);
-                String comentario = rs.getString(7);
-                LocalDate fechaAlta = (rs.getDate(8)).toLocalDate(); //En java trabajamos con LocalDate
-                LocalDate fechaBaja = (rs.getDate(9)).toLocalDate(); //En java trabajamos con LocalDate
-                String estado = rs.getString(10);
-                Long idVisita = rs.getLong(11);
+                String tipoAbertura = rs.getString(4);
+                int cantidad = rs.getInt(5);
+                double m2 = rs.getDouble(6);
+                int nroPersona = rs.getInt(7);
+                String comentario = rs.getString(8);
+                LocalDate fechaAlta = (rs.getDate(9)).toLocalDate(); //En java trabajamos con LocalDate
+                LocalDate fechaBaja = (rs.getDate(10)).toLocalDate(); //En java trabajamos con LocalDate
+                String estado = rs.getString(11);
+                Long idVisita = rs.getLong(12);
 
-                abertura = new Abertura(idAbertura, fechaInicial, fechaFinal, cantidad, m2, nroPersona, comentario, fechaAlta, fechaBaja, estado, idVisita);
+                abertura = new Abertura(idAbertura, fechaInicial, fechaFinal, tipoAbertura, cantidad, m2, nroPersona, comentario, fechaAlta, fechaBaja, estado, idVisita);
 
                 System.out.println("El Registro fue encontrado con exito.");
                 //JOptionPane.showMessageDialog(null, "El Registro fue encontrado con exito.");

@@ -13,6 +13,8 @@ import moment from 'moment';
 import "../assets/css/formGeneral.css"
 import {useNavigate} from 'react-router-dom';
 
+
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const FormGeneral = (props) => {
 
     //Redireccionamiento =>
@@ -27,7 +29,6 @@ const FormGeneral = (props) => {
 
         codigo:'',
         nombreCliente:'',
-        apellidoCliente:'',
         dni:'',
         domicilio:'',
         usoEdificio:'',
@@ -80,7 +81,6 @@ const FormGeneral = (props) => {
             
             codigo:'',
             nombreCliente:'',
-            apellidoCliente:'',
             dni:'',
             domicilio:'',
             usoEdificio:'',
@@ -118,7 +118,6 @@ const FormGeneral = (props) => {
                     action:"insertar",
                     codigo:general.codigo,
                     nombreCliente:general.nombreCliente,
-                    apellidoCliente:general.apellidoCliente,
                     dni:general.dni,
                     domicilio:general.domicilio,
                     usoEdificio:general.usoEdificio,
@@ -223,6 +222,10 @@ const FormGeneral = (props) => {
 
             <h5 className='red'>* Campos Obligatorios</h5>
 
+            <br></br>
+
+            <h5 className='red'>DNI-CUIT-CUIL sin . , - , /  (solo numeracion)</h5>
+
             </div>
 
             <br></br>
@@ -293,7 +296,7 @@ const FormGeneral = (props) => {
 
                 <Col className="col-md-3">
                     
-                    <label className="my-2">Nombre de Cliente: </label>
+                    <label className="my-2">Nombre de Cliente/Empresa: </label>
 
                 </Col>
 
@@ -343,57 +346,7 @@ const FormGeneral = (props) => {
 
                 <Col className="col-md-3">
                     
-                    <label className="my-2">Apellido del Cliente: </label>
-
-                </Col>
-
-                <Col>
-                    
-                    <input 
-                        type="text"
-                        name="apellidoCliente"
-                        onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio"
-                        className="form-control my-2"
-                        {...register("apellidoCliente", { 
-
-                            required:{
-                                value: true,
-                                message: '*', 
-                            },
-
-                            validate:{
-
-                               
-
-                            }
-
-                        })}   
-
-                    >
-                    </input>
-
-                </Col>
-
-                <Col className="col-md-3">
-
-                        
-                    <span className="text-danger text-small d-block mb-2">
-                    {errors.apellidoCliente && errors.apellidoCliente.message}
-                    </span>
-
-
-                </Col>
-
-            </Row>
-
-            <br></br>
-
-            <Row>
-
-                <Col className="col-md-3">
-                    
-                    <label className="my-2">Dni/Cuil: </label>
+                    <label className="my-2">Dni/Cuil/Cuit: </label>
 
                 </Col>
 

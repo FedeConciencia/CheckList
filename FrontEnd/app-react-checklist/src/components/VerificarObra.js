@@ -13,6 +13,7 @@ import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
 
 
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const VerificarObra = (props) => {
 
 
@@ -61,13 +62,7 @@ const VerificarObra = (props) => {
         //Limpiar los campos del Form =>
         event.target.reset();
 
-        //Vaciar todas las variables =>
-        setObra({
-
-            codigo:'',
-
-        });
-
+        
         //Redirecciono y paso los datos a traves de un search =>
         navigate(`/principalVista?nObra=${obra.codigo}`)
 

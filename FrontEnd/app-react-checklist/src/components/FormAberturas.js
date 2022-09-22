@@ -12,8 +12,10 @@ import {useForm} from 'react-hook-form';
 import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
 
-
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const FormAberturas = (props) => {
+
+    //Una Visita puede estar asociada a muchas Aberturas =>
 
     
     //Redireccionamiento de Pagina =>
@@ -28,6 +30,7 @@ const FormAberturas = (props) => {
 
         fechaInicio:'',
         fechaFinal:'',
+        tipoApertura:'',
         cantidad:'',
         m2:'',
         nroPersona:'',
@@ -41,7 +44,7 @@ const FormAberturas = (props) => {
 
     useEffect(() => {
 
-        validarCargaForm()
+        
 
 
     },[])
@@ -74,6 +77,7 @@ const FormAberturas = (props) => {
 
             fechaInicio:'',
             fechaFinal:'',
+            tipoAbertura:'',
             cantidad:'',
             m2:'',
             nroPersona:'',
@@ -106,6 +110,7 @@ const FormAberturas = (props) => {
                     action:"insertar",
                     fechaInicio:abertura.fechaInicio,
                     fechaFinal:abertura.fechaFinal,
+                    tipoAbertura:abertura.tipoAbertura,
                     cantidad:abertura.cantidad,
                     m2:abertura.m2,
                     nroPersona:abertura.nroPersona,
@@ -141,6 +146,9 @@ const FormAberturas = (props) => {
 
     }
 
+    /*
+
+    //Por el momento queda sin efecto la validacion =>
 
     //Metodo para validar si el idVisita en la entidad Material existe =>
     const validarCargaForm = async() => {
@@ -203,9 +211,9 @@ const FormAberturas = (props) => {
 
         }
 
+        */
         
-        
-    }
+    
 
 
     return(
@@ -230,6 +238,18 @@ const FormAberturas = (props) => {
             <br></br>
 
             <h5 className='red'>* Campos Obligatorios</h5>
+
+            <br></br>
+
+            <h5 className='red'>Se pueden agregar la cantidad de Aberturas necesarias asociadas a la visita (Completar nuevamente el Formulario)</h5>
+
+            <br></br>
+
+            <h5 className='red'>Si algun item no esta dentro del alcance, colocar valor -1 (No Aplicable).</h5>
+
+            <br></br>
+
+            <h5 className='red'>Si al momento de la primer visita hay algun item terminado, colocar -2 (Ya Construido).</h5>
 
             </div>
 
@@ -338,6 +358,60 @@ const FormAberturas = (props) => {
 
                 <Col sm={3}>
                     
+                    <label className="my-2">Tipo de Abertura: </label>
+
+                </Col>
+
+                <Col sm={2}>
+                    
+                    <select 
+
+                        name="tipoAbertura" 
+                        onChange={handleInputChange}
+                        {...register("tipoAbertura", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+                            validate:{
+
+                            }
+
+                        })}   
+                        
+                    >
+
+                        <option value="">Seleccione una Opcion</option>
+                        <option value="Ventanas">Ventanas</option>
+                        <option value="Puertas">Puertas</option>
+                        <option value="Portones">Portones</option>
+                        <option value="Otros">Otros</option>
+                        
+
+                    </select>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.tipoAbertura && errors.tipoAbertura.message}
+                    </span>
+
+                
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
                     <label className="my-2">Cantidad: </label>
 
                 </Col>
@@ -348,9 +422,9 @@ const FormAberturas = (props) => {
                         type="number"
                         name="cantidad"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio"
+                        placeholder="* Campo Obligatorio / Formato 1 (entero)"
                         className="form-control my-2"
-                        min="1"
+                        min="-2"
                         {...register("cantidad", { 
 
                             required:{
@@ -399,9 +473,9 @@ const FormAberturas = (props) => {
                         type="number"
                         name="m2"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio"
+                        placeholder="* Campo Obligatorio / Formato 2,00 (Decimal)"
                         className="form-control my-2"
-                        min="0"
+                        min="-2"
                         step="0.01"
                         {...register("m2", { 
 
@@ -451,9 +525,9 @@ const FormAberturas = (props) => {
                         type="number"
                         name="nroPersona"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio"
+                        placeholder="* Campo Obligatorio / Formato 1 (entero)"
                         className="form-control my-2"
-                        min="1"
+                        min="-2"
                         {...register("nroPersona", { 
 
                             required:{
@@ -513,7 +587,7 @@ const FormAberturas = (props) => {
 
                             validate:{
 
-                                validate1:validarCargaForm,
+                                
 
                             }
 
@@ -531,13 +605,6 @@ const FormAberturas = (props) => {
                     {errors.comentario && errors.comentario.message}
                     </span>
 
-                    <span className="text-danger text-small d-block mb-2">
-                    {
-                        errors.comentario && errors.comentario.type === "validate1" && (
-                            <div className="error">*</div>
-                        )
-                    }
-                    </span>
 
 
                 </Col>

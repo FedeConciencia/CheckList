@@ -14,6 +14,8 @@ import "../assets/css/formGeneral.css"
 import {useNavigate} from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 
+
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const FormVisita = (props) => {
 
     //Redireccionamiento =>

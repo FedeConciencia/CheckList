@@ -13,6 +13,7 @@ import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
 
 
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const FormPaneles = (props) => {
 
     
@@ -257,14 +258,12 @@ const FormPaneles = (props) => {
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={3}>
                     
-                    <input 
-                        type="text"
-                        name="selladores"
+                    <select 
+
+                        name="selladores" 
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio"
-                        className="form-control my-2"
                         {...register("selladores", { 
 
                             required:{
@@ -272,11 +271,20 @@ const FormPaneles = (props) => {
                                 message: '*', 
                             },
 
+                            validate:{
+
+                            }
 
                         })}   
-
+                        
                     >
-                    </input>
+
+                        <option value="">Seleccione una Opcion</option>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                        
+
+                    </select>
 
                 </Col>
 
@@ -287,7 +295,7 @@ const FormPaneles = (props) => {
                     {errors.selladores && errors.selladores.message}
                     </span>
 
-                   
+                
                 </Col>
 
             </Row>
@@ -302,14 +310,12 @@ const FormPaneles = (props) => {
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={3}>
                     
-                    <input 
-                        type="text"
-                        name="izaje"
+                    <select 
+
+                        name="izaje" 
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio"
-                        className="form-control my-2"
                         {...register("izaje", { 
 
                             required:{
@@ -317,11 +323,27 @@ const FormPaneles = (props) => {
                                 message: '*', 
                             },
 
+                            validate:{
+
+                            }
 
                         })}   
-
+                        
                     >
-                    </input>
+
+                        <option value="">Seleccione una Opcion</option>
+                        <option value="Soga">Soga</option>
+                        <option value="Escalera">Escalera</option>
+                        <option value="Andamio">Andamio</option>
+                        <option value="AutoElevador">AutoElevador</option>
+                        <option value="Tijera">Tijera</option>
+                        <option value="Manitou">Manitou</option>
+                        <option value="Grua">Grua</option>
+                        <option value="GruaTorre">GruaTorre</option>
+                        <option value="Malacate">Malacate</option>
+                        
+
+                    </select>
 
                 </Col>
 
@@ -347,14 +369,12 @@ const FormPaneles = (props) => {
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={3}>
                     
-                    <input 
-                        type="text"
-                        name="tornillos"
+                    <select 
+
+                        name="tornillos" 
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio"
-                        className="form-control my-2"
                         {...register("tornillos", { 
 
                             required:{
@@ -362,11 +382,21 @@ const FormPaneles = (props) => {
                                 message: '*', 
                             },
 
+                            validate:{
+
+                            }
 
                         })}   
-
+                        
                     >
-                    </input>
+
+                        <option value="">Seleccione una Opcion</option>
+                        <option value="Tornillo autoperforante 14">Tornillo autoperforante 14</option>
+                        <option value="Hongos">Hongos</option>
+                        <option value="Otros">Otros (Aclarar en comentario)</option>
+                        
+
+                    </select>
 
                 </Col>
 
@@ -392,14 +422,12 @@ const FormPaneles = (props) => {
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={3}>
                     
-                    <input 
-                        type="text"
-                        name="perfileria"
+                    <select 
+
+                        name="perfileria" 
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio"
-                        className="form-control my-2"
                         {...register("perfileria", { 
 
                             required:{
@@ -407,11 +435,23 @@ const FormPaneles = (props) => {
                                 message: '*', 
                             },
 
+                            validate:{
+
+                            }
 
                         })}   
-
+                        
                     >
-                    </input>
+
+                        <option value="">Seleccione una Opcion</option>
+                        <option value="Remaches Pop">Remaches Pop</option>
+                        <option value="Remachadora">Remachadora</option>
+                        <option value="Tornillo autoperforante wufer">Tornillo Autoperforante wufer</option>
+                        <option value="Cinta adhesiva doble faz">Cinta adhesiva doble faz</option>
+                        <option value="Otros">Otros (Aclarar en comentario)</option>
+                        
+
+                    </select>
 
                 </Col>
 
@@ -593,14 +633,12 @@ const FormPaneles = (props) => {
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={2}>
                     
-                    <input 
-                        type="text"
-                        name="resultado"
+                    <select 
+
+                        name="resultado" 
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio"
-                        className="form-control my-2"
                         {...register("resultado", { 
 
                             required:{
@@ -608,11 +646,23 @@ const FormPaneles = (props) => {
                                 message: '*', 
                             },
 
+                            validate:{
+
+                            }
 
                         })}   
-
+                        
                     >
-                    </input>
+
+                        <option value="">Seleccione una Opcion</option>
+                        <option value="Malo">Malo</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Bueno">Bueno</option>
+                        <option value="Muy Bueno">Muy Bueno</option>
+                        <option value="Excelente">Excelente</option>
+                        <option value="Otro">Otro (Aclarar en Comentario)</option>
+
+                    </select>
 
                 </Col>
 

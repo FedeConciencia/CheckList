@@ -33,7 +33,7 @@ public class ControladorAuxVisitaGeneral {
 
             conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
 
-            ps = conexion.prepareStatement("Select v.fecha, v.nombreTecnico, v.apellidoTecnico, v.nVisita, g.nombreCliente, g.apellidoCliente, g.dni, g.domicilio, v.idVisita, v.idGeneral, g.codigo from visita as v inner join general as g on v.idGeneral = g.idGeneral where g.codigo = ?");
+            ps = conexion.prepareStatement("Select v.fecha, v.nombreTecnico, v.apellidoTecnico, v.nVisita, g.nombreCliente, g.dni, g.domicilio, v.idVisita, v.idGeneral, g.codigo from visita as v inner join general as g on v.idGeneral = g.idGeneral where g.codigo = ?");
             
             ps.setString(1,codigo); //pasamos el id parametro y se ingresa en el ? del query
             
@@ -47,15 +47,14 @@ public class ControladorAuxVisitaGeneral {
                 String apellidoTecnico = rs.getString(3);
                 int nVisita = rs.getInt(4);
                 String nombreCliente = rs.getString(5);
-                String apellidoCliente = rs.getString(6);
-                String dni = rs.getString(7);
-                String domicilio = rs.getString(8);
-                Long idVisita = rs.getLong(9); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
-                Long idGeneral = rs.getLong(10); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
-                String nObra = rs.getString(11);
+                String dni = rs.getString(6);
+                String domicilio = rs.getString(7);
+                Long idVisita = rs.getLong(8); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                Long idGeneral = rs.getLong(9); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                String nObra = rs.getString(10);
                 
                 
-                aux = new AuxVisitaGeneral(fechaVisita, nombreTecnico, apellidoTecnico, nVisita, nombreCliente, apellidoCliente, dni, domicilio, idVisita, idGeneral, nObra);
+                aux = new AuxVisitaGeneral(fechaVisita, nombreTecnico, apellidoTecnico, nVisita, nombreCliente, dni, domicilio, idVisita, idGeneral, nObra);
                 
                 listaAux.add(aux);
                 

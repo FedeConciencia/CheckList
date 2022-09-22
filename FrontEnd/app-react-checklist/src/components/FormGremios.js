@@ -12,7 +12,7 @@ import {useForm} from 'react-hook-form';
 import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
 
-
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const FormGremios = (props) => {
 
     //Una Persona puede tener muchos gremios asociados =>
@@ -37,6 +37,7 @@ const FormGremios = (props) => {
         nroArgentinos:'',
         nombreContratista:'',
         apellidoContratista:'',
+        comentario:'',
         fechaAlta:'',
         fechaBaja:'',
         estado:'',
@@ -86,6 +87,7 @@ const FormGremios = (props) => {
             nroArgentinos:'',
             nombreContratista:'',
             apellidoContratista:'',
+            comentario:'',
             fechaAlta:'',
             fechaBaja:'',
             estado:'',
@@ -121,6 +123,7 @@ const FormGremios = (props) => {
                     nroArgentinos:gremio.nroArgentinos,
                     nombreContratista:gremio.nombreContratista,
                     apellidoContratista:gremio.apellidoContratista,
+                    comentario:gremio.comentario,
 
                     //Se autocompletan =>
                     fechaAlta:moment().format('YYYY-MM-DD'),
@@ -176,6 +179,14 @@ const FormGremios = (props) => {
             <br></br>
 
             <h5 className='red'>* Campos Obligatorios</h5>
+
+            <br></br>
+
+            <h5 className='red'>Se debe aclarar en campo comentario: Dia de la semana de trabajo y cantidad de Horas Ej: Lunes 4hs, Martes 5hs, etc</h5>
+
+            <br></br>
+
+            <h5 className='red'>Se pueden agregar la cantidad de Gremios necesarios asociados a la visita (Completar nuevamente el Formulario)</h5>
 
             </div>
 
@@ -626,6 +637,56 @@ const FormGremios = (props) => {
                     </span>
 
 
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label className="my-2">Comentario: </label>
+
+                </Col>
+
+                <Col sm={6}>
+                    
+                    <textarea 
+                        type="text"
+                        name="comentario"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio / Hasta 3000 caracteres"
+                        className="form-control my-2"
+                        {...register("comentario", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+                            validate:{
+
+                                
+
+                            }
+
+                        })}   
+
+                    >
+                    </textarea>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.comentario && errors.comentario.message}
+                    </span>
+
+                    
                 </Col>
 
             </Row>

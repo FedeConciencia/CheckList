@@ -80,7 +80,6 @@ public class ServletGeneral extends HttpServlet {
                     
                     String codigo = request.getParameter("codigo");
                     String nombreCliente = request.getParameter("nombreCliente");
-                    String apellidoCliente = request.getParameter("apellidoCliente");
                     String dni = request.getParameter("dni");
                     String domicilio = request.getParameter("domicilio");
                     String usoEdificio = request.getParameter("usoEdificio");
@@ -96,7 +95,7 @@ public class ServletGeneral extends HttpServlet {
                     
 
                     ControladorGeneral c1 = new ControladorGeneral();  
-                    General general = new General(codigo, nombreCliente, apellidoCliente, dni, domicilio, usoEdificio, alturaEdificio, m2Cubierta, m2Muro, alcance, duracionObra, comentario, fechaAlta, fechaBaja, estado);
+                    General general = new General(codigo, nombreCliente, dni, domicilio, usoEdificio, alturaEdificio, m2Cubierta, m2Muro, alcance, duracionObra, comentario, fechaAlta, fechaBaja, estado);
                     c1.insertarGeneral(general);
                     Gson gsonBuilder = new GsonBuilder().create();
                     String generalJson = gsonBuilder.toJson(general);
@@ -108,7 +107,6 @@ public class ServletGeneral extends HttpServlet {
                     Long idGeneral = Long.parseLong(request.getParameter("idGeneral"));
                     String codigo = request.getParameter("codigo");
                     String nombreCliente = request.getParameter("nombreCliente");
-                    String apellidoCliente = request.getParameter("apellidoCliente");
                     String dni = request.getParameter("dni");
                     String domicilio = request.getParameter("domicilio");
                     String usoEdificio = request.getParameter("usoEdificio");
@@ -124,7 +122,7 @@ public class ServletGeneral extends HttpServlet {
                     
 
                     ControladorGeneral c1 = new ControladorGeneral();  
-                    General general = new General(idGeneral, codigo, nombreCliente, apellidoCliente, dni, domicilio, usoEdificio, alturaEdificio, m2Cubierta, m2Muro, alcance, duracionObra, comentario, fechaAlta, fechaBaja, estado);
+                    General general = new General(idGeneral, codigo, nombreCliente, dni, domicilio, usoEdificio, alturaEdificio, m2Cubierta, m2Muro, alcance, duracionObra, comentario, fechaAlta, fechaBaja, estado);
                     c1.actualizarGeneral(general);
                     Gson gsonBuilder = new GsonBuilder().create();
                     String generalJson = gsonBuilder.toJson(general);
@@ -157,6 +155,18 @@ public class ServletGeneral extends HttpServlet {
                     Gson gsonBuilder = new GsonBuilder().create();
                     String idGeneralJson = gsonBuilder.toJson(idGeneral);
                     respuestaServer = idGeneralJson;
+                    
+                }else if(request.getParameter("action").equals("buscarCodigo")){
+                    
+                    
+                    String codigo = request.getParameter("codigo");
+                    
+                    
+                    ControladorGeneral c1 = new ControladorGeneral();  
+                    General general = c1.buscarOneGeneralNobra(codigo);
+                    Gson gsonBuilder = new GsonBuilder().create();
+                    String generalJson = gsonBuilder.toJson(general);
+                    respuestaServer = generalJson;
                     
                 }
                 

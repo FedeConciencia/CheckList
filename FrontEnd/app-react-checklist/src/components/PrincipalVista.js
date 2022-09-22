@@ -12,7 +12,7 @@ import {useNavigate} from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 import moment from 'moment';
 
-
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const PrincipalVista = (props) => {
 
     let navigate = useNavigate()
@@ -162,7 +162,6 @@ const PrincipalVista = (props) => {
                             <th className='celda'>Apellido Tecnico</th>
                             <th className='celda'>N° de Visita</th>
                             <th className='celda'>Nombre de Cliente</th>
-                            <th className='celda'>Apellido de Cliente</th>
                             <th className='celda'>Dni</th>
                             <th className='celda'>Domicilio</th>
                             <th className='celda'>Acciones</th>
@@ -187,7 +186,6 @@ const PrincipalVista = (props) => {
                                 <td className='celda'>{item.apellidoTecnico}</td>
                                 <td className='celda'>{item.nVisita}</td>
                                 <td className='celda'>{item.nombreCliente}</td>
-                                <td className='celda'>{item.apellidoCliente}</td>
                                 <td className='celda'>{item.dni}</td>
                                 <td className='celda'>{item.domicilio}</td>
                                 <td className='celda'>

@@ -34,17 +34,17 @@ public class ControladorHumeda {
             // Se establecen los parámetros y se ejecuta la sentencia.
             ps.setDate(1, Date.valueOf(humeda.getFechaInicial()));
             ps.setDate(2, Date.valueOf(humeda.getFechaFinal()));
-            ps.setString(3, humeda.getM2Piso());
-            ps.setString(4, humeda.getPisoPerson());
-            ps.setString(5, humeda.getMetros());
-            ps.setString(6, humeda.getMetrosPerson());
-            ps.setString(7, humeda.getM2Muro());
-            ps.setString(8, humeda.getMuroPerson());
-            ps.setString(9, humeda.getM2Cubierta());
-            ps.setString(10, humeda.getCubiertaPerson());
-            ps.setString(11, humeda.getMetrosLineales());
-            ps.setString(12, humeda.getLinealesPerson());
-            ps.setString(13, humeda.getDiasCaidos());
+            ps.setDouble(3, humeda.getM2Piso());
+            ps.setInt(4, humeda.getPisoPerson());
+            ps.setDouble(5, humeda.getMetros());
+            ps.setInt(6, humeda.getMetrosPerson());
+            ps.setDouble(7, humeda.getM2Muro());
+            ps.setInt(8, humeda.getMuroPerson());
+            ps.setDouble(9, humeda.getM2Cubierta());
+            ps.setInt(10, humeda.getCubiertaPerson());
+            ps.setDouble(11, humeda.getMetrosLineales());
+            ps.setInt(12, humeda.getLinealesPerson());
+            ps.setInt(13, humeda.getDiasCaidos());
             ps.setString(14, humeda.getMotivo());
             ps.setString(15, humeda.getComentario());
             ps.setDate(16, Date.valueOf(humeda.getFechaAlta())); //Se trabaja en java con LocalDate
@@ -110,17 +110,17 @@ public class ControladorHumeda {
             // Se establecen los parámetros y se ejecuta la sentencia.
             ps.setDate(1, Date.valueOf(humeda.getFechaInicial()));
             ps.setDate(2, Date.valueOf(humeda.getFechaFinal()));
-            ps.setString(3, humeda.getM2Piso());
-            ps.setString(4, humeda.getPisoPerson());
-            ps.setString(5, humeda.getMetros());
-            ps.setString(6, humeda.getMetrosPerson());
-            ps.setString(7, humeda.getM2Muro());
-            ps.setString(8, humeda.getMuroPerson());
-            ps.setString(9, humeda.getM2Cubierta());
-            ps.setString(10, humeda.getCubiertaPerson());
-            ps.setString(11, humeda.getMetrosLineales());
-            ps.setString(12, humeda.getLinealesPerson());
-            ps.setString(13, humeda.getDiasCaidos());
+            ps.setDouble(3, humeda.getM2Piso());
+            ps.setInt(4, humeda.getPisoPerson());
+            ps.setDouble(5, humeda.getMetros());
+            ps.setInt(6, humeda.getMetrosPerson());
+            ps.setDouble(7, humeda.getM2Muro());
+            ps.setInt(8, humeda.getMuroPerson());
+            ps.setDouble(9, humeda.getM2Cubierta());
+            ps.setInt(10, humeda.getCubiertaPerson());
+            ps.setDouble(11, humeda.getMetrosLineales());
+            ps.setInt(12, humeda.getLinealesPerson());
+            ps.setInt(13, humeda.getDiasCaidos());
             ps.setString(14, humeda.getMotivo());
             ps.setString(15, humeda.getComentario());
             ps.setDate(16, Date.valueOf(humeda.getFechaAlta())); //Se trabaja en java con LocalDate
@@ -189,17 +189,17 @@ public class ControladorHumeda {
                 Long idHumeda = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
                 LocalDate fechaInicio = (rs.getDate(2)).toLocalDate();
                 LocalDate fechaFinal = (rs.getDate(3)).toLocalDate();
-                String m2Piso = rs.getString(4);
-                String pisoPerson = rs.getString(5);
-                String metros = rs.getString(6);
-                String metrosPerson = rs.getString(7);
-                String m2Muro = rs.getString(8);
-                String muroPerson = rs.getString(9);
-                String m2Cubierta = rs.getString(10);
-                String cubiertaPerson = rs.getString(11);
-                String metrosLineales = rs.getString(12);
-                String linealesPerson = rs.getString(13);
-                String diasCaidos = rs.getString(14);
+                double m2Piso = rs.getDouble(4);
+                int pisoPerson = rs.getInt(5);
+                double metros = rs.getDouble(6);
+                int metrosPerson = rs.getInt(7);
+                double m2Muro = rs.getDouble(8);
+                int muroPerson = rs.getInt(9);
+                double m2Cubierta = rs.getDouble(10);
+                int cubiertaPerson = rs.getInt(11);
+                double metrosLineales = rs.getDouble(12);
+                int linealesPerson = rs.getInt(13);
+                int diasCaidos = rs.getInt(14);
                 String motivo = rs.getString(15);
                 String comentario = rs.getString(16);
                 LocalDate fechaAlta = (rs.getDate(17)).toLocalDate(); //En java trabajamos con LocalDate
@@ -265,17 +265,17 @@ public class ControladorHumeda {
                 Long idHumeda = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
                 LocalDate fechaInicio = (rs.getDate(2)).toLocalDate();
                 LocalDate fechaFinal = (rs.getDate(3)).toLocalDate();
-                String m2Piso = rs.getString(4);
-                String pisoPerson = rs.getString(5);
-                String metros = rs.getString(6);
-                String metrosPerson = rs.getString(7);
-                String m2Muro = rs.getString(8);
-                String muroPerson = rs.getString(9);
-                String m2Cubierta = rs.getString(10);
-                String cubiertaPerson = rs.getString(11);
-                String metrosLineales = rs.getString(12);
-                String linealesPerson = rs.getString(13);
-                String diasCaidos = rs.getString(14);
+                double m2Piso = rs.getDouble(4);
+                int pisoPerson = rs.getInt(5);
+                double metros = rs.getDouble(6);
+                int metrosPerson = rs.getInt(7);
+                double m2Muro = rs.getDouble(8);
+                int muroPerson = rs.getInt(9);
+                double m2Cubierta = rs.getDouble(10);
+                int cubiertaPerson = rs.getInt(11);
+                double metrosLineales = rs.getDouble(12);
+                int linealesPerson = rs.getInt(13);
+                int diasCaidos = rs.getInt(14);
                 String motivo = rs.getString(15);
                 String comentario = rs.getString(16);
                 LocalDate fechaAlta = (rs.getDate(17)).toLocalDate(); //En java trabajamos con LocalDate
@@ -441,17 +441,17 @@ public class ControladorHumeda {
                 Long idHumeda = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
                 LocalDate fechaInicio = (rs.getDate(2)).toLocalDate();
                 LocalDate fechaFinal = (rs.getDate(3)).toLocalDate();
-                String m2Piso = rs.getString(4);
-                String pisoPerson = rs.getString(5);
-                String metros = rs.getString(6);
-                String metrosPerson = rs.getString(7);
-                String m2Muro = rs.getString(8);
-                String muroPerson = rs.getString(9);
-                String m2Cubierta = rs.getString(10);
-                String cubiertaPerson = rs.getString(11);
-                String metrosLineales = rs.getString(12);
-                String linealesPerson = rs.getString(13);
-                String diasCaidos = rs.getString(14);
+                double m2Piso = rs.getDouble(4);
+                int pisoPerson = rs.getInt(5);
+                double metros = rs.getDouble(6);
+                int metrosPerson = rs.getInt(7);
+                double m2Muro = rs.getDouble(8);
+                int muroPerson = rs.getInt(9);
+                double m2Cubierta = rs.getDouble(10);
+                int cubiertaPerson = rs.getInt(11);
+                double metrosLineales = rs.getDouble(12);
+                int linealesPerson = rs.getInt(13);
+                int diasCaidos = rs.getInt(14);
                 String motivo = rs.getString(15);
                 String comentario = rs.getString(16);
                 LocalDate fechaAlta = (rs.getDate(17)).toLocalDate(); //En java trabajamos con LocalDate

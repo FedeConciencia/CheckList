@@ -9,15 +9,15 @@ public class Seco {
     private Long idSeco;
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
-    private String mLineales;
-    private String mPerson;
-    private String m2Muro;
-    private String muroPerson;
-    private String m2Cubierta;
-    private String cubiertaPerson;
-    private String metrosLineales;
-    private String linealesPerson;
-    private String diasCaidos;
+    private double mLineales;
+    private int mPerson;
+    private double m2Muro;
+    private int muroPerson;
+    private double m2Cubierta;
+    private int cubiertaPerson;
+    private double metrosLineales;
+    private int linealesPerson;
+    private int diasCaidos;
     private String motivo;
     private String materialVigas;
     private String materialMuros;
@@ -34,7 +34,7 @@ public class Seco {
     public Seco() {
     }
 
-    public Seco(Long idSeco, LocalDate fechaInicial, LocalDate fechaFinal, String mLineales, String mPerson, String m2Muro, String muroPerson, String m2Cubierta, String cubiertaPerson, String metrosLineales, String linealesPerson, String diasCaidos, String motivo, String materialVigas, String materialMuros, String materialCubiertas, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado, Long idVisita) {
+    public Seco(Long idSeco, LocalDate fechaInicial, LocalDate fechaFinal, double mLineales, int mPerson, double m2Muro, int muroPerson, double m2Cubierta, int cubiertaPerson, double metrosLineales, int linealesPerson, int diasCaidos, String motivo, String materialVigas, String materialMuros, String materialCubiertas, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado, Long idVisita) {
         this.idSeco = idSeco;
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
@@ -58,7 +58,7 @@ public class Seco {
         this.idVisita = idVisita;
     }
 
-    public Seco(LocalDate fechaInicial, LocalDate fechaFinal, String mLineales, String mPerson, String m2Muro, String muroPerson, String m2Cubierta, String cubiertaPerson, String metrosLineales, String linealesPerson, String diasCaidos, String motivo, String materialVigas, String materialMuros, String materialCubiertas, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado, Long idVisita) {
+    public Seco(LocalDate fechaInicial, LocalDate fechaFinal, double mLineales, int mPerson, double m2Muro, int muroPerson, double m2Cubierta, int cubiertaPerson, double metrosLineales, int linealesPerson, int diasCaidos, String motivo, String materialVigas, String materialMuros, String materialCubiertas, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado, Long idVisita) {
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
         this.mLineales = mLineales;
@@ -105,75 +105,75 @@ public class Seco {
         this.fechaFinal = fechaFinal;
     }
 
-    public String getmLineales() {
+    public double getmLineales() {
         return mLineales;
     }
 
-    public void setmLineales(String mLineales) {
+    public void setmLineales(double mLineales) {
         this.mLineales = mLineales;
     }
 
-    public String getmPerson() {
+    public int getmPerson() {
         return mPerson;
     }
 
-    public void setmPerson(String mPerson) {
+    public void setmPerson(int mPerson) {
         this.mPerson = mPerson;
     }
 
-    public String getM2Muro() {
+    public double getM2Muro() {
         return m2Muro;
     }
 
-    public void setM2Muro(String m2Muro) {
+    public void setM2Muro(double m2Muro) {
         this.m2Muro = m2Muro;
     }
 
-    public String getMuroPerson() {
+    public int getMuroPerson() {
         return muroPerson;
     }
 
-    public void setMuroPerson(String muroPerson) {
+    public void setMuroPerson(int muroPerson) {
         this.muroPerson = muroPerson;
     }
 
-    public String getM2Cubierta() {
+    public double getM2Cubierta() {
         return m2Cubierta;
     }
 
-    public void setM2Cubierta(String m2Cubierta) {
+    public void setM2Cubierta(double m2Cubierta) {
         this.m2Cubierta = m2Cubierta;
     }
 
-    public String getCubiertaPerson() {
+    public int getCubiertaPerson() {
         return cubiertaPerson;
     }
 
-    public void setCubiertaPerson(String cubiertaPerson) {
+    public void setCubiertaPerson(int cubiertaPerson) {
         this.cubiertaPerson = cubiertaPerson;
     }
 
-    public String getMetrosLineales() {
+    public double getMetrosLineales() {
         return metrosLineales;
     }
 
-    public void setMetrosLineales(String metrosLineales) {
+    public void setMetrosLineales(double metrosLineales) {
         this.metrosLineales = metrosLineales;
     }
 
-    public String getLinealesPerson() {
+    public int getLinealesPerson() {
         return linealesPerson;
     }
 
-    public void setLinealesPerson(String linealesPerson) {
+    public void setLinealesPerson(int linealesPerson) {
         this.linealesPerson = linealesPerson;
     }
 
-    public String getDiasCaidos() {
+    public int getDiasCaidos() {
         return diasCaidos;
     }
 
-    public void setDiasCaidos(String diasCaidos) {
+    public void setDiasCaidos(int diasCaidos) {
         this.diasCaidos = diasCaidos;
     }
 
@@ -248,7 +248,7 @@ public class Seco {
     public void setIdVisita(Long idVisita) {
         this.idVisita = idVisita;
     }
-    
+
     public Visita getVisita() {
         return visita;
     }
@@ -256,6 +256,8 @@ public class Seco {
     public void setVisita(Visita visita) {
         this.visita = visita;
     }
+
+    
 
     @Override
     public String toString() {

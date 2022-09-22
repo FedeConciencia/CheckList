@@ -14,6 +14,7 @@ import "../assets/css/formPrincipal.css"
 import {useNavigate} from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const FormPrincipalVista = (props) => {
 
     //Redireccionamiento =>
@@ -84,31 +85,7 @@ const FormPrincipalVista = (props) => {
 
                 <Col>
 
-                    <Button href="/formMaterialesVista" className="botonForm" variant="primary">1- FORMULARIO MATERIALES</Button>
-                    
-                </Col>
-
-            </Row>
-
-            <br></br>
-
-            <Row>
-
-                <Col>
-
-                    <Button href="/formPersonasVista" className="botonForm" variant="primary">2- FORMULARIO PERSONAS</Button>
-                    
-                </Col>
-
-            </Row>
-
-            <br></br>
-
-            <Row>
-
-                <Col>
-
-                    <Button href="/principalGremioVista" className="botonForm" variant="primary">3- FORMULARIO GREMIOS</Button>
+                    <Button href="/formGeneralVista" className="botonForm" variant="primary">1- FORMULARIO GENERAL</Button>
                     
                 </Col>
 
@@ -121,7 +98,44 @@ const FormPrincipalVista = (props) => {
 
                 <Col>
 
-                    <Button href="/formHumedaVista" className="botonForm" variant="primary">4- FORMULARIO OBRA HUMEDA</Button>
+                    <Button href="/formVisitaVista" className="botonForm" variant="primary">2- FORMULARIO VISITA</Button>
+                    
+                </Col>
+
+            </Row>
+
+
+            <br></br>
+
+            <Row>
+
+                <Col>
+
+                    <Button href="/formMaterialesVista" className="botonForm" variant="primary">3- FORMULARIO MATERIALES</Button>
+                    
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col>
+
+                    <Button href="/formPersonasVista" className="botonForm" variant="primary">4- FORMULARIO PERSONAS</Button>
+                    
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col>
+
+                    <Button href="/principalGremioVista" className="botonForm" variant="primary">5- FORMULARIO GREMIOS</Button>
                     
                 </Col>
 
@@ -134,7 +148,7 @@ const FormPrincipalVista = (props) => {
 
                 <Col>
 
-                    <Button href="/formSecoVista" className="botonForm" variant="primary">5- FORMULARIO OBRA SECO</Button>
+                    <Button href="/formHumedaVista" className="botonForm" variant="primary">6- FORMULARIO OBRA HUMEDA</Button>
                     
                 </Col>
 
@@ -147,7 +161,7 @@ const FormPrincipalVista = (props) => {
 
                 <Col>
 
-                    <Button href="/formPanelesVista" className="botonForm" variant="primary">6- FORMULARIO PANELES</Button>
+                    <Button href="/formSecoVista" className="botonForm" variant="primary">7- FORMULARIO OBRA SECO</Button>
                     
                 </Col>
 
@@ -160,7 +174,7 @@ const FormPrincipalVista = (props) => {
 
                 <Col>
 
-                    <Button href="/formRedAguaVista" className="botonForm" variant="primary">7- FORMULARIO RED DE AGUA</Button>
+                    <Button href="/formPanelesVista" className="botonForm" variant="primary">8- FORMULARIO PANELES</Button>
                     
                 </Col>
 
@@ -173,7 +187,20 @@ const FormPrincipalVista = (props) => {
 
                 <Col>
 
-                    <Button href="/formRedGasVista" className="botonForm" variant="primary">8- FORMULARIO RED DE GAS</Button>
+                    <Button href="/formRedAguaVista" className="botonForm" variant="primary">9- FORMULARIO RED DE AGUA</Button>
+                    
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+
+            <Row>
+
+                <Col>
+
+                    <Button href="/formRedGasVista" className="botonForm" variant="primary">10- FORMULARIO RED DE GAS</Button>
                     
                 </Col>
 
@@ -185,7 +212,7 @@ const FormPrincipalVista = (props) => {
 
                 <Col>
 
-                    <Button href="/formRedElectricidadVista" className="botonForm" variant="primary">9- FORMULARIO RED DE ELECTRICIDAD</Button>
+                    <Button href="/formRedElectricidadVista" className="botonForm" variant="primary">11- FORMULARIO RED DE ELECTRICIDAD</Button>
                     
                 </Col>
 
@@ -197,7 +224,7 @@ const FormPrincipalVista = (props) => {
 
                 <Col>
 
-                    <Button href="/formAberturasVista" className="botonForm" variant="primary">10- FORMULARIO ABERTURAS</Button>
+                    <Button href="/formAberturasVista" className="botonForm" variant="primary">12- FORMULARIO ABERTURAS</Button>
                     
                 </Col>
 
@@ -209,7 +236,7 @@ const FormPrincipalVista = (props) => {
 
                 <Col>
 
-                    <Button href="/formConclusionVista" className="botonForm" variant="primary">11- FORMULARIO CONCLUSION FINAL</Button>
+                    <Button href="/formConclusionVista" className="botonForm" variant="primary">13- FORMULARIO CONCLUSION FINAL</Button>
                     
                 </Col>
 

@@ -13,6 +13,7 @@ import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
 
 
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const FormRedElectricidad = (props) => {
 
     

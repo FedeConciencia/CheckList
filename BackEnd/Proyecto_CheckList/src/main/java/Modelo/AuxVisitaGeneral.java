@@ -12,7 +12,6 @@ public class AuxVisitaGeneral {
     private String apellidoTecnico;
     private int nVisita;
     private String nombreCliente;
-    private String apellidoCliente;
     private String dni;
     private String domicilio;
     private Long idVisita;
@@ -22,13 +21,12 @@ public class AuxVisitaGeneral {
     public AuxVisitaGeneral() {
     }
 
-    public AuxVisitaGeneral(LocalDate fechaVisita, String nombreTecnico, String apellidoTecnico, int nVisita, String nombreCliente, String apellidoCliente, String dni, String domicilio, Long idVisita, Long idGeneral, String codigo) {
+    public AuxVisitaGeneral(LocalDate fechaVisita, String nombreTecnico, String apellidoTecnico, int nVisita, String nombreCliente, String dni, String domicilio, Long idVisita, Long idGeneral, String codigo) {
         this.fechaVisita = fechaVisita;
         this.nombreTecnico = nombreTecnico;
         this.apellidoTecnico = apellidoTecnico;
         this.nVisita = nVisita;
         this.nombreCliente = nombreCliente;
-        this.apellidoCliente = apellidoCliente;
         this.dni = dni;
         this.domicilio = domicilio;
         this.idVisita = idVisita;
@@ -76,14 +74,6 @@ public class AuxVisitaGeneral {
         this.nombreCliente = nombreCliente;
     }
 
-    public String getApellidoCliente() {
-        return apellidoCliente;
-    }
-
-    public void setApellidoCliente(String apellidoCliente) {
-        this.apellidoCliente = apellidoCliente;
-    }
-
     public String getDni() {
         return dni;
     }
@@ -127,7 +117,7 @@ public class AuxVisitaGeneral {
     @Override
     public String toString() {
         return "fechaVisita:" + fechaVisita + "\nnombreTecnico: " + nombreTecnico + "\napellidoTecnico: " + apellidoTecnico + "\nnVisita: " + nVisita + 
-                "\nnombreCliente: " + nombreCliente + "\napellidoCliente: " + apellidoCliente + "\ndni: " + dni + 
+                "\nnombreCliente: " + nombreCliente + "\ndni: " + dni + 
                 "\ndomicilio: " + domicilio + "\nidVisita: " + idVisita + "\nidGeneral: " + idGeneral + "\ncodigo: " + codigo;
     }
     

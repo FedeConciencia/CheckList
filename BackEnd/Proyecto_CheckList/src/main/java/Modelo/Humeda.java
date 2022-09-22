@@ -10,17 +10,17 @@ public class Humeda {
     private Long idHumeda;
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
-    private String m2Piso;
-    private String pisoPerson;
-    private String metros;
-    private String metrosPerson;
-    private String m2Muro;
-    private String muroPerson;
-    private String m2Cubierta;
-    private String cubiertaPerson;
-    private String metrosLineales;
-    private String linealesPerson;
-    private String diasCaidos;
+    private double m2Piso;
+    private int pisoPerson;
+    private double metros;
+    private int metrosPerson;
+    private double m2Muro;
+    private int muroPerson;
+    private double m2Cubierta;
+    private int cubiertaPerson;
+    private double metrosLineales;
+    private int linealesPerson;
+    private int diasCaidos;
     private String motivo;
     private String comentario;
     private LocalDate fechaAlta;
@@ -34,7 +34,8 @@ public class Humeda {
     public Humeda() {
     }
 
-    public Humeda(Long idHumeda, LocalDate fechaInicial, LocalDate fechaFinal, String m2Piso, String pisoPerson, String metros, String metrosPerson, String m2Muro, String muroPerson, String m2Cubierta, String cubiertaPerson, String metrosLineales, String linealesPerson, String diasCaidos, String motivo, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado, Long idVisita) {
+    public Humeda(Long idHumeda, LocalDate fechaInicial, LocalDate fechaFinal, double m2Piso, int pisoPerson, double metros, int metrosPerson, double m2Muro, int muroPerson, double m2Cubierta, int cubiertaPerson, double metrosLineales, int linealesPerson, int diasCaidos, String motivo, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado, Long idVisita) {
+        
         this.idHumeda = idHumeda;
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
@@ -55,9 +56,11 @@ public class Humeda {
         this.fechaBaja = fechaBaja;
         this.estado = estado;
         this.idVisita = idVisita;
+        
     }
 
-    public Humeda(LocalDate fechaInicial, LocalDate fechaFinal, String m2Piso, String pisoPerson, String metros, String metrosPerson, String m2Muro, String muroPerson, String m2Cubierta, String cubiertaPerson, String metrosLineales, String linealesPerson, String diasCaidos, String motivo, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado, Long idVisita) {
+    public Humeda(LocalDate fechaInicial, LocalDate fechaFinal, double m2Piso, int pisoPerson, double metros, int metrosPerson, double m2Muro, int muroPerson, double m2Cubierta, int cubiertaPerson, double metrosLineales, int linealesPerson, int diasCaidos, String motivo, String comentario, LocalDate fechaAlta, LocalDate fechaBaja, String estado, Long idVisita) {
+        
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
         this.m2Piso = m2Piso;
@@ -77,6 +80,7 @@ public class Humeda {
         this.fechaBaja = fechaBaja;
         this.estado = estado;
         this.idVisita = idVisita;
+
     }
 
     public Long getIdHumeda() {
@@ -103,91 +107,91 @@ public class Humeda {
         this.fechaFinal = fechaFinal;
     }
 
-    public String getM2Piso() {
+    public double getM2Piso() {
         return m2Piso;
     }
 
-    public void setM2Piso(String m2Piso) {
+    public void setM2Piso(double m2Piso) {
         this.m2Piso = m2Piso;
     }
 
-    public String getPisoPerson() {
+    public int getPisoPerson() {
         return pisoPerson;
     }
 
-    public void setPisoPerson(String pisoPerson) {
+    public void setPisoPerson(int pisoPerson) {
         this.pisoPerson = pisoPerson;
     }
 
-    public String getMetros() {
+    public double getMetros() {
         return metros;
     }
 
-    public void setMetros(String metros) {
+    public void setMetros(double metros) {
         this.metros = metros;
     }
 
-    public String getMetrosPerson() {
+    public int getMetrosPerson() {
         return metrosPerson;
     }
 
-    public void setMetrosPerson(String metrosPerson) {
+    public void setMetrosPerson(int metrosPerson) {
         this.metrosPerson = metrosPerson;
     }
 
-    public String getM2Muro() {
+    public double getM2Muro() {
         return m2Muro;
     }
 
-    public void setM2Muro(String m2Muro) {
+    public void setM2Muro(double m2Muro) {
         this.m2Muro = m2Muro;
     }
 
-    public String getMuroPerson() {
+    public int getMuroPerson() {
         return muroPerson;
     }
 
-    public void setMuroPerson(String muroPerson) {
+    public void setMuroPerson(int muroPerson) {
         this.muroPerson = muroPerson;
     }
 
-    public String getM2Cubierta() {
+    public double getM2Cubierta() {
         return m2Cubierta;
     }
 
-    public void setM2Cubierta(String m2Cubierta) {
+    public void setM2Cubierta(double m2Cubierta) {
         this.m2Cubierta = m2Cubierta;
     }
 
-    public String getCubiertaPerson() {
+    public int getCubiertaPerson() {
         return cubiertaPerson;
     }
 
-    public void setCubiertaPerson(String cubiertaPerson) {
+    public void setCubiertaPerson(int cubiertaPerson) {
         this.cubiertaPerson = cubiertaPerson;
     }
 
-    public String getMetrosLineales() {
+    public double getMetrosLineales() {
         return metrosLineales;
     }
 
-    public void setMetrosLineales(String metrosLineales) {
+    public void setMetrosLineales(double metrosLineales) {
         this.metrosLineales = metrosLineales;
     }
 
-    public String getLinealesPerson() {
+    public int getLinealesPerson() {
         return linealesPerson;
     }
 
-    public void setLinealesPerson(String linealesPerson) {
+    public void setLinealesPerson(int linealesPerson) {
         this.linealesPerson = linealesPerson;
     }
 
-    public String getDiasCaidos() {
+    public int getDiasCaidos() {
         return diasCaidos;
     }
 
-    public void setDiasCaidos(String diasCaidos) {
+    public void setDiasCaidos(int diasCaidos) {
         this.diasCaidos = diasCaidos;
     }
 
@@ -238,7 +242,7 @@ public class Humeda {
     public void setIdVisita(Long idVisita) {
         this.idVisita = idVisita;
     }
-    
+
     public Visita getVisita() {
         return visita;
     }
@@ -246,6 +250,8 @@ public class Humeda {
     public void setVisita(Visita visita) {
         this.visita = visita;
     }
+
+    
 
     @Override
     public String toString() {

@@ -12,7 +12,7 @@ import {useForm} from 'react-hook-form';
 import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
 
-
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const FormRedAgua = (props) => {
 
     

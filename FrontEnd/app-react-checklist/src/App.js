@@ -23,6 +23,8 @@ import FormGremios from "../src/components/FormGremios"
 import VerificarObra from "../src/components/VerificarObra"
 import PrincipalVista from "../src/components/PrincipalVista"
 import FormPrincipalVista from "../src/components/FormPrincipalVista"
+import FormGeneralVista from "../src/components/FormGeneralVista"
+import FormVisitaVista from "../src/components/FormVisitaVista"
 import FormMaterialesVista from "../src/components/FormMaterialesVista"
 import FormPersonasVista from "../src/components/FormPersonasVista"
 import FormHumedaVista from "../src/components/FormHumedaVista"
@@ -35,6 +37,8 @@ import FormAberturasVista from "../src/components/FormAberturasVista"
 import FormConclusionVista from "../src/components/FormConclusionVista"
 import PrincipalGremioVista from "../src/components/PrincipalGremioVista"
 import FormGremioVista from "../src/components/FormGremioVista"
+
+
 
 
 const App = () => {
@@ -67,6 +71,8 @@ const App = () => {
           <Route path="/verificarObra" element={<VerificarObra />} />
           <Route path="/principalVista" element={<PrincipalVista />} />
           <Route path="/formPrincipalVista" element={<FormPrincipalVista />} />
+          <Route path="/formGeneralVista" element={<FormGeneralVista />} />
+          <Route path="/formVisitaVista" element={<FormVisitaVista />} />
           <Route path="/formMaterialesVista" element={<FormMaterialesVista />} />
           <Route path="/formPersonasVista" element={<FormPersonasVista />} />
           <Route path="/formHumedaVista" element={<FormHumedaVista />} />
@@ -79,9 +85,9 @@ const App = () => {
           <Route path="/formConclusionVista" element={<FormConclusionVista />} />
           <Route path="/principalGremioVista" element={<PrincipalGremioVista />} />
           <Route path="/formGremioVista" element={<FormGremioVista />} />
+          
+          
          
-
-
         </Routes>
 
       </Fragment>
