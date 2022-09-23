@@ -1019,6 +1019,24 @@ public class Principal {
         
         */
         
+        /*
+        
+        //READ_ALL OBJETO ABERTURA X ID_VISITA (OK) =>
+        
+        ControladorAbertura c1 = new ControladorAbertura();
+        
+        List<Abertura> listaAbertura = c1.buscarAllAberturaIdVisita(1L);
+        
+        for (Abertura item:listaAbertura) {
+            
+            System.out.println(item.toString());
+            System.out.println("");
+            
+        }
+        
+        */
+        
+        
         //----------------------------------------------------------
         
         //TESTEO DE CONTROLADOR Y MODELO CONCLUSION (13) =>

@@ -49,9 +49,9 @@ const FormMaterialesVista = (props) => {
 
         cargarDatos()
 
-        setIdGeneral(localStorage.getItem("idVisitaVista"))
+        setIdVisita(localStorage.getItem("idVisitaVista"))
 
-        setIdVisita(localStorage.getItem("idGeneralVista"))
+        setIdGeneral(localStorage.getItem("idGeneralVista"))
 
     },[])
 
@@ -59,7 +59,9 @@ const FormMaterialesVista = (props) => {
 
         try{
 
-            let idVisita = localStorage.getItem("idVisitaVista")
+
+            //Guardamos el dato alojado en el localstorage en una variable =>
+            let id = localStorage.getItem("idVisitaVista")
 
             const response = await axios("http://localhost:8080/Proyecto_CheckList/MaterialServlet",{
 
@@ -67,7 +69,7 @@ const FormMaterialesVista = (props) => {
                 params:{
 
                     action:"buscarIdVisita",
-                    idVisita:idVisita,
+                    idVisita:id,
 
                 }
 
@@ -121,7 +123,7 @@ const FormMaterialesVista = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE MATERIALES</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE DATOS MATERIALES</Alert.Heading>
 
             <br></br>
 

@@ -30,7 +30,7 @@ const FormSecoVista = (props) => {
 
     const[idGeneral, setIdGeneral] = useState(null)
 
-    const [humeda, setHumeda] = useState({
+    const [seco, setSeco] = useState({
 
         fechaInicio:'',
         fechaFinal:'',
@@ -56,9 +56,9 @@ const FormSecoVista = (props) => {
         
         cargarDatos()
 
-        setIdGeneral(localStorage.getItem("idVisitaVista"))
+        setIdVisita(localStorage.getItem("idVisitaVista"))
 
-        setIdVisita(localStorage.getItem("idGeneralVista"))
+        setIdGeneral(localStorage.getItem("idGeneralVista"))
 
 
 
@@ -69,7 +69,7 @@ const FormSecoVista = (props) => {
 
         try{
 
-            let idVisita = localStorage.getItem("idVisitaVista")
+            let id = localStorage.getItem("idVisitaVista")
 
             const response = await axios("http://localhost:8080/Proyecto_CheckList/SecoServlet",{
 
@@ -77,7 +77,7 @@ const FormSecoVista = (props) => {
                 params:{
 
                     action:"buscarIdVisita",
-                    idVisita:idVisita,
+                    idVisita:id,
 
                 }
 
@@ -138,11 +138,19 @@ const FormSecoVista = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE OBRA SECO</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE DATOS OBRA SECO</Alert.Heading>
 
             <br></br>
 
-            <h5 className='red'></h5>
+            <h5 className='red'>La cantidad de M2 o metros lineales serán las totales (no la diferencia entre una visita y la anterior).</h5>
+
+            <br></br>
+
+            <h5 className='red'>Si algun item no esta dentro del alcance, colocar valor -1 (No Aplicable).</h5>
+
+            <br></br>
+
+            <h5 className='red'>Si al momento de la primer visita hay algun item terminado, colocar -2 (Ya Construido).</h5>
 
             <br></br>
 

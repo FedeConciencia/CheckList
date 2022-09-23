@@ -12,45 +12,52 @@ import {useNavigate} from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 import moment from 'moment';
 
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
+const GrillaBusqueda = (props) => {
 
-const PrincipalGremioVista = (props) => {
-
+    //Redireccionamiento =>
     let navigate = useNavigate()
+
+    //Obtengo los datos pasados por search URL =>
+    let {search} = useLocation();
+    let query = new URLSearchParams(search)
 
     const[dato,setDato] = useState(null)
 
-    const[idVisita, setIdVisita] = useState(null)
+    //Obtener el parametro que pasamos por el URL =>
+    const[urlNombre,setUrlNombre] = useState(query.get("nombreCliente"))
 
-    const[idGeneral, setIdGeneral] = useState(null)
 
-   
     useEffect(() => {
 
-        obtenerGremios()
+       
+        setUrlNombre(query.get("nombreCliente"))
 
-        
-        setIdVisita(localStorage.getItem("idVisitaVista"))
-
-        setIdGeneral(localStorage.getItem("idGeneralVista"))
+        obtenerDatos()
         
 
-    },[])
 
-    const obtenerGremios = async() => {
+    },[query.get("nombreCliente")])
 
+
+    const obtenerDatos = async() => {
+
+        //Se debe obtener todos los registros de General y despues gestionar una Sub-busqueda con metodo filter =>
 
         try{
 
-            let idPersona = localStorage.getItem("idPersonaVista")
+            
+            //Obtenemos el dato pasado x url =>
+            let urlDato = query.get("nombreCliente")
 
-            const response = await axios("http://localhost:8080/Proyecto_CheckList/GremioServlet",{
+        
+            const response = await axios("http://localhost:8080/Proyecto_CheckList/GeneralServlet",{
 
                 method:"GET",
                 params:{
 
-                    action:"listarXidPersona",
-                    idPersona:idPersona,
-
+                    action:"listar",
+                    
 
                 }
 
@@ -61,15 +68,29 @@ const PrincipalGremioVista = (props) => {
 
             console.log("DATOS API => ", resJson)
 
-            //Guardamos en el Hooks Dato =>
-            setDato(resJson)
+            if(resJson.length !== 0){
+
+                //Filtramos con el metodo Filter buscando el dato descripcion buscador =>
+                const encontrado = resJson.filter((item) => {
+
+                    var matcher = new RegExp(urlDato, 'i')
+                    return matcher.test([item.nombreCliente].join())
+
+                })
+
+                //Guardamos en el Hooks Dato =>
+                setDato(encontrado)
+
+            }else{
+
+                setDato(null)
+
+            }
 
     
         }catch(error){
 
             console.log(error)
-
-            
 
         }
 
@@ -87,21 +108,18 @@ const PrincipalGremioVista = (props) => {
 
                 <br></br>
 
-                <Container>
+                <Container className='body'>
 
                 <Alert variant="success" responsive="sm">
 
                 <br></br>  
 
-                <div className='body'>
 
-                <Alert.Heading className="alertTitle">LISTA DE GREMIOS</Alert.Heading>
+                <Alert.Heading className="alertTitle">RESULTADO DE BUSQUEDA POR NOMBRE DE CLIENTE</Alert.Heading>
 
                 <br></br>
 
-                <h5 className='red'>No se encontraron datos de gremios.</h5>
-
-                </div>
+                <h5 className='red'>No se encontraron datos.</h5>
 
                 <br></br>
 
@@ -109,7 +127,7 @@ const PrincipalGremioVista = (props) => {
 
                     <Col>
 
-                    <Button type="button" href={`/formPrincipalVista?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
+                    <Button type="button" href={`/`} variant="danger" size="lg">VOLVER</Button>
 
                     </Col>
 
@@ -144,7 +162,7 @@ const PrincipalGremioVista = (props) => {
 
                 <br></br>  
 
-                <Alert.Heading className="alertTitle">PLANILLA DE GREMIOS</Alert.Heading>
+                <Alert.Heading className="alertTitle">RESULTADO DE BUSQUEDA POR NOMBRE DE CLIENTE</Alert.Heading>
 
                 <br></br>
 
@@ -160,10 +178,10 @@ const PrincipalGremioVista = (props) => {
                         <tr>
 
                             <th className='celda'>Indice</th>
-                            <th className='celda'>Nombre_Gremio</th>
-                            <th className='celda'>Nombre_Contratista</th>
-                            <th className='celda'>Apellido_Contratista</th>
-                            <th className='celda'>Acciones</th>
+                            <th className='celda'>N° de Obra</th>
+                            <th className='celda'>Nombre del Cliente</th>
+                            <th className='celda'>Dni/Cuil/Cuit</th>
+                            <th className='celda'>Domicilio</th>
                             
                         </tr>
 
@@ -179,14 +197,11 @@ const PrincipalGremioVista = (props) => {
                             <tr key={i}>
 
                                 <td className='celda'>{i+1}</td>
-                                <td className='celda'>{item.nombreGremio}</td>
-                                <td className='celda'>{item.nombreContratista}</td>
-                                <td className='celda'>{item.apellidoContratista}</td>
-                                <td className='celda'>
+                                <td className='celda'>{item.codigo}</td>
+                                <td className='celda'>{item.nombreCliente}</td>
+                                <td className='celda'>{item.dni}</td>
+                                <td className='celda'>{item.domicilio}</td>
 
-                                    <Button variant="warning" size="sm" href={`/formGremioVista?idGremio=${item.idGremio}`}>OBTENER DATOS</Button>
-
-                                </td>
 
                             </tr>
 
@@ -206,7 +221,7 @@ const PrincipalGremioVista = (props) => {
 
                     <Col>
 
-                    <Button type="button" href={`/formPrincipalVista?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
+                    <Button type="button" href={`/`} variant="danger" size="lg">VOLVER</Button>
 
                     </Col>
 
@@ -230,4 +245,4 @@ const PrincipalGremioVista = (props) => {
 
 }
 
-export default PrincipalGremioVista
+export default GrillaBusqueda

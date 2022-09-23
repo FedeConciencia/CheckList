@@ -168,8 +168,17 @@ public class ServletGeneral extends HttpServlet {
                     String generalJson = gsonBuilder.toJson(general);
                     respuestaServer = generalJson;
                     
-                }
+                }else if(request.getParameter("action").equals("listarXnombre")){
+                    
+                    String nombre = request.getParameter("nombreCliente");
+                    
+                    ControladorGeneral c1 = new ControladorGeneral();
+                    List<General> listaGeneral = c1.buscarAllGeneralNombre(nombre);
+                    Gson gsonBuilder = new GsonBuilder().create();
+                    String generalJson = gsonBuilder.toJson(listaGeneral);
+                    respuestaServer = generalJson;
                 
+                }
                 
             }
             out.write(respuestaServer);

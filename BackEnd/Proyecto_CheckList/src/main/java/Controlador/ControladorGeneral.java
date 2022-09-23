@@ -559,4 +559,75 @@ public class ControladorGeneral {
         
     }
     
+    
+    //METODO PARA BUSCAR ALL REGISTROS GENERAL X NOMBRE_CLIENTE:
+    public List<General> buscarAllGeneralNombre(String nombre) {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        General general = null;
+        List<General> listaGeneral = new ArrayList<General>();
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("SELECT * FROM general where nombreCliente = ?");
+            
+            ps.setString(1, nombre);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Long idGeneral = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                String codigo = rs.getString(2);
+                String nombreCliente = rs.getString(3);
+                String dni = rs.getString(4);
+                String domicilio = rs.getString(5);
+                String usoEdificio = rs.getString(6);
+                double alturaEdificio = rs.getDouble(7);
+                double m2Cubierta = rs.getDouble(8);
+                double m2Muro = rs.getDouble(9);
+                String alcance = rs.getString(10);
+                int duracionObra = rs.getInt(11);
+                String comentario = rs.getString(12);
+                LocalDate fechaAlta = (rs.getDate(13)).toLocalDate(); //En java trabajamos con LocalDate
+                LocalDate fechaBaja = (rs.getDate(14)).toLocalDate(); //En java trabajamos con LocalDate
+                String estado = rs.getString(15);
+                
+                
+                
+                general = new General(idGeneral, codigo, nombreCliente, dni, domicilio, usoEdificio, alturaEdificio, m2Cubierta, m2Muro, alcance, duracionObra, comentario, fechaAlta, fechaBaja, estado);
+
+                
+                listaGeneral.add(general);
+
+            }
+
+            conexion.close();
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+
+                ps.close();
+                rs.close();
+
+            } catch (SQLException ex) {
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+        return listaGeneral; //devolvemos la lista de conclusion
+
+    }
+    
 }

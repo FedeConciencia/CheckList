@@ -55,9 +55,10 @@ const FormPersonasVista = (props) => {
 
         cargarDatos()
 
-        setIdGeneral(localStorage.getItem("idVisitaVista"))
+        setIdVisita(localStorage.getItem("idVisitaVista"))
 
-        setIdVisita(localStorage.getItem("idGeneralVista"))
+        setIdGeneral(localStorage.getItem("idGeneralVista"))
+
 
     },[])
 
@@ -65,7 +66,7 @@ const FormPersonasVista = (props) => {
 
         try{
 
-            let idVisita = localStorage.getItem("idVisitaVista")
+            let id = localStorage.getItem("idVisitaVista")
 
             const response = await axios("http://localhost:8080/Proyecto_CheckList/PersonaServlet",{
 
@@ -73,7 +74,7 @@ const FormPersonasVista = (props) => {
                 params:{
 
                     action:"buscarIdVisita",
-                    idVisita:idVisita,
+                    idVisita:id,
 
                 }
 
@@ -138,7 +139,7 @@ const FormPersonasVista = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE PERSONAS</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE DATOS PERSONAS</Alert.Heading>
 
             <br></br>
 

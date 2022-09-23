@@ -91,6 +91,7 @@ const FormConclusionVista = (props) => {
             setValue("nroArgentinos", resJson.nroArgentinos)
             setValue("nombreContratista", resJson.nombreContratista)
             setValue("apellidoContratista", resJson.apellidoContratista)
+            setValue("comentario", resJson.comentario)
             
             alert("DATOS ENCONTRADOS CON EXITO.")
 
@@ -124,7 +125,7 @@ const FormConclusionVista = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE GREMIO</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE DATOS GREMIO</Alert.Heading>
 
             <br></br>
 
@@ -565,6 +566,53 @@ const FormConclusionVista = (props) => {
 
                     
                 </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+
+                <Col sm={3}>
+                    
+                    <label>Comentario: </label>
+
+                
+                </Col>
+
+                <Col sm={7}>
+                    
+                    <textarea 
+                        type="text"
+                        name="comentario"
+                        disabled={true}
+                        placeholder=""
+                        className="form-control"
+                        {...register("comentario", { 
+
+                            required:{
+                                value: true,
+                                message: '*' 
+                            },
+
+                        })}      
+                    >
+                    </textarea>
+                
+                
+                </Col>
+
+                <Col sm={1}>
+
+                      
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.comentario && errors.comentario.message}
+                    </span>
+
+                </Col>
+
+
 
             </Row>
             

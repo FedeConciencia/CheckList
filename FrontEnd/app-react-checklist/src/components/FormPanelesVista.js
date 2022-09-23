@@ -50,9 +50,9 @@ const FormHumedaVista = (props) => {
         
         cargarDatos()
 
-        setIdGeneral(localStorage.getItem("idVisitaVista"))
+        setIdVisita(localStorage.getItem("idVisitaVista"))
 
-        setIdVisita(localStorage.getItem("idGeneralVista"))
+        setIdGeneral(localStorage.getItem("idGeneralVista"))
 
 
 
@@ -63,7 +63,7 @@ const FormHumedaVista = (props) => {
 
         try{
 
-            let idVisita = localStorage.getItem("idVisitaVista")
+            let id = localStorage.getItem("idVisitaVista")
 
             const response = await axios("http://localhost:8080/Proyecto_CheckList/PanelServlet",{
 
@@ -71,7 +71,7 @@ const FormHumedaVista = (props) => {
                 params:{
 
                     action:"buscarIdVisita",
-                    idVisita:idVisita,
+                    idVisita:id,
 
                 }
 
@@ -125,7 +125,7 @@ const FormHumedaVista = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE PANELES</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE DATOS PANELES</Alert.Heading>
 
             <br></br>
 

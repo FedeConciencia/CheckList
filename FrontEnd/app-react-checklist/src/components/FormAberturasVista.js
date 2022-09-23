@@ -14,21 +14,27 @@ import "../assets/css/formPrincipal.css"
 import {useNavigate} from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const FormAberturasVista = (props) => {
 
     //Redireccionamiento de Pagina =>
     let navigate = useNavigate()
+
+    //Obtengo los datos pasados por search URL =>
+    let {search} = useLocation();
+    let query = new URLSearchParams(search)
 
     //Validar formulario con Libreria useForm =>
     const {register, formState: { errors }, handleSubmit, setValue} = useForm({
 
     })
 
+
     const[dato,setDato] = useState(null)
 
-    const[idVisita, setIdVisita] = useState(null)
+    //Obtener el parametro que pasamos por el URL =>
+    const[urlAbertura,setUrlAbertura] = useState(query.get("idAbertura"))
 
-    const[idGeneral, setIdGeneral] = useState(null)
 
     const [abertura, setAbertura] = useState({
 
@@ -47,28 +53,26 @@ const FormAberturasVista = (props) => {
         
         cargarDatos()
 
-        setIdGeneral(localStorage.getItem("idVisitaVista"))
-
-        setIdVisita(localStorage.getItem("idGeneralVista"))
+        setUrlAbertura(query.get("idAbertura"))
 
 
 
-    },[])
+    },[query.get("idAbertura")])
 
     
     const cargarDatos = async() => {   
 
         try{
 
-            let idVisita = localStorage.getItem("idVisitaVista")
+            
 
             const response = await axios("http://localhost:8080/Proyecto_CheckList/AberturaServlet",{
 
                 method:"GET",
                 params:{
 
-                    action:"buscarIdVisita",
-                    idVisita:idVisita,
+                    action:"buscar",
+                    idAbertura:urlAbertura,
 
                 }
 
@@ -81,6 +85,7 @@ const FormAberturasVista = (props) => {
             //Pasar datos al form =>
             setValue("fechaInicio",moment(`${resJson.fechaInicial.year}-${resJson.fechaInicial.month}-${resJson.fechaInicial.day}`).format('DD-MM-YYYY'))
             setValue("fechaFinal",moment(`${resJson.fechaFinal.year}-${resJson.fechaFinal.month}-${resJson.fechaFinal.day}`).format('DD-MM-YYYY'))
+            setValue("tipoAbertura", resJson.tipoAbertura)
             setValue("cantidad", resJson.cantidad)
             setValue("m2", resJson.m2)
             setValue("nroPersona", resJson.nroPersona)
@@ -119,7 +124,7 @@ const FormAberturasVista = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE ABERTURAS</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE DATOS ABERTURAS</Alert.Heading>
 
             <br></br>
 
@@ -227,6 +232,54 @@ const FormAberturasVista = (props) => {
 
 
             </Row>
+
+            <br></br>
+
+            <Row>
+
+
+                <Col sm={3}>
+                    
+                    <label>Tipo de Abertura: </label>
+
+
+                </Col>
+
+                <Col sm={7}>
+                    
+                    <textarea 
+                        type="text"
+                        name="tipoAbertura"
+                        disabled={true}
+                        placeholder=""
+                        className="form-control"
+                        {...register("tipoAbertura", { 
+
+                            required:{
+                                value: true,
+                                message: '*' 
+                            },
+
+                        })}      
+                    >
+                    </textarea>
+
+
+                </Col>
+
+                <Col sm={1}>
+
+                    
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.tipoAbertura && errors.tipoAbertura.message}
+                    </span>
+
+                </Col>
+
+
+
+            </Row>
+
 
             <br></br>
 
@@ -426,7 +479,7 @@ const FormAberturasVista = (props) => {
 
                 <Col>
                 
-                    <Button type="button" href={`/formPrincipalVista?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
+                    <Button type="button" href={`/principalAberturasVista`} variant="danger" size="lg">VOLVER</Button>
                 
                 </Col>
 

@@ -37,8 +37,8 @@ import FormAberturasVista from "../src/components/FormAberturasVista"
 import FormConclusionVista from "../src/components/FormConclusionVista"
 import PrincipalGremioVista from "../src/components/PrincipalGremioVista"
 import FormGremioVista from "../src/components/FormGremioVista"
-
-
+import PrincipalAberturasVista from "../src/components/PrincipalAberturasVista"
+import GrillaBusqueda from "../src/components/GrillaBusqueda"
 
 
 const App = () => {
@@ -51,6 +51,7 @@ const App = () => {
         <Routes>
 
           <Route path="/" element={<Home />} />
+          <Route path="/grillaBusqueda" element={<GrillaBusqueda />} />
           <Route path="/prevCarga" element={<PrevCarga />} />
           <Route path="/formGeneral" element={<FormGeneral />} />
           <Route path="/formVisita" element={<FormVisita />} />
@@ -81,13 +82,13 @@ const App = () => {
           <Route path="/formRedAguaVista" element={<FormRedAguaVista />} />
           <Route path="/formRedGasVista" element={<FormRedGasVista />} />
           <Route path="/formRedElectricidadVista" element={<FormRedElectricidadVista />} />
+          <Route path="/principalAberturasVista" element={<PrincipalAberturasVista />} />
           <Route path="/formAberturasVista" element={<FormAberturasVista />} />
           <Route path="/formConclusionVista" element={<FormConclusionVista />} />
           <Route path="/principalGremioVista" element={<PrincipalGremioVista />} />
           <Route path="/formGremioVista" element={<FormGremioVista />} />
           
-          
-         
+
         </Routes>
 
       </Fragment>

@@ -224,7 +224,7 @@ const FormPrincipalVista = (props) => {
 
                 <Col>
 
-                    <Button href="/formAberturasVista" className="botonForm" variant="primary">12- FORMULARIO ABERTURAS</Button>
+                    <Button href="/principalAberturasVista" className="botonForm" variant="primary">12- FORMULARIO ABERTURAS</Button>
                     
                 </Col>
 

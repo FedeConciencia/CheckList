@@ -45,9 +45,9 @@ const FormRedAguaVista = (props) => {
         
         cargarDatos()
 
-        setIdGeneral(localStorage.getItem("idVisitaVista"))
+        setIdVisita(localStorage.getItem("idVisitaVista"))
 
-        setIdVisita(localStorage.getItem("idGeneralVista"))
+        setIdGeneral(localStorage.getItem("idGeneralVista"))
 
 
 
@@ -58,7 +58,7 @@ const FormRedAguaVista = (props) => {
 
         try{
 
-            let idVisita = localStorage.getItem("idVisitaVista")
+            let id = localStorage.getItem("idVisitaVista")
 
             const response = await axios("http://localhost:8080/Proyecto_CheckList/RedGasServlet",{
 
@@ -66,7 +66,7 @@ const FormRedAguaVista = (props) => {
                 params:{
 
                     action:"buscarIdVisita",
-                    idVisita:idVisita,
+                    idVisita:id,
 
                 }
 
@@ -116,7 +116,7 @@ const FormRedAguaVista = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE RED DE GAS</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE DATOS RED DE GAS</Alert.Heading>
 
             <br></br>
 

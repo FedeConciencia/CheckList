@@ -14,6 +14,7 @@ import {useNavigate} from 'react-router-dom';
 import "../assets/css/formMateriales.css";
 
 //ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
+
 const FormVisitaVista = (props) => {
 
     //Redireccionamiento de Pagina =>
@@ -43,12 +44,13 @@ const FormVisitaVista = (props) => {
     useEffect(() => {
 
         
+        cargarDatos()
 
         setIdVisita(localStorage.getItem("idVisitaVista"))
 
         setIdGeneral(localStorage.getItem("idGeneralVista"))
 
-        cargarDatos()
+        
 
     },[])
 
@@ -56,8 +58,10 @@ const FormVisitaVista = (props) => {
 
         try{
 
+            //Traer el dato  dentro del metodo y no guardarlo en un hooks =>
+            let id = await localStorage.getItem("idVisitaVista")
 
-            console.log("IDVISITA => ", idVisita)
+            console.log("IDVISITA => ", id)
 
 
             const response = await axios("http://localhost:8080/Proyecto_CheckList/VisitaServlet",{
@@ -66,7 +70,7 @@ const FormVisitaVista = (props) => {
                 params:{
 
                     action:"buscar",
-                    idVisita:idVisita,
+                    idVisita:id,
 
                 }
 

@@ -14,6 +14,7 @@ import "../assets/css/formPrincipal.css"
 import {useNavigate} from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
 const FormHumedaVista = (props) => {
 
     //Redireccionamiento de Pagina =>
@@ -55,9 +56,9 @@ const FormHumedaVista = (props) => {
         
         cargarDatos()
 
-        setIdGeneral(localStorage.getItem("idVisitaVista"))
+        setIdVisita(localStorage.getItem("idVisitaVista"))
 
-        setIdVisita(localStorage.getItem("idGeneralVista"))
+        setIdGeneral(localStorage.getItem("idGeneralVista"))
 
 
 
@@ -68,7 +69,7 @@ const FormHumedaVista = (props) => {
 
         try{
 
-            let idVisita = localStorage.getItem("idVisitaVista")
+            let id = localStorage.getItem("idVisitaVista")
 
             const response = await axios("http://localhost:8080/Proyecto_CheckList/HumedaServlet",{
 
@@ -76,7 +77,7 @@ const FormHumedaVista = (props) => {
                 params:{
 
                     action:"buscarIdVisita",
-                    idVisita:idVisita,
+                    idVisita:id,
 
                 }
 
@@ -136,11 +137,19 @@ const FormHumedaVista = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE OBRA HUMEDA</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE DATOS OBRA HUMEDA</Alert.Heading>
 
             <br></br>
 
-            <h5 className='red'></h5>
+            <h5 className='red'>La cantidad de M2 o metros lineales serán las totales (no la diferencia entre una visita y la anterior).</h5>
+
+            <br></br>
+
+            <h5 className='red'>Si algun item no esta dentro del alcance, colocar valor -1 (No Aplicable).</h5>
+
+            <br></br>
+
+            <h5 className='red'>Si al momento de la primer visita hay algun item terminado, colocar -2 (Ya Construido).</h5>
 
             <br></br>
 

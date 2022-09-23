@@ -47,9 +47,9 @@ const FormConclusionVista = (props) => {
         
         cargarDatos()
 
-        setIdGeneral(localStorage.getItem("idVisitaVista"))
+        setIdVisita(localStorage.getItem("idVisitaVista"))
 
-        setIdVisita(localStorage.getItem("idGeneralVista"))
+        setIdGeneral(localStorage.getItem("idGeneralVista"))
 
 
 
@@ -60,7 +60,7 @@ const FormConclusionVista = (props) => {
 
         try{
 
-            let idGeneral = localStorage.getItem("idGeneralVista")
+            let id = localStorage.getItem("idGeneralVista")
 
             const response = await axios("http://localhost:8080/Proyecto_CheckList/ConclusionServlet",{
 
@@ -68,7 +68,7 @@ const FormConclusionVista = (props) => {
                 params:{
 
                     action:"buscarIdGeneral",
-                    idGeneral:idGeneral,
+                    idGeneral:id,
 
                 }
 
@@ -119,7 +119,7 @@ const FormConclusionVista = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE CONCLUSION FINAL</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE DATOS CONCLUSION FINAL</Alert.Heading>
 
             <br></br>
 
@@ -188,7 +188,7 @@ const FormConclusionVista = (props) => {
 
                 <Col sm={3}>
                     
-                    <label>Avance Actual: </label>
+                    <label>Avance Actual (%): </label>
 
                 
                 </Col>
@@ -235,7 +235,7 @@ const FormConclusionVista = (props) => {
 
                 <Col sm={3}>
                     
-                    <label>Avance Esperado: </label>
+                    <label>Avance Esperado (%): </label>
 
                 
                 </Col>

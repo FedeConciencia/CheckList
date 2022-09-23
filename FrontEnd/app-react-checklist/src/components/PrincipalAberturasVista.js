@@ -12,8 +12,8 @@ import {useNavigate} from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 import moment from 'moment';
 
-
-const PrincipalGremioVista = (props) => {
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
+const PrincipalAberturasVista = (props) => {
 
     let navigate = useNavigate()
 
@@ -26,30 +26,32 @@ const PrincipalGremioVista = (props) => {
    
     useEffect(() => {
 
-        obtenerGremios()
-
+       
+        obtenerAberturas()
         
         setIdVisita(localStorage.getItem("idVisitaVista"))
 
         setIdGeneral(localStorage.getItem("idGeneralVista"))
-        
+
 
     },[])
 
-    const obtenerGremios = async() => {
+    const obtenerAberturas = async() => {
 
 
         try{
 
-            let idPersona = localStorage.getItem("idPersonaVista")
+            let id = localStorage.getItem("idVisitaVista")
 
-            const response = await axios("http://localhost:8080/Proyecto_CheckList/GremioServlet",{
+            console.log("ID_VISITA => ", id)
+
+            const response = await axios("http://localhost:8080/Proyecto_CheckList/AberturaServlet",{
 
                 method:"GET",
                 params:{
 
-                    action:"listarXidPersona",
-                    idPersona:idPersona,
+                    action:"buscarId",
+                    idVisita:id,
 
 
                 }
@@ -95,7 +97,7 @@ const PrincipalGremioVista = (props) => {
 
                 <div className='body'>
 
-                <Alert.Heading className="alertTitle">LISTA DE GREMIOS</Alert.Heading>
+                <Alert.Heading className="alertTitle">LISTA DE ABERTURAS</Alert.Heading>
 
                 <br></br>
 
@@ -144,7 +146,7 @@ const PrincipalGremioVista = (props) => {
 
                 <br></br>  
 
-                <Alert.Heading className="alertTitle">PLANILLA DE GREMIOS</Alert.Heading>
+                <Alert.Heading className="alertTitle">PLANILLA DE ABERTURAS</Alert.Heading>
 
                 <br></br>
 
@@ -160,9 +162,9 @@ const PrincipalGremioVista = (props) => {
                         <tr>
 
                             <th className='celda'>Indice</th>
-                            <th className='celda'>Nombre_Gremio</th>
-                            <th className='celda'>Nombre_Contratista</th>
-                            <th className='celda'>Apellido_Contratista</th>
+                            <th className='celda'>Tipo de Abertura</th>
+                            <th className='celda'>Cantidad</th>
+                            <th className='celda'>M2</th>
                             <th className='celda'>Acciones</th>
                             
                         </tr>
@@ -179,12 +181,12 @@ const PrincipalGremioVista = (props) => {
                             <tr key={i}>
 
                                 <td className='celda'>{i+1}</td>
-                                <td className='celda'>{item.nombreGremio}</td>
-                                <td className='celda'>{item.nombreContratista}</td>
-                                <td className='celda'>{item.apellidoContratista}</td>
+                                <td className='celda'>{item.tipoAbertura}</td>
+                                <td className='celda'>{item.cantidad}</td>
+                                <td className='celda'>{item.m2}</td>
                                 <td className='celda'>
 
-                                    <Button variant="warning" size="sm" href={`/formGremioVista?idGremio=${item.idGremio}`}>OBTENER DATOS</Button>
+                                    <Button variant="warning" size="sm" href={`/formAberturasVista?idAbertura=${item.idAbertura}`}>OBTENER DATOS</Button>
 
                                 </td>
 
@@ -230,4 +232,4 @@ const PrincipalGremioVista = (props) => {
 
 }
 
-export default PrincipalGremioVista
+export default PrincipalAberturasVista

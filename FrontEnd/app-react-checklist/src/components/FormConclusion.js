@@ -270,7 +270,7 @@ const FormConclusion = (props) => {
 
                 <Col className="col-md-3">
                     
-                    <label className="my-2">Avance Actual: </label>
+                    <label className="my-2">Avance Actual (%): </label>
 
                 </Col>
 
@@ -280,7 +280,7 @@ const FormConclusion = (props) => {
                         type="number"
                         name="avanceActual"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato con 10,00"
+                        placeholder="* Campo Obligatorio / Formato con 10,00 %"
                         className="form-control my-2"
                         min="0"
                         max="100"
@@ -323,7 +323,7 @@ const FormConclusion = (props) => {
 
                 <Col className="col-md-3">
                     
-                    <label className="my-2">Avance Esperado: </label>
+                    <label className="my-2">Avance Esperado (%): </label>
 
                 </Col>
 
@@ -333,7 +333,7 @@ const FormConclusion = (props) => {
                         type="number"
                         name="avanceEsperado"
                         onChange={handleInputChange}
-                        placeholder="* Campo Obligatorio / Formato con 10,00"
+                        placeholder="* Campo Obligatorio / Formato con 10,00 %"
                         className="form-control my-2"
                         min="0"
                         max="100"
@@ -423,7 +423,7 @@ const FormConclusion = (props) => {
 
                 <Col className="col-md-3">
                     
-                    <label className="my-2">Grado Satisfaccion del Cliente: </label>
+                    <label className="my-2">Grado Satisfaccion del Cliente (1 a 5): </label>
 
                 </Col>
 

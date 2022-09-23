@@ -443,6 +443,73 @@ public class ControladorAbertura {
         return abertura; //devolvemos el objeto abertura
         
     }
+    
+    
+    //METODO PARA BUSCAR ALL REGISTROS ABERTURA X ID_VISITA:
+    public List<Abertura> buscarAllAberturaIdVisita(Long id) {
+
+        Connection conexion = null;
+        Conexion con = new Conexion();
+        Abertura abertura = null;
+        List<Abertura> listaAbertura = new ArrayList<Abertura>();
+        PreparedStatement ps = null;  //Este objeto permite guardar las consultas que hacemos a la BD.
+        ResultSet rs = null;  // este objeto lo usamos cuando obtenemos algo de la base de datos.
+
+        try {
+
+            conexion = con.getConnection(); //metodo getConnection, logueamos el usuario.
+
+            ps = conexion.prepareStatement("SELECT * FROM abertura where idVisita = ?");
+            
+            
+            ps.setLong(1, id);
+            
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                Long idAbertura = rs.getLong(1); //cada numero del parametro hace referencia al dato del campo que se desea obtener = idPersona
+                LocalDate fechaInicial = (rs.getDate(2)).toLocalDate();
+                LocalDate fechaFinal = (rs.getDate(3)).toLocalDate();
+                String tipoAbertura = rs.getString(4);
+                int cantidad = rs.getInt(5);
+                double m2 = rs.getDouble(6);
+                int nroPersona = rs.getInt(7);
+                String comentario = rs.getString(8);
+                LocalDate fechaAlta = (rs.getDate(9)).toLocalDate(); //En java trabajamos con LocalDate
+                LocalDate fechaBaja = (rs.getDate(10)).toLocalDate(); //En java trabajamos con LocalDate
+                String estado = rs.getString(11);
+                Long idVisita = rs.getLong(12);
+
+                abertura = new Abertura(idAbertura, fechaInicial, fechaFinal, tipoAbertura, cantidad, m2, nroPersona, comentario, fechaAlta, fechaBaja, estado, idVisita);
+
+                listaAbertura.add(abertura);
+
+            }
+
+            conexion.close();
+
+        } catch (Exception ex) {
+
+            System.err.println("Error. " + ex);
+
+        } finally {
+
+            try {
+
+                ps.close();
+                rs.close();
+
+            } catch (SQLException ex) {
+                System.err.println("Error. " + ex);
+            }
+
+        }
+
+        return listaAbertura; //devolvemos la lista de abertura
+
+    }
 
     
 }
