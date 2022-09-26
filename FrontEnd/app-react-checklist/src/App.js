@@ -39,6 +39,12 @@ import PrincipalGremioVista from "../src/components/PrincipalGremioVista"
 import FormGremioVista from "../src/components/FormGremioVista"
 import PrincipalAberturasVista from "../src/components/PrincipalAberturasVista"
 import GrillaBusqueda from "../src/components/GrillaBusqueda"
+import BusquedaObraAdmin from "../src/components/BusquedaObraAdmin"
+import VisitasUpdate from "../src/components/VisitasUpdate"
+import FormPrincipalUpdate from "../src/components/FormPrincipalUpdate"
+import FormGeneralUpdate from "../src/components/FormGeneralUpdate"
+import FormVisitaUpdate from "../src/components/FormVisitaUpdate"
+import FormMaterialesUpdate from "../src/components/FormMaterialesUpdate"
 
 
 const App = () => {
@@ -87,6 +93,12 @@ const App = () => {
           <Route path="/formConclusionVista" element={<FormConclusionVista />} />
           <Route path="/principalGremioVista" element={<PrincipalGremioVista />} />
           <Route path="/formGremioVista" element={<FormGremioVista />} />
+          <Route path="/busquedaAdmin" element={<BusquedaObraAdmin />} />
+          <Route path="/visitasUpdate" element={<VisitasUpdate />} />
+          <Route path="/formPrincipalUpdate" element={<FormPrincipalUpdate />} />
+          <Route path="/formGeneralUpdate" element={<FormGeneralUpdate />} />
+          <Route path="/formVisitaUpdate" element={<FormVisitaUpdate />} />
+          <Route path="/formMaterialesUpdate" element={<FormMaterialesUpdate />} />
           
 
         </Routes>

@@ -71,6 +71,7 @@ const NavigationHome = (props) => {
             <Nav className="me-auto">
             <Nav.Link href="/prevCarga">CARGAR DATOS</Nav.Link>
             <Nav.Link href="/verificarObra">VER DATOS</Nav.Link>
+            <Nav.Link href="/busquedaAdmin">ACTUALIZAR DATOS</Nav.Link>
             </Nav>
 
             <Form className="d-flex">

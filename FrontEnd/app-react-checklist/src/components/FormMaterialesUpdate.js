@@ -11,18 +11,29 @@ import Form from "react-bootstrap/Form";
 import {useForm} from 'react-hook-form';
 import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import "../assets/css/formMateriales.css";
 
 //ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
-const FormMateriales = (props) => {
+const FormMaterialesUpdate = (props) => {
 
-    //Redireccionamiento de Pagina =>
+    //Redireccionamiento =>
     let navigate = useNavigate()
 
-    //react-hook-form (validacion) =>
-    const {register, formState: { errors }, handleSubmit} = useForm()
+    //Obtengo los datos pasados por search URL =>
+    let {search} = useLocation();
+    let query = new URLSearchParams(search)
+
+    //Validar formulario con Libreria useForm =>
+    const {register, formState: { errors }, handleSubmit, setValue} = useForm({
+
+    })
 
     const[dato,setDato] = useState(null)
+
+    const[idVisita, setIdVisita] = useState(null)
+
+    const[idGeneral, setIdGeneral] = useState(null)
 
     const [material, setMaterial] = useState({
 
@@ -43,12 +54,16 @@ const FormMateriales = (props) => {
         
     })
 
-
     useEffect(() => {
 
-        validarCargaForm()
-
+         //Obtenemos los datos del localStorage =>
+         setIdGeneral(localStorage.getItem("idGeneralUpdate"))
+         setIdVisita(localStorage.getItem("idVisitaUpdate"))
+ 
+         cargarDatos()
+        
     },[])
+
 
     //Metodo para obtener los datos ingresados en el form =>
     const handleInputChange = (event) => {
@@ -64,10 +79,10 @@ const FormMateriales = (props) => {
 
 
     //Metodo para gestionar el envio de datos al Servlet y BD =>
-    const enviarDatos = (material, event) => {
+    const enviarDatos = async (material, event) => {
 
             
-        insertar(material);
+        actualizar(material);
 
         event.preventDefault();
 
@@ -89,42 +104,33 @@ const FormMateriales = (props) => {
             fechaBaja:'',
             estado:'',
             idVisita:'',
-
+           
         });
 
-        //Redirecciono =>
-        navigate(`/formPrincipal`)
- 
+        
+        //Redireccionamos a la pagina principal de formUpdate =>
+        navigate(`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`)
+
+    
+      
     }
 
-    const insertar = async(material) => {   
+    
+    const cargarDatos = async() => {   
 
         try{
 
-            let id = localStorage.getItem("idVisita")
+            //Obtengo el n° de obra del localStorage =>
+            let id = localStorage.getItem("idVisitaUpdate")
 
             const response = await axios("http://localhost:8080/Proyecto_CheckList/MaterialServlet",{
 
                 method:"GET",
                 params:{
 
-                    action:"insertar",
-                    estadoAlmacen:material.estadoAlmacen,
-                    movMateriales:material.movMateriales,
-                    almacenSeguro:material.almacenSeguro,
-                    envasesVacio:material.envasesVacio,
-                    materialSobran:material.materialSobran,
-                    estadoLimpieza:material.estadoLimpieza,
-                    desechosOrgani:material.desechosOrgani,
-                    comentario:material.comentario,
-
-                    //Se autocompletan =>
-                    fechaAlta:moment().format('YYYY-MM-DD'),
-                    fechaBaja:moment('1900-01-01').format('YYYY-MM-DD'),
-                    estado:'activo',
+                    action:"buscarIdVisita",
                     idVisita:id,
 
-
                 }
 
             })
@@ -133,87 +139,96 @@ const FormMateriales = (props) => {
 
             console.log("DATOS API => ", resJson)
 
-            alert("DATOS GUARDADOS CON EXITO.")
+            //Pasar datos al form =>
+            setValue("estadoAlmacen", resJson.estadoAlmacen)
+            setValue("movMateriales", resJson.movMateriales)
+            setValue("almacenSeguro", resJson.almacenSeguro)
+            setValue("envasesVacio", resJson.envasesVacio)
+            setValue("materialSobran", resJson.materialSobran)
+            setValue("estadoLimpieza", resJson.estadoLimpieza)
+            setValue("desechosOrgani",resJson.desechosOrgani)
+            setValue("comentario", resJson.comentario)
 
+
+            //Guardamos en LocalStorage el idMaterial =>
+            localStorage.setItem("idMaterialUpdate", resJson.idMaterial)
+            
+            
         }catch(error){
 
             console.log(error)
 
-            alert("ERROR, NO FUE POSIBLE GUARDAR LOS DATOS, VUELVA A INTENTARLO.")
+            alert("ERROR, NO FUE POSIBLE OBTENER LOS DATOS, VUELVA A INTENTARLO.")
 
         }
 
 
     }
 
-    //Metodo para validar si el idVisita en la entidad Material existe =>
-    const validarCargaForm = async() => {
+
+    const actualizar = async(material) => {
 
         try{
 
-            let id = localStorage.getItem("idVisita")
+            //Obtenermos el idGeneral del localStorage =>
+            let idGen = localStorage.getItem("idGeneralUpdate")
+            let idVis = localStorage.getItem("idVisitaUpdate")
+            let idMat = localStorage.getItem("idMaterialUpdate")
 
-            let validar = true
 
-            console.log("ID_VISITA => ", id)
-
-            const response = await axios("http://localhost:8080/Proyecto_CheckList/MaterialServlet",{
+            const response = await axios(`http://localhost:8080/Proyecto_CheckList/MaterialServlet`, {
 
                 method:"GET",
                 params:{
 
-                    action:"listar",
+                   action:'actualizar',
+                   estadoAlmacen:material.estadoAlmacen,
+                   movMateriales:material.movMateriales,
+                   almacenSeguro:material.almacenSeguro,
+                   envasesVacio:material.envasesVacio,
+                   materialSobran:material.materialSobran,
+                   estadoLimpieza:material.estadoLimpieza,
+                   desechosOrgani:material.desechosOrgani,
+                   comentario:material.comentario,
+
+                   //Datos que no pueden ser modificados => 
+                   idVisita:idVis,
+                   idMaterial:idMat,
+
+                   //Se autocompletan =>
+                   fechaAlta:moment().format('YYYY-MM-DD'), 
+                   fechaBaja:moment("1900-01-01").format('YYYY-MM-DD'), 
+                   estado:"actualizado",
+
 
                 }
+
 
             })
 
             const resJson = await response.data
 
-            console.log("DATOS API => ", resJson)
+            console.log("DATOS API ACTUALIZAR => ", resJson)
 
+            alert("DATOS ACTUALIZADOS CON EXITO.")
 
-            for(let i = 0; i < resJson.length; i++){
-
-                if((resJson[i].idVisita).toString() === (id).toString()){
-
-                    validar = false
-                    break
-
-                }
-
-            }
-
-            if(validar === false){
-
-                console.log("VALIDAR => ", validar)
-
-                document.querySelector("#mensaje").innerHTML = "YA FUE GESTIONADA LA CARGA DEL FORMULARIO MATERIALES PARA ESTA VISITA"
-
-                return validar;
-
-            }else{
-
-                return validar
-
-            }
-
-            
 
         }catch(error){
 
-            console.log(error)
+            console.log("Error => ", error)
+
+            alert("ERROR, NO FUE POSIBLE ACTUALIZAR LOS DATOS, VUELVA A INTENTARLO.")
+
 
         }
 
-        
-        
+
     }
 
+    
 
 
     return(
-
 
 
         <Fragment>
@@ -230,7 +245,7 @@ const FormMateriales = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO DE REGISTRO DE MATERIALES</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO DE ACTUALIZACION DE MATERIALES</Alert.Heading>
 
             <br></br>
 
@@ -660,7 +675,7 @@ const FormMateriales = (props) => {
 
                             validate:{
 
-                                validate1:validarCargaForm,
+                                
 
                             }
 
@@ -698,23 +713,9 @@ const FormMateriales = (props) => {
 
                 <Col>
                     
-                    <Button type="submit" variant="primary" size="lg">CARGAR</Button>&nbsp;&nbsp;
-                    <Button type="button" href={`/formPrincipal`} variant="danger" size="lg">VOLVER</Button>
+                    <Button type="submit" variant="primary" size="lg">ACTUALIZAR</Button>&nbsp;&nbsp;
+                    <Button type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
                 
-                </Col>
-
-
-            </Row>
-
-            <br></br>
-            <br></br>
-
-            <Row className='body'>   
-
-                <Col>
-                    
-                   <h5 id="mensaje" className='mensaje'></h5>
-
                 </Col>
 
 
@@ -732,12 +733,10 @@ const FormMateriales = (props) => {
         </Fragment>
 
 
-
-
     )
 
 
 
 }
 
-export default FormMateriales
+export default FormMaterialesUpdate

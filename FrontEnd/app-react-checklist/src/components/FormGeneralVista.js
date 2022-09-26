@@ -52,9 +52,9 @@ const FormGeneralVista = (props) => {
 
         cargarDatos()
 
-        setIdGeneral(localStorage.getItem("idVisitaVista"))
+        setIdVisita(localStorage.getItem("idVisitaVista"))
 
-        setIdVisita(localStorage.getItem("idGeneralVista"))
+        setIdGeneral(localStorage.getItem("idGeneralVista"))
 
     },[])
 

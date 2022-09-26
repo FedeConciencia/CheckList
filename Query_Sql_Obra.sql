@@ -28,6 +28,9 @@ SELECT MAX(idGeneral) FROM general;
 #Query para obtener el idGeneral por N° de Obra  =>
 Select idGeneral from general where codigo = "PO577";
 
+#Query para obtener idGeneral + idVisita por el n° de Obra =>
+select g.idGeneral, v.idVisita from general as g inner join visita as v on g.idGeneral = v.idGeneral where g.codigo = "0001";
+
 #---------------------------------------
 
 #ENTIDAD VISITA 12° BORRAR =>
