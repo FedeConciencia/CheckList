@@ -45,6 +45,19 @@ import FormPrincipalUpdate from "../src/components/FormPrincipalUpdate"
 import FormGeneralUpdate from "../src/components/FormGeneralUpdate"
 import FormVisitaUpdate from "../src/components/FormVisitaUpdate"
 import FormMaterialesUpdate from "../src/components/FormMaterialesUpdate"
+import FormPersonaUpdate from "../src/components/FormPersonaUpdate"
+import PrincipalGremioUpdate from "../src/components/PrincipalGremioUpdate"
+import FormGremioUpdate from "../src/components/FormGremioUpdate"
+import FormHumedaUpdate from "../src/components/FormHumedaUpdate"
+import FormSecoUpdate from "../src/components/FormSecoUpdate"
+import FormPanelesUpdate from "../src/components/FormPanelesUpdate"
+import FormRedAguaUpdate from "../src/components/FormRedAguaUpdate"
+import FormRedGasUpdate from "../src/components/FormRedGasUpdate"
+import FormRedElectricidadUpdate from "../src/components/FormRedElectricidadUpdate"
+import PrincipalAberturasUpdate from "../src/components/PrincipalAberturasUpdate"
+import FormAberturasUpdate from "../src/components/FormAberturasUpdate"
+import FormConclusionUpdate from "../src/components/FormConclusionUpdate"
+
 
 
 const App = () => {
@@ -99,6 +112,18 @@ const App = () => {
           <Route path="/formGeneralUpdate" element={<FormGeneralUpdate />} />
           <Route path="/formVisitaUpdate" element={<FormVisitaUpdate />} />
           <Route path="/formMaterialesUpdate" element={<FormMaterialesUpdate />} />
+          <Route path="/formPersonaUpdate" element={<FormPersonaUpdate />} />
+          <Route path="/principalGremioUpdate" element={<PrincipalGremioUpdate />} />
+          <Route path="/formGremioUpdate" element={<FormGremioUpdate />} />
+          <Route path="/formHumedaUpdate" element={<FormHumedaUpdate />} />
+          <Route path="/formSecoUpdate" element={<FormSecoUpdate />} />
+          <Route path="/formPanelesUpdate" element={<FormPanelesUpdate />} />
+          <Route path="/formRedAguaUpdate" element={<FormRedAguaUpdate />} />
+          <Route path="/formRedGasUpdate" element={<FormRedGasUpdate />} />
+          <Route path="/formRedElectricidadUpdate" element={<FormRedElectricidadUpdate />} />
+          <Route path="/PrincipalAberturasUpdate" element={<PrincipalAberturasUpdate />} />
+          <Route path="/FormAberturasUpdate" element={<FormAberturasUpdate />} />
+          <Route path="/formConclusionUpdate" element={<FormConclusionUpdate />} />
           
 
         </Routes>

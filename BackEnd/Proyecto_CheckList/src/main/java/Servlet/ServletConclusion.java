@@ -115,7 +115,7 @@ public class ServletConclusion extends HttpServlet {
             
 
                     ControladorConclusion c1 = new ControladorConclusion();  
-                    Conclusion conclusion = new Conclusion(obraTerminada, avanceActual, avanceEsperado, fechaFinalizacion, gradoSatisfaccion, comentario, fechaAlta, fechaBaja, estado, idGeneral);
+                    Conclusion conclusion = new Conclusion(idConclusion, obraTerminada, avanceActual, avanceEsperado, fechaFinalizacion, gradoSatisfaccion, comentario, fechaAlta, fechaBaja, estado, idGeneral);
                     c1.actualizarConclusion(conclusion);
                     Gson gsonBuilder = new GsonBuilder().create();
                     String conclusionJson = gsonBuilder.toJson(conclusion);

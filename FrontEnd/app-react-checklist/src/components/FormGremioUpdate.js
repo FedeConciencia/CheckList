@@ -10,14 +10,14 @@ import NavigationHome from "../components/NavigationHome";
 import Form from "react-bootstrap/Form";
 import {useForm} from 'react-hook-form';
 import moment from 'moment';
-import "../assets/css/formPrincipal.css"
 import {useNavigate} from 'react-router-dom';
 import { useLocation } from "react-router-dom";
+import "../assets/css/formMateriales.css";
 
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
+const FormGremioUpdate = (props) => {
 
-const FormConclusionVista = (props) => {
-
-    //Redireccionamiento de Pagina =>
+    //Redireccionamiento =>
     let navigate = useNavigate()
 
     //Obtengo los datos pasados por search URL =>
@@ -30,6 +30,10 @@ const FormConclusionVista = (props) => {
     })
 
     const[dato,setDato] = useState(null)
+
+    const[idVisita, setIdVisita] = useState(null)
+
+    const[idGeneral, setIdGeneral] = useState(null)
 
     //Obtener el parametro que pasamos por el URL =>
     const[urlGremio,setUrlGremio] = useState(query.get("idGremio"))
@@ -45,25 +49,84 @@ const FormConclusionVista = (props) => {
         nroArgentinos:'',
         nombreContratista:'',
         apellidoContratista:'',
+        fechaAlta:'',
+        fechaBaja:'',
+        estado:'',
+        idPersona:'',
                 
     })
-    
+
     useEffect(() => {
 
-        
-        cargarDatos()
+         //Obtenemos los datos del localStorage =>
+         setIdGeneral(localStorage.getItem("idGeneralUpdate"))
+         setIdVisita(localStorage.getItem("idVisitaUpdate"))
 
-        setUrlGremio(query.get("idGremio"))
-
+         setUrlGremio(query.get("idGremio"))
+ 
+         cargarDatos()
         
     },[query.get("idGremio")])
+
+
+    //Metodo para obtener los datos ingresados en el form =>
+    const handleInputChange = (event) => {
+
+        setGremio({
+
+            ...gremio,
+            [event.target.name] : event.target.value
+
+        })
+
+    }
+
+
+    //Metodo para gestionar el envio de datos al Servlet y BD =>
+    const enviarDatos = async (gremio, event) => {
+
+            
+        actualizar(gremio);
+
+        event.preventDefault();
+
+        //Limpiar los campos del Form =>
+        event.target.reset();
+
+        //Vaciar todas las variables =>
+        setGremio({
+
+            nombreGremio:'',
+            nroPersonas:'',
+            horarioDesde:'',
+            horarioHasta:'',
+            fechaDesde:'',
+            fechaHasta:'',
+            nroArgentinos:'',
+            nombreContratista:'',
+            apellidoContratista:'',
+            fechaAlta:'',
+            fechaBaja:'',
+            estado:'',
+            idPersona:'',
+           
+        });
+
+        
+        //Redireccionamos a la pagina principal de formUpdate =>
+        navigate(`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`)
+
+    
+      
+    }
 
     
     const cargarDatos = async() => {   
 
         try{
 
-           
+            //Obtengo el n° de obra del localStorage =>
+            let id = query.get("idGremio")
 
             const response = await axios("http://localhost:8080/Proyecto_CheckList/GremioServlet",{
 
@@ -71,7 +134,7 @@ const FormConclusionVista = (props) => {
                 params:{
 
                     action:"buscar",
-                    idGremio:urlGremio,
+                    idGremio:id,
 
                 }
 
@@ -86,15 +149,19 @@ const FormConclusionVista = (props) => {
             setValue("nroPersonas", resJson.nroPersonas)
             setValue("horarioDesde", moment(resJson.horarioDesde).add(24, 'hours').format('HH:mm'))
             setValue("horarioHasta", moment(resJson.horarioHasta).add(24, 'hours').format('HH:mm'))
-            setValue("fechaDesde", moment(`${resJson.fechaDesde.year}-${resJson.fechaDesde.month}-${resJson.fechaDesde.day}`).format('DD-MM-YYYY'))
-            setValue("fechaHasta", moment(`${resJson.fechaHasta.year}-${resJson.fechaHasta.month}-${resJson.fechaHasta.day}`).format('DD-MM-YYYY'))
+            setValue("fechaDesde", moment(`${resJson.fechaDesde.year}-${resJson.fechaDesde.month}-${resJson.fechaDesde.day}`).format('YYYY-MM-DD'))
+            setValue("fechaHasta", moment(`${resJson.fechaHasta.year}-${resJson.fechaHasta.month}-${resJson.fechaHasta.day}`).format('YYYY-MM-DD'))
             setValue("nroArgentinos", resJson.nroArgentinos)
             setValue("nombreContratista", resJson.nombreContratista)
             setValue("apellidoContratista", resJson.apellidoContratista)
             setValue("comentario", resJson.comentario)
             
-            alert("DATOS ENCONTRADOS CON EXITO.")
 
+
+            //Guardamos en LocalStorage el idMaterial =>
+            localStorage.setItem("idGremioUpdate", resJson.idGremio)
+            
+            
         }catch(error){
 
             console.log(error)
@@ -105,9 +172,74 @@ const FormConclusionVista = (props) => {
 
 
     }
-    
+
+
+    const actualizar = async(gremio) => {
+
+        try{
+
+            //Obtenermos el idGeneral del localStorage =>
+            let idGen = localStorage.getItem("idGeneralUpdate")
+            let idVis = localStorage.getItem("idVisitaUpdate")
+            let idPer = localStorage.getItem("idPersonaUpdate")
+            let idGrem = localStorage.getItem("idGremioUpdate")
+
+
+            const response = await axios(`http://localhost:8080/Proyecto_CheckList/GremioServlet`, {
+
+                method:"GET",
+                params:{
+
+                   action:'actualizar',
+                   nombreGremio:gremio.nombreGremio,
+                   nroPersonas:gremio.nroPersonas,
+                   horarioDesde:gremio.horarioDesde,
+                   horarioHasta:gremio.horarioHasta,
+                   fechaDesde:gremio.fechaDesde,
+                   fechaHasta:gremio.fechaHasta,
+                   nroArgentinos:gremio.nroArgentinos,
+                   nombreContratista:gremio.nombreContratista,
+                   apellidoContratista:gremio.apellidoContratista,
+                   comentario:gremio.comentario,
+                   
+        
+                   //Datos que no pueden ser modificados => 
+                   idGremio:idGrem,
+                   idPersona:idPer,
+
+                   //Se autocompletan =>
+                   fechaAlta:moment().format('YYYY-MM-DD'), 
+                   fechaBaja:moment("1900-01-01").format('YYYY-MM-DD'), 
+                   estado:"actualizado",
+
+
+                }
+
+
+            })
+
+            const resJson = await response.data
+
+            console.log("DATOS API ACTUALIZAR => ", resJson)
+
+            alert("DATOS ACTUALIZADOS CON EXITO.")
+
+
+        }catch(error){
+
+            console.log("Error => ", error)
+
+            alert("ERROR, NO FUE POSIBLE ACTUALIZAR LOS DATOS, VUELVA A INTENTARLO.")
+
+
+        }
+
+
+    }
 
     
+
+
     return(
 
 
@@ -125,65 +257,74 @@ const FormConclusionVista = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO VISUALIZACION DE DATOS GREMIO</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO DE ACTUALIZACION DE GREMIO</Alert.Heading>
 
             <br></br>
 
-            <h5 className='red'></h5>
+            <h5 className='red'>* Campos Obligatorios</h5>
 
             <br></br>
+
+            <h5 className='red'>Se debe aclarar en campo comentario: Dia de la semana de trabajo y cantidad de Horas Ej: Lunes 4hs, Martes 5hs, etc</h5>
+
+            <br></br>
+
+            <h5 className='red'>Se pueden agregar la cantidad de Gremios necesarios asociados a la visita (Completar nuevamente el Formulario)</h5>
 
             </div>
 
             <br></br>
             <br></br>  
 
-            <Form>
+            <Form onSubmit={handleSubmit(enviarDatos)}>
 
             <br></br>
 
             <Row>
 
-
                 <Col sm={3}>
                     
-                    <label>Nombre del Gremio: </label>
+                    <label className="my-2">Nombre del Gremio: </label>
 
-                
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={6}>
                     
-                    <textarea 
+                    <input 
                         type="text"
                         name="nombreGremio"
-                        disabled={true}
-                        placeholder=""
-                        className="form-control"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio"
+                        className="form-control my-2"
                         {...register("nombreGremio", { 
 
                             required:{
                                 value: true,
-                                message: '*' 
+                                message: '*', 
                             },
 
-                        })}      
+                            validate:{
+
+                               
+
+                            }
+
+                        })}   
+
                     >
-                    </textarea>
-                
-                
+                    </input>
+
                 </Col>
 
                 <Col sm={1}>
 
-                      
+                        
                     <span className="text-danger text-small d-block mb-2">
                     {errors.nombreGremio && errors.nombreGremio.message}
                     </span>
 
+
                 </Col>
-
-
 
             </Row>
 
@@ -191,46 +332,50 @@ const FormConclusionVista = (props) => {
 
             <Row>
 
-
                 <Col sm={3}>
                     
-                    <label>Numero de Personas: </label>
+                    <label className="my-2">Numero de Personas: </label>
 
-                
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={6}>
                     
-                    <textarea 
-                        type="text"
+                    <input 
+                        type="number"
                         name="nroPersonas"
-                        disabled={true}
-                        placeholder=""
-                        className="form-control"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio"
+                        className="form-control my-2"
+                        min="1"
                         {...register("nroPersonas", { 
 
                             required:{
                                 value: true,
-                                message: '*' 
+                                message: '*', 
                             },
 
-                        })}      
+                            validate:{
+
+                               
+
+                            }
+
+                        })}   
+
                     >
-                    </textarea>
-                
-                
+                    </input>
+
                 </Col>
 
                 <Col sm={1}>
 
-                    
+                        
                     <span className="text-danger text-small d-block mb-2">
                     {errors.nroPersonas && errors.nroPersonas.message}
                     </span>
 
+
                 </Col>
-
-
 
             </Row>
 
@@ -238,46 +383,50 @@ const FormConclusionVista = (props) => {
 
             <Row>
 
-
                 <Col sm={3}>
                     
-                    <label>Horario Desde: </label>
+                    <label className="my-2">Horario Desde: </label>
 
-                
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={6}>
                     
-                    <textarea 
-                        type="text"
+                    <input 
+                        type="time"
                         name="horarioDesde"
-                        disabled={true}
-                        placeholder=""
-                        className="form-control"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio"
+                        className="form-control my-2"
+                        min="1"
                         {...register("horarioDesde", { 
 
                             required:{
                                 value: true,
-                                message: '*' 
+                                message: '*', 
                             },
 
-                        })}      
+                            validate:{
+
+                               
+
+                            }
+
+                        })}   
+
                     >
-                    </textarea>
-                
-                
+                    </input>
+
                 </Col>
 
                 <Col sm={1}>
 
-                    
+                        
                     <span className="text-danger text-small d-block mb-2">
                     {errors.horarioDesde && errors.horarioDesde.message}
                     </span>
 
+
                 </Col>
-
-
 
             </Row>
 
@@ -285,46 +434,50 @@ const FormConclusionVista = (props) => {
 
             <Row>
 
-
                 <Col sm={3}>
                     
-                    <label>Horario Hasta: </label>
+                    <label className="my-2">Horario Hasta: </label>
 
-                
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={6}>
                     
-                    <textarea 
-                        type="text"
+                    <input 
+                        type="time"
                         name="horarioHasta"
-                        disabled={true}
-                        placeholder=""
-                        className="form-control"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio"
+                        className="form-control my-2"
+                        min="1"
                         {...register("horarioHasta", { 
 
                             required:{
                                 value: true,
-                                message: '*' 
+                                message: '*', 
                             },
 
-                        })}      
+                            validate:{
+
+                               
+
+                            }
+
+                        })}   
+
                     >
-                    </textarea>
-                
-                
+                    </input>
+
                 </Col>
 
                 <Col sm={1}>
 
-                    
+                        
                     <span className="text-danger text-small d-block mb-2">
                     {errors.horarioHasta && errors.horarioHasta.message}
                     </span>
 
+
                 </Col>
-
-
 
             </Row>
 
@@ -340,12 +493,12 @@ const FormConclusionVista = (props) => {
                 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={2}>
                     
-                    <textarea 
-                        type="text"
+                    <input 
+                        type="date"
                         name="fechaDesde"
-                        disabled={true}
+                        onChange={handleInputChange}
                         placeholder=""
                         className="form-control"
                         {...register("fechaDesde", { 
@@ -357,20 +510,19 @@ const FormConclusionVista = (props) => {
 
                         })}      
                     >
-                    </textarea>
+                    </input>
                 
                 
                 </Col>
 
                 <Col sm={1}>
 
-                    
+                      
                     <span className="text-danger text-small d-block mb-2">
                     {errors.fechaDesde && errors.fechaDesde.message}
                     </span>
 
                 </Col>
-
 
 
             </Row>
@@ -387,12 +539,12 @@ const FormConclusionVista = (props) => {
                 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={2}>
                     
-                    <textarea 
-                        type="text"
+                    <input 
+                        type="date"
                         name="fechaHasta"
-                        disabled={true}
+                        onChange={handleInputChange}
                         placeholder=""
                         className="form-control"
                         {...register("fechaHasta", { 
@@ -404,20 +556,19 @@ const FormConclusionVista = (props) => {
 
                         })}      
                     >
-                    </textarea>
+                    </input>
                 
                 
                 </Col>
 
                 <Col sm={1}>
 
-                    
+                      
                     <span className="text-danger text-small d-block mb-2">
                     {errors.fechaHasta && errors.fechaHasta.message}
                     </span>
 
                 </Col>
-
 
 
             </Row>
@@ -426,46 +577,50 @@ const FormConclusionVista = (props) => {
 
             <Row>
 
-
                 <Col sm={3}>
                     
-                    <label>Numero de Argentinos: </label>
+                    <label className="my-2">Numero de Argentinos: </label>
 
-                
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={6}>
                     
-                    <textarea 
-                        type="text"
+                    <input 
+                        type="number"
                         name="nroArgentinos"
-                        disabled={true}
-                        placeholder=""
-                        className="form-control"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio"
+                        className="form-control my-2"
+                        min="1"
                         {...register("nroArgentinos", { 
 
                             required:{
                                 value: true,
-                                message: '*' 
+                                message: '*', 
                             },
 
-                        })}      
+                            validate:{
+
+                               
+
+                            }
+
+                        })}   
+
                     >
-                    </textarea>
-                
-                
+                    </input>
+
                 </Col>
 
                 <Col sm={1}>
 
-                    
+                        
                     <span className="text-danger text-small d-block mb-2">
                     {errors.nroArgentinos && errors.nroArgentinos.message}
                     </span>
 
+
                 </Col>
-
-
 
             </Row>
 
@@ -479,13 +634,13 @@ const FormConclusionVista = (props) => {
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={6}>
                     
-                    <textarea 
+                    <input 
                         type="text"
                         name="nombreContratista"
-                        disabled={true}
-                        placeholder=""
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio"
                         className="form-control my-2"
                         {...register("nombreContratista", { 
 
@@ -496,14 +651,14 @@ const FormConclusionVista = (props) => {
 
                             validate:{
 
-                                
+                               
 
                             }
 
                         })}   
 
                     >
-                    </textarea>
+                    </input>
 
                 </Col>
 
@@ -514,7 +669,7 @@ const FormConclusionVista = (props) => {
                     {errors.nombreContratista && errors.nombreContratista.message}
                     </span>
 
-                    
+
                 </Col>
 
             </Row>
@@ -529,15 +684,65 @@ const FormConclusionVista = (props) => {
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={6}>
+                    
+                    <input 
+                        type="text"
+                        name="apellidoContratista"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio"
+                        className="form-control my-2"
+                        {...register("apellidoContratista", { 
+
+                            required:{
+                                value: true,
+                                message: '*', 
+                            },
+
+                            validate:{
+
+                               
+
+                            }
+
+                        })}   
+
+                    >
+                    </input>
+
+                </Col>
+
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.apellidoContratista && errors.apellidoContratista.message}
+                    </span>
+
+
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label className="my-2">Comentario: </label>
+
+                </Col>
+
+                <Col sm={6}>
                     
                     <textarea 
                         type="text"
-                        name="apellidoContratista"
-                        disabled={true}
-                        placeholder=""
+                        name="comentario"
+                        onChange={handleInputChange}
+                        placeholder="* Campo Obligatorio / Hasta 3000 caracteres"
                         className="form-control my-2"
-                        {...register("apellidoContratista", { 
+                        {...register("comentario", { 
 
                             required:{
                                 value: true,
@@ -561,72 +766,11 @@ const FormConclusionVista = (props) => {
 
                         
                     <span className="text-danger text-small d-block mb-2">
-                    {errors.apellidoContratista && errors.apellidoContratista.message}
-                    </span>
-
-                    
-                </Col>
-
-            </Row>
-
-            <br></br>
-
-            <Row>
-
-
-                <Col sm={3}>
-                    
-                    <label>Comentario: </label>
-
-                
-                </Col>
-
-                <Col sm={7}>
-                    
-                    <textarea 
-                        type="text"
-                        name="comentario"
-                        disabled={true}
-                        placeholder=""
-                        className="form-control"
-                        {...register("comentario", { 
-
-                            required:{
-                                value: true,
-                                message: '*' 
-                            },
-
-                        })}      
-                    >
-                    </textarea>
-                
-                
-                </Col>
-
-                <Col sm={1}>
-
-                      
-                    <span className="text-danger text-small d-block mb-2">
                     {errors.comentario && errors.comentario.message}
                     </span>
 
+                    
                 </Col>
-
-
-
-            </Row>
-            
-            <br></br>
-            <br></br>
-
-            <Row className='body'>   
-
-                <Col>
-                
-                    <Button type="button" href={`/principalGremioVista`} variant="danger" size="lg">VOLVER</Button>
-                
-                </Col>
-
 
             </Row>
 
@@ -637,8 +781,9 @@ const FormConclusionVista = (props) => {
 
                 <Col>
                     
-                   <h5 id="mensaje" className='mensaje'></h5>
-
+                    <Button type="submit" variant="primary" size="lg">ACTUALIZAR</Button>&nbsp;&nbsp;
+                    <Button type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
+                
                 </Col>
 
 
@@ -652,13 +797,14 @@ const FormConclusionVista = (props) => {
 
             </Container>
 
-        </Fragment>
 
+        </Fragment>
 
 
     )
 
 
+
 }
 
-export default FormConclusionVista
+export default FormGremioUpdate

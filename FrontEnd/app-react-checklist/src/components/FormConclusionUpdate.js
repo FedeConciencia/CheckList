@@ -10,18 +10,30 @@ import NavigationHome from "../components/NavigationHome";
 import Form from "react-bootstrap/Form";
 import {useForm} from 'react-hook-form';
 import moment from 'moment';
-import "../assets/css/formGeneral.css"
 import {useNavigate} from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import "../assets/css/formMateriales.css";
 
-const FormConclusion = (props) => {
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
+const FormConclusionUpdate = (props) => {
 
     //Redireccionamiento =>
     let navigate = useNavigate()
 
-    //react-hook-form (validacion) =>
-    const {register, formState: { errors }, handleSubmit} = useForm()
+    //Obtengo los datos pasados por search URL =>
+    let {search} = useLocation();
+    let query = new URLSearchParams(search)
+
+    //Validar formulario con Libreria useForm =>
+    const {register, formState: { errors }, handleSubmit, setValue} = useForm({
+
+    })
 
     const[dato,setDato] = useState(null)
+
+    const[idVisita, setIdVisita] = useState(null)
+
+    const[idGeneral, setIdGeneral] = useState(null)
 
     const [conclusion, setConclusion] = useState({
 
@@ -40,7 +52,11 @@ const FormConclusion = (props) => {
 
     useEffect(() => {
 
-        
+         //Obtenemos los datos del localStorage =>
+         setIdGeneral(localStorage.getItem("idGeneralUpdate"))
+         setIdVisita(localStorage.getItem("idVisitaUpdate"))
+ 
+         cargarDatos()
         
     },[])
 
@@ -59,11 +75,10 @@ const FormConclusion = (props) => {
 
 
     //Metodo para gestionar el envio de datos al Servlet y BD =>
-    const enviarDatos = async (conclusion, event) => {
+    const enviarDatos = async (red, event) => {
 
-        let id = await idGeneral()    
-
-        await insertar(conclusion, id);
+            
+        actualizar(red);
 
         event.preventDefault();
 
@@ -86,79 +101,28 @@ const FormConclusion = (props) => {
 
         });
 
-        //Redirecciono y paso los datos a traves de un search =>
-        navigate(`/`)
+        
+        //Redireccionamos a la pagina principal de formUpdate =>
+        navigate(`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`)
 
+    
+      
     }
 
-    //Metodo para solicitar el idGeneral x N° de obra =>
-    const idGeneral = async() => {
-
-        let idGeneral;
-
-        let codigo = localStorage.getItem("codigo")
-
-        console.log("OBTENER CODIGO => ", codigo)
+    
+    const cargarDatos = async() => {   
 
         try{
 
-            const response = await axios("http://localhost:8080/Proyecto_CheckList/GeneralServlet", {
+            //Obtengo el n° de obra del localStorage =>
+            let id = localStorage.getItem("idGeneralUpdate")
+
+            const response = await axios("http://localhost:8080/Proyecto_CheckList/ConclusionServlet",{
 
                 method:"GET",
                 params:{
 
-                    action:"idGeneralxCodigo",
-                    codigo: codigo,
-
-                }
-                
-            })
-
-            const resJson = await response.data
-
-            idGeneral = resJson
-
-
-        }catch(error){
-
-            console.log("Error => ", error)
-
-        }
-
-        console.log("VALOR ID_GENERAL => ", idGeneral)
-
-        return idGeneral
-
-
-    }
-
-    
-
-    //Metodo para insertar los datos a la BD =>
-    const insertar = async(conclusion, id) => {
-
-    
-        console.log("ID_GENERAL DESDE METODO INSERTAR  => ", id)
-
-        try{
-
-
-            const response = await axios("http://localhost:8080/Proyecto_CheckList/ConclusionServlet", {
-
-                method:"GET",
-                params:{
-
-                    action:"insertar",
-                    obraTerminada:conclusion.obraTerminada,
-                    avanceActual:conclusion.avanceActual,
-                    avanceEsperado:conclusion.avanceEsperado,
-                    fechaFinalizacion:conclusion.fechaFinalizacion,
-                    gradoSatisfaccion:conclusion.gradoSatisfaccion,
-                    comentario:conclusion.comentario,
-                    //Se autocompletan =>
-                    fechaAlta:moment().format('YYYY-MM-DD'), 
-                    fechaBaja:moment("1900-01-01").format('YYYY-MM-DD'), 
-                    estado:"activo",
+                    action:"buscarIdGeneral",
                     idGeneral:id,
 
                 }
@@ -169,16 +133,84 @@ const FormConclusion = (props) => {
 
             console.log("DATOS API => ", resJson)
 
-            alert("DATOS GUARDADOS CON EXITO.")
+            //Pasar datos al form =>
+            setValue("obraTerminada", resJson.obraTerminada)
+            setValue("avanceActual", resJson.avanceActual)
+            setValue("avanceEsperado", resJson.avanceEsperado)
+            setValue("fechaFinalizacion", moment(`${resJson.fechaFinalizacion.year}-${resJson.fechaFinalizacion.month}-${resJson.fechaFinalizacion.day}`).format('YYYY-MM-DD'))
+            setValue("gradoSatisfaccion", resJson.gradoSatisfaccion)
+            setValue("comentario", resJson.comentario)
+
+
+            //Guardamos en LocalStorage el idMaterial =>
+            localStorage.setItem("idConclusionUpdate", resJson.idConclusion)
+            
+            
+        }catch(error){
+
+            console.log(error)
+
+            alert("ERROR, NO FUE POSIBLE OBTENER LOS DATOS, VUELVA A INTENTARLO.")
+
+        }
+
+
+    }
+
+
+    const actualizar = async(conclusion) => {
+
+        try{
+
+            //Obtenermos el idGeneral del localStorage =>
+            let idGen = localStorage.getItem("idGeneralUpdate")
+            let idVis = localStorage.getItem("idVisitaUpdate")
+            let idCon = localStorage.getItem("idConclusionUpdate")
+
+            const response = await axios(`http://localhost:8080/Proyecto_CheckList/ConclusionServlet`, {
+
+                method:"GET",
+                params:{
+
+                    action:'actualizar',
+                    obraTerminada:conclusion.obraTerminada,
+                    avanceActual:conclusion.avanceActual,
+                    avanceEsperado:conclusion.avanceEsperado,
+                    fechaFinalizacion:conclusion.fechaFinalizacion,
+                    gradoSatisfaccion:conclusion.gradoSatisfaccion,
+                    comentario:conclusion.comentario,
+                   
+                   //Datos que no pueden ser modificados => 
+                   idGeneral:idGen,
+                   idConclusion:idCon,
+
+                   //Se autocompletan =>
+                   fechaAlta:moment().format('YYYY-MM-DD'), 
+                   fechaBaja:moment("1900-01-01").format('YYYY-MM-DD'), 
+                   estado:"actualizado",
+
+
+                }
+
+
+            })
+
+            const resJson = await response.data
+
+            console.log("DATOS API ACTUALIZAR => ", resJson)
+
+            alert("DATOS ACTUALIZADOS CON EXITO.")
 
 
         }catch(error){
 
-            console.log("Error =>", error)
+            console.log("Error => ", error)
 
-            alert("ERROR, NO FUE POSIBLE GUARDAR LOS DATOS, VUELVA A INTENTARLO.")
+            alert("ERROR, NO FUE POSIBLE ACTUALIZAR LOS DATOS, VUELVA A INTENTARLO.")
+
 
         }
+
 
     }
 
@@ -202,7 +234,7 @@ const FormConclusion = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO DE REGISTRO CONCLUSION FINAL DE OBRA</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO DE ACTUALIZACION DE CONCLUSION</Alert.Heading>
 
             <br></br>
 
@@ -247,6 +279,7 @@ const FormConclusion = (props) => {
                         <option value="">Seleccione una Opcion</option>
                         <option value="Si">Si</option>
                         <option value="No">No</option>
+                        <option value="Otro">Otro (Aclarar en Comentario)</option>
 
                     </select>
 
@@ -520,13 +553,14 @@ const FormConclusion = (props) => {
             </Row>
 
             <br></br>
+            <br></br>
 
             <Row className='body'>   
 
                 <Col>
                     
-                    <Button type="submit" variant="primary" size="lg">CARGAR</Button>&nbsp;&nbsp;
-                    <Button type="button" href={`/prevCarga`} variant="danger" size="lg">VOLVER</Button>
+                    <Button type="submit" variant="primary" size="lg">ACTUALIZAR</Button>&nbsp;&nbsp;
+                    <Button type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
                 
                 </Col>
 
@@ -547,6 +581,8 @@ const FormConclusion = (props) => {
 
     )
 
+
+
 }
 
-export default FormConclusion
+export default FormConclusionUpdate

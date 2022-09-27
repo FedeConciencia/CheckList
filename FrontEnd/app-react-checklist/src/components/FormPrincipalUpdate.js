@@ -123,7 +123,7 @@ const FormPrincipalUpdate = (props) => {
 
                 <Col>
 
-                    <Button href="/formPersonasUpdate" className="botonForm" variant="primary">4- FORMULARIO PERSONAS</Button>
+                    <Button href="/formPersonaUpdate" className="botonForm" variant="primary">4- FORMULARIO PERSONAS</Button>
                     
                 </Col>
 

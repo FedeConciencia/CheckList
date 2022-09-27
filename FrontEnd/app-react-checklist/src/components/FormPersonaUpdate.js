@@ -11,18 +11,29 @@ import Form from "react-bootstrap/Form";
 import {useForm} from 'react-hook-form';
 import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import "../assets/css/formMateriales.css";
 
 //ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
-const FormPersonas = (props) => {
+const FormPersonaUpdate = (props) => {
 
-    
-    //Redireccionamiento de Pagina =>
+    //Redireccionamiento =>
     let navigate = useNavigate()
 
-    //react-hook-form (validacion) =>
-    const {register, formState: { errors }, handleSubmit} = useForm()
+    //Obtengo los datos pasados por search URL =>
+    let {search} = useLocation();
+    let query = new URLSearchParams(search)
+
+    //Validar formulario con Libreria useForm =>
+    const {register, formState: { errors }, handleSubmit, setValue} = useForm({
+
+    })
 
     const[dato,setDato] = useState(null)
+
+    const[idVisita, setIdVisita] = useState(null)
+
+    const[idGeneral, setIdGeneral] = useState(null)
 
     const [persona, setPersona] = useState({
 
@@ -51,13 +62,17 @@ const FormPersonas = (props) => {
 
     useEffect(() => {
 
-        validarCargaForm()
-
-
+         //Obtenemos los datos del localStorage =>
+         setIdGeneral(localStorage.getItem("idGeneralUpdate"))
+         setIdVisita(localStorage.getItem("idVisitaUpdate"))
+ 
+         cargarDatos()
+        
     },[])
 
-     //Metodo para obtener los datos ingresados en el form =>
-     const handleInputChange = (event) => {
+
+    //Metodo para obtener los datos ingresados en el form =>
+    const handleInputChange = (event) => {
 
         setPersona({
 
@@ -68,11 +83,12 @@ const FormPersonas = (props) => {
 
     }
 
+
     //Metodo para gestionar el envio de datos al Servlet y BD =>
-    const enviarDatos = (persona, event) => {
+    const enviarDatos = async (persona, event) => {
 
             
-        insertar(persona);
+        actualizar(persona);
 
         event.preventDefault();
 
@@ -81,7 +97,6 @@ const FormPersonas = (props) => {
 
         //Vaciar todas las variables =>
         setPersona({
-
 
             personasTotal:'',
             nGremios:'',
@@ -103,52 +118,33 @@ const FormPersonas = (props) => {
             fechaBaja:'',
             estado:'',
             idVisita:'',
-      
-
+           
         });
 
-        //Redirecciono =>
-        navigate(`/formPrincipal`)
- 
+        
+        //Redireccionamos a la pagina principal de formUpdate =>
+        navigate(`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`)
+
+    
+      
     }
 
-
-    const insertar = async(persona) => {   
+    
+    const cargarDatos = async() => {   
 
         try{
 
-            let id = localStorage.getItem("idVisita")
+            //Obtengo el n° de obra del localStorage =>
+            let id = localStorage.getItem("idVisitaUpdate")
 
             const response = await axios("http://localhost:8080/Proyecto_CheckList/PersonaServlet",{
 
                 method:"GET",
                 params:{
 
-                    action:"insertar",
-                    personasTotal:persona.personasTotal,
-                    nGremios:persona.nGremios,
-                    gremioEnfoque:persona.gremioEnfoque,
-                    vestimentaOk:persona.vestimentaOk,
-                    calzadoOk:persona.calzadoOk,
-                    utilizanEpp:persona.utilizanEpp,
-                    herramientasOk:persona.herramientasOk,
-                    seguridadOk:persona.seguridadOk,
-                    trabajoAltura:persona.trabajoAltura,
-                    banosOk:persona.banosOk,
-                    comerOk:persona.comerOk,
-                    edadJoven:persona.edadJoven,
-                    edadViejo:persona.edadViejo,
-                    rangoMin:persona.rangoMin,
-                    rangoMax:persona.rangoMax,
-                    comentario:persona.comentario,
-
-                    //Se autocompletan =>
-                    fechaAlta:moment().format('YYYY-MM-DD'),
-                    fechaBaja:moment('1900-01-01').format('YYYY-MM-DD'),
-                    estado:'activo',
+                    action:"buscarIdVisita",
                     idVisita:id,
 
-
                 }
 
             })
@@ -157,15 +153,34 @@ const FormPersonas = (props) => {
 
             console.log("DATOS API => ", resJson)
 
-            alert("DATOS GUARDADOS CON EXITO.")
+            //Pasar datos al form =>
+            setValue("personasTotal", resJson.personasTotal)
+            setValue("nGremios", resJson.nGremios)
+            setValue("gremioEnfoque", resJson.gremioEnfoque)
+            setValue("vestimentaOk", resJson.vestimentaOk)
+            setValue("calzadoOk", resJson.calzadoOk)
+            setValue("utilizanEpp", resJson.utilizanEpp)
+            setValue("herramientasOk",resJson.herramientasOk)
+            setValue("seguridadOk", resJson.seguridadOk)
+            setValue("trabajoAltura", resJson.trabajoAltura)
+            setValue("banosOk", resJson.banosOk)
+            setValue("comerOk",resJson.comerOk)
+            setValue("edadJoven", resJson.edadJoven)
+            setValue("edadViejo", resJson.edadViejo)
+            setValue("rangoMin",resJson.rangoMin)
+            setValue("rangoMax", resJson.rangoMax)
+            setValue("comentario", resJson.comentario)
 
 
-
+            //Guardamos en LocalStorage el idMaterial =>
+            localStorage.setItem("idPersonaUpdate", resJson.idPersona)
+            
+            
         }catch(error){
 
             console.log(error)
 
-            alert("ERROR, NO FUE POSIBLE GUARDAR LOS DATOS, VUELVA A INTENTARLO.")
+            alert("ERROR, NO FUE POSIBLE OBTENER LOS DATOS, VUELVA A INTENTARLO.")
 
         }
 
@@ -173,70 +188,75 @@ const FormPersonas = (props) => {
     }
 
 
-    //Metodo para validar si el idVisita en la entidad Material existe =>
-    const validarCargaForm = async() => {
+    const actualizar = async(persona) => {
 
         try{
 
-            let id = localStorage.getItem("idVisita")
+            //Obtenermos el idGeneral del localStorage =>
+            let idGen = localStorage.getItem("idGeneralUpdate")
+            let idVis = localStorage.getItem("idVisitaUpdate")
+            let idPer = localStorage.getItem("idPersonaUpdate")
 
-            let validar = true
 
-            console.log("ID_VISITA => ", id)
-
-            const response = await axios("http://localhost:8080/Proyecto_CheckList/PersonaServlet",{
+            const response = await axios(`http://localhost:8080/Proyecto_CheckList/PersonaServlet`, {
 
                 method:"GET",
                 params:{
 
-                    action:"listar",
+                   action:'actualizar',
+                   personasTotal:persona.personasTotal,
+                   nGremios:persona.nGremios,
+                   gremioEnfoque:persona.gremioEnfoque,
+                   vestimentaOk:persona.vestimentaOk,
+                   calzadoOk:persona.calzadoOk,
+                   utilizanEpp:persona.utilizanEpp,
+                   herramientasOk:persona.herramientasOk,
+                   seguridadOk:persona.seguridadOk,
+                   trabajoAltura:persona.trabajoAltura,
+                   banosOk:persona.banosOk,
+                   comerOk:persona.comerOk,
+                   edadJoven:persona.edadJoven,
+                   edadViejo:persona.edadViejo,
+                   rangoMin:persona.rangoMin,
+                   rangoMax:persona.rangoMax, 
+                   comentario:persona.comentario,
+            
+
+                   //Datos que no pueden ser modificados => 
+                   idVisita:idVis,
+                   idPersona:idPer,
+
+                   //Se autocompletan =>
+                   fechaAlta:moment().format('YYYY-MM-DD'), 
+                   fechaBaja:moment("1900-01-01").format('YYYY-MM-DD'), 
+                   estado:"actualizado",
+
 
                 }
+
 
             })
 
             const resJson = await response.data
 
-            console.log("DATOS API => ", resJson)
+            console.log("DATOS API ACTUALIZAR => ", resJson)
 
+            alert("DATOS ACTUALIZADOS CON EXITO.")
 
-            for(let i = 0; i < resJson.length; i++){
-
-                if((resJson[i].idVisita).toString() === (id).toString()){
-
-                    validar = false
-                    break
-
-                }
-
-            }
-
-
-            if(validar === false){
-
-                console.log("VALIDAR => ", validar)
-
-                document.querySelector("#mensaje").innerHTML = "YA FUE GESTIONADA LA CARGA DEL FORMULARIO PERSONAS PARA ESTA VISITA"
-
-                return validar
-
-            }else{
-
-                return validar
-
-            }
-
-           
 
         }catch(error){
 
-            console.log(error)
+            console.log("Error => ", error)
+
+            alert("ERROR, NO FUE POSIBLE ACTUALIZAR LOS DATOS, VUELVA A INTENTARLO.")
+
 
         }
 
-        
-        
+
     }
+
+    
 
 
     return(
@@ -256,11 +276,15 @@ const FormPersonas = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO DE REGISTRO DE PERSONAS</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO DE ACTUALIZACION DE PERSONA</Alert.Heading>
 
             <br></br>
 
             <h5 className='red'>* Campos Obligatorios</h5>
+            
+            <br></br>
+
+            <h5 className='red'>En caso se seleccionar opcion "Otro" se debe especificar en comentario.</h5>
 
             </div>
 
@@ -561,6 +585,7 @@ const FormPersonas = (props) => {
                         <option value="">Seleccione una Opcion</option>
                         <option value="Si">Si</option>
                         <option value="No">No</option>
+                        <option value="Otro">Otro (Aclarar en Comentario)</option>
                         
 
                     </select>
@@ -1075,7 +1100,7 @@ const FormPersonas = (props) => {
 
                             validate:{
 
-                                validate1:validarCargaForm,
+                                
 
                             }
 
@@ -1113,23 +1138,9 @@ const FormPersonas = (props) => {
 
                 <Col>
                     
-                    <Button type="submit" variant="primary" size="lg">CARGAR</Button>&nbsp;&nbsp;
-                    <Button type="button" href={`/formPrincipal`} variant="danger" size="lg">VOLVER</Button>
+                    <Button type="submit" variant="primary" size="lg">ACTUALIZAR</Button>&nbsp;&nbsp;
+                    <Button type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
                 
-                </Col>
-
-
-            </Row>
-
-            <br></br>
-            <br></br>
-
-            <Row className='body'>   
-
-                <Col>
-                    
-                   <h5 id="mensaje" className='mensaje'></h5>
-
                 </Col>
 
 
@@ -1143,13 +1154,14 @@ const FormPersonas = (props) => {
 
             </Container>
 
-        </Fragment>
 
+        </Fragment>
 
 
     )
 
 
+
 }
 
-export default FormPersonas
+export default FormPersonaUpdate

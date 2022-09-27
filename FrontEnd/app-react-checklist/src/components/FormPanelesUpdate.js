@@ -11,19 +11,29 @@ import Form from "react-bootstrap/Form";
 import {useForm} from 'react-hook-form';
 import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
-
+import { useLocation } from "react-router-dom";
+import "../assets/css/formMateriales.css";
 
 //ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
-const FormPaneles = (props) => {
+const FormPanelesUpdate = (props) => {
 
-    
-    //Redireccionamiento de Pagina =>
+    //Redireccionamiento =>
     let navigate = useNavigate()
 
-    //react-hook-form (validacion) =>
-    const {register, formState: { errors }, handleSubmit} = useForm()
+    //Obtengo los datos pasados por search URL =>
+    let {search} = useLocation();
+    let query = new URLSearchParams(search)
+
+    //Validar formulario con Libreria useForm =>
+    const {register, formState: { errors }, handleSubmit, setValue} = useForm({
+
+    })
 
     const[dato,setDato] = useState(null)
+
+    const[idVisita, setIdVisita] = useState(null)
+
+    const[idGeneral, setIdGeneral] = useState(null)
 
     const [panel, setPanel] = useState({
 
@@ -45,13 +55,17 @@ const FormPaneles = (props) => {
 
     useEffect(() => {
 
-        validarCargaForm()
-
-
+         //Obtenemos los datos del localStorage =>
+         setIdGeneral(localStorage.getItem("idGeneralUpdate"))
+         setIdVisita(localStorage.getItem("idVisitaUpdate"))
+ 
+         cargarDatos()
+        
     },[])
 
-     //Metodo para obtener los datos ingresados en el form =>
-     const handleInputChange = (event) => {
+
+    //Metodo para obtener los datos ingresados en el form =>
+    const handleInputChange = (event) => {
 
         setPanel({
 
@@ -62,11 +76,12 @@ const FormPaneles = (props) => {
 
     }
 
+
     //Metodo para gestionar el envio de datos al Servlet y BD =>
-    const enviarDatos = (panel, event) => {
+    const enviarDatos = async (panel, event) => {
 
             
-        insertar(panel);
+        actualizar(panel);
 
         event.preventDefault();
 
@@ -89,28 +104,84 @@ const FormPaneles = (props) => {
             fechaBaja:'',
             estado:'',
             idVisita:'',
-      
 
         });
 
-        //Redirecciono =>
-        navigate(`/formPrincipal`)
- 
+        
+        //Redireccionamos a la pagina principal de formUpdate =>
+        navigate(`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`)
+
+    
+      
     }
 
-
-    const insertar = async(panel) => {   
+    
+    const cargarDatos = async() => {   
 
         try{
 
-            let id = localStorage.getItem("idVisita")
+            //Obtengo el n° de obra del localStorage =>
+            let id = localStorage.getItem("idVisitaUpdate")
 
             const response = await axios("http://localhost:8080/Proyecto_CheckList/PanelServlet",{
 
                 method:"GET",
                 params:{
 
-                    action:"insertar",
+                    action:"buscarIdVisita",
+                    idVisita:id,
+
+                }
+
+            })
+
+            const resJson = await response.data
+
+            console.log("DATOS API => ", resJson)
+
+            //Pasar datos al form =>
+            setValue("selladores", resJson.selladores)
+            setValue("izaje", resJson.izaje)
+            setValue("tornillos", resJson.tornillos)
+            setValue("perfileria", resJson.perfileria)
+            setValue("panelesFrio", resJson.panelesFrio)
+            setValue("perfileriaFrio", resJson.perfileriaFrio)
+            setValue("espesor", resJson.espesor)
+            setValue("resultado", resJson.resultado)
+            setValue("comentario", resJson.comentario)
+
+
+            //Guardamos en LocalStorage el idMaterial =>
+            localStorage.setItem("idPanelUpdate", resJson.idPanel)
+            
+            
+        }catch(error){
+
+            console.log(error)
+
+            alert("ERROR, NO FUE POSIBLE OBTENER LOS DATOS, VUELVA A INTENTARLO.")
+
+        }
+
+
+    }
+
+
+    const actualizar = async(panel) => {
+
+        try{
+
+            //Obtenermos el idGeneral del localStorage =>
+            let idGen = localStorage.getItem("idGeneralUpdate")
+            let idVis = localStorage.getItem("idVisitaUpdate")
+            let idPan = localStorage.getItem("idPanelUpdate")
+
+            const response = await axios(`http://localhost:8080/Proyecto_CheckList/PanelServlet`, {
+
+                method:"GET",
+                params:{
+
+                    action:'actualizar',
                     selladores:panel.selladores,
                     izaje:panel.izaje,
                     tornillos:panel.tornillos,
@@ -120,102 +191,42 @@ const FormPaneles = (props) => {
                     espesor:panel.espesor,
                     resultado:panel.resultado,
                     comentario:panel.comentario,
+                   
+                   //Datos que no pueden ser modificados => 
+                   idVisita:idVis,
+                   idPanel:idPan,
 
-                    //Se autocompletan =>
-                    fechaAlta:moment().format('YYYY-MM-DD'),
-                    fechaBaja:moment('1900-01-01').format('YYYY-MM-DD'),
-                    estado:'activo',
-                    idVisita:id,
+                   //Se autocompletan =>
+                   fechaAlta:moment().format('YYYY-MM-DD'), 
+                   fechaBaja:moment("1900-01-01").format('YYYY-MM-DD'), 
+                   estado:"actualizado",
 
 
                 }
+
 
             })
 
             const resJson = await response.data
 
-            console.log("DATOS API => ", resJson)
+            console.log("DATOS API ACTUALIZAR => ", resJson)
 
-            alert("DATOS GUARDADOS CON EXITO.")
-
+            alert("DATOS ACTUALIZADOS CON EXITO.")
 
 
         }catch(error){
 
-            console.log(error)
+            console.log("Error => ", error)
 
-            alert("ERROR, NO FUE POSIBLE GUARDAR LOS DATOS, VUELVA A INTENTARLO.")
+            alert("ERROR, NO FUE POSIBLE ACTUALIZAR LOS DATOS, VUELVA A INTENTARLO.")
+
 
         }
 
 
     }
 
-
-    //Metodo para validar si el idVisita en la entidad Material existe =>
-    const validarCargaForm = async() => {
-
-        try{
-
-            let id = localStorage.getItem("idVisita")
-
-            let validar = true
-
-            console.log("ID_VISITA => ", id)
-
-            const response = await axios("http://localhost:8080/Proyecto_CheckList/PanelServlet",{
-
-                method:"GET",
-                params:{
-
-                    action:"listar",
-
-                }
-
-            })
-
-            const resJson = await response.data
-
-            console.log("DATOS API => ", resJson)
-
-
-            for(let i = 0; i < resJson.length; i++){
-
-                if((resJson[i].idVisita).toString() === (id).toString()){
-
-                    validar = false
-                    break
-
-                }
-
-            }
-
-
-            if(validar === false){
-
-                console.log("VALIDAR => ", validar)
-
-                document.querySelector("#mensaje").innerHTML = "YA FUE GESTIONADA LA CARGA DEL FORMULARIO PANELES PARA ESTA VISITA"
-
-                return validar
-
-            }else{
-
-                return validar
-
-            }
-
-           
-
-        }catch(error){
-
-            console.log(error)
-
-        }
-
-        
-        
-    }
+    
 
 
     return(
@@ -235,7 +246,7 @@ const FormPaneles = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO DE REGISTRO DE PANELES</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO DE ACTUALIZACION DE PANELES</Alert.Heading>
 
             <br></br>
 
@@ -709,7 +720,7 @@ const FormPaneles = (props) => {
 
                             validate:{
 
-                                validate1:validarCargaForm,
+                                
 
                             }
 
@@ -747,23 +758,9 @@ const FormPaneles = (props) => {
 
                 <Col>
                     
-                    <Button type="submit" variant="primary" size="lg">CARGAR</Button>&nbsp;&nbsp;
-                    <Button type="button" href={`/formPrincipal`} variant="danger" size="lg">VOLVER</Button>
+                    <Button type="submit" variant="primary" size="lg">ACTUALIZAR</Button>&nbsp;&nbsp;
+                    <Button type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
                 
-                </Col>
-
-
-            </Row>
-
-            <br></br>
-            <br></br>
-
-            <Row className='body'>   
-
-                <Col>
-                    
-                   <h5 id="mensaje" className='mensaje'></h5>
-
                 </Col>
 
 
@@ -777,15 +774,14 @@ const FormPaneles = (props) => {
 
             </Container>
 
-        </Fragment>
 
+        </Fragment>
 
 
     )
 
 
 
-
 }
 
-export default FormPaneles
+export default FormPanelesUpdate

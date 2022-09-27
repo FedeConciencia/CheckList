@@ -11,20 +11,32 @@ import Form from "react-bootstrap/Form";
 import {useForm} from 'react-hook-form';
 import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import "../assets/css/formMateriales.css";
 
 //ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
-const FormAberturas = (props) => {
+const FormAberturasUpdate = (props) => {
 
-    //Una Visita puede estar asociada a muchas Aberturas =>
-
-    
-    //Redireccionamiento de Pagina =>
+    //Redireccionamiento =>
     let navigate = useNavigate()
 
-    //react-hook-form (validacion) =>
-    const {register, formState: { errors }, handleSubmit} = useForm()
+    //Obtengo los datos pasados por search URL =>
+    let {search} = useLocation();
+    let query = new URLSearchParams(search)
+
+    //Validar formulario con Libreria useForm =>
+    const {register, formState: { errors }, handleSubmit, setValue} = useForm({
+
+    })
 
     const[dato,setDato] = useState(null)
+
+    const[idVisita, setIdVisita] = useState(null)
+
+    const[idGeneral, setIdGeneral] = useState(null)
+
+    //Obtener el parametro que pasamos por el URL =>
+    const[urlAbertura,setUrlAbertura] = useState(query.get("idAbertura"))
 
     const [abertura, setAbertura] = useState({
 
@@ -44,13 +56,19 @@ const FormAberturas = (props) => {
 
     useEffect(() => {
 
+         //Obtenemos los datos del localStorage =>
+         setIdGeneral(localStorage.getItem("idGeneralUpdate"))
+         setIdVisita(localStorage.getItem("idVisitaUpdate"))
+
+         setUrlAbertura(query.get("idAbertura"))
+ 
+         cargarDatos()
         
+    },[query.get("idAbertura")])
 
 
-    },[])
-
-     //Metodo para obtener los datos ingresados en el form =>
-     const handleInputChange = (event) => {
+    //Metodo para obtener los datos ingresados en el form =>
+    const handleInputChange = (event) => {
 
         setAbertura({
 
@@ -61,11 +79,12 @@ const FormAberturas = (props) => {
 
     }
 
+
     //Metodo para gestionar el envio de datos al Servlet y BD =>
-    const enviarDatos = (abertura, event) => {
+    const enviarDatos = async (abertura, event) => {
 
             
-        insertar(abertura);
+        actualizar(abertura);
 
         event.preventDefault();
 
@@ -77,7 +96,7 @@ const FormAberturas = (props) => {
 
             fechaInicio:'',
             fechaFinal:'',
-            tipoAbertura:'',
+            tipoApertura:'',
             cantidad:'',
             m2:'',
             nroPersona:'',
@@ -86,78 +105,24 @@ const FormAberturas = (props) => {
             fechaBaja:'',
             estado:'',
             idVisita:'',
-      
-
+           
         });
 
-        //Redirecciono =>
-        navigate(`/formPrincipal`)
- 
+        
+        //Redireccionamos a la pagina principal de formUpdate =>
+        navigate(`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`)
+
+    
+      
     }
 
-
-    const insertar = async(abertura) => {   
+    
+    const cargarDatos = async() => {   
 
         try{
 
-            let id = localStorage.getItem("idVisita")
-
-            const response = await axios("http://localhost:8080/Proyecto_CheckList/AberturaServlet",{
-
-                method:"GET",
-                params:{
-
-                    action:"insertar",
-                    fechaInicio:abertura.fechaInicio,
-                    fechaFinal:abertura.fechaFinal,
-                    tipoAbertura:abertura.tipoAbertura,
-                    cantidad:abertura.cantidad,
-                    m2:abertura.m2,
-                    nroPersona:abertura.nroPersona,
-                    comentario:abertura.comentario,
-
-                    //Se autocompletan =>
-                    fechaAlta:moment().format('YYYY-MM-DD'),
-                    fechaBaja:moment('1900-01-01').format('YYYY-MM-DD'),
-                    estado:'activo',
-                    idVisita:id,
-
-
-                }
-
-            })
-
-            const resJson = await response.data
-
-            console.log("DATOS API => ", resJson)
-
-            alert("DATOS GUARDADOS CON EXITO.")
-
-
-
-        }catch(error){
-
-            console.log(error)
-
-            alert("ERROR, NO FUE POSIBLE GUARDAR LOS DATOS, VUELVA A INTENTARLO.")
-
-        }
-
-
-    }
-
-    /*
-
-    //Por el momento queda sin efecto la validacion =>
-
-    //Metodo para validar si el idVisita en la entidad Material existe =>
-    const validarCargaForm = async() => {
-
-        try{
-
-            let id = localStorage.getItem("idVisita")
-
-            let validar = true
+            //Obtengo el n° de obra del localStorage =>
+            let id = query.get("idAbertura")
 
             console.log("ID_VISITA => ", id)
 
@@ -166,7 +131,8 @@ const FormAberturas = (props) => {
                 method:"GET",
                 params:{
 
-                    action:"listar",
+                    action:"buscar",
+                    idAbertura:id,
 
                 }
 
@@ -176,43 +142,92 @@ const FormAberturas = (props) => {
 
             console.log("DATOS API => ", resJson)
 
-
-            for(let i = 0; i < resJson.length; i++){
-
-                if((resJson[i].idVisita).toString() === (id).toString()){
-
-                    validar = false
-                    break
-
-                }
-
-            }
+            //Pasar datos al form =>
+            setValue("fechaInicio",moment(`${resJson.fechaInicial.year}-${resJson.fechaInicial.month}-${resJson.fechaInicial.day}`).format('YYYY-MM-DD'))
+            setValue("fechaFinal",moment(`${resJson.fechaFinal.year}-${resJson.fechaFinal.month}-${resJson.fechaFinal.day}`).format('YYYY-MM-DD'))
+            setValue("tipoAbertura", resJson.tipoAbertura)
+            setValue("cantidad", resJson.cantidad)
+            setValue("m2", resJson.m2)
+            setValue("nroPersona", resJson.nroPersona)
+            setValue("comentario", resJson.comentario)
+            
 
 
-            if(validar === false){
-
-                console.log("VALIDAR => ", validar)
-
-                document.querySelector("#mensaje").innerHTML = "YA FUE GESTIONADA LA CARGA DEL FORMULARIO ABERTURAS PARA ESTA VISITA"
-
-                return validar
-
-            }else{
-
-                return validar
-
-            }
-
-           
-
+            //Guardamos en LocalStorage el idMaterial =>
+            localStorage.setItem("idAberturaUpdate", resJson.idAbertura)
+            
+            
         }catch(error){
 
             console.log(error)
 
+            alert("ERROR, NO FUE POSIBLE OBTENER LOS DATOS, VUELVA A INTENTARLO.")
+
         }
 
-        */
+
+    }
+
+
+    const actualizar = async(abertura) => {
+
+        try{
+
+            //Obtenermos el idGeneral del localStorage =>
+            let idGen = localStorage.getItem("idGeneralUpdate")
+            let idVis = localStorage.getItem("idVisitaUpdate")
+            let idAber = localStorage.getItem("idAberturaUpdate")
+
+
+            const response = await axios(`http://localhost:8080/Proyecto_CheckList/AberturaServlet`, {
+
+                method:"GET",
+                params:{
+
+                    action:'actualizar',
+                    fechaInicio:abertura.fechaInicio,
+                    fechaFinal:abertura.fechaFinal,
+                    tipoAbertura:abertura.tipoAbertura,
+                    cantidad:abertura.cantidad,
+                    m2:abertura.m2,
+                    nroPersona:abertura.nroPersona,
+                    comentario:abertura.comentario,
+                   
         
+                    //Datos que no pueden ser modificados => 
+                    idAbertura:idAber,
+                    idVisita:idVis,
+
+                    //Se autocompletan =>
+                    fechaAlta:moment().format('YYYY-MM-DD'), 
+                    fechaBaja:moment("1900-01-01").format('YYYY-MM-DD'), 
+                    estado:"actualizado",
+
+
+                }
+
+
+            })
+
+            const resJson = await response.data
+
+            console.log("DATOS API ACTUALIZAR => ", resJson)
+
+            alert("DATOS ACTUALIZADOS CON EXITO.")
+
+
+        }catch(error){
+
+            console.log("Error => ", error)
+
+            alert("ERROR, NO FUE POSIBLE ACTUALIZAR LOS DATOS, VUELVA A INTENTARLO.")
+
+
+        }
+
+
+    }
+
     
 
 
@@ -233,7 +248,7 @@ const FormAberturas = (props) => {
 
             <div className="body">
 
-            <Alert.Heading className="alertTitle">FORMULARIO DE REGISTRO DE ABERTURAS</Alert.Heading>
+            <Alert.Heading className="alertTitle">FORMULARIO DE ACTUALIZACION DE ABERTURAS</Alert.Heading>
 
             <br></br>
 
@@ -618,23 +633,9 @@ const FormAberturas = (props) => {
 
                 <Col>
                     
-                    <Button type="submit" variant="primary" size="lg">CARGAR</Button>&nbsp;&nbsp;
-                    <Button type="button" href={`/formPrincipal`} variant="danger" size="lg">VOLVER</Button>
+                    <Button type="submit" variant="primary" size="lg">ACTUALIZAR</Button>&nbsp;&nbsp;
+                    <Button type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
                 
-                </Col>
-
-
-            </Row>
-
-            <br></br>
-            <br></br>
-
-            <Row className='body'>   
-
-                <Col>
-                    
-                   <h5 id="mensaje" className='mensaje'></h5>
-
                 </Col>
 
 
@@ -648,13 +649,14 @@ const FormAberturas = (props) => {
 
             </Container>
 
-        </Fragment>
 
+        </Fragment>
 
 
     )
 
 
+
 }
 
-export default FormAberturas
+export default FormAberturasUpdate

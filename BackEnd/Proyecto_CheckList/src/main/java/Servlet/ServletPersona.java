@@ -139,7 +139,7 @@ public class ServletPersona extends HttpServlet {
                    
 
                     ControladorPersona c1 = new ControladorPersona();
-                    Persona persona = new Persona(personasTotal, nGremios, gremioEnfoque, vestimentaOk, calzadoOk, utilizanEpp, herramientasOk, seguridadOk, trabajoAltura, banosOk, comerOk, edadJoven, edadViejo, rangoMin, rangoMax, comentario, fechaAlta, fechaBaja, estado, idVisita);
+                    Persona persona = new Persona(idPersona, personasTotal, nGremios, gremioEnfoque, vestimentaOk, calzadoOk, utilizanEpp, herramientasOk, seguridadOk, trabajoAltura, banosOk, comerOk, edadJoven, edadViejo, rangoMin, rangoMax, comentario, fechaAlta, fechaBaja, estado, idVisita);
                     c1.actualizarPersona(persona);
                     Gson gsonBuilder = new GsonBuilder().create();
                     String personaJson = gsonBuilder.toJson(persona);
