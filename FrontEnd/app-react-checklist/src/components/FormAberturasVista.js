@@ -44,6 +44,7 @@ const FormAberturasVista = (props) => {
         m2:'',
         nroPersona:'',
         comentario:'',
+        estado:'',
        
   
     })
@@ -90,6 +91,7 @@ const FormAberturasVista = (props) => {
             setValue("m2", resJson.m2)
             setValue("nroPersona", resJson.nroPersona)
             setValue("comentario", resJson.comentario)
+            setValue("estado", resJson.estado)
 
 
             alert("DATOS ENCONTRADOS CON EXITO.")
@@ -468,6 +470,56 @@ const FormAberturasVista = (props) => {
                     </span>
 
                     
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label>Estado (Activo-Inactivo-Actualizado): </label>
+
+                </Col>
+
+                <Col sm={7}>
+                    
+                        <textarea 
+                            type="text"
+                            name="estado"
+                            disabled={true}
+                            placeholder=""
+                            className="form-control my-2"
+                            {...register("estado", { 
+
+                                required:{
+                                    value: true,
+                                    message: 'Campo Obligatorio' 
+                                },
+
+                                validate:{
+
+
+                                }
+
+                            })}   
+
+                        >
+                        </textarea>
+
+                </Col>
+
+                
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.estado && errors.estado.message}
+                    </span>
+
+                
                 </Col>
 
             </Row>

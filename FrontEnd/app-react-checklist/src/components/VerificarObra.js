@@ -133,6 +133,10 @@ const VerificarObra = (props) => {
 
             <h5 className='red'>* Campos Obligatorios</h5>
 
+            <br></br>
+
+            <h5 className='red'>Usar el buscador en caso de no recordar el n° de obra asociado.</h5>
+
             </div>
 
             <br></br>

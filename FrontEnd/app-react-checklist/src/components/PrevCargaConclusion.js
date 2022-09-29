@@ -176,7 +176,7 @@ const PrevCargaConclusion = (props) => {
 
                 <Col>
                 
-                    <Button type="button" variant='primary' size="lg" href={`/formVisita?nroVisita=${nVisitaIncremt}`} disabled={validar.validarConclusion === true} className='botonGrande'>OTROS FORMULARIOS</Button>&nbsp;&nbsp;
+                    <Button type="button" variant='primary' size="lg" href={`/formVisita?nroVisita=${nVisitaIncremt}`} disabled={validar.validarConclusion === true} className='botonGrande'>NUEVA VISITA</Button>&nbsp;&nbsp;
                     <Button type="button" variant='primary' size="lg" href={`/formConclusion`}  disabled={validar.validarConclusion === true} className='botonGrande'>CONCLUSION FINAL</Button>
                 
                 </Col>

@@ -43,6 +43,7 @@ const FormGeneralVista = (props) => {
         alcance:'',
         duracionObra:'',
         comentario:'',
+        estado:'',
 
         
     })
@@ -92,6 +93,7 @@ const FormGeneralVista = (props) => {
             setValue("alcance", resJson.alcance)
             setValue("duracionObra", resJson.duracionObra)
             setValue("comentario", resJson.comentario)
+            setValue("estado", resJson.estado)
 
 
             alert("DATOS ENCONTRADOS CON EXITO.")
@@ -678,6 +680,56 @@ const FormGeneralVista = (props) => {
                         
                     <span className="text-danger text-small d-block mb-2">
                     {errors.comentario && errors.comentario.message}
+                    </span>
+
+                
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label>Estado (Activo-Inactivo-Actualizado): </label>
+
+                </Col>
+
+                <Col sm={7}>
+                    
+                        <textarea 
+                            type="text"
+                            name="estado"
+                            disabled={true}
+                            placeholder=""
+                            className="form-control my-2"
+                            {...register("estado", { 
+
+                                required:{
+                                    value: true,
+                                    message: 'Campo Obligatorio' 
+                                },
+
+                                validate:{
+
+
+                                }
+
+                            })}   
+
+                        >
+                        </textarea>
+
+                </Col>
+
+                
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.estado && errors.estado.message}
                     </span>
 
                 

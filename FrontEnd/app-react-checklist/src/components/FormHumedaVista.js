@@ -48,6 +48,7 @@ const FormHumedaVista = (props) => {
         diasCaidos:'',
         motivo:'',
         comentario:'',
+        estado:'',
 
     })
 
@@ -103,6 +104,7 @@ const FormHumedaVista = (props) => {
             setValue("diasCaidos", resJson.diasCaidos)
             setValue("motivo", resJson.motivo)
             setValue("comentario", resJson.comentario)
+            setValue("estado", resJson.estado)
 
 
             alert("DATOS ENCONTRADOS CON EXITO.")
@@ -840,6 +842,56 @@ const FormHumedaVista = (props) => {
                     </span>
 
                     
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label>Estado (Activo-Inactivo-Actualizado): </label>
+
+                </Col>
+
+                <Col sm={7}>
+                    
+                        <textarea 
+                            type="text"
+                            name="estado"
+                            disabled={true}
+                            placeholder=""
+                            className="form-control my-2"
+                            {...register("estado", { 
+
+                                required:{
+                                    value: true,
+                                    message: 'Campo Obligatorio' 
+                                },
+
+                                validate:{
+
+
+                                }
+
+                            })}   
+
+                        >
+                        </textarea>
+
+                </Col>
+
+                
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.estado && errors.estado.message}
+                    </span>
+
+                
                 </Col>
 
             </Row>

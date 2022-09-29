@@ -37,6 +37,7 @@ const FormVisitaVista = (props) => {
         nombreTecnico:'',
         apellidoTecnico:'',
         nVisita:'',
+        estado:'',
        
     })
 
@@ -85,6 +86,7 @@ const FormVisitaVista = (props) => {
             setValue("nombreTecnico", resJson.nombreTecnico)
             setValue("apellidoTecnico", resJson.apellidoTecnico)
             setValue("nVisita", resJson.nVisita)
+            setValue("estado", resJson.estado)
            
 
             alert("DATOS ENCONTRADOS CON EXITO.")
@@ -277,6 +279,56 @@ const FormVisitaVista = (props) => {
                     </span>
 
 
+                </Col>
+
+            </Row>
+
+            <br></br>
+
+            <Row>
+
+                <Col sm={3}>
+                    
+                    <label>Estado (Activo-Inactivo-Actualizado): </label>
+
+                </Col>
+
+                <Col sm={7}>
+                    
+                        <textarea 
+                            type="text"
+                            name="estado"
+                            disabled={true}
+                            placeholder=""
+                            className="form-control my-2"
+                            {...register("estado", { 
+
+                                required:{
+                                    value: true,
+                                    message: 'Campo Obligatorio' 
+                                },
+
+                                validate:{
+
+
+                                }
+
+                            })}   
+
+                        >
+                        </textarea>
+
+                </Col>
+
+                
+                <Col sm={1}>
+
+                        
+                    <span className="text-danger text-small d-block mb-2">
+                    {errors.estado && errors.estado.message}
+                    </span>
+
+                
                 </Col>
 
             </Row>

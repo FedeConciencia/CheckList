@@ -561,6 +561,7 @@ const FormPersonas = (props) => {
                         <option value="">Seleccione una Opcion</option>
                         <option value="Si">Si</option>
                         <option value="No">No</option>
+                        <option value="Otro">Otro (Aclarar en Comentario)</option>
                         
 
                     </select>
