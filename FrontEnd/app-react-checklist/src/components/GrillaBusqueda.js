@@ -30,6 +30,7 @@ const GrillaBusqueda = (props) => {
 
     useEffect(() => {
 
+        fondo()
        
         setUrlNombre(query.get("nombreCliente"))
 
@@ -38,6 +39,13 @@ const GrillaBusqueda = (props) => {
 
 
     },[query.get("nombreCliente")])
+
+    //Metodo para modificar el color/imagen de la Pagina de Fondo =>
+    const fondo = () => {
+
+        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+
+    }
 
 
     const obtenerDatos = async() => {
@@ -110,7 +118,7 @@ const GrillaBusqueda = (props) => {
 
                 <Container className='body'>
 
-                <Alert variant="success" responsive="sm">
+                <Alert variant="dark" fluid="true">
 
                 <br></br>  
 
@@ -127,7 +135,7 @@ const GrillaBusqueda = (props) => {
 
                     <Col>
 
-                    <Button type="button" href={`/`} variant="danger" size="lg">VOLVER</Button>
+                    <Button fluid="true" type="button" href={`/`} variant="danger" size="lg">VOLVER</Button>
 
                     </Col>
 
@@ -158,7 +166,7 @@ const GrillaBusqueda = (props) => {
 
                 <Container className='body'>
 
-                <Alert variant="success" responsive="sm">
+                <Alert variant="dark" fluid="true">
 
                 <br></br>  
 
@@ -171,7 +179,7 @@ const GrillaBusqueda = (props) => {
                 <br></br>
                 <br></br>
 
-                <Table className="tabla" striped bordered hover variant="dark" responsive="sm">
+                <Table fluid="true" className="tabla" striped bordered hover variant="dark" responsive="sm">
 
                     <thead>
 
@@ -221,7 +229,7 @@ const GrillaBusqueda = (props) => {
 
                     <Col>
 
-                    <Button type="button" href={`/`} variant="danger" size="lg">VOLVER</Button>
+                    <Button fluid="true" type="button" href={`/`} variant="danger" size="lg">VOLVER</Button>
 
                     </Col>
 

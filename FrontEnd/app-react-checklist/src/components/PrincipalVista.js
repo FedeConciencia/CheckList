@@ -29,11 +29,20 @@ const PrincipalVista = (props) => {
    
     useEffect(() => {
 
+        fondo()
+
         setUrlObra(query.get("nObra"))
 
         obtenerVisitasGeneral()
 
     },[query.get("nObra")])
+
+    //Metodo para modificar el color/imagen de la Pagina de Fondo =>
+    const fondo = () => {
+
+        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+
+    }
 
     const obtenerVisitasGeneral = async() => {
 
@@ -85,7 +94,7 @@ const PrincipalVista = (props) => {
 
                 <Container>
 
-                <Alert variant="success" responsive="sm">
+                <Alert variant="dark" fluid="true">
 
                 <br></br>  
 
@@ -105,7 +114,7 @@ const PrincipalVista = (props) => {
 
                     <Col>
 
-                    <Button type="button" href={`/`}  size="lg" variant="danger">VOLVER</Button> 
+                    <Button fluid="true" type="button" href={`/`}  size="lg" variant="danger">VOLVER</Button> 
 
                     </Col>
 
@@ -136,7 +145,7 @@ const PrincipalVista = (props) => {
 
                 <Container className='body'>
 
-                <Alert variant="success" responsive="sm">
+                <Alert variant="dark" fluid="true">
 
                 <br></br>  
 
@@ -149,7 +158,7 @@ const PrincipalVista = (props) => {
                 <br></br>
                 <br></br>
 
-                <Table className="tabla" striped bordered hover variant="dark" responsive="sm">
+                <Table fluid="true" className="tabla" striped bordered hover variant="dark" responsive="sm">
 
                     <thead>
 
@@ -190,7 +199,7 @@ const PrincipalVista = (props) => {
                                 <td className='celda'>{item.domicilio}</td>
                                 <td className='celda'>
 
-                                    <Button variant="warning" size="sm" href={`/formPrincipalVista?idGeneral=${item.idGeneral}&idVisita=${item.idVisita}`}>OBTENER DATOS</Button>
+                                    <Button fluid="true" variant="warning" size="sm" href={`/formPrincipalVista?idGeneral=${item.idGeneral}&idVisita=${item.idVisita}`}>OBTENER DATOS</Button>
 
                                 </td>
 
@@ -212,7 +221,7 @@ const PrincipalVista = (props) => {
 
                     <Col>
 
-                    <Button type="button" href={`/`}  size="lg" variant="danger">VOLVER</Button> 
+                    <Button fluid="true" type="button" href={`/`}  size="lg" variant="danger">VOLVER</Button> 
 
                     </Col>
 

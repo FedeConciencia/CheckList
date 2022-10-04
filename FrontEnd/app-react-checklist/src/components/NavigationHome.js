@@ -7,8 +7,10 @@ import Form from 'react-bootstrap/Form';
 import Container from "react-bootstrap/Container";
 import Label from "react-bootstrap/FormLabel";
 import {useNavigate} from 'react-router-dom';
+import NavHome from "../components/NavHome";
+import "../assets/css/navigation.css"
 
-
+// SE IMPLEMENTA NAVBAR RESPONSIVE =>
 const NavigationHome = (props) => {
 
     const navigate = useNavigate()
@@ -65,20 +67,21 @@ const NavigationHome = (props) => {
 
         <Fragment>
 
-        <Navbar bg="primary" variant="dark" responsive="sm">
-
-            <Navbar.Brand href="/">HOME</Navbar.Brand>
+        <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark" >
+            <Navbar.Toggle aria-controls="navbarScroll" data-bs-taget="#navbarScroll" />
+            <Navbar.Collapse id="navbarScroll">
+            <NavHome eventKey={1}/>
             <Nav className="me-auto">
-            <Nav.Link href="/prevCarga">CARGAR DATOS</Nav.Link>
-            <Nav.Link href="/verificarObra">VER DATOS</Nav.Link>
-            <Nav.Link href="/busquedaAdmin">ACTUALIZAR DATOS</Nav.Link>
+            <Nav.Link eventKey={2} href="/prevCarga" >CARGAR DATOS</Nav.Link>
+            <Nav.Link eventKey={3} href="/verificarObra" >VER DATOS</Nav.Link>
+            <Nav.Link eventKey={4} href="/busquedaAdmin" >ACTUALIZAR DATOS</Nav.Link>
             </Nav>
 
-            <Form className="d-flex">
-                <Form.Label>NOMBRE CLIENTE:</Form.Label>&nbsp;&nbsp;
+            <Form className="d-flex" eventKey={5}>
+                <Form.Label ></Form.Label>&nbsp;&nbsp;
                 <FormControl
                     type="search"
-                    placeholder="Search"
+                    placeholder="Nombre de Cliente"
                     className="me-2"
                     aria-label="Search"
                     name="nombreCliente"
@@ -86,8 +89,9 @@ const NavigationHome = (props) => {
                 />&nbsp;&nbsp;
                 <Button variant="danger" onClick={obtenerNombre}>SEARCH</Button>&nbsp;&nbsp;
             </Form>
+           
 
-
+            </Navbar.Collapse>
         </Navbar>
 
         </Fragment>  

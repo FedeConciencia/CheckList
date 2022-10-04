@@ -43,7 +43,8 @@ const FormRedElectricidadVista = (props) => {
     
     useEffect(() => {
 
-        
+        fondo()
+
         cargarDatos()
 
         setIdVisita(localStorage.getItem("idVisitaVista"))
@@ -53,6 +54,14 @@ const FormRedElectricidadVista = (props) => {
 
 
     },[])
+
+
+    //Metodo para modificar el color/imagen de la Pagina de Fondo =>
+    const fondo = () => {
+
+        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+
+    }
 
     
     const cargarDatos = async() => {   
@@ -112,7 +121,7 @@ const FormRedElectricidadVista = (props) => {
 
             <Container>
 
-            <Alert variant="success" responsive="sm">
+            <Alert variant="dark" fluid="true">
 
             <br></br>    
 
@@ -428,7 +437,7 @@ const FormRedElectricidadVista = (props) => {
 
                 <Col>
                 
-                    <Button type="button" href={`/formPrincipalVista?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
+                    <Button fluid="true"type="button" href={`/formPrincipalVista?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
                 
                 </Col>
 

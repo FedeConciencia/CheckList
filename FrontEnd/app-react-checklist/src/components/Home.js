@@ -11,14 +11,25 @@ import Image from 'react-bootstrap/Image'
 import ImgLogo from "../assets/img/logoLtn.png"
 import "../assets/css/home.css"
 
-//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
+
+
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK / SE IMPLEMENTA RESPONSIVE=>
 const Home = (props) => {
 
     const[dato,setDato] = useState(null)
 
     useEffect(() => {
 
+        fondo()
+
     },[])
+    
+    //Metodo para modificar el color/imagen de la Pagina de Fondo =>
+    const fondo = () => {
+
+        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+
+    }
 
     return(
 
@@ -28,9 +39,12 @@ const Home = (props) => {
 
             <br></br>
 
+        
             <Container className="body">
 
-            <Alert variant="success" responsive="sm">
+
+            <Alert variant="dark" fluid="true">
+                
 
             <br></br>    
 
@@ -43,7 +57,7 @@ const Home = (props) => {
 
                 <Col>
 
-                    <Image rounded="true" className='imgLogo' src={ImgLogo}></Image>
+                    <Image fluid="true" rounded="true" className='imgLogo' src={ImgLogo}></Image>
                 
                 </Col>
 
@@ -67,8 +81,8 @@ const Home = (props) => {
 
                 <Col>
                 
-                    <Button variant='primary' size="lg" href="/prevCarga" className='botonGrande'>CARGAR DATOS</Button>&nbsp;&nbsp;
-                    <Button variant='primary' size="lg" href="/verificarObra" className='botonGrande'>VER DATOS</Button>
+                    <Button fluid="true" variant='primary' href="/prevCarga" className='botonGrande'>CARGAR DATOS</Button>&nbsp;&nbsp;
+                    <Button fluid="true" variant='primary' href="/verificarObra" className='botonGrande'>VER DATOS</Button>
                 
                 </Col>
 

@@ -50,13 +50,22 @@ const FormVisitaUpdate = (props) => {
 
     useEffect(() => {
 
-         //Obtenemos los datos del localStorage =>
-         setIdGeneral(localStorage.getItem("idGeneralUpdate"))
-         setIdVisita(localStorage.getItem("idVisitaUpdate"))
- 
-         cargarDatos()
+        fondo()
+
+        //Obtenemos los datos del localStorage =>
+        setIdGeneral(localStorage.getItem("idGeneralUpdate"))
+        setIdVisita(localStorage.getItem("idVisitaUpdate"))
+
+        cargarDatos()
         
     },[])
+
+    //Metodo para modificar el color/imagen de la Pagina de Fondo =>
+    const fondo = () => {
+
+        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+
+    }
 
 
     //Metodo para obtener los datos ingresados en el form =>
@@ -220,7 +229,7 @@ const FormVisitaUpdate = (props) => {
 
             <Container>
 
-            <Alert variant="success" responsive="sm">
+            <Alert variant="dark" fluid="true">
 
             <br></br>    
 
@@ -390,8 +399,8 @@ const FormVisitaUpdate = (props) => {
 
                 <Col>
                     
-                    <Button type="submit" variant="primary" size="lg">ACTUALIZAR</Button>&nbsp;&nbsp;
-                    <Button type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
+                    <Button fluid="true" type="submit" variant="primary" size="lg">ACTUALIZAR</Button>&nbsp;&nbsp;
+                    <Button fluid="true" type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
                 
                 </Col>
 

@@ -26,9 +26,19 @@ const VisitasUpdate = (props) => {
    
     useEffect(() => {
 
+        fondo()
+
         obtenerVisitasGeneral()
 
     },[])
+
+    //Metodo para modificar el color/imagen de la Pagina de Fondo =>
+    const fondo = () => {
+
+        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+
+    }
+
 
     const obtenerVisitasGeneral = async() => {
 
@@ -82,7 +92,7 @@ const VisitasUpdate = (props) => {
 
                 <Container>
 
-                <Alert variant="success" responsive="sm">
+                <Alert variant="dark" fluid="true">
 
                 <br></br>  
 
@@ -102,7 +112,7 @@ const VisitasUpdate = (props) => {
 
                     <Col>
 
-                    <Button type="button" href={`/`}  size="lg" variant="danger">VOLVER</Button> 
+                    <Button fluid="true" type="button" href={`/`}  size="lg" variant="danger">VOLVER</Button> 
 
                     </Col>
 
@@ -133,7 +143,7 @@ const VisitasUpdate = (props) => {
 
                 <Container className='body'>
 
-                <Alert variant="success" responsive="sm">
+                <Alert variant="dark" fluid="true">
 
                 <br></br>  
 
@@ -146,7 +156,7 @@ const VisitasUpdate = (props) => {
                 <br></br>
                 <br></br>
 
-                <Table className="tabla" striped bordered hover variant="dark" responsive="sm">
+                <Table className="tabla" striped bordered hover variant="dark" fluid="true" responsive="sm">
 
                     <thead>
 
@@ -187,7 +197,7 @@ const VisitasUpdate = (props) => {
                                 <td className='celda'>{item.domicilio}</td>
                                 <td className='celda'>
 
-                                    <Button variant="warning" size="sm" href={`/formPrincipalUpdate?idGeneral=${item.idGeneral}&idVisita=${item.idVisita}`}>OBTENER DATOS</Button>
+                                    <Button fluid="true" variant="warning" size="sm" href={`/formPrincipalUpdate?idGeneral=${item.idGeneral}&idVisita=${item.idVisita}`}>OBTENER DATOS</Button>
 
                                 </td>
 
@@ -209,7 +219,7 @@ const VisitasUpdate = (props) => {
 
                     <Col>
 
-                    <Button type="button" href={`/`}  size="lg" variant="danger">VOLVER</Button> 
+                    <Button fluid="true" type="button" href={`/`}  size="lg" variant="danger">VOLVER</Button> 
 
                     </Col>
 

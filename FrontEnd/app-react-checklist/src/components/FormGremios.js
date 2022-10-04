@@ -47,9 +47,17 @@ const FormGremios = (props) => {
 
     useEffect(() => {
 
-        
+        fondo()
 
     },[])
+
+
+    //Metodo para modificar el color/imagen de la Pagina de Fondo =>
+    const fondo = () => {
+
+        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+
+    }
 
      //Metodo para obtener los datos ingresados en el form =>
      const handleInputChange = (event) => {
@@ -168,7 +176,7 @@ const FormGremios = (props) => {
 
             <Container>
 
-            <Alert variant="success" responsive="sm">
+            <Alert variant="dark" fluid="true">
 
             <br></br>    
 

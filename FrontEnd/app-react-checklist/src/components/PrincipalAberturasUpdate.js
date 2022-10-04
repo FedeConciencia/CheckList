@@ -26,7 +26,8 @@ const PrincipalAberturasUpdate = (props) => {
    
     useEffect(() => {
 
-       
+        fondo()
+
         obtenerAberturas()
         
         setIdVisita(localStorage.getItem("idVisitaUpdate"))
@@ -35,6 +36,13 @@ const PrincipalAberturasUpdate = (props) => {
 
 
     },[])
+
+    //Metodo para modificar el color/imagen de la Pagina de Fondo =>
+    const fondo = () => {
+
+        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+
+    }
 
     const obtenerAberturas = async() => {
 
@@ -91,7 +99,7 @@ const PrincipalAberturasUpdate = (props) => {
 
                 <Container>
 
-                <Alert variant="success" responsive="sm">
+                <Alert variant="dark" fluid="true">
 
                 <br></br>  
 
@@ -111,7 +119,7 @@ const PrincipalAberturasUpdate = (props) => {
 
                     <Col>
 
-                    <Button type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
+                    <Button fluid="true" type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
 
                     </Col>
 
@@ -142,7 +150,7 @@ const PrincipalAberturasUpdate = (props) => {
 
                 <Container className='body'>
 
-                <Alert variant="success" responsive="sm">
+                <Alert variant="dark" fluid="true">
 
                 <br></br>  
 
@@ -155,7 +163,7 @@ const PrincipalAberturasUpdate = (props) => {
                 <br></br>
                 <br></br>
 
-                <Table className="tabla" striped bordered hover variant="dark" responsive="sm">
+                <Table className="tabla" striped bordered hover variant="dark" fluid="true" responsive="sm">
 
                     <thead>
 
@@ -186,7 +194,7 @@ const PrincipalAberturasUpdate = (props) => {
                                 <td className='celda'>{item.m2}</td>
                                 <td className='celda'>
 
-                                    <Button variant="warning" size="sm" href={`/formAberturasUpdate?idAbertura=${item.idAbertura}`}>OBTENER DATOS</Button>
+                                    <Button fluid="true" variant="warning" size="sm" href={`/formAberturasUpdate?idAbertura=${item.idAbertura}`}>OBTENER DATOS</Button>
 
                                 </td>
 
@@ -208,7 +216,7 @@ const PrincipalAberturasUpdate = (props) => {
 
                     <Col>
 
-                    <Button type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
+                    <Button fluid="true" type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
 
                     </Col>
 

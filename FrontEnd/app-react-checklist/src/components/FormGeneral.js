@@ -14,7 +14,7 @@ import "../assets/css/formGeneral.css"
 import {useNavigate} from 'react-router-dom';
 
 
-//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK / SE IMPLEMENTA RESPONSIVE =>
 const FormGeneral = (props) => {
 
     //Redireccionamiento =>
@@ -46,9 +46,16 @@ const FormGeneral = (props) => {
 
     useEffect(() => {
 
-
+        fondo()
 
     },[])
+
+    //Metodo para modificar el color/imagen de la Pagina de Fondo =>
+    const fondo = () => {
+
+        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+
+    }
 
 
     //Metodo para obtener los datos ingresados en el form =>
@@ -210,7 +217,7 @@ const FormGeneral = (props) => {
 
             <Container>
 
-            <Alert variant="success" responsive="sm">
+            <Alert variant="dark" fluid="true">
 
             <br></br>    
 
@@ -805,8 +812,8 @@ const FormGeneral = (props) => {
 
                 <Col>
                     
-                    <Button type="submit" variant="primary" size="lg">CARGAR</Button>&nbsp;&nbsp;
-                    <Button type="button" href={`/prevCarga`} variant="danger" size="lg">VOLVER</Button>
+                    <Button type="submit" fluid="true" variant="primary" size="lg">CARGAR</Button>&nbsp;&nbsp;
+                    <Button type="button" fluid="true" href={`/prevCarga`} variant="danger" size="lg">VOLVER</Button>
                 
                 </Col>
 

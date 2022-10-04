@@ -15,7 +15,7 @@ import {useNavigate} from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 
 
-//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK =>
+//ACTUALIZADO AL 22-9-22 (V2) FUNCIONA OK / SE IMPLEMENTA RESPONSIVE =>
 const FormVisita = (props) => {
 
     //Redireccionamiento =>
@@ -45,11 +45,22 @@ const FormVisita = (props) => {
         
     })
 
+
     useEffect(() => {
+
+        fondo()
 
         setUrlVisita(query.get("nroVisita"))
         
     },[query.get("nroVisita")])
+
+
+    //Metodo para modificar el color/imagen de la Pagina de Fondo =>
+    const fondo = () => {
+
+        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+
+    }
 
 
     //Metodo para obtener los datos ingresados en el form =>
@@ -295,7 +306,7 @@ const FormVisita = (props) => {
 
             <Container>
 
-            <Alert variant="success" responsive="sm">
+            <Alert variant="dark" fluid="true">
 
             <br></br>    
 
@@ -418,8 +429,8 @@ const FormVisita = (props) => {
 
                 <Col>
                     
-                    <Button type="submit" variant="primary" size="lg">CARGAR</Button>&nbsp;&nbsp;
-                    <Button type="button" href={`/prevCarga`} variant="danger" size="lg">VOLVER</Button>
+                    <Button fluid="true" type="submit" variant="primary" size="lg">CARGAR</Button>&nbsp;&nbsp;
+                    <Button fluid="true" type="button" href={`/prevCarga`} variant="danger" size="lg">VOLVER</Button>
                 
                 </Col>
 
