@@ -70,14 +70,14 @@ const NavigationHome = (props) => {
         <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark" >
             <Navbar.Toggle aria-controls="navbarScroll" data-bs-taget="#navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
-            <NavHome eventKey={1}/>
+            <NavHome/>
             <Nav className="me-auto">
-            <Nav.Link eventKey={2} href="/prevCarga" >CARGAR DATOS</Nav.Link>
-            <Nav.Link eventKey={3} href="/verificarObra" >VER DATOS</Nav.Link>
-            <Nav.Link eventKey={4} href="/busquedaAdmin" >ACTUALIZAR DATOS</Nav.Link>
+            <Nav.Link  href="/prevCarga" >CARGAR DATOS</Nav.Link>
+            <Nav.Link  href="/verificarObra" >VER DATOS</Nav.Link>
+            <Nav.Link  href="/busquedaAdmin" >ACTUALIZAR DATOS</Nav.Link>
             </Nav>
 
-            <Form className="d-flex" eventKey={5}>
+            <Form className="d-flex">
                 <Form.Label ></Form.Label>&nbsp;&nbsp;
                 <FormControl
                     type="search"

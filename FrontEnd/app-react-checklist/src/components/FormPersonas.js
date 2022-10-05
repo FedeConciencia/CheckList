@@ -60,7 +60,11 @@ const FormPersonas = (props) => {
     //Metodo para modificar el color/imagen de la Pagina de Fondo =>
     const fondo = () => {
 
-        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+        document.body.style.backgroundImage = "url(https://imgur.com/mDsgdeZ.png)";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+        document.body.style.backgroundAttachment = "fixed";
 
     }
 
@@ -279,15 +283,15 @@ const FormPersonas = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Numero de Personas en total Trabajando: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -316,7 +320,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -330,15 +334,15 @@ const FormPersonas = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Numero de Gremios trabajando en simultaneo: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -367,7 +371,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -381,15 +385,15 @@ const FormPersonas = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Gremio de Enfoque: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="text"
@@ -417,7 +421,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -431,15 +435,15 @@ const FormPersonas = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Vestimenta de trabajo adecuada: </label>
 
                 </Col>
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <select 
 
@@ -470,7 +474,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -484,15 +488,15 @@ const FormPersonas = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Calzado Adecuado: </label>
 
                 </Col>
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <select 
 
@@ -523,7 +527,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -537,15 +541,15 @@ const FormPersonas = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Utilizan EPP: </label>
 
                 </Col>
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <select 
 
@@ -576,7 +580,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -590,15 +594,15 @@ const FormPersonas = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Usan las herramientas adecuadas: </label>
 
                 </Col>
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <select 
 
@@ -629,7 +633,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -643,15 +647,15 @@ const FormPersonas = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Son cuidadosos de la seguirdad e higiene: </label>
 
                 </Col>
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <select 
 
@@ -682,7 +686,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -696,15 +700,15 @@ const FormPersonas = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">En los trabajos de altura utilizan amarres: </label>
 
                 </Col>
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <select 
 
@@ -735,7 +739,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -749,9 +753,9 @@ const FormPersonas = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Tienen baños adecuados: </label>
 
@@ -788,7 +792,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -802,7 +806,7 @@ const FormPersonas = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
                 <Col sm={3}>
                     
@@ -810,7 +814,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <select 
 
@@ -841,7 +845,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -855,15 +859,15 @@ const FormPersonas = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Edad aparente del mas joven: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -892,7 +896,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -906,15 +910,15 @@ const FormPersonas = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true"> 
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Edad aparente del mas viejo: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -943,7 +947,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -957,15 +961,15 @@ const FormPersonas = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Rango de edad (Edad Menor): </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -994,7 +998,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -1008,15 +1012,15 @@ const FormPersonas = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Rango de edad (Edad Mayor): </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -1045,7 +1049,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -1059,15 +1063,15 @@ const FormPersonas = (props) => {
            
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Comentario: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -1095,7 +1099,7 @@ const FormPersonas = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -1118,9 +1122,9 @@ const FormPersonas = (props) => {
             <br></br>
             <br></br>
 
-            <Row className='body'>   
+            <Row className='body' fluid="true">   
 
-                <Col>
+                <Col fluid="true">
                     
                     <Button fluid="true" type="submit" variant="primary" size="lg">CARGAR</Button>&nbsp;&nbsp;
                     <Button fluid="true" type="button" href={`/formPrincipal`} variant="danger" size="lg">VOLVER</Button>
@@ -1133,9 +1137,9 @@ const FormPersonas = (props) => {
             <br></br>
             <br></br>
 
-            <Row className='body'>   
+            <Row className='body' fluid="true">   
 
-                <Col>
+                <Col fluid="true">
                     
                    <h5 id="mensaje" className='mensaje'></h5>
 

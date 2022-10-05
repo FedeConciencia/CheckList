@@ -65,7 +65,11 @@ const FormHumedaVista = (props) => {
     //Metodo para modificar el color/imagen de la Pagina de Fondo =>
     const fondo = () => {
 
-        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+        document.body.style.backgroundImage = "url(https://imgur.com/mDsgdeZ.png)";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+        document.body.style.backgroundAttachment = "fixed";
 
     }
 
@@ -154,17 +158,17 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>Utilizan selladores en el montaje de techo: </label>
 
                 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -186,7 +190,7 @@ const FormHumedaVista = (props) => {
                 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                       
                     <span className="text-danger text-small d-block mb-2">
@@ -201,17 +205,17 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>Que medios de izaje usan para elevar los paneles:  </label>
 
                 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -233,7 +237,7 @@ const FormHumedaVista = (props) => {
                 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                     
                     <span className="text-danger text-small d-block mb-2">
@@ -248,15 +252,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Que tornillos usan para fijar paneles a la estructura: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -279,7 +283,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -293,15 +297,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Que elementos usan para fijar la perfileria al panel: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -324,7 +328,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -338,15 +342,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Provision de Paneles de Friolatina: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -369,7 +373,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -383,15 +387,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-             <Row>
+             <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Provision de Perfileria de Friolatina: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -414,7 +418,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -428,15 +432,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Que espesor de mm de perfileria usan: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea
                         type="text"
@@ -459,7 +463,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -473,15 +477,15 @@ const FormHumedaVista = (props) => {
             
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Resultado estetico de la perfileria montada: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -504,7 +508,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -518,15 +522,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Comentario: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -554,7 +558,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -568,15 +572,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>Estado (Activo-Inactivo-Actualizado): </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                         <textarea 
                             type="text"
@@ -604,7 +608,7 @@ const FormHumedaVista = (props) => {
                 </Col>
 
                 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -619,9 +623,9 @@ const FormHumedaVista = (props) => {
             <br></br>
             <br></br>
 
-            <Row className='body'>   
+            <Row className='body' fluid="true">   
 
-                <Col>
+                <Col fluid="true">
                 
                     <Button fluid="true" type="button" href={`/formPrincipalVista?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
                 
@@ -633,9 +637,9 @@ const FormHumedaVista = (props) => {
             <br></br>
             <br></br>
 
-            <Row className='body'>   
+            <Row className='body' fluid="true">   
 
-                <Col>
+                <Col fluid="true">
                     
                    <h5 id="mensaje" className='mensaje'></h5>
 

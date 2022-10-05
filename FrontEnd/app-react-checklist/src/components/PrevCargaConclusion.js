@@ -27,6 +27,8 @@ const PrevCargaConclusion = (props) => {
 
     useEffect(() => {
 
+        fondo()
+
         let n =  localStorage.getItem("nVisitaIncremental")
 
         //Actualizo el numero visita para pasar por incremento =>
@@ -35,6 +37,17 @@ const PrevCargaConclusion = (props) => {
         evento()
 
     },[])
+
+    //Metodo para modificar el color/imagen de la Pagina de Fondo =>
+    const fondo = () => {
+
+        document.body.style.backgroundImage = "url(https://imgur.com/mDsgdeZ.png)";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+        document.body.style.backgroundAttachment = "fixed";
+
+    }
 
 
     //Metodo para solicitar el idGeneral x N° de obra =>
@@ -163,7 +176,7 @@ const PrevCargaConclusion = (props) => {
 
             <Container className="body">
 
-            <Alert variant="success" responsive="sm">
+            <Alert variant="dark" fluid="true">
 
             <br></br>    
 
@@ -172,12 +185,12 @@ const PrevCargaConclusion = (props) => {
             <br></br>
             <br></br>  
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
                 
-                    <Button type="button" variant='primary' size="lg" href={`/formVisita?nroVisita=${nVisitaIncremt}`} disabled={validar.validarConclusion === true} className='botonGrande'>NUEVA VISITA</Button>&nbsp;&nbsp;
-                    <Button type="button" variant='primary' size="lg" href={`/formConclusion`}  disabled={validar.validarConclusion === true} className='botonGrande'>CONCLUSION FINAL</Button>
+                    <Button  fluid="true" type="button" variant='primary' size="lg" href={`/formVisita?nroVisita=${nVisitaIncremt}`} disabled={validar.validarConclusion === true} >NUEVA VISITA</Button>&nbsp;&nbsp;
+                    <Button  fluid="true" type="button" variant='primary' size="lg" href={`/formConclusion`}  disabled={validar.validarConclusion === true} >CONCLUSION</Button>
                 
                 </Col>
 
@@ -186,11 +199,11 @@ const PrevCargaConclusion = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                    <Col>
+                    <Col fluid="true"> 
 
-                        <Button type="button" variant='danger' size="lg" href="/" className='botonGrande'>VOLVER</Button>
+                        <Button fluid="true" type="button" variant='danger' size="lg" href="/" >VOLVER</Button>
                         
                     
                     </Col>
@@ -200,9 +213,9 @@ const PrevCargaConclusion = (props) => {
             <br></br>
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                    <Col>
+                    <Col fluid="true">
 
                         <h3 id="mensaje" className='mensaje'></h3>
 

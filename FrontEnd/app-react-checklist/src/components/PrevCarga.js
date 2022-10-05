@@ -23,7 +23,11 @@ const PrevCarga = (props) => {
     //Metodo para modificar el color/imagen de la Pagina de Fondo =>
     const fondo = () => {
 
-        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+        document.body.style.backgroundImage = "url(https://imgur.com/mDsgdeZ.png)";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+        document.body.style.backgroundAttachment = "fixed";
 
     }
 
@@ -47,9 +51,9 @@ const PrevCarga = (props) => {
             <br></br>
             <br></br>  
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
                 
                     <Button fluid="true" variant='primary'  href="/formGeneral" className='botonGrande'>SI</Button>&nbsp;&nbsp;
                     <Button fluid="true" variant='primary'  href="/pedidoObra" className='botonGrande'>NO</Button>

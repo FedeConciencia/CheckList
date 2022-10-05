@@ -27,7 +27,11 @@ const Home = (props) => {
     //Metodo para modificar el color/imagen de la Pagina de Fondo =>
     const fondo = () => {
 
-        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+        document.body.style.backgroundImage = "url(https://imgur.com/mDsgdeZ.png)";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+        document.body.style.backgroundAttachment = "fixed";
 
     }
 
@@ -53,9 +57,9 @@ const Home = (props) => {
             <br></br>
             <br></br>  
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
 
                     <Image fluid="true" rounded="true" className='imgLogo' src={ImgLogo}></Image>
                 
@@ -65,9 +69,9 @@ const Home = (props) => {
 
             <br></br> 
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
                 
                     <h4>A traves de la aplicacion web check list de Grupo LTN los usuarios podran</h4><br></br>
                     <h4>acceder a cargar y visualizar datos necesarios para control de obras.</h4>
@@ -77,9 +81,9 @@ const Home = (props) => {
 
             <br></br> 
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
                 
                     <Button fluid="true" variant='primary' href="/prevCarga" className='botonGrande'>CARGAR DATOS</Button>&nbsp;&nbsp;
                     <Button fluid="true" variant='primary' href="/verificarObra" className='botonGrande'>VER DATOS</Button>

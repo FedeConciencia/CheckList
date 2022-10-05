@@ -71,7 +71,11 @@ const FormAberturasUpdate = (props) => {
     //Metodo para modificar el color/imagen de la Pagina de Fondo =>
     const fondo = () => {
 
-        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+        document.body.style.backgroundImage = "url(https://imgur.com/mDsgdeZ.png)";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+        document.body.style.backgroundAttachment = "fixed";
 
     }
 
@@ -284,17 +288,17 @@ const FormAberturasUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>Fecha de inicio Actividades: </label>
 
                 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={2} fluid="true">
                     
                     <input 
                         type="date"
@@ -316,7 +320,7 @@ const FormAberturasUpdate = (props) => {
                 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                       
                     <span className="text-danger text-small d-block mb-2">
@@ -331,17 +335,17 @@ const FormAberturasUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>Fecha final de Actividades: </label>
 
                 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={2} fluid="true">
                     
                     <input 
                         type="date"
@@ -363,7 +367,7 @@ const FormAberturasUpdate = (props) => {
                 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                     
                     <span className="text-danger text-small d-block mb-2">
@@ -378,15 +382,15 @@ const FormAberturasUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Tipo de Abertura: </label>
 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={2} fluid="true">
                     
                     <select 
 
@@ -418,7 +422,7 @@ const FormAberturasUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -432,15 +436,15 @@ const FormAberturasUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Cantidad: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -469,7 +473,7 @@ const FormAberturasUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -483,15 +487,15 @@ const FormAberturasUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">M2: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -521,7 +525,7 @@ const FormAberturasUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -535,15 +539,15 @@ const FormAberturasUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Nro de Personas: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -572,7 +576,7 @@ const FormAberturasUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -586,15 +590,15 @@ const FormAberturasUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Comentario: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -622,7 +626,7 @@ const FormAberturasUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -638,9 +642,9 @@ const FormAberturasUpdate = (props) => {
             <br></br>
             <br></br>
 
-            <Row className='body'>   
+            <Row className='body' fluid="true">   
 
-                <Col>
+                <Col fluid="true">
                     
                     <Button fluid="true" type="submit" variant="primary" size="lg">ACTUALIZAR</Button>&nbsp;&nbsp;
                     <Button fluid="true" type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>

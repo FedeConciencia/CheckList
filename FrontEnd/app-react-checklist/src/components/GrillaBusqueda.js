@@ -43,7 +43,11 @@ const GrillaBusqueda = (props) => {
     //Metodo para modificar el color/imagen de la Pagina de Fondo =>
     const fondo = () => {
 
-        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+        document.body.style.backgroundImage = "url(https://imgur.com/mDsgdeZ.png)";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+        document.body.style.backgroundAttachment = "fixed";
 
     }
 
@@ -122,7 +126,6 @@ const GrillaBusqueda = (props) => {
 
                 <br></br>  
 
-
                 <Alert.Heading className="alertTitle">RESULTADO DE BUSQUEDA POR NOMBRE DE CLIENTE</Alert.Heading>
 
                 <br></br>
@@ -131,9 +134,9 @@ const GrillaBusqueda = (props) => {
 
                 <br></br>
 
-                <Row>
+                <Row fluid="true">
 
-                    <Col>
+                    <Col fluid="true">
 
                     <Button fluid="true" type="button" href={`/`} variant="danger" size="lg">VOLVER</Button>
 
@@ -225,9 +228,9 @@ const GrillaBusqueda = (props) => {
 
                 <br></br>
 
-                <Row>
+                <Row fluid="true">
 
-                    <Col>
+                    <Col fluid="true">
 
                     <Button fluid="true" type="button" href={`/`} variant="danger" size="lg">VOLVER</Button>
 

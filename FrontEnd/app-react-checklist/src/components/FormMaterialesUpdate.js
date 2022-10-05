@@ -69,7 +69,11 @@ const FormMaterialesUpdate = (props) => {
     //Metodo para modificar el color/imagen de la Pagina de Fondo =>
     const fondo = () => {
 
-        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+        document.body.style.backgroundImage = "url(https://imgur.com/mDsgdeZ.png)";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+        document.body.style.backgroundAttachment = "fixed";
 
     }
 
@@ -273,15 +277,15 @@ const FormMaterialesUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <label>Estado y orden del almacenamiento o estiba: </label>
 
                 </Col>
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <select 
 
@@ -315,7 +319,7 @@ const FormMaterialesUpdate = (props) => {
                 </Col>
 
                 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -329,15 +333,15 @@ const FormMaterialesUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <label>Movimiento y traslado de materiales ordenado y sistematizado: </label>
 
                 </Col>
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <select 
 
@@ -370,7 +374,7 @@ const FormMaterialesUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -384,15 +388,15 @@ const FormMaterialesUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <label>Almacenamiento seguro, bajo llave y encargado: </label>
 
                 </Col>
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <select 
 
@@ -425,7 +429,7 @@ const FormMaterialesUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -439,15 +443,15 @@ const FormMaterialesUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <label>Envases vacios de consumibles ubicados en lugar seguro y ordenado: </label>
 
                 </Col>
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <select 
 
@@ -480,7 +484,7 @@ const FormMaterialesUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -494,15 +498,15 @@ const FormMaterialesUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <label>Material Sobrante de recortes y/o escombros en lugar definido y seguro: </label>
 
                 </Col>
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <select 
 
@@ -535,7 +539,7 @@ const FormMaterialesUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -549,15 +553,15 @@ const FormMaterialesUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <label>Estado de limpieza en lugares de transito de personas y equipos: </label>
 
                 </Col>
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <select 
 
@@ -590,7 +594,7 @@ const FormMaterialesUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -604,15 +608,15 @@ const FormMaterialesUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <label>Desechos organicos (Restos de comida, etc) removidos con frecuencia: </label>
 
                 </Col>
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <select 
 
@@ -645,7 +649,7 @@ const FormMaterialesUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -659,15 +663,15 @@ const FormMaterialesUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Comentario: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -695,7 +699,7 @@ const FormMaterialesUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -718,9 +722,9 @@ const FormMaterialesUpdate = (props) => {
             <br></br>
             <br></br>
 
-            <Row className='body'>   
+            <Row className='body' fluid="true">   
 
-                <Col>
+                <Col fluid="true">
                     
                     <Button fluid="true" type="submit" variant="primary" size="lg">ACTUALIZAR</Button>&nbsp;&nbsp;
                     <Button fluid="true" type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>

@@ -59,7 +59,11 @@ const FormPrincipalVista = (props) => {
     //Metodo para modificar el color/imagen de la Pagina de Fondo =>
     const fondo = () => {
 
-        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+        document.body.style.backgroundImage = "url(https://imgur.com/mDsgdeZ.png)";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+        document.body.style.backgroundAttachment = "fixed";
 
     }
 
@@ -89,9 +93,9 @@ const FormPrincipalVista = (props) => {
             <br></br>
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
 
                     <Button fluid="true" href="/formGeneralVista" className="botonForm" variant="primary">1- FORMULARIO GENERAL</Button>
                     
@@ -102,9 +106,9 @@ const FormPrincipalVista = (props) => {
             <br></br>
 
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
 
                     <Button fluid="true" href="/formVisitaVista" className="botonForm" variant="primary">2- FORMULARIO VISITA</Button>
                     
@@ -115,9 +119,9 @@ const FormPrincipalVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
 
                     <Button fluid="true" href="/formMaterialesVista" className="botonForm" variant="primary">3- FORMULARIO MATERIALES</Button>
                     
@@ -127,9 +131,9 @@ const FormPrincipalVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
 
                     <Button fluid="true" href="/formPersonasVista" className="botonForm" variant="primary">4- FORMULARIO PERSONAS</Button>
                     
@@ -139,9 +143,9 @@ const FormPrincipalVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
 
                     <Button fluid="true" href="/principalGremioVista" className="botonForm" variant="primary">5- FORMULARIO GREMIOS</Button>
                     
@@ -152,9 +156,9 @@ const FormPrincipalVista = (props) => {
             <br></br>
 
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
 
                     <Button fluid="true" href="/formHumedaVista" className="botonForm" variant="primary">6- FORMULARIO OBRA HUMEDA</Button>
                     
@@ -165,9 +169,9 @@ const FormPrincipalVista = (props) => {
             <br></br>
 
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
 
                     <Button fluid="true" href="/formSecoVista" className="botonForm" variant="primary">7- FORMULARIO OBRA SECO</Button>
                     
@@ -178,9 +182,9 @@ const FormPrincipalVista = (props) => {
             <br></br>
 
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
 
                     <Button fluid="true" href="/formPanelesVista" className="botonForm" variant="primary">8- FORMULARIO PANELES</Button>
                     
@@ -191,9 +195,9 @@ const FormPrincipalVista = (props) => {
             <br></br>
 
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
 
                     <Button fluid="true" href="/formRedAguaVista" className="botonForm" variant="primary">9- FORMULARIO RED DE AGUA</Button>
                     
@@ -204,9 +208,9 @@ const FormPrincipalVista = (props) => {
             <br></br>
 
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
 
                     <Button fluid="true" href="/formRedGasVista" className="botonForm" variant="primary">10- FORMULARIO RED DE GAS</Button>
                     
@@ -216,9 +220,9 @@ const FormPrincipalVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
 
                     <Button fluid="true" href="/formRedElectricidadVista" className="botonForm" variant="primary">11- FORMULARIO RED DE ELECTRICIDAD</Button>
                     
@@ -228,9 +232,9 @@ const FormPrincipalVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
 
                     <Button fluid="true" href="/principalAberturasVista" className="botonForm" variant="primary">12- FORMULARIO ABERTURAS</Button>
                     
@@ -240,9 +244,9 @@ const FormPrincipalVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col>
+                <Col fluid="true">
 
                     <Button fluid="true" href="/formConclusionVista" className="botonForm" variant="primary">13- FORMULARIO CONCLUSION FINAL</Button>
                     
@@ -253,9 +257,9 @@ const FormPrincipalVista = (props) => {
             <br></br>
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                    <Col>
+                    <Col fluid="true">
 
                     <Button fluid="true" type="button" href={`/principalVista?nObra=${obra}`}  size="lg" variant="danger">VOLVER</Button> 
 

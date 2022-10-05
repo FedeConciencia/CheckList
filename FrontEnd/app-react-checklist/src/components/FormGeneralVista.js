@@ -64,7 +64,11 @@ const FormGeneralVista = (props) => {
      //Metodo para modificar el color/imagen de la Pagina de Fondo =>
      const fondo = () => {
 
-        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+        document.body.style.backgroundImage = "url(https://imgur.com/mDsgdeZ.png)";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+        document.body.style.backgroundAttachment = "fixed";
 
     }
 
@@ -153,15 +157,15 @@ const FormGeneralVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>N° de Obra: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                         <textarea 
                             type="text"
@@ -189,7 +193,7 @@ const FormGeneralVista = (props) => {
                 </Col>
 
                 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -203,15 +207,15 @@ const FormGeneralVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>Nombre de Cliente/Empresa: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                         <textarea 
                             type="text"
@@ -238,7 +242,7 @@ const FormGeneralVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -252,15 +256,15 @@ const FormGeneralVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>Dni/Cuil/Cuit: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                         <textarea 
                             type="text"
@@ -287,7 +291,7 @@ const FormGeneralVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -301,15 +305,15 @@ const FormGeneralVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>Domicilio: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                         <textarea 
                             type="text"
@@ -336,7 +340,7 @@ const FormGeneralVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -350,15 +354,15 @@ const FormGeneralVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>Uso destino del Edificio:  </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                         <textarea 
                             type="text"
@@ -385,7 +389,7 @@ const FormGeneralVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -399,16 +403,16 @@ const FormGeneralVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>Altura del Edificio: </label>
 
                 </Col>
 
                     
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -435,7 +439,7 @@ const FormGeneralVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -449,15 +453,15 @@ const FormGeneralVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>M2 de Cubierta: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -484,7 +488,7 @@ const FormGeneralVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -498,15 +502,15 @@ const FormGeneralVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">M2 de Muro: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -534,7 +538,7 @@ const FormGeneralVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -548,15 +552,15 @@ const FormGeneralVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Alcance: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -584,7 +588,7 @@ const FormGeneralVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -598,15 +602,15 @@ const FormGeneralVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Expectativa Cliente duracion Obra: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -634,7 +638,7 @@ const FormGeneralVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -648,15 +652,15 @@ const FormGeneralVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Comentario: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -684,7 +688,7 @@ const FormGeneralVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -698,15 +702,15 @@ const FormGeneralVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>Estado (Activo-Inactivo-Actualizado): </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                         <textarea 
                             type="text"
@@ -734,7 +738,7 @@ const FormGeneralVista = (props) => {
                 </Col>
 
                 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -749,9 +753,9 @@ const FormGeneralVista = (props) => {
             <br></br>
             <br></br>
 
-            <Row className='body'>   
+            <Row className='body' fluid="true">   
 
-                <Col>
+                <Col fluid="true">
                 
                     <Button fluid="true" type="button" href={`/formPrincipalVista?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
                 
@@ -763,9 +767,9 @@ const FormGeneralVista = (props) => {
             <br></br>
             <br></br>
 
-            <Row className='body'>   
+            <Row className='body' fluid="true">   
 
-                <Col>
+                <Col fluid="true">
                     
                    <h5 id="mensaje" className='mensaje'></h5>
 

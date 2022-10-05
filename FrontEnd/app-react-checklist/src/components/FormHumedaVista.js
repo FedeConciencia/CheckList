@@ -70,7 +70,11 @@ const FormHumedaVista = (props) => {
     //Metodo para modificar el color/imagen de la Pagina de Fondo =>
     const fondo = () => {
 
-        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+        document.body.style.backgroundImage = "url(https://imgur.com/mDsgdeZ.png)";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+        document.body.style.backgroundAttachment = "fixed";
 
     }
 
@@ -173,17 +177,17 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>Fecha de inicio Actividades: </label>
 
                 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -205,7 +209,7 @@ const FormHumedaVista = (props) => {
                 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                       
                     <span className="text-danger text-small d-block mb-2">
@@ -220,17 +224,17 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>Fecha final de Actividades: </label>
 
                 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -252,7 +256,7 @@ const FormHumedaVista = (props) => {
                 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                     
                     <span className="text-danger text-small d-block mb-2">
@@ -267,15 +271,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">M2 de Piso: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -298,7 +302,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -312,15 +316,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Piso N° de Personas: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -343,7 +347,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -357,15 +361,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Metros lineales Vigas y Columnas: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -388,7 +392,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -402,15 +406,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-             <Row>
+             <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Vigas N° de Personas: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -433,7 +437,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -447,15 +451,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">M2 Muro: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea
                         type="text"
@@ -478,7 +482,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -492,15 +496,15 @@ const FormHumedaVista = (props) => {
             
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Muro N° de Personas: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -523,7 +527,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -537,15 +541,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">M2 Cubierta: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -568,7 +572,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -582,15 +586,15 @@ const FormHumedaVista = (props) => {
             
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Cubierta N° de Personas: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -613,7 +617,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -627,15 +631,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Metros lineales de terminaciones: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -658,7 +662,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -672,15 +676,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Lineales N° de Personas: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -703,7 +707,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -717,15 +721,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Nro de dias Caidos: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -748,7 +752,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -762,15 +766,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Motivo: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -793,7 +797,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -807,15 +811,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Comentario: </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -843,7 +847,7 @@ const FormHumedaVista = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -857,15 +861,15 @@ const FormHumedaVista = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>Estado (Activo-Inactivo-Actualizado): </label>
 
                 </Col>
 
-                <Col sm={7}>
+                <Col sm={7} fluid="true">
                     
                         <textarea 
                             type="text"
@@ -893,7 +897,7 @@ const FormHumedaVista = (props) => {
                 </Col>
 
                 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -908,9 +912,9 @@ const FormHumedaVista = (props) => {
             <br></br>
             <br></br>
 
-            <Row className='body'>   
+            <Row className='body' fluid="true">   
 
-                <Col>
+                <Col fluid="true">
                 
                     <Button fluid="true" type="button" href={`/formPrincipalVista?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
                 
@@ -922,9 +926,9 @@ const FormHumedaVista = (props) => {
             <br></br>
             <br></br>
 
-            <Row className='body'>   
+            <Row className='body' fluid="true">   
 
-                <Col>
+                <Col fluid="true">
                     
                    <h5 id="mensaje" className='mensaje'></h5>
 

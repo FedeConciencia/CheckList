@@ -74,7 +74,11 @@ const FormGremioUpdate = (props) => {
     //Metodo para modificar el color/imagen de la Pagina de Fondo =>
     const fondo = () => {
 
-        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+        document.body.style.backgroundImage = "url(https://imgur.com/mDsgdeZ.png)";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+        document.body.style.backgroundAttachment = "fixed";
 
     }
 
@@ -290,15 +294,15 @@ const FormGremioUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Nombre del Gremio: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="text"
@@ -326,7 +330,7 @@ const FormGremioUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -340,15 +344,15 @@ const FormGremioUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Numero de Personas: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -377,7 +381,7 @@ const FormGremioUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -391,15 +395,15 @@ const FormGremioUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Horario Desde: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="time"
@@ -428,7 +432,7 @@ const FormGremioUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -442,15 +446,15 @@ const FormGremioUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Horario Hasta: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="time"
@@ -479,7 +483,7 @@ const FormGremioUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -493,17 +497,17 @@ const FormGremioUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>Fecha Desde: </label>
 
                 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={2} fluid="true">
                     
                     <input 
                         type="date"
@@ -525,7 +529,7 @@ const FormGremioUpdate = (props) => {
                 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                       
                     <span className="text-danger text-small d-block mb-2">
@@ -539,17 +543,17 @@ const FormGremioUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label>Fecha Hasta: </label>
 
                 
                 </Col>
 
-                <Col sm={2}>
+                <Col sm={2} fluid="true">
                     
                     <input 
                         type="date"
@@ -571,7 +575,7 @@ const FormGremioUpdate = (props) => {
                 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                       
                     <span className="text-danger text-small d-block mb-2">
@@ -585,15 +589,15 @@ const FormGremioUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Numero de Argentinos: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -622,7 +626,7 @@ const FormGremioUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -636,15 +640,15 @@ const FormGremioUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Nombre del Contratista: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="text"
@@ -672,7 +676,7 @@ const FormGremioUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -686,15 +690,15 @@ const FormGremioUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Apellido del Contratista: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="text"
@@ -722,7 +726,7 @@ const FormGremioUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -736,15 +740,15 @@ const FormGremioUpdate = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col sm={3}>
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Comentario: </label>
 
                 </Col>
 
-                <Col sm={6}>
+                <Col sm={6} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -772,7 +776,7 @@ const FormGremioUpdate = (props) => {
 
                 </Col>
 
-                <Col sm={1}>
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -787,9 +791,9 @@ const FormGremioUpdate = (props) => {
             <br></br>
             <br></br>
 
-            <Row className='body'>   
+            <Row className='body' fluid="true">   
 
-                <Col>
+                <Col fluid="true">
                     
                     <Button fluid="true" type="submit" variant="primary" size="lg">ACTUALIZAR</Button>&nbsp;&nbsp;
                     <Button fluid="true" type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>

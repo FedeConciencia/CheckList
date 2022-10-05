@@ -53,7 +53,11 @@ const FormGeneral = (props) => {
     //Metodo para modificar el color/imagen de la Pagina de Fondo =>
     const fondo = () => {
 
-        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+        document.body.style.backgroundImage = "url(https://imgur.com/mDsgdeZ.png)";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+        document.body.style.backgroundAttachment = "fixed";
 
     }
 
@@ -240,16 +244,16 @@ const FormGeneral = (props) => {
 
             <Form onSubmit={handleSubmit(enviarDatos)}>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">N° de Obra:</label>
 
                 </Col>
 
 
-                <Col>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="text"
@@ -277,7 +281,7 @@ const FormGeneral = (props) => {
 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -299,15 +303,15 @@ const FormGeneral = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Nombre de Cliente/Empresa: </label>
 
                 </Col>
 
-                <Col>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="text"
@@ -335,7 +339,7 @@ const FormGeneral = (props) => {
 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -349,15 +353,15 @@ const FormGeneral = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Dni/Cuil/Cuit: </label>
 
                 </Col>
 
-                <Col>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="text"
@@ -385,7 +389,7 @@ const FormGeneral = (props) => {
 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -399,15 +403,15 @@ const FormGeneral = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Domicilio: </label>
 
                 </Col>
 
-                <Col>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="text"
@@ -430,7 +434,7 @@ const FormGeneral = (props) => {
 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -444,15 +448,15 @@ const FormGeneral = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Uso destino del Edificio: </label>
 
                 </Col>
 
-                <Col>
+                <Col sm={2} fluid="true">
                     
                     <select 
 
@@ -483,7 +487,7 @@ const FormGeneral = (props) => {
 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -497,15 +501,15 @@ const FormGeneral = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Altura del Edificio: </label>
 
                 </Col>
 
-                <Col>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -535,7 +539,7 @@ const FormGeneral = (props) => {
 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -549,15 +553,15 @@ const FormGeneral = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">M2 de Cubierta: </label>
 
                 </Col>
 
-                <Col>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -587,7 +591,7 @@ const FormGeneral = (props) => {
 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -601,15 +605,15 @@ const FormGeneral = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">M2 de Muro: </label>
 
                 </Col>
 
-                <Col>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -639,7 +643,7 @@ const FormGeneral = (props) => {
 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -653,15 +657,15 @@ const FormGeneral = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Alcance: </label>
 
                 </Col>
 
-                <Col>
+                <Col sm={2} fluid="true">
                     
                     <select 
 
@@ -693,7 +697,7 @@ const FormGeneral = (props) => {
 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -707,15 +711,15 @@ const FormGeneral = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Expectativa Cliente duracion Obra: </label>
 
                 </Col>
 
-                <Col>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -744,7 +748,7 @@ const FormGeneral = (props) => {
 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -758,15 +762,15 @@ const FormGeneral = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Comentario: </label>
 
                 </Col>
 
-                <Col>
+                <Col sm={6} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -794,7 +798,7 @@ const FormGeneral = (props) => {
 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -808,9 +812,9 @@ const FormGeneral = (props) => {
 
             <br></br>
 
-            <Row className='body'>   
+            <Row className='body' fluid="true">   
 
-                <Col>
+                <Col fluid="true">
                     
                     <Button type="submit" fluid="true" variant="primary" size="lg">CARGAR</Button>&nbsp;&nbsp;
                     <Button type="button" fluid="true" href={`/prevCarga`} variant="danger" size="lg">VOLVER</Button>

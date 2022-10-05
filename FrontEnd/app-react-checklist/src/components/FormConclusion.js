@@ -40,9 +40,20 @@ const FormConclusion = (props) => {
 
     useEffect(() => {
 
-        
+        fondo()
         
     },[])
+
+    //Metodo para modificar el color/imagen de la Pagina de Fondo =>
+    const fondo = () => {
+
+        document.body.style.backgroundImage = "url(https://imgur.com/mDsgdeZ.png)";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+        document.body.style.backgroundAttachment = "fixed";
+
+    }
 
 
     //Metodo para obtener los datos ingresados en el form =>
@@ -196,7 +207,7 @@ const FormConclusion = (props) => {
 
             <Container>
 
-            <Alert variant="success" responsive="sm">
+            <Alert variant="dark" fluid="true">
 
             <br></br>    
 
@@ -215,15 +226,15 @@ const FormConclusion = (props) => {
 
             <Form onSubmit={handleSubmit(enviarDatos)}>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Obra Terminada: </label>
 
                 </Col>
 
-                <Col>
+                <Col sm={2} fluid="true">
                     
                     <select 
 
@@ -252,7 +263,7 @@ const FormConclusion = (props) => {
 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -266,15 +277,15 @@ const FormConclusion = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Avance Actual (%): </label>
 
                 </Col>
 
-                <Col>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -305,7 +316,7 @@ const FormConclusion = (props) => {
 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -319,15 +330,15 @@ const FormConclusion = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Avance Esperado (%): </label>
 
                 </Col>
 
-                <Col>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -358,7 +369,7 @@ const FormConclusion = (props) => {
 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -372,17 +383,17 @@ const FormConclusion = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     <br></br>
                     <label>Fecha Finalizacion: </label>
 
                 
                 </Col>
 
-                <Col>
+                <Col sm={2} fluid="true">
                     <br></br>
                      <input 
                         type="date"
@@ -404,7 +415,7 @@ const FormConclusion = (props) => {
                 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         <br></br>
                         <span className="text-danger text-small d-block mb-2">
@@ -419,15 +430,15 @@ const FormConclusion = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Grado Satisfaccion del Cliente (1 a 5): </label>
 
                 </Col>
 
-                <Col>
+                <Col sm={6} fluid="true">
                     
                     <input 
                         type="number"
@@ -457,7 +468,7 @@ const FormConclusion = (props) => {
 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -471,15 +482,15 @@ const FormConclusion = (props) => {
 
             <br></br>
 
-            <Row>
+            <Row fluid="true">
 
-                <Col className="col-md-3">
+                <Col sm={3} fluid="true">
                     
                     <label className="my-2">Comentario: </label>
 
                 </Col>
 
-                <Col>
+                <Col sm={6} fluid="true">
                     
                     <textarea 
                         type="text"
@@ -507,7 +518,7 @@ const FormConclusion = (props) => {
 
                 </Col>
 
-                <Col className="col-md-3">
+                <Col sm={1} fluid="true">
 
                         
                     <span className="text-danger text-small d-block mb-2">
@@ -521,12 +532,12 @@ const FormConclusion = (props) => {
 
             <br></br>
 
-            <Row className='body'>   
+            <Row className='body' fluid="true">   
 
-                <Col>
+                <Col fluid="true">
                     
-                    <Button type="submit" variant="primary" size="lg">CARGAR</Button>&nbsp;&nbsp;
-                    <Button type="button" href={`/prevCarga`} variant="danger" size="lg">VOLVER</Button>
+                    <Button fluid="true" type="submit" variant="primary" size="lg">CARGAR</Button>&nbsp;&nbsp;
+                    <Button fluid="true" type="button" href={`/prevCarga`} variant="danger" size="lg">VOLVER</Button>
                 
                 </Col>
 

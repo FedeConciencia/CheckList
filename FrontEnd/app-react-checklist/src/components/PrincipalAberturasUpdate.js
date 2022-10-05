@@ -40,7 +40,11 @@ const PrincipalAberturasUpdate = (props) => {
     //Metodo para modificar el color/imagen de la Pagina de Fondo =>
     const fondo = () => {
 
-        document.body.style.backgroundImage = "url(https://www.ecocuyo.com/wp-content/uploads/2021/09/TAIPEI-3.png)";
+        document.body.style.backgroundImage = "url(https://imgur.com/mDsgdeZ.png)";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center center";
+        document.body.style.backgroundAttachment = "fixed";
 
     }
 
@@ -97,13 +101,11 @@ const PrincipalAberturasUpdate = (props) => {
 
                 <br></br>
 
-                <Container>
+                <Container className='body'>
 
                 <Alert variant="dark" fluid="true">
 
                 <br></br>  
-
-                <div className='body'>
 
                 <Alert.Heading className="alertTitle">LISTA DE ABERTURAS PARA ACTUALIZACION</Alert.Heading>
 
@@ -111,13 +113,12 @@ const PrincipalAberturasUpdate = (props) => {
 
                 <h5 className='red'>No se encontraron datos de gremios.</h5>
 
-                </div>
 
                 <br></br>
 
-                <Row>
+                <Row fluid="true">
 
-                    <Col>
+                    <Col fluid="true">
 
                     <Button fluid="true" type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
 
@@ -212,9 +213,9 @@ const PrincipalAberturasUpdate = (props) => {
 
                 <br></br>
 
-                <Row>
+                <Row fluid="true">
 
-                    <Col>
+                    <Col fluid="true">
 
                     <Button fluid="true" type="button" href={`/formPrincipalUpdate?idGeneral=${idGeneral}&idVisita=${idVisita}`} variant="danger" size="lg">VOLVER</Button>
 
